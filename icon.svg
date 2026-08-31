@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Option J: a monospace V over a terminal cursor.
+       The V is drawn as a path rather than set in a font: a favicon is rendered outside the
+       page, so a webfont is not guaranteed to be there, and a fallback serif would bring back
+       the thick/thin stroke that read as a necktie. Two strokes of equal weight is what makes
+       it read as monospace. -->
+  <rect width="32" height="32" rx="7" fill="#151922"/>
+  <path d="M9.5 8.5 L16 21 L22.5 8.5"
+        fill="none" stroke="#eceae4" stroke-width="3.2"
+        stroke-linecap="butt" stroke-linejoin="miter"/>
+  <rect x="9.5" y="23.6" width="13" height="2.6" rx="1.3" fill="#7be0a8"/>
+</svg>

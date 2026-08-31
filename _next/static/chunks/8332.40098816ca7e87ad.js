@@ -1,0 +1,50 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[8332],{8332:(e,t,r)=>{r.r(t),r.d(t,{CrtBackground:()=>v});var o=r(5155),a=r(2115);let i=`attribute vec2 aPos;
+void main(){ gl_Position = vec4(aPos,0.0,1.0); }`,n=`precision highp float;
+uniform sampler2D uTex;
+uniform vec2 uRes;
+uniform float uTime;
+uniform float uMotion;
+float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
+vec2 curve(vec2 uv){
+  uv = uv*2.0-1.0;
+  vec2 o = uv.yx*uv.yx;
+  uv += uv * o * vec2(0.115,0.165);
+  uv = uv*0.5+0.5;
+  return uv;
+}
+void main(){
+  vec2 fuv = gl_FragCoord.xy / uRes;
+  vec2 uv = curve(fuv);
+  vec2 inb = step(vec2(0.0), uv) * step(uv, vec2(1.0));
+  float inside = inb.x*inb.y;
+  vec2 ed = min(uv, 1.0-uv);
+  inside *= smoothstep(0.0,0.020, min(ed.x,ed.y));
+  vec2 dir = uv-0.5;
+  float d2 = dot(dir,dir);
+  vec2 ao = dir * (0.0016 + 0.012*d2);
+  vec3 col;
+  col.r = texture2D(uTex, uv + ao).r;
+  col.g = texture2D(uTex, uv).g;
+  col.b = texture2D(uTex, uv - ao).b;
+  float lines = uRes.y*0.92;
+  float sl = sin(uv.y*3.14159265*lines + uTime*4.0*uMotion);
+  col *= mix(0.70,1.0, sl*sl);
+  float gx = gl_FragCoord.x * (6.2831853/3.0);
+  vec3 grille = 0.66 + 0.34*cos(gx + vec3(0.0,2.094,4.188));
+  col *= grille;
+  col *= 1.34;
+  float bar = fract(uv.y*0.5 - uTime*0.07*uMotion);
+  bar = smoothstep(0.0,0.05,bar)*smoothstep(0.18,0.05,bar);
+  col += bar*0.045*uMotion;
+  float sheen = smoothstep(0.55,0.0, distance(uv, vec2(0.50,0.15)));
+  col += sheen*0.030*vec3(0.55,1.0,0.78);
+  float vig = smoothstep(0.98,0.30, length((uv-0.5)*vec2(1.05,1.0)));
+  col *= mix(0.42,1.0, vig);
+  col *= 1.0 - 0.028*uMotion*sin(uTime*8.0);
+  col += (hash(fuv + fract(uTime*0.37)) - 0.5)*0.022;
+  float spill = smoothstep(0.85,0.18, length(fuv-0.5))*0.05;
+  vec3 room = vec3(0.012,0.03,0.022) + vec3(0.0,spill*0.6,spill*0.42);
+  col = mix(room, col, inside);
+  col = max(col, vec3(0.004,0.010,0.008));
+  gl_FragColor = vec4(col,1.0);
+}`,l={speed:1,typeSpeed:1,motion:1,brightness:1,opacity:1,hue:0,saturation:1},u=(e,t="p")=>({t:e,c:t}),s=e=>"\xb7".repeat(e),c=[[u("ZION MAINFRAME  v9.1.1"),u("   (c) 2199 Nebuchadnezzar","d")],[u("CONSTRUCT Broadcast  Rev M  S/N NX-0101-0011","d")],[],[u("Hacking Matrix grid nodes "),u(`${s(14)} `,"d"),u("OK","a")],[u("Neural Jack  0x000-0x0FF "),u(`${s(11)} `,"d"),u("ONLINE "),u("OK","a")],[u("Pinging agent signatures "),u(`${s(6)} `,"d"),u("3 found")],[u("nav0  OPERATOR UPLINK SECURE ","d"),u(`${s(6)} `,"d"),u("READY","a")],[u("vis0  CODE RAIN DECRYPT 256bit ","d"),u("READY","a")],[u("net0  HARDLINE CONNECTION MAX ","d"),u(`${s(4)} `,"d"),u("LINK","a")],[u("red0  RED PILL EXTRACTION ","d"),u(`${s(4)} `,"d"),u("READY","a")],[u("Mounting /dev/mind -> ROOT: "),u(`${s(6)} `,"d"),u("OK","a")],[u("Loading weapon training program "),u(`${s(4)} `,"d"),u("OK","a")],[u("Starting [ jmp spd str wpn ] "),u(`${s(4)} `,"d"),u("OK","a")],[u("Locating the Oracle sector "),u(`${s(6)} `,"d"),u("99.9%")],[],[u("SYSTEM ANOMALY  "),u("detected.","h")],[u("subject Thomas A. Anderson   status asleep ","d"),u("z","d"),u("Z","d")],[],[u("wake up: ")]],d={p:{fill:"#8df0b4",glow:"rgba(28,236,132,0.95)"},d:{fill:"#4f9a76",glow:"rgba(28,236,132,0.45)"},a:{fill:"#ffba5e",glow:"rgba(255,150,52,0.95)"},h:{fill:"#eafff3",glow:"rgba(120,255,190,0.95)"}},f=e=>e.reduce((e,t)=>e+t.t.length,0),h=c.reduce((e,t)=>e+f(t),0),m=Math.max(...c.map(f));function g(e,t,r){let o=e.createShader(t);if(!o)throw Error("Unable to create CRT shader");if(e.shaderSource(o,r),e.compileShader(o),!e.getShaderParameter(o,e.COMPILE_STATUS))throw Error(e.getShaderInfoLog(o)??"CRT shader compilation failed");return o}function v({className:e="",...t}){let r=(0,a.useRef)(null),u=(0,a.useRef)(null),s=(0,a.useRef)({...l,...t});s.current={...l,...t},(0,a.useEffect)(()=>{let e=r.current,t=u.current;if(!e||!t)return;let o=function(e,t,r){let o=t.getContext("webgl",{antialias:!1,alpha:!1,depth:!1,premultipliedAlpha:!1});if(!o)throw Error("CRT requires WebGL");let a=document.createElement("canvas"),l=a.getContext("2d");if(!l)throw Error("CRT text canvas unavailable");let u=g(o,o.VERTEX_SHADER,i),s=g(o,o.FRAGMENT_SHADER,n),v=o.createProgram();if(!v)throw Error("Unable to create CRT program");if(o.attachShader(v,u),o.attachShader(v,s),o.linkProgram(v),!o.getProgramParameter(v,o.LINK_STATUS))throw Error(o.getProgramInfoLog(v)??"CRT link failed");o.useProgram(v);let T=o.createBuffer();o.bindBuffer(o.ARRAY_BUFFER,T),o.bufferData(o.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),o.STATIC_DRAW);let p=o.getAttribLocation(v,"aPos");o.enableVertexAttribArray(p),o.vertexAttribPointer(p,2,o.FLOAT,!1,0,0);let E=o.getUniformLocation(v,"uTex"),R=o.getUniformLocation(v,"uRes"),x=o.getUniformLocation(v,"uTime"),A=o.getUniformLocation(v,"uMotion"),b=o.createTexture();o.bindTexture(o.TEXTURE_2D,b),o.texParameteri(o.TEXTURE_2D,o.TEXTURE_MIN_FILTER,o.LINEAR),o.texParameteri(o.TEXTURE_2D,o.TEXTURE_MAG_FILTER,o.LINEAR),o.texParameteri(o.TEXTURE_2D,o.TEXTURE_WRAP_S,o.CLAMP_TO_EDGE),o.texParameteri(o.TEXTURE_2D,o.TEXTURE_WRAP_T,o.CLAMP_TO_EDGE),o.uniform1i(E,0);let M=1,_=1,w=14,S=20,C=0,N=8,P=0,L=0,I=0,U=!1,D=!0,F=0,O=-1,y=-1,B=performance.now(),$=e=>{let t=d[e];l.fillStyle=t.fill,l.shadowColor=t.glow,l.shadowBlur=.55*w};return{resize:()=>{let r=e.getBoundingClientRect(),i=Math.max(1,r.width),n=Math.max(1,r.height),u=Math.min(Math.round(i*(i<700?.82:.55)),920),s=Math.round(u*n/i);(t.width!==u||t.height!==s||M!==u)&&(t.width=u,t.height=s,a.width=u,a.height=s,M=u,C=.135*(_=s),w=Math.max(5,Math.min(.8*(S=.74*_/c.length),.88*M/(.62*Math.max(m,1)))),l.font=`600 ${w.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`,N=l.measureText("M").width||.6*w,O=-1,y=-1),o.viewport(0,0,u,s),o.uniform2f(R,u,s)},render(e){let t=r();U||(I+=4.4*t.typeSpeed)>=h&&(I=h,U=!0),(e=>{let t=U?1/0:Math.floor(I),r=+(Math.floor((e-B)/420)%2==0),o=U?r!==y:e-F>42;(t!==O||r!==y||o)&&(U||!(e-F<=42)||t!==O||r!==y)&&((e=>{l.setTransform(1,0,0,1,0,0),l.fillStyle="#03100a",l.fillRect(0,0,M,_),l.textBaseline="top",l.font=`600 ${w.toFixed(2)}px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`;let t=e,r=C;for(let o of(P=Math.floor((M-m*N)/2),L=C,c)){let a=f(o),i=e===1/0?1/0:Math.min(t,a),n=Math.floor((M-m*N)/2),u=0;for(let e of o){let t=e.t;if(i!==1/0){let e=i-u;if(e<=0)break;e<t.length&&(t=t.slice(0,e))}if(t.length&&($(e.c),l.fillText(t,n,r),n+=N*t.length),u+=e.t.length,i!==1/0&&u>=i)break}if(P=n,L=r,i!==1/0&&(t-=i),r+=S,i!==1/0&&t<=0)break}})(t),r&&(l.shadowColor=d.p.glow,l.shadowBlur=.6*w,l.fillStyle="#bdf8d2",l.fillRect(P,L+.06*w,Math.max(.92*N,4),.96*w)),F=e,O=t,y=r,D=!0)})(e),D&&(o.bindTexture(o.TEXTURE_2D,b),o.pixelStorei(o.UNPACK_FLIP_Y_WEBGL,!0),o.texImage2D(o.TEXTURE_2D,0,o.RGBA,o.RGBA,o.UNSIGNED_BYTE,a),o.pixelStorei(o.UNPACK_FLIP_Y_WEBGL,!1),D=!1),o.useProgram(v),o.uniform1f(x,(e-B)*.001*t.speed),o.uniform1f(A,t.motion),o.drawArrays(o.TRIANGLES,0,3)},dispose(){o.deleteBuffer(T),o.deleteTexture(b),o.deleteProgram(v),o.deleteShader(u),o.deleteShader(s)}}}(e,t,()=>s.current),a=0,l=!0,v=()=>{o.resize(),o.render(performance.now())},T=e=>{o.render(e),a=l&&!document.hidden?requestAnimationFrame(T):0},p=new ResizeObserver(v),E=new IntersectionObserver(([e])=>{(l=e?.isIntersecting??!0)&&!a&&(a=requestAnimationFrame(T)),!l&&a&&(cancelAnimationFrame(a),a=0)});return p.observe(e),E.observe(e),v(),a=requestAnimationFrame(T),()=>{a&&cancelAnimationFrame(a),p.disconnect(),E.disconnect(),o.dispose()}},[]);let v=s.current;return(0,o.jsx)("div",{ref:r,className:`threeui-background crt${e?` ${e}`:""}`,style:{background:"#03100a",opacity:v.opacity,filter:`hue-rotate(${v.hue}deg) saturate(${v.saturation}) brightness(${v.brightness})`},children:(0,o.jsx)("canvas",{ref:u})})}}}]);
