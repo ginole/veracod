@@ -530,5 +530,38 @@ window.addEventListener('load',function(){
 });
 </script>
 
+<script>(function(){try{
+var EP="https://p.veracod.com/e",S="trattoria-giorgio",K="demo";
+var hn=location.hostname;
+if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
+if(navigator.webdriver)return;
+var L=window.localStorage,vid=L.getItem("_vv");
+if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
+var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
+var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
+var sid=Math.random().toString(36).slice(2,10),t0=Date.now(),dp=0,cl=[],ref=(document.referrer||"").slice(0,120);
+function dep(){var sc=document.documentElement.scrollHeight-innerHeight;var p=sc>40?Math.round(scrollY/sc*100):100;if(p>dp)dp=Math.min(100,p)}
+addEventListener("scroll",dep,{passive:true});dep();
+function tag(a){var h=a.getAttribute("href")||"";
+ if(h.indexOf("tel:")===0)return"call";
+ if(h.indexOf("mailto:")===0)return"mail";
+ if(h.indexOf("checklist.html")>=0)return"list";
+ if(h.indexOf("veracod.com")>=0)return"veracod";
+ if(h.indexOf("/maps")>=0)return"map";
+ if(h==="#book")return"book";
+ if(h==="#menu")return"menu";
+ if(h.indexOf("http")===0)return"out";
+ return""}
+addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;
+ var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
+function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n
+ +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)}
+var lastAt=0;
+function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();
+ var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
+setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
+addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});
+addEventListener("pagehide",send);
+}catch(e){}})();</script>
 </body>
 </html>
