@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /demo/
+Disallow: /picker
+
+Sitemap: https://veracod.com/sitemap.xml
