@@ -467,7 +467,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   <div class="wrap"><div class="fmark" aria-hidden="true">Five Senses Restaurant, Bar &amp; Catering</div></div>
   <div class="wrap">
     <p>Five Senses Restaurant, Bar &amp; Catering &middot; 1602 West Northfield Blvd. Suite 515, Murfreesboro, TN 37129</p>
-    <p>Concept page by <b>Veracod</b> &mdash; not affiliated with the restaurant.</p>
+    <p>Concept page by <b>Veracod</b> &mdash; not affiliated with the restaurant. <a href="https://veracod.com/legal/privacy/" target="_blank" rel="noreferrer">Privacy</a></p>
   </div>
 </footer>
 
@@ -567,7 +567,10 @@ var EP="https://p.veracod.com/e",S="five-senses",K="demo";
 var hn=location.hostname;
 if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
 if(navigator.webdriver)return;
-var L=window.localStorage,vid=L.getItem("_vv");
+var L=window.localStorage;
+if(location.search.indexOf("me=1")>=0){try{L.setItem("_vme","1")}catch(e){}}
+var me=L.getItem("_vme")==="1"?"1":"";
+var vid=L.getItem("_vv");
 if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
 var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
 var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
@@ -578,6 +581,7 @@ function tag(a){var h=a.getAttribute("href")||"";
  if(h.indexOf("tel:")===0)return"call";
  if(h.indexOf("mailto:")===0)return"mail";
  if(h.indexOf("checklist.html")>=0)return"list";
+ if(h.indexOf("/legal/")>=0)return"privacy";
  if(h.indexOf("veracod.com")>=0)return"veracod";
  if(h.indexOf("/maps")>=0)return"map";
  if(h==="#book")return"book";
@@ -587,7 +591,7 @@ function tag(a){var h=a.getAttribute("href")||"";
 addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;
  var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
 function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n
- +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)}
+ +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)+(me?"&me=1":"")}
 var lastAt=0;
 function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();
  var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
