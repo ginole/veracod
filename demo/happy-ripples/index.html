@@ -289,10 +289,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 @keyframes vt-out{to{opacity:0}}
 @keyframes vt-in{from{opacity:0}}
 
-/* Grain: a 64px tiled PNG, not feTurbulence — SVG noise is expensive to rasterise on mobile
-   GPUs (0.09% of page loads use it; everyone who ships grain ships a bitmap). */
-body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.045;
- background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAAAAACPAi4CAAAACXBIWXMAAAABAAAAAQBPJcTWAAACEUlEQVR4nGO02iX3U1y/c2vE8iw/hWP37dsy46u3z2cuWXnDgqnu+4kFNp8UEiXP3CqpXc7jKi17ZYLhOU3BgqO7ZbZvi+Xv/9gXxtJrYrL21hOhWUIRhpli2ewRSTlWqXujdm2Y8uFp6WX+aYVlU9PS5CUKeTO23Twd27p5yfVwxU0b3bWr2M6l83CLSBiyMFy6JOnbdTNhLt8FCwUZP+bkkEWfT/7Lrn0p077hWu7trqXRugXlb8NOd1gqnuq2eDtRLz59droLx7yws5xyi/8sCmLZ6iKqcWcCi40H97/QVD2R+Vq+uSrrj70Tz7vSxCnl/fTos9usgcW6VYbhlsVn/07xMRXgDkrhPyTv+oDpx9tYz/lqLPteyr0Wv9e51WR51oEHwl0n2z48qt4+/2fuSklwGLRGfzKcXX/mVsmU5RtcpZOzJxgarRXkFVjTDAmDTcMiDB7cy7efcXWHabF+V/rbNSx1C2/FmhndOBORdDtANb35okB58uPb5+aKHWr1EGNVuHd16uvTV08phJ+SuvjXo3bmqwn6LPe4d20WV7q1dfHy35GghHRfrBSUkDwn3Chlkv7+ttRqncKBm2dulfDn8bhKp/be8ta7If/26KrM7dtk1y/96O85GogTRgPRczQljmbn9NEycdtomXhxtGJxHa2dOUabOO6j7cS3o+3EU6ON7aDRHkv8YOv2AQAMfI17vK5bigAAAABJRU5ErkJggg==);background-size:64px 64px}
+/* Grain overlay REMOVED 2026-09-02: on Windows displays at 125%/150% scaling the 64px tiled
+   noise gets resampled at a fractional ratio and reads as vertical stripes across the whole page
+   (he saw it on both this and the studio site). Photo-led pages don't need it anyway. */
 
 /* Marquee: pure CSS, no GSAP. 5 of 23 award-winning restaurant sites carry one. */
 .mq{overflow:hidden;background:var(--slabBg);color:var(--slabInk);border-top:1px solid color-mix(in srgb,var(--slabInk) 12%,transparent);border-bottom:1px solid color-mix(in srgb,var(--slabInk) 12%,transparent)}
