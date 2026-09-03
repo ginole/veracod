@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="view-transition" content="same-origin">
+<link rel="icon" type="image/png" href="./img/favicon.png">
+<title>Abruzzi Ristorante — London, Ontario</title>
+<meta name="description" content="Italian-inspired cooking on King Street since 2011 — local and sustainable ingredients, house-made pasta, bread and pizza, and a wine list that changes with the seasons.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abruzzi Ristorante — London, Ontario">
+<meta property="og:description" content="Italian-inspired cooking on King Street since 2011 — local and sustainable ingredients, house-made pasta, bread and pizza, and a wine list that changes with the seasons.">
+<meta property="og:url" content="https://veracod.com/demo/abruzzi/">
+<meta property="og:image" content="https://veracod.com/demo/abruzzi/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://veracod.com/demo/abruzzi/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500;600&display=swap&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script>
+(function(){var d=document.documentElement;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+d.classList.add('js');
+setTimeout(function(){if(!window.__alive)d.classList.remove('js')},2500);})();
+</script>
+<style>
+:root{--bg:#0D0C0A;--bg2:#17150F;--ink:#F2EEE3;--ink2:#CBC4B2;--dim:#8E8878;
+ --accent:#B09B0C;--accent2:#D8C23A;--rule:#2A251A;--slabBg:#050504;--slabInk:#F2EEE3;
+ --display:'Cormorant Garamond',Georgia,serif;--body:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+h1,h2,h3{margin:0;line-height:1.06;letter-spacing:-.02em}
+img{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.kick{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.kick::after{content:"";height:1px;flex:1;max-width:80px;background:currentColor;opacity:.4}
+
+.notice{background:var(--slabBg);color:var(--slabInk);font-size:12.5px;padding:9px 20px;text-align:center;line-height:1.5;position:relative;z-index:60}
+.notice a{text-decoration:underline;text-underline-offset:3px}
+/* the restaurant's OWN announcement (holiday closure, new hours) — their sites all carry one; ours keeps it */
+.own-notice{background:var(--accent);color:#fff;text-align:center;font-size:13.5px;font-weight:600;letter-spacing:.02em;padding:9px 20px}
+.more{background:var(--bg2);padding:72px 0}
+.more .xgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:26px}
+.xcard{flex:1 1 calc(33.333% - 10px);max-width:calc(33.333% - 10px);min-width:220px}
+.xgrid.x2 .xcard,.xgrid.x4 .xcard{flex-basis:calc(50% - 7px);max-width:calc(50% - 7px)}
+@media(max-width:700px){.xcard,.xgrid.x2 .xcard,.xgrid.x4 .xcard{flex-basis:100%;max-width:100%}}
+.xcard{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:20px 20px 16px;transition:transform .25s ease,box-shadow .25s ease}
+.xcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+.xcard h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;margin:0 0 6px;letter-spacing:-.01em}
+.xcard p{margin:0;color:var(--ink2);font-size:14.5px;line-height:1.55}
+.xcard .xl{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 16px}
+.xcard .xl a{color:var(--accent);font-weight:600;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 22px;max-width:1080px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0;white-space:nowrap}
+.brand img{height:40px;width:auto}
+.brand.has-logo img,.brand.has-mark img{height:26px;mix-blend-mode:normal}
+.brand.has-logo i{margin-top:4px}
+.brand b{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;text-transform:none}
+.brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
+.navlinks{display:none;gap:26px}
+@media(min-width:980px){.navlinks{display:flex}}
+.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+.navlinks a:hover{opacity:1;color:var(--accent)}
+.navacts{display:flex;gap:9px;align-items:center}
+@media(max-width:979px){.navacts .btn-o{display:none}}
+.secnav{display:flex;gap:22px;overflow-x:auto;padding:9px 18px 11px;border-top:1px solid var(--rule);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{font-weight:650;font-size:12px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;opacity:.85}
+.secnav a:active{color:var(--accent)}
+@media(min-width:980px){.secnav{display:none}}
+.btn{font-weight:650;font-size:14.5px;padding:11px 20px;border-radius:4px;white-space:nowrap;transition:transform .14s,background .2s,color .2s,box-shadow .2s;display:inline-block}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.97)}
+.btn-a{background:var(--accent);color:#0D0C0A}
+.btn-a:hover{background:var(--accent2)}
+.btn-o{border:1.5px solid currentColor}
+
+/* hero — photo variant */
+.hero-photo{position:relative;min-height:min(92svh,860px);display:flex;align-items:flex-end;color:#fff}
+.hero-photo .hphoto{position:absolute;inset:0;overflow:hidden}
+.hero-photo .hphoto img{width:100%;height:100%;object-fit:cover}
+.hero-photo .hshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.16) 38%,rgba(0,0,0,.84) 86%)}
+.hero-photo .hcontent{position:relative;padding-bottom:56px;padding-top:120px;width:100%}
+.hero-photo .kick{color:#fff;opacity:.92}
+.hero-photo h1{font-family:var(--display);font-size:clamp(38px,6.6vw,76px);letter-spacing:-.03em;margin-top:18px;text-transform:none;max-width:15ch;text-shadow:0 1px 2px rgba(0,0,0,.9),0 2px 10px rgba(0,0,0,.45)}
+.hero-photo .sub{font-size:clamp(16px,1.8vw,19.5px);opacity:.96;max-width:52ch;margin-top:18px;text-shadow:0 1px 2px rgba(0,0,0,.85),0 1px 8px rgba(0,0,0,.5)}
+
+/* hero — poster variant */
+.hero-poster{background:var(--slabBg);color:var(--slabInk);padding:86px 0 70px;position:relative;overflow:hidden}
+.hero-poster h1{font-family:var(--display);font-size:clamp(40px,8vw,92px);letter-spacing:-.03em;margin-top:20px;text-transform:none;max-width:14ch}
+.hgrid h1{font-size:clamp(38px,5.2vw,66px);max-width:16ch}
+.hero-poster .sub{font-size:clamp(16px,1.8vw,19.5px);opacity:.85;max-width:50ch;margin-top:20px}
+.hero-poster .kick{color:#D8C23A}
+.hlogo img{height:clamp(84px,12vw,130px);width:auto}
+.hlogo{margin-bottom:26px}
+.hgrid{display:grid;gap:44px;align-items:center}
+@media(min-width:880px){.hgrid{grid-template-columns:1.08fr .92fr}}
+.hcard{aspect-ratio:4/3.1;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+
+.acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+
+/* marks band */
+.marks{background:var(--slabBg);color:var(--slabInk)}
+.marks .in{max-width:1080px;margin:0 auto;padding:26px 22px;display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.marks .in{grid-template-columns:repeat(4,1fr);padding:30px 22px}}
+.mk b{display:block;font-family:var(--display);font-size:clamp(20px,2.6vw,30px);letter-spacing:-.01em}
+.mk span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;font-weight:600}
+
+section{padding:76px 0}
+@media(min-width:820px){section{padding:100px 0}}
+.band{background:var(--bg2)}
+h2.sp{font-family:var(--display);font-size:clamp(28px,4.4vw,48px);text-transform:none;letter-spacing:-.025em;margin-top:16px}
+.lead{color:var(--ink2);font-size:16.5px;max-width:58ch;margin-top:16px}
+
+.story{display:grid;gap:40px;align-items:center}
+@media(min-width:860px){.story{grid-template-columns:1.05fr .95fr;gap:60px}}
+blockquote{margin:26px 0 0;border-left:3px solid var(--accent);padding:6px 0 6px 20px}
+blockquote p{font-family:var(--display);font-size:clamp(18px,2.2vw,23px);line-height:1.4;letter-spacing:-.01em}
+blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--dim);margin-top:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+
+.fig{position:relative;overflow:hidden;border-radius:4px;margin:0}
+.fig img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+@media(hover:hover){
+  .dishes .fig:hover img,.gal .fig:hover img{transform:scale(1.05)}
+  .dish.txt{transition:transform .2s var(--ease),box-shadow .2s}
+  .dish.txt:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
+  .oi{transition:border-color .2s}
+  .oi:hover{border-color:#34d399}
+}
+.fig figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 18px 12px;color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.02em;background:linear-gradient(180deg,transparent,rgba(0,0,0,.68));text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.fig figcaption .crd{display:block;font-style:normal;font-weight:500;font-size:10px;letter-spacing:.05em;opacity:.72;margin-top:3px;text-transform:uppercase}
+.sfig{aspect-ratio:4/3.4}
+
+.dishes{display:grid;gap:16px;margin-top:42px;align-items:start}
+@media(min-width:720px){.dishes{grid-template-columns:repeat(3,1fr)}}
+.dish{aspect-ratio:4/3.2}
+/* Text-only rows are short; letting them stretch to the photo card's height leaves holes in
+   the grid. Align them to the top of their track instead. */
+.dish.txt{align-self:start}
+.dish figcaption b{display:block;font-family:var(--display);font-size:18px;letter-spacing:0}
+.dish figcaption span{display:block;font-size:12.5px;opacity:.85;font-weight:500;margin-top:2px}
+.dish.txt{aspect-ratio:auto;border:1px solid var(--rule);border-radius:4px;padding:20px 22px;background:var(--bg)}
+.dish.txt b{font-family:var(--display);font-size:19px}
+/* Dotted leader row — decoded from Le Petit Bleu. The only menu structure that survives
+   40 dishes: category chips + a price list with no image per row + leaders. */
+.mrow{display:flex;align-items:baseline;gap:10px;margin:0}
+.mrow .lead{flex:1;border-bottom:2px dotted currentColor;opacity:.28;transform:translateY(-.25em)}
+.dish.txt span{display:block;color:var(--dim);font-size:13.5px;margin-top:6px}
+
+/* Phones get a native scroll-snap strip instead of a grid — this is what 12 of 23 award
+   sites do with Swiper (43 KB), achieved here with zero JS. Grid returns on desktop. */
+.gal{display:flex;gap:12px;margin-top:42px;overflow-x:auto;scroll-snap-type:x mandatory;
+ -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;
+ margin-inline:-22px;padding-inline:22px}
+.gal::-webkit-scrollbar{display:none}
+.gal>.g{flex:0 0 82%;scroll-snap-align:center;aspect-ratio:4/3}
+@media(min-width:860px){.gal{display:grid;gap:16px;overflow:visible;margin-inline:0;padding-inline:0;grid-template-columns:repeat(2,1fr)}.gal>.g{flex:none;aspect-ratio:4/3}}
+/* 他 2026-09-03："有时候弄得有点不对称" —— 画廊按张数走对称网格，不留空洞：
+   2/4 张 = 2 列；3/6 张 = 3 列；5 张 = 左一大（占两行）+ 右 2×2，正好填满。 */
+@media(min-width:860px){.gal{grid-template-columns:repeat(3,1fr)}
+ .gal.n2,.gal.n4{grid-template-columns:repeat(2,1fr)}
+ .gal.n1{grid-template-columns:1fr}
+ .gal.n5>.g:first-child{grid-row:span 2;aspect-ratio:auto;min-height:100%}}
+.g{aspect-ratio:4/3}
+.gal.small .g{grid-row:auto;aspect-ratio:4/3;min-height:0}
+.pnote{color:var(--dim);font-size:12.5px;margin-top:18px;max-width:70ch}
+
+/* the dark slab is sometimes a deep shade of the accent itself (Birrieria's maroon), so the
+   accent would vanish on it — brands can override with slabAccent. */
+.seasons{background:var(--bg)}
+.sbands{display:grid;gap:12px;margin-top:36px}
+@media(min-width:820px){.sbands{grid-template-columns:repeat(3,1fr)}}
+.sb{border:1px solid var(--rule);border-top:4px solid var(--rule);border-radius:4px;padding:20px 22px;background:var(--bg2)}
+.sb-low{border-top-color:#3f9d6a}
+.sb-mid{border-top-color:var(--accent)}
+.sb-high{border-top-color:#c8552f}
+.sb b{display:block;font-family:var(--display);font-size:20px;letter-spacing:-.01em;text-transform:none}
+.sb .when{display:block;font-size:13px;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+.sb .from{display:block;font-family:var(--display);font-size:24px;margin-top:12px}
+.sb .nb{display:block;font-size:13.5px;color:var(--ink2);margin-top:9px;line-height:1.55}
+.book{background:var(--bg2)}
+.bgrid{display:grid;gap:26px;margin-top:38px}
+@media(min-width:900px){.bgrid{grid-template-columns:1.05fr .95fr;gap:44px}}
+.bform{display:grid;gap:13px;background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:22px}
+.bform label{display:block;font-size:12.5px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.bform input,.bform select,.bform textarea{width:100%;box-sizing:border-box;font:inherit;font-size:16px;
+ margin-top:5px;padding:11px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--bg);color:var(--ink)}
+.bform textarea{resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.bform button{margin-top:4px;font:inherit;font-weight:700;font-size:15.5px;padding:13px;border:0;border-radius:4px;background:var(--accent);color:#0D0C0A;cursor:pointer}
+.bform button:disabled{opacity:.6}
+.fnote{font-size:12.5px;color:var(--dim);line-height:1.55}
+.chans{display:grid;gap:10px}
+.chan{display:block;border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:4px;padding:13px 16px;background:var(--bg)}
+.chan b{display:block;font-size:15.5px}
+.chan span{display:block;font-size:13px;color:var(--dim);margin-top:2px}
+.steps{margin-top:22px}
+.steps b{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.steps ol{list-style:none;padding:0;margin:12px 0 0;counter-reset:s}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.steps li:last-child{border-bottom:none}
+.steps em{flex:0 0 22px;height:22px;border-radius:50%;background:var(--accent);color:#0D0C0A;
+ font-style:normal;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.bnote{font-size:13px;color:var(--dim);margin-top:16px;line-height:1.6;border-left:2px solid var(--rule);padding-left:12px}
+.find{background:var(--slabBg);color:var(--slabInk)}
+.find .kick,.find .fi span{color:#D8C23A}
+.find h2.sp{color:var(--slabInk)}
+.marks .mk span{color:#D8C23A;opacity:.9}
+.fi{display:grid;gap:26px;margin-top:40px}
+@media(min-width:760px){.fi{grid-template-columns:repeat(2,1fr)}}
+.fi span{display:block;font-size:11px;letter-spacing:.17em;text-transform:uppercase;margin-bottom:8px;font-weight:650}
+.fi a,.fi p{font-size:16.5px;line-height:1.55}
+.hr2{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid color-mix(in srgb,var(--slabInk) 14%,transparent);font-size:14.5px;max-width:380px}
+.hr2:last-child{border-bottom:none}
+.plinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.plinks a{display:inline-flex;align-items:baseline;gap:7px;border:1px solid color-mix(in srgb,var(--slabInk) 22%,transparent);
+ border-radius:999px;padding:7px 15px;font-size:14.5px;transition:border-color .2s,background .2s}
+.plinks a:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.plinks i{font-style:normal;font-size:12px;opacity:.6}
+.hr2 b{font-weight:600;letter-spacing:.07em;text-transform:uppercase;font-size:12.5px;opacity:.7}
+
+footer{background:var(--slabBg);color:color-mix(in srgb,var(--slabInk) 55%,transparent);border-top:1px solid color-mix(in srgb,var(--slabInk) 14%,transparent);font-size:12.5px;padding:24px 0 90px}
+/* Oversized wordmark bleeding out of the footer — also quietly sidesteps a client's
+   bad Word-made logo by making type the identity. */
+.fmark{font-family:var(--display);font-size:clamp(3rem,13vw,11rem);line-height:.85;
+ letter-spacing:-.04em;text-transform:none;color:color-mix(in srgb,var(--slabInk) 13%,transparent);
+ white-space:nowrap;overflow:hidden;margin:8px 0 22px;user-select:none}
+@media(min-width:720px){footer{padding-bottom:24px}}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+.offer{background:#0f1216;color:#e8ecef;border-top:4px solid #34d399}
+.offer .okick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#34d399}
+.offer .okick::after{content:" ▎";animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.offer .okick::after{animation:none}}
+.offer .oh{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:clamp(26px,4vw,40px);letter-spacing:-.02em;margin-top:14px;text-transform:none;color:#fff}
+.offer .olead{color:#b7c0c8;font-size:16.5px;max-width:62ch;margin-top:16px;line-height:1.7}
+.ogrid{display:grid;gap:14px;margin-top:36px}
+@media(min-width:760px){.ogrid{grid-template-columns:repeat(2,1fr)}}
+.oi{border:1px solid #232a31;border-radius:6px;padding:18px 20px;background:#131920}
+.oi b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:16px;color:#fff}
+.oi span{display:block;color:#9aa5ae;font-size:14px;margin-top:6px;line-height:1.6}
+.oguar{margin-top:30px;font-size:clamp(17px,2.2vw,21px);line-height:1.6;color:#fff;border-left:3px solid #34d399;padding:8px 0 8px 20px;max-width:60ch}
+.octa{margin-top:30px;background:#131920;border:1px solid #232a31;border-radius:6px;padding:22px 24px}
+.octa p{font-size:16.5px;color:#e8ecef;line-height:1.65}
+.octa .osmall{color:#8b969f;font-size:13px;margin-top:10px}
+.offer a{color:#34d399}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;
+ padding:0 0 env(safe-area-inset-bottom);background:color-mix(in srgb,var(--slabBg) 95%,transparent);
+ backdrop-filter:blur(12px);border-top:1px solid color-mix(in srgb,var(--slabInk) 16%,transparent)}
+.callbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+ padding:9px 4px 10px;color:var(--slabInk);min-height:52px;justify-content:center}
+.callbar a:first-child{color:#D8C23A}
+.callbar a+a{border-left:1px solid color-mix(in srgb,var(--slabInk) 12%,transparent)}
+.callbar svg{width:19px;height:19px;fill:currentColor}
+.callbar b{font-size:11px;font-weight:650;letter-spacing:.06em;text-transform:uppercase}
+.callbar a:active{background:color-mix(in srgb,var(--slabInk) 10%,transparent)}
+@media(min-width:720px){.callbar{display:none}}
+/* On phones the sticky bottom call bar already carries the number, so the nav button is
+   redundant — and with it gone the brand name has the whole row and stops wrapping into it. */
+/* Phones: a landscape hero photo cropped to a tall viewport turns into an unreadable wall of
+   texture (his words on the pizza: "至少要缩小到是披萨吧"). So on phones the photo stops being a
+   background and becomes a contained 4:3 band, with the text stacked below it on the brand slab. */
+@media(max-width:719px){
+  .hero-photo{display:block;min-height:0;background:var(--slabBg)}
+  .hero-photo .hphoto{position:relative;inset:auto;width:100%;aspect-ratio:4/3}
+  .hero-photo .hshade{display:none}
+  .hero-photo .hcontent{padding-top:30px;padding-bottom:36px}
+  .hero-photo h1{text-shadow:none;max-width:none}
+  .hero-photo .sub{text-shadow:none}
+  nav .btn{display:none}
+  nav{padding:10px 18px}
+  .brand{min-width:0}
+  .brand b{font-size:15.5px}
+  .brand i{font-size:10px;letter-spacing:.12em}
+  .brand.has-logo img,.brand.has-mark img{height:34px}
+}
+
+/* Cross-document view transitions: 6 lines, ~85% browser coverage, degrades to a plain
+   navigation in Firefox. Measured on Lingers (Awwwards) as their entire implementation. */
+@view-transition{navigation:auto}
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:.35s ease-out both vt-out}
+  ::view-transition-new(root){animation:.35s ease-out both vt-in}
+}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0}}
+
+/* Grain overlay REMOVED 2026-09-02: on Windows displays at 125%/150% scaling the 64px tiled
+   noise gets resampled at a fractional ratio and reads as vertical stripes across the whole page
+   (he saw it on both this and the studio site). Photo-led pages don't need it anyway. */
+
+/* Marquee: pure CSS, no GSAP. 5 of 23 award-winning restaurant sites carry one. */
+.mq{overflow:hidden;background:var(--slabBg);color:var(--slabInk);border-top:1px solid color-mix(in srgb,var(--slabInk) 12%,transparent);border-bottom:1px solid color-mix(in srgb,var(--slabInk) 12%,transparent)}
+.mq-in{display:flex;width:max-content;animation:mq 38s linear infinite}
+.mq span{font-family:var(--display);font-size:clamp(19px,2.6vw,30px);letter-spacing:-.01em;text-transform:none;padding:15px 0;white-space:nowrap}
+.mq span i{font-style:normal;color:#D8C23A;padding:0 26px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq-in{animation:none}}
+
+/* hidden states live in CSS, only under .js — GSAP's single job is to reveal (Veracod rule #1) */
+.js .rv,.js .hr-in{opacity:0;visibility:hidden}
+.js .offer .oh{opacity:0}
+.js .fig figcaption{transform:translateY(110%)}
+.js .hero h1{opacity:0}
+
+
+</style>
+</head>
+<body>
+
+<div class="notice">
+  Concept page, not this restaurant&rsquo;s official site &mdash; made as a proposal by
+       <b>Veracod</b>, not affiliated with Abruzzi Ristorante. Details are from public listings;
+       <a href="tel:+15196759995">call them</a> to confirm. &mdash; <a href="#offer">owner? see the offer</a>
+</div>
+
+<header>
+  <nav>
+    <a class="brand has-logo" href="#top"><img src="./img/logo.webp" alt="Abruzzi Ristorante" fetchpriority="high" ><span><i>London, Ontario &middot; Since 2011</i></span></a>
+    <div class="navlinks"><a href="#story">The story</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#more">More</a><a href="#find">Find us</a></div>
+    <div class="navacts">
+      <a class="btn btn-o" href="https://www.opentable.ca/r/abruzzi-reservations-london?restref=230653&amp;lang=en-CA&amp;ot_source=Restaurant%20website" target="_blank" rel="noreferrer">Reserve on OpenTable</a>
+      
+      <a class="btn btn-a" href="tel:+15196759995">(519) 675-9995</a>
+    </div>
+  </nav>
+  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#x-0">Daily Features</a><a href="#x-1">Menus</a><a href="#x-2">Large parties</a><a href="#x-3">Londonlicious</a><a href="#x-4">Parking</a><a href="#x-5">Newsletter</a><a href="#find">Find us</a><a href="https://www.opentable.ca/r/abruzzi-reservations-london?restref=230653&amp;lang=en-CA&amp;ot_source=Restaurant%20website" target="_blank" rel="noreferrer">Reserve on OpenTable</a></nav>
+</header>
+
+<main id="top">
+
+
+  <div class="hero hero-photo">
+    <div class="hphoto"><img src="./img/hero-room.webp" alt="The dining room at Abruzzi — marble bar, exposed brick, mirrors and chandeliers" fetchpriority="high" ></div>
+    <div class="hshade"></div>
+    <div class="wrap hcontent">
+      <p class="kick hr-in">Italian &middot; London, Ontario</p>
+      <h1>Benvenuto a Abruzzi, buon appetito.</h1>
+      <p class="sub hr-in">Italian-inspired cooking on King Street since 2011 — local and sustainable ingredients, house-made pasta, bread and pizza, and a wine list that changes with the seasons.</p>
+      <div class="acts"><a class="btn btn-a hr-in" href="tel:+15196759995">Call (519) 675-9995</a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
+    </div>
+  </div>
+<div class="marks"><div class="in"><div class="mk rv"><b>2011</b><span>On King Street since</span></div><div class="mk rv"><b>4</b><span>Feature nights, Monday to Thursday</span></div><div class="mk rv"><b>119</b><span>King Street, downtown London</span></div><div class="mk rv"><b>Thu</b><span>Date Night — two courses $45</span></div></div></div>
+<div class="mq"><div class="mq-in"><span>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span><span>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span></div></div>
+
+  <section class="band" id="story">
+    <div class="wrap story">
+      <div class="stext">
+        <p class="kick rv">Our story</p>
+        <h2 class="sp">In the heart of #LdnOnt.</h2>
+        <p class="lead rv">Named for the Abruzzo region of central Italy, Abruzzi serves its own interpretation of modern and traditional Italian cooking on King Street in downtown London. The philosophy is straightforward: source the freshest and finest local ingredients, prepare them with a commitment to simple but exceptional flavour, and serve them with joy.</p><p class="lead rv">It starts in the kitchen. Pasta, pizza and bread are made in house; whole lambs and pigs are broken down for the house pancetta and the seasonal braises. Produce comes from organic farmers, sustainable fisheries and the oldest water-powered flour mill in Canada. The wine list is never static — newcomers, old-world classics and small Niagara producers.</p><p class="lead rv">Chef Dave Lamers and Rob D'Amico have run the room since 2011. Reservations are essential to be sure of a table, but the bar is always open to walk-ins — that is where the signature martinis live.</p>
+        <blockquote class="rv"><p>&ldquo;The simple, striking décor with bare brick walls and lots of mirrors, the innovative lighting, and the friendly ambience are all central to the Abruzzi experience.&rdquo;</p><cite>eatdrink Magazine</cite></blockquote>
+      </div>
+      <figure class="fig sfig rv"><img src="./img/owners.webp" alt="Chef Dave Lamers and Rob D'Amico at the bar (photo from their own site)" loading="lazy" ><figcaption>Chef Dave Lamers and Rob D'Amico at the bar (photo from their own site)</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <p class="kick rv">Spring 2026</p>
+      <h2 class="sp">The kitchen, in its own words.</h2>
+      <p class="lead rv">Straight off the current dinner menu — prices exactly as printed. The full lunch and dinner menus are one tap away.</p>
+      <div class="dishes"><figure class="fig dish rv"><img src="./img/ravioli.webp" alt="Braised Beef &amp; Ricotta Ravioli" loading="lazy" ><figcaption><b>Braised Beef &amp; Ricotta Ravioli</b><span>Fried Shogun maitake mushrooms, braising jus, shaved truffle pecorino, chives — 34</span></figcaption></figure><figure class="fig dish rv"><img src="./img/spedini.webp" alt="Grilled Beef Spedini" loading="lazy" ><figcaption><b>Grilled Beef Spedini</b><span>Skewered beef tenderloin tips, bravas sauce, lemon aioli, chimichurri — 16, on Aperitivo Monday</span></figcaption></figure><div class="dish txt rv"><p class="mrow"><b>Wild BC Sablefish</b><i class="lead"></i></p><span>Lobster tortellini, celery root purée, green beans, preserved tomato &amp; shallot, lobster bisque — 44</span></div><div class="dish txt rv"><p class="mrow"><b>Duck Breast</b><i class="lead"></i></p><span>Sweet potato &amp; brown butter agnolotti, toasted hazelnuts, Tuscan kale, mini top carrots, red wine fig jus — 42</span></div><div class="dish txt rv"><p class="mrow"><b>Gnocchi Fra Diavolo</b><i class="lead"></i></p><span>Potato gnocchi, tomato passata &amp; Calabrian chili, burrata, arugula pesto, basil — 32</span></div><div class="dish txt rv"><p class="mrow"><b>Grilled Octopus</b><i class="lead"></i></p><span>Patatas bravas, roasted garlic aioli, chimichurri, smoked paprika — 26</span></div></div>
+    </div>
+  </section>
+
+
+
+  <section class="band" id="gallery">
+    <div class="wrap">
+      <p class="kick rv">Have a look</p>
+      <h2 class="sp">Brick, mirrors and low light.</h2>
+      <div class="gal n6"><figure class="fig g rv"><img src="./img/facade.webp" alt="The awning on King Street" loading="lazy" ><figcaption>The awning on King Street</figcaption></figure><figure class="fig g rv"><img src="./img/bar.webp" alt="The bar — walk-ins welcome, reservations for tables" loading="lazy" ><figcaption>The bar — walk-ins welcome, reservations for tables</figcaption></figure><figure class="fig g rv"><img src="./img/candles.webp" alt="A long table, set" loading="lazy" ><figcaption>A long table, set</figcaption></figure><figure class="fig g rv"><img src="./img/tenderloin.webp" alt="From the kitchen" loading="lazy" ><figcaption>From the kitchen</figcaption></figure><figure class="fig g rv"><img src="./img/sablefish.webp" alt="Fresh fish, daily" loading="lazy" ><figcaption>Fresh fish, daily</figcaption></figure><figure class="fig g rv"><img src="./img/dessert.webp" alt="Meringue, strawberries, gelato" loading="lazy" ><figcaption>Meringue, strawberries, gelato</figcaption></figure></div>
+      <p class="pnote rv">Photos shown are from the restaurant's own website — to be replaced with the owner's final selection.</p>
+    </div>
+  </section>
+
+  <section id="more" class="more">
+    <div class="wrap">
+      <p class="kick rv">Also at Abruzzi Ristorante</p>
+      <h2 class="sp">Everything else, one tap away.</h2>
+      <div class="xgrid x6">
+      <article class="xcard rv" id="x-0">
+        <h3>Monday to Thursday, 5pm to close</h3>
+        <p>Four feature nights, every week. Aperitivo Monday — cicchetti and $12 cocktails (negroni, aperol spritz, lambrusco spritz, campari &amp; soda, hugo, negroni sbagliato). Trattoria Tuesday — antipasti, primo $25, secondo from $29. Enoteca Wednesday — the full wine list, by the glass and the bottle. Date Night Thursday — dinner for two, two courses $45 per person, three courses $50. Not offered on event nights, holidays, New Year's Eve or during Londonlicious.</p>
+        <div class="xl"><a href="https://www.opentable.ca/r/abruzzi-reservations-london?restref=230653&amp;lang=en-CA&amp;ot_source=Restaurant%20website" target="_blank" rel="noreferrer">Reserve a feature night &rarr;</a><a href="tel:+15196759995" >Call (519) 675-9995 &rarr;</a></div>
+      </article>
+      <article class="xcard rv" id="x-1">
+        <h3>Lunch, dinner and dessert</h3>
+        <p>Sample menus — items and pricing change with the season and with what's available. Lunch Friday and Saturday, dinner Monday to Saturday.</p>
+        <div class="xl"><a href="https://www.abruzzi.ca/s/Dinner-Sample-2026.pdf" target="_blank" rel="noreferrer">Dinner, Spring 2026 (PDF) &rarr;</a><a href="https://www.abruzzi.ca/s/Lunch-Sample-2026.pdf" target="_blank" rel="noreferrer">Lunch, 2026 (PDF) &rarr;</a><a href="mailto:info@abruzzi.ca?subject=Dessert%20menu" >Ask about desserts &rarr;</a></div>
+      </article>
+      <article class="xcard rv" id="x-2">
+        <h3>Seven guests or more</h3>
+        <p>For parties of seven or more, send a request or call and we'll come back to you. A request is not a confirmed reservation — for immediate help, please phone.</p>
+        <div class="xl"><a href="tel:+15196759995" >Call (519) 675-9995 &rarr;</a><a href="mailto:info@abruzzi.ca?subject=Large%20party%20reservation%20request" >Email a request &rarr;</a></div>
+      </article>
+      <article class="xcard rv" id="x-3">
+        <h3>Londonlicious</h3>
+        <p>We take part in London's restaurant festival: two courses $35, three courses $40, lunch Friday and Saturday, dinner Monday to Saturday. Not available on event nights.</p>
+        <div class="xl"><a href="https://londonlicious.ca/directory-menus/listing/abruzzi/" target="_blank" rel="noreferrer">Londonlicious &rarr;</a><a href="https://www.opentable.ca/r/abruzzi-reservations-london?restref=230653&amp;lang=en-CA&amp;ot_source=Restaurant%20website" target="_blank" rel="noreferrer">Book a table &rarr;</a></div>
+      </article>
+      <article class="xcard rv" id="x-4">
+        <h3>Parking &amp; EV charging</h3>
+        <p>Impark, 131 King St — 45 m away. Covent Garden Market, 130 King St — 100 m. Municipal parking, 60–78 King St — 180 m. EV charging station, 78 King St #60 — 180 m.</p>
+        <div class="xl"><a href="http://parking.impark.com/london-parking-lot-57/" target="_blank" rel="noreferrer">Impark, 131 King St &rarr;</a><a href="http://www.coventmarket.com/" target="_blank" rel="noreferrer">Covent Garden Market &rarr;</a><a href="http://www.london.ca/residents/Parking/Parking-Services/Documents/City%20of%20London%20-%20Downtown%20Parking%20Guide%20-%20Updated%20April%202019.pdf" target="_blank" rel="noreferrer">Downtown parking guide (City of London) &rarr;</a><a href="http://suncountryhighway.com/" target="_blank" rel="noreferrer">EV charging, 78 King St #60 &rarr;</a></div>
+      </article>
+      <article class="xcard rv" id="x-5">
+        <h3>News and updates</h3>
+        <p>Daily fresh fish, pasta and entrée features, feature nights and holiday menus — by email first.</p>
+        <div class="xl"><a href="mailto:info@abruzzi.ca?subject=Please%20add%20me%20to%20the%20mailing%20list" >Sign up by email &rarr;</a><a href="https://www.instagram.com/abruzzilondon/" target="_blank" rel="noreferrer">Instagram &rarr;</a><a href="https://www.facebook.com/AbruzziLondon" target="_blank" rel="noreferrer">Facebook &rarr;</a></div>
+      </article></div>
+    </div>
+  </section>
+
+  <section id="find" class="find">
+    <div class="wrap">
+      <p class="kick rv">Find us</p>
+      <h2 class="sp">London, Ontario.</h2>
+      <div class="fi">
+        <div class="rv"><span>Address</span>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Abruzzi%20Ristorante%20119%20King%20Street%2C%20London%2C%20ON" target="_blank" rel="noreferrer">119 King Street, London, ON</a></div>
+        <div class="rv"><span>Phone</span><a href="tel:+15196759995">(519) 675-9995</a></div>
+        <div class="rv"><span>Email</span><a href="mailto:info@abruzzi.ca">info@abruzzi.ca</a></div>
+        <div class="rv"><span>Hours</span><div class="hours"><div class="hr2"><b>Mon</b><span>5pm - 9pm</span></div><div class="hr2"><b>Tue</b><span>5pm - 9pm</span></div><div class="hr2"><b>Wed</b><span>5pm - 9pm</span></div><div class="hr2"><b>Thu</b><span>5pm - 9pm</span></div><div class="hr2"><b>Fri</b><span>11:30am - 10pm</span></div><div class="hr2"><b>Sat</b><span>11:30am - 10pm</span></div><div class="hr2"><b>Sun</b><span>closed</span></div></div></div>
+        
+        <div class="rv"><span>Reservations</span><a href="https://www.opentable.ca/r/abruzzi-reservations-london?restref=230653&amp;lang=en-CA&amp;ot_source=Restaurant%20website" target="_blank" rel="noreferrer">Reserve on OpenTable &rarr;</a></div>
+        
+        <div class="rv"><span>Find us online</span><div class="plinks"><a href="https://www.facebook.com/AbruzziLondon" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/abruzzilondon/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.taverna1331.ca" target="_blank" rel="noreferrer">Taverna 1331<i>our sister restaurant on Hyde Park Road</i></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Abruzzi+Ristorante+119+King+Street+London+ON" target="_blank" rel="noreferrer">Google Maps<i>reviews &amp; directions</i></a></div></div>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="offer" id="offer">
+    <div class="wrap">
+      <p class="okick">A note from the studio that built this page</p>
+      <h2 class="oh">Like it? It&rsquo;s yours.</h2>
+      <p class="olead">Your Menu page has three buttons and no dishes, and one of the three opens a 404. On a phone your logo is white on a white bar, so nobody sees your name at all. This page puts the Spring 2026 menu and the four feature nights in real text, uses your own photos, and leaves OpenTable exactly where it is. One payment, and it's yours.</p>
+      <div class="ogrid">
+        <div class="oi rv"><b>$500, once.</b><span>$50 deposit, $450 when you approve the finished site. No subscription, no renewal &mdash; first-year hosting included.</span></div>
+        <div class="oi rv"><b>You own it.</b><span>Your domain, registered in your name. Every file is yours to keep.</span></div>
+        <div class="oi rv"><b>Nothing changes.</b><span>Whatever already works &mdash; ordering, reservations, gift cards &mdash; stays exactly as it is.</span></div>
+        <div class="oi rv"><b>Everything here can change.</b><span>Photos, words, colours, sections, the order of things &mdash; say what, we change it. This page is a starting point, not the final say.</span></div>
+        <div class="oi rv"><b>Live in a week.</b><span>You send corrections once &mdash; hours, menu, photos &mdash; and it goes live.</span></div>
+      </div>
+      <p class="oguar rv">$50 starts the work. The other $450 is due only when you&rsquo;ve seen the finished site and approve it &mdash; it goes live on your domain the same day.<br>If we can&rsquo;t get there, the page comes down &mdash; and you&rsquo;re out fifty dollars, not five hundred.</p>
+      <div class="octa rv">
+        <p><b>To say yes &mdash; or to change anything you see &mdash; just reply to the email that brought you here.</b></p>
+        <p class="osmall">Same-day answer, in writing. This proposal stays up for 30 days, or comes down the moment you ask.</p>
+        <p class="osmall">Wondering what happens after yes? <a href="./checklist.html">The whole list is one page &rarr;</a> (about ten phone photos and one email.)</p>
+        <p class="osmall">Who we are: <a href="https://veracod.com/" target="_blank" rel="noreferrer">Veracod &mdash; see our work &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><div class="fmark" aria-hidden="true">Abruzzi Ristorante</div></div>
+  <div class="wrap">
+    <p>Abruzzi Ristorante &middot; 119 King Street, London, ON</p>
+    <p>Concept page by <b>Veracod</b> &mdash; not affiliated with the restaurant. <a href="https://veracod.com/legal/privacy" target="_blank" rel="noreferrer">Privacy</a></p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+15196759995"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Abruzzi%20Ristorante%20119%20King%20Street%2C%20London%2C%20ON" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v1.6H3V3Zm0 4.2h10v1.6H3V7.2ZM3 11.4h6.4V13H3v-1.6Z"/></svg><b>Menu</b></a></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+
+<script>
+window.addEventListener('load',function(){
+  if(!window.gsap||!document.documentElement.classList.contains('js'))return;
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  var alive=function(){window.__alive=true};
+
+  /* hero headline: line-mask rise. padding-bottom keeps descenders (g y p j) out of the clip. */
+  try{
+    var split=SplitText.create('.hero h1',{type:'lines',mask:'lines',linesClass:'stl'});
+    document.querySelectorAll('.hero h1 .stl').forEach(function(m){
+      var w=m.parentNode&&m.parentNode!==m?m.parentNode:m;
+      w.style.paddingBottom='0.18em';w.style.marginBottom='-0.18em';});
+    gsap.set('.hero h1',{opacity:1});
+    gsap.fromTo(split.lines,{yPercent:110},{yPercent:0,duration:1.05,ease:'power4.out',stagger:.09,delay:.1,onStart:alive});
+  }catch(e){gsap.fromTo('.hero h1',{opacity:0,y:26},{opacity:1,y:0,duration:.9,ease:'power3.out',onStart:alive})}
+  gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
+  var hp0=document.querySelector('.hero .hphoto img');
+  if(hp0)gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive});
+
+  /* stat numbers count up as the band scrolls in */
+  document.querySelectorAll('.mk b').forEach(function(el){
+    var m=el.textContent.match(/^([#$]?)(\d+(?:\.\d)?)(.*)$/);
+    if(!m)return;
+    var pre=m[1],target=parseFloat(m[2]),suf=m[3],dec=m[2].indexOf('.')>-1?1:0;
+    var obj={v:0};
+    gsap.to(obj,{v:target,duration:1.4,ease:'power2.out',onStart:alive,
+      onUpdate:function(){el.textContent=pre+obj.v.toFixed(dec)+suf},
+      scrollTrigger:{trigger:el,start:'top 92%'}});
+  });
+
+  /* the studio note types itself in */
+  var oh=document.querySelector('.offer .oh');
+  if(oh){try{
+    var os=SplitText.create(oh,{type:'chars'});
+    gsap.set(oh,{opacity:1});
+    gsap.fromTo(os.chars,{opacity:0},{opacity:1,duration:.02,stagger:.045,ease:'none',onStart:alive,
+      scrollTrigger:{trigger:oh,start:'top 85%'}});
+  }catch(e){}}
+
+  /* Reveals go through ScrollTrigger.batch with once:true. Batching coalesces the callbacks
+     for everything entering together (one stagger instead of N triggers), and once:true kills
+     each trigger after it fires — the difference that matters on cheap Android. */
+  ScrollTrigger.batch('.rv',{start:'top 88%',once:true,
+    onEnter:function(batch){gsap.to(batch,{autoAlpha:1,y:0,duration:.8,stagger:.07,
+      ease:'power3.out',overwrite:true,onStart:alive});}});
+  gsap.set('.rv',{y:26});
+
+  /* Caption bars are cheap (one transform, fires once) so they run everywhere. */
+  gsap.utils.toArray('.fig').forEach(function(f){
+    var cap=f.querySelector('figcaption');
+    if(cap)gsap.fromTo(cap,{yPercent:110},{yPercent:0,duration:.7,ease:'power3.out',onStart:alive,
+      scrollTrigger:{trigger:f,start:'top 78%'}});});
+
+  /* Everything scrub-driven is desktop-only. Measured across 23 award-winning restaurant
+     sites: the ones that pin or parallax wrap it in matchMedia and switch it off on phones
+     (KUBE sets y:0 under 768px; Caffe Gilli has zero pins on its homepage). Mobile main
+     threads are ~21x slower than desktop, and scrub means work on every frame. */
+  gsap.matchMedia().add('(min-width: 768px)', function(){
+    gsap.utils.toArray('.fig').forEach(function(f){
+      var img=f.querySelector('img');
+      if(img)gsap.fromTo(img,{scale:1.08},{scale:1,ease:'none',onStart:alive,
+        scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}});});
+
+    var sf=document.querySelector('.sfig img');
+    if(sf)gsap.fromTo(sf,{yPercent:-4},{yPercent:4,ease:'none',
+      scrollTrigger:{trigger:'.sfig',start:'top bottom',end:'bottom top',scrub:true}});
+
+    var hp=document.querySelector('.hero .hphoto img');
+    if(hp)gsap.to(hp,{scale:1.07,duration:12,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.4});
+  });
+
+  /* section headings rise behind a mask too */
+  gsap.utils.toArray('h2.sp').forEach(function(h){
+    try{
+      var s=SplitText.create(h,{type:'lines',mask:'lines',linesClass:'stl'});
+      h.querySelectorAll('.stl').forEach(function(m){var w=m.parentNode&&m.parentNode!==m?m.parentNode:m;
+        w.style.paddingBottom='0.18em';w.style.marginBottom='-0.18em';});
+      gsap.fromTo(s.lines,{yPercent:110},{yPercent:0,duration:.85,ease:'power4.out',stagger:.08,onStart:alive,
+        scrollTrigger:{trigger:h,start:'top 86%'}});
+    }catch(e){gsap.fromTo(h,{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.7,onStart:alive,
+        scrollTrigger:{trigger:h,start:'top 88%'}})}});
+});
+</script>
+
+<script>(function(){try{
+var EP="https://p.veracod.com/e",S="abruzzi",K="demo";
+var hn=location.hostname;
+if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
+if(navigator.webdriver)return;
+var L=window.localStorage;
+if(location.search.indexOf("me=1")>=0){try{L.setItem("_vme","1")}catch(e){}}
+var me=L.getItem("_vme")==="1"?"1":"";
+var vid=L.getItem("_vv");
+if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
+var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
+var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
+var sid=Math.random().toString(36).slice(2,10),t0=Date.now(),dp=0,cl=[],ref=(document.referrer||"").slice(0,120);
+function dep(){var sc=document.documentElement.scrollHeight-innerHeight;var p=sc>40?Math.round(scrollY/sc*100):100;if(p>dp)dp=Math.min(100,p)}
+addEventListener("scroll",dep,{passive:true});dep();
+function tag(a){var h=a.getAttribute("href")||"";
+ if(h.indexOf("tel:")===0)return"call";
+ if(h.indexOf("mailto:")===0)return"mail";
+ if(h.indexOf("checklist.html")>=0)return"list";
+ if(h.indexOf("/legal/")>=0)return"privacy";
+ if(h.indexOf("veracod.com")>=0)return"veracod";
+ if(h.indexOf("/maps")>=0)return"map";
+ if(h==="#book")return"book";
+ if(h==="#menu")return"menu";
+ if(h.indexOf("http")===0)return"out";
+ return""}
+addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;
+ var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
+function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n
+ +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)+(me?"&me=1":"")}
+var lastAt=0;
+function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();
+ var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
+setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
+addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});
+addEventListener("pagehide",send);
+}catch(e){}})();</script>
+</body>
+</html>
