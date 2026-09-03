@@ -109,18 +109,37 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 
 .acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
 
-/* marks band —— 开业印章 + 三行事实（不是指标卡，见 marksBand 的注释） */
-.marks{background:var(--slabBg);color:var(--slabInk)}
-.marks .in{max-width:1080px;margin:0 auto;padding:30px 22px;display:flex;align-items:center;
- justify-content:center;gap:20px 40px;flex-wrap:wrap}
-.marks .seal{flex:none;width:104px;height:104px;border:1px solid color-mix(in srgb,var(--slabInk) 34%,transparent);
- border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.marks .seal em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.72}
-.marks .seal strong{font-family:var(--display);font-size:27px;font-weight:600;line-height:1;margin-top:3px}
-.marks ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+/* marks band —— 双环印章 + 三栏对称（做法和为什么，见 marksBand 的注释） */
+.marks{background:var(--slabBg);color:var(--slabInk);
+ border-top:1px solid color-mix(in srgb,var(--slabInk) 16%,transparent);
+ border-bottom:1px solid color-mix(in srgb,var(--slabInk) 16%,transparent)}
+.marks .in{max-width:1080px;margin:0 auto;padding:46px 22px 44px}
+.marks .seal{width:112px;height:112px;margin:0 auto 30px;border-radius:50%;position:relative;
+ border:1px solid color-mix(in srgb,var(--slabInk) 40%,transparent);
+ display:flex;flex-direction:column;align-items:center;justify-content:center}
+.marks .seal::before{content:"";position:absolute;inset:5px;border-radius:50%;
+ border:1px solid color-mix(in srgb,var(--slabInk) 18%,transparent)}
+.marks .seal em{font-style:normal;font-size:8.5px;font-weight:600;letter-spacing:.28em;
+ text-transform:uppercase;opacity:.66}
+.marks .seal strong{font-family:var(--display);font-size:30px;font-weight:500;line-height:1;margin-top:5px;
+ font-variant-numeric:oldstyle-nums;letter-spacing:.02em}
+.marks .bcols{display:grid;gap:0;grid-template-columns:1fr;
+ border-top:1px solid color-mix(in srgb,var(--slabInk) 14%,transparent);padding-top:26px}
+@media(min-width:760px){
+ .marks .bcols[data-n="2"]{grid-template-columns:repeat(2,1fr)}
+ .marks .bcols[data-n="3"]{grid-template-columns:repeat(3,1fr)}
+ .marks .bcols[data-n="4"]{grid-template-columns:repeat(4,1fr)}
+ .marks .bcol+.bcol{border-left:1px solid color-mix(in srgb,var(--slabInk) 14%,transparent)}
+}
+.marks .bcol{text-align:center;padding:0 22px}
+@media(max-width:759px){.marks .bcol+.bcol{margin-top:22px}}
+.marks .bcap{display:flex;align-items:flex-end;justify-content:center;min-height:2.6em;line-height:1.45;
+ font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;opacity:.62;margin-bottom:9px}
+.marks .bval{font-family:var(--display);font-size:clamp(19px,2.1vw,23px);font-weight:500;letter-spacing:.01em;
+ line-height:1.3;font-variant-numeric:oldstyle-nums}
+/* 退路写法（还没写 band 的） */
+.marks ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;text-align:center}
 .marks li{font-size:14.5px;line-height:1.5;opacity:.92}
-.marks li b{font-weight:600}
-@media(max-width:719px){.marks .in{flex-direction:column;gap:18px}.marks ul{text-align:center}}
 
 section{padding:76px 0}
 @media(min-width:820px){section{padding:100px 0}}
@@ -358,7 +377,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <figure class="fig hcard hr-in"><img src="./img/facade.webp" alt="Vito's Pizza on Mountain Road" fetchpriority="high" ><figcaption>726 Mountain Road — the same corner since 1969</figcaption></figure>
     </div>
   </div>
-<div class="marks"><div class="in rv"><div class="seal"><em>Est.</em><strong>1969</strong></div><ul><li><b>57</b> Years feeding Moncton</li><li><b>2</b> Menus — takeout &amp; dining room</li><li><b>726</b> Mountain Road</li></ul></div></div>
+<div class="marks"><div class="in rv"><div class="seal"><em>Established</em><strong>1969</strong></div><div class="bcols" data-n="3"><div class="bcol"><span class="bcap">Feeding Moncton</span><div class="bval">Fifty-seven years</div></div><div class="bcol"><span class="bcap">Takeout &amp; dining room</span><div class="bval">Two menus</div></div><div class="bcol"><span class="bcap">Find us at</span><div class="bval">726 Mountain Road</div></div></div></div></div>
 <div class="mq"><div class="mq-in"><span>Italian &amp; Greek<i>&bull;</i>Moncton, New Brunswick<i>&bull;</i>Italian &amp; Greek<i>&bull;</i>Moncton, New Brunswick<i>&bull;</i></span><span>Italian &amp; Greek<i>&bull;</i>Moncton, New Brunswick<i>&bull;</i>Italian &amp; Greek<i>&bull;</i>Moncton, New Brunswick<i>&bull;</i></span></div></div>
 
   <section class="band" id="story">
