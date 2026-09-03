@@ -109,12 +109,18 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 
 .acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
 
-/* marks band */
+/* marks band —— 开业印章 + 三行事实（不是指标卡，见 marksBand 的注释） */
 .marks{background:var(--slabBg);color:var(--slabInk)}
-.marks .in{max-width:1080px;margin:0 auto;padding:26px 22px;display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
-@media(min-width:760px){.marks .in{grid-template-columns:repeat(4,1fr);padding:30px 22px}}
-.mk b{display:block;font-family:var(--display);font-size:clamp(20px,2.6vw,30px);letter-spacing:-.01em}
-.mk span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;font-weight:600}
+.marks .in{max-width:1080px;margin:0 auto;padding:30px 22px;display:flex;align-items:center;
+ justify-content:center;gap:20px 40px;flex-wrap:wrap}
+.marks .seal{flex:none;width:104px;height:104px;border:1px solid color-mix(in srgb,var(--slabInk) 34%,transparent);
+ border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.marks .seal em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.72}
+.marks .seal strong{font-family:var(--display);font-size:27px;font-weight:600;line-height:1;margin-top:3px}
+.marks ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.marks li{font-size:14.5px;line-height:1.5;opacity:.92}
+.marks li b{font-weight:600}
+@media(max-width:719px){.marks .in{flex-direction:column;gap:18px}.marks ul{text-align:center}}
 
 section{padding:76px 0}
 @media(min-width:820px){section{padding:100px 0}}
@@ -215,7 +221,7 @@ blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--dim);
 .find{background:var(--slabBg);color:var(--slabInk)}
 .find .kick,.find .fi span{color:#D8C23A}
 .find h2.sp{color:var(--slabInk)}
-.marks .mk span{color:#D8C23A;opacity:.9}
+.marks li b{color:#D8C23A}
 .fi{display:grid;gap:26px;margin-top:40px}
 @media(min-width:760px){.fi{grid-template-columns:repeat(2,1fr)}}
 .fi span{display:block;font-size:11px;letter-spacing:.17em;text-transform:uppercase;margin-bottom:8px;font-weight:650}
@@ -351,8 +357,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+15196759995">Call (519) 675-9995</a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
     </div>
   </div>
-<div class="marks"><div class="in"><div class="mk rv"><b>2011</b><span>On King Street since</span></div><div class="mk rv"><b>4</b><span>Feature nights, Monday to Thursday</span></div><div class="mk rv"><b>119</b><span>King Street, downtown London</span></div><div class="mk rv"><b>Thu</b><span>Date Night — two courses $45</span></div></div></div>
-<div class="mq"><div class="mq-in"><span>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span><span>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Since 2011<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span></div></div>
+<div class="marks"><div class="in rv"><div class="seal"><em>Est.</em><strong>2011</strong></div><ul><li><b>4</b> Feature nights, Monday to Thursday</li><li><b>119</b> King Street, downtown London</li><li><b>Thu</b> &middot; Date Night — two courses $45</li></ul></div></div>
+<div class="mq"><div class="mq-in"><span>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span><span>Italian<i>&bull;</i>London, Ontario<i>&bull;</i>Italian<i>&bull;</i>London, Ontario<i>&bull;</i></span></div></div>
 
   <section class="band" id="story">
     <div class="wrap story">
@@ -501,16 +507,9 @@ window.addEventListener('load',function(){
   var hp0=document.querySelector('.hero .hphoto img');
   if(hp0)gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive});
 
-  /* stat numbers count up as the band scrolls in */
-  document.querySelectorAll('.mk b').forEach(function(el){
-    var m=el.textContent.match(/^([#$]?)(\d+(?:\.\d)?)(.*)$/);
-    if(!m)return;
-    var pre=m[1],target=parseFloat(m[2]),suf=m[3],dec=m[2].indexOf('.')>-1?1:0;
-    var obj={v:0};
-    gsap.to(obj,{v:target,duration:1.4,ease:'power2.out',onStart:alive,
-      onUpdate:function(){el.textContent=pre+obj.v.toFixed(dec)+suf},
-      scrollTrigger:{trigger:el,start:'top 92%'}});
-  });
+  /* ⛔ 数字不做「从 0 滚上去」的效果（2026-09-03 他看出来了："像科技公司，不像餐厅"）。
+     那是 SaaS 官网报用户数的语言；而且遇到 "3–6"、"#12"、门牌号 "7901" 这种值会滚得很荒唐。
+     这一排现在只跟着通用的 .rv 淡入上移，像印在菜单上的一行小字。 */
 
   /* the studio note types itself in */
   var oh=document.querySelector('.offer .oh');
