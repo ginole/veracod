@@ -110,19 +110,24 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
 
 /* marks band —— 双环印章 + 三栏对称（做法和为什么，见 marksBand 的注释） */
+/* 「看整份菜单」那一行 —— 他 2026-09-04 要的：点进去是整个菜单 */
+.fullmenu{margin:38px 0 0;text-align:center}
+.fullmenu a{display:inline-block;font-family:var(--display);font-size:16.5px;letter-spacing:.01em;
+ color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:5px}
+.fullmenu a:hover{color:var(--accent)}
 .marks{background:var(--slabBg);color:var(--slabInk);
  border-top:1px solid color-mix(in srgb,var(--slabInk) 16%,transparent);
  border-bottom:1px solid color-mix(in srgb,var(--slabInk) 16%,transparent)}
 .marks .in{max-width:1080px;margin:0 auto;padding:46px 22px 44px}
-.marks .seal{width:112px;height:112px;margin:0 auto 30px;border-radius:50%;position:relative;
- border:1px solid color-mix(in srgb,var(--slabInk) 40%,transparent);
- display:flex;flex-direction:column;align-items:center;justify-content:center}
-.marks .seal::before{content:"";position:absolute;inset:5px;border-radius:50%;
- border:1px solid color-mix(in srgb,var(--slabInk) 18%,transparent)}
-.marks .seal em{font-style:normal;font-size:8.5px;font-weight:600;letter-spacing:.28em;
- text-transform:uppercase;opacity:.66}
-.marks .seal strong{font-family:var(--display);font-size:30px;font-weight:500;line-height:1;margin-top:5px;
- font-variant-numeric:oldstyle-nums;letter-spacing:.02em}
+.marks .seal{width:150px;height:150px;margin:0 auto 28px}
+.marks .seal svg{width:100%;height:100%;display:block}
+.marks .seal .ro{fill:none;stroke:color-mix(in srgb,var(--slabInk) 28%,transparent);stroke-width:1}
+.marks .seal .ri{fill:none;stroke:color-mix(in srgb,#E4453C 55%,transparent);stroke-width:1}
+.marks .seal .arc{fill:var(--slabInk);font-family:var(--body);font-weight:600;text-transform:uppercase}
+.marks .seal .arc.sub{fill:#E4453C}
+.marks .seal .est{fill:var(--slabInk);opacity:.5;font-family:var(--body);font-weight:600;font-size:6.6px;letter-spacing:2.4px;text-transform:uppercase}
+.marks .seal .yr{font-family:var(--display);font-size:29px;font-weight:600;fill:var(--slabInk);font-variant-numeric:oldstyle-nums}
+.marks .seal .tk{stroke:color-mix(in srgb,var(--slabInk) 24%,transparent);stroke-width:1}
 .marks .bcols{display:grid;gap:0;grid-template-columns:1fr;
  border-top:1px solid color-mix(in srgb,var(--slabInk) 14%,transparent);padding-top:26px}
 @media(min-width:760px){
@@ -376,7 +381,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+19193632228">Call (919) 363-2228</a><a class="btn btn-o hr-in" href="https://order.spoton.com/so-mamma-mia-italian-bistro-18796/apex-nc/6616da8e234d7585f773f86b" target="_blank" rel="noreferrer">Order online</a></div>
     </div>
   </div>
-<div class="marks"><div class="in rv"><div class="seal"><em>Established</em><strong>2004</strong></div><div class="bcols" data-n="3"><div class="bcol"><span class="bcap">In Apex</span><div class="bval">Twenty-two years</div></div><div class="bcol"><span class="bcap">At every wine dinner</span><div class="bval">Five courses</div></div><div class="bcol"><span class="bcap">Find us at</span><div class="bval">708 Laura Duncan Road</div></div></div></div></div>
+<div class="marks"><div class="in rv"><div class="seal"><svg viewBox="0 0 150 150" role="img" aria-label="Established 2004">
+  <defs>
+    <path id="sa-mamma-mia-apex" d="M 23,75 A 52,52 0 0 1 127,75"/>
+    <path id="sb-mamma-mia-apex" d="M 23,75 A 52,52 0 0 0 127,75"/>
+  </defs>
+  <circle class="ro" cx="75" cy="75" r="63"/><circle class="ri" cx="75" cy="75" r="58"/>
+  <text class="arc" style="font-size:6.9px;letter-spacing:2.3px"><textPath href="#sa-mamma-mia-apex" startOffset="50%" text-anchor="middle">Mamma Mia! Italian Bistro</textPath></text>
+  <text class="arc sub" style="font-size:7.4px;letter-spacing:2.5px"><textPath href="#sb-mamma-mia-apex" startOffset="50%" text-anchor="middle">Apex · N.C.</textPath></text>
+  <line class="tk" x1="20" y1="75" x2="31" y2="75"/><line class="tk" x1="119" y1="75" x2="130" y2="75"/>
+  <text class="est" x="75" y="64" text-anchor="middle">Established</text>
+  <text class="yr" x="75" y="90" text-anchor="middle">2004</text>
+</svg></div><div class="bcols" data-n="3"><div class="bcol"><span class="bcap">In Apex</span><div class="bval">Twenty-two years</div></div><div class="bcol"><span class="bcap">At every wine dinner</span><div class="bval">Five courses</div></div><div class="bcol"><span class="bcap">Find us at</span><div class="bval">708 Laura Duncan Road</div></div></div></div></div>
 <div class="mq"><div class="mq-in"><span>Italian<i>&bull;</i>Apex, North Carolina<i>&bull;</i>Italian<i>&bull;</i>Apex, North Carolina<i>&bull;</i></span><span>Italian<i>&bull;</i>Apex, North Carolina<i>&bull;</i>Italian<i>&bull;</i>Apex, North Carolina<i>&bull;</i></span></div></div>
 
   <section class="band" id="story">
@@ -397,6 +413,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <h2 class="sp">Lunch, dinner, and the wine dinner.</h2>
       <p class="lead rv">Pasta your way at lunch, veal and seafood at night, N.Y. style pies any time. Prices from the current menu.</p>
       <div class="dishes"><figure class="fig dish rv"><img src="./img/pizza.webp" alt="Old Fashioned pizza" loading="lazy" ><figcaption><b>Old Fashioned pizza</b><span>New York style thin crust Margherita — Medium $20, Large $22</span></figcaption></figure><figure class="fig dish rv"><img src="./img/salmon.webp" alt="Salmon Piccata" loading="lazy" ><figcaption><b>Salmon Piccata</b><span>Capers, shallots, white wine, lemon and butter</span></figcaption></figure><figure class="fig dish rv"><img src="./img/calzone.webp" alt="Calzone" loading="lazy" ><figcaption><b>Calzone</b><span>Ham, ricotta and mozzarella — $13</span></figcaption></figure><div class="dish txt rv"><p class="mrow"><b>Gamberoni Scampi</b><i class="lead"></i></p><span>Six jumbo shrimp in garlic, oil, lemon and white wine — $24</span></div><div class="dish txt rv"><p class="mrow"><b>Lasagna</b><i class="lead"></i></p><span>Layers of fresh pasta, ricotta, mozzarella and meat sauce — $20 dinner, $14 lunch</span></div><div class="dish txt rv"><p class="mrow"><b>Chopped Salad</b><i class="lead"></i></p><span>Romaine, gorgonzola, roasted peppers, pan-fried prosciutto and balsamic glaze — $13</span></div></div>
+      
     </div>
   </section>
 
@@ -519,7 +536,9 @@ window.addEventListener('load',function(){
   }catch(e){gsap.fromTo('.hero h1',{opacity:0,y:26},{opacity:1,y:0,duration:.9,ease:'power3.out',onStart:alive})}
   gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
   var hp0=document.querySelector('.hero .hphoto img');
-  if(hp0)gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive});
+  if(hp0){hp0.style.willChange='transform';
+    gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
+      onComplete:function(){hp0.style.willChange='auto'}});}   /* 跑完就摘掉，别常驻占图层 */
 
   /* ⛔ 数字不做「从 0 滚上去」的效果（2026-09-03 他看出来了："像科技公司，不像餐厅"）。
      那是 SaaS 官网报用户数的语言；而且遇到 "3–6"、"#12"、门牌号 "7901" 这种值会滚得很荒唐。
@@ -553,18 +572,39 @@ window.addEventListener('load',function(){
      (KUBE sets y:0 under 768px; Caffe Gilli has zero pins on its homepage). Mobile main
      threads are ~21x slower than desktop, and scrub means work on every frame. */
   gsap.matchMedia().add('(min-width: 768px)', function(){
-    gsap.utils.toArray('.fig').forEach(function(f){
+    /* 视差缩放原来是「每一张图都挂一个」—— 一页 10 张图就是 10 个滚动联动动画，
+       每滚一帧都要重算重绘 10 张大图，这是卡的第二个原因（2026-09-04 他提的）。
+       改成：只给前 3 张（真正会被看到的），并且加 will-change 让浏览器提前建好图层；
+       scrub 给 0.6 而不是 true，滚动时的计算量明显下降。 */
+    gsap.utils.toArray('.fig').slice(0,3).forEach(function(f){
       var img=f.querySelector('img');
-      if(img)gsap.fromTo(img,{scale:1.08},{scale:1,ease:'none',onStart:alive,
-        scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}});});
+      if(!img)return;
+      img.style.willChange='transform';
+      gsap.fromTo(img,{scale:1.06},{scale:1,ease:'none',onStart:alive,
+        scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:0.6,
+          onLeave:function(){img.style.willChange='auto'},onLeaveBack:function(){img.style.willChange='auto'},
+          onEnter:function(){img.style.willChange='transform'},onEnterBack:function(){img.style.willChange='transform'}}});});
 
     var sf=document.querySelector('.sfig img');
-    if(sf)gsap.fromTo(sf,{yPercent:-4},{yPercent:4,ease:'none',
-      scrollTrigger:{trigger:'.sfig',start:'top bottom',end:'bottom top',scrub:true}});
+    if(sf){sf.style.willChange='transform';
+      gsap.fromTo(sf,{yPercent:-4},{yPercent:4,ease:'none',
+        scrollTrigger:{trigger:'.sfig',start:'top bottom',end:'bottom top',scrub:0.6}});}
 
-    var hp=document.querySelector('.hero .hphoto img');
-    if(hp)gsap.to(hp,{scale:1.07,duration:12,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.4});
+   
+    /* ⛔ 首屏图原来挂了一个 12 秒来回、repeat:-1 的呼吸缩放 —— 它永远不停，滚出屏幕也照跑，
+       等于持续压着一张 1600px 的大图做合成。2026-09-04 他说「他们背景嵌视频都不卡，我们为什么卡」，
+       这是第一个原因。视觉上几乎看不出来，代价却是常驻的。删掉。 */
   });
+
+  /* 那条品牌横幅是 CSS 的 38 秒无限滚动，滚出屏幕也照跑 —— 又一个常驻的合成开销。
+     2026-09-04 查「为什么比人家卡」时发现的。用 IntersectionObserver 让它离开视口就暂停。 */
+  var mq=document.querySelector('.mq-in');
+  if(mq&&window.IntersectionObserver){
+    mq.style.willChange='transform';
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ mq.style.animationPlayState=e.isIntersecting?'running':'paused'; });
+    },{rootMargin:'120px'}).observe(mq.parentNode);
+  }
 
   /* section headings rise behind a mask too */
   gsap.utils.toArray('h2.sp').forEach(function(h){
