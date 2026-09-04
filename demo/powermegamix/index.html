@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Power Megamix Batching Inc. — Ready-Mix Concrete, Cavite">
+<meta property="og:description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Kawit, Cavite.">
+<meta property="og:image" content="https://veracod.com/demo/powermegamix/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Power Megamix Batching Inc. — Ready-Mix Concrete &amp; Pumping, Cavite</title>
+<meta name="description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Kawit, Cavite. Serving contractors across Cavite and Metro Manila since 2017.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Add .js immediately; if no tween has started within 2.5s, strip it so content
+   is never held hostage by a CDN failure or a paused rAF. */
+document.documentElement.classList.add('js');
+window.__pmxAnim = false;
+setTimeout(function(){
+  if(!window.__pmxAnim){ document.documentElement.classList.remove('js'); }
+}, 2500);
+</script>
+<style>
+/* ============================================================
+   POWER MEGAMIX BATCHING INC.
+   Brand pulled from the plant itself: signage blue #1a4fa0, the red italic
+   P-arrow mark #c8202f, white buildings, concrete grey. Register: tender
+   attachment, not landing page — condensed caps, ruled tables, big numerals.
+   ============================================================ */
+:root{
+  --blue:#1a4fa0;
+  --blue-deep:#123a78;
+  --navy:#0a1d3f;
+  --red:#c8202f;
+  --ink:#1a222d;
+  --body:#46515e;
+  --mute:#7b8694;
+  --concrete:#eef0f3;
+  --paper:#ffffff;
+  --line:#d9dee5;
+  --amber:#e5a012;
+  --amber-ink:#7a5406;
+  --amber-bg:#fdf7e7;
+  --cond:'Barlow Condensed','Arial Narrow',sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--cond);text-transform:uppercase;color:var(--ink);margin:0;line-height:.98;font-weight:700;letter-spacing:.005em}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* labels: the small over-tracked spec caption used everywhere */
+.lbl{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--blue)}
+.lbl::before{content:"";width:22px;height:3px;background:var(--red);flex:none}
+
+/* silo-stripe divider — the blue/white bands off the actual silos */
+.stripes{height:9px;background:repeating-linear-gradient(135deg,var(--blue) 0 16px,#fff 16px 32px);border-top:1px solid var(--blue-deep);border-bottom:1px solid var(--blue-deep)}
+
+/* ---------- reveal states (CSS owns hidden; GSAP only makes visible) ---------- */
+.js .reveal,.js .rise{opacity:0;transform:translateY(26px)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal,.js .rise{opacity:1;transform:none}
+}
+
+/* ---------- demo notice ---------- */
+.demo-bar{background:var(--navy);color:#c6d4ec;font-size:11px;line-height:1.5;letter-spacing:.06em;text-align:center;padding:8px 16px}
+.demo-bar b{color:#fff;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1160px;margin:0 auto;padding:10px 20px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand-name{line-height:1.02}
+.brand-name b{display:block;font-family:var(--cond);font-weight:700;font-size:21px;letter-spacing:.02em;color:var(--blue);text-transform:uppercase;white-space:nowrap}
+.brand-name i{display:block;font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:1px}
+.navlinks{display:none;gap:28px}
+.navlinks a{font-family:var(--cond);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.navlinks a:hover{color:var(--red)}
+.cta{font-family:var(--cond);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:10px 18px;white-space:nowrap;transition:background .2s}
+.cta:hover{background:#a81826}
+@media(min-width:960px){.navlinks{display:flex}}
+@media(max-width:520px){.brand-name b{font-size:17px}.brand-name i{letter-spacing:.2em}.brand svg{width:32px;height:32px}.cta{font-size:14px;padding:9px 13px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:saturate(1.05) contrast(1.04)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(10,29,63,.46) 0%,rgba(10,29,63,.28) 40%,rgba(8,22,48,.9) 100%),
+  linear-gradient(90deg,rgba(10,29,63,.62) 0%,rgba(10,29,63,.22) 60%,rgba(10,29,63,.1) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 46px}
+.hero .lbl{color:#bcd0f2}
+.hero h1{color:#fff;font-size:clamp(48px,7.6vw,96px);letter-spacing:.01em;margin-top:16px}
+.hero h1 em{font-style:normal;color:#fff;box-shadow:inset 0 -.14em 0 var(--red)}
+.hero-sub{color:#d3ddef;font-size:clamp(15px,1.6vw,18px);max-width:56ch;margin-top:18px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--cond);font-size:18px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 24px;transition:background .2s,border-color .2s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#a81826}
+.btn-ghost{border:2px solid rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{border-color:#fff}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.28);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#aabde0}
+
+/* ---------- data band ---------- */
+.band{background:var(--blue);color:#fff}
+.band .inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
+.fact{padding:24px 20px;border-right:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
+.fact:nth-child(2n){border-right:0}
+.fact b{display:block;font-family:var(--cond);font-weight:700;font-size:clamp(34px,4.4vw,52px);line-height:.95;letter-spacing:.01em;text-transform:uppercase}
+.fact span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b9cbee;margin-top:8px}
+@media(min-width:860px){
+  .band .inner{grid-template-columns:repeat(4,1fr)}
+  .fact{border-bottom:0}
+  .fact:nth-child(2n){border-right:1px solid rgba(255,255,255,.22)}
+  .fact:last-child{border-right:0}
+}
+
+/* ---------- sections ---------- */
+section{padding:72px 0}
+@media(min-width:860px){section{padding:104px 0}}
+.sec-head{display:flex;gap:20px;align-items:flex-start}
+.idx{font-family:var(--cond);font-weight:700;font-size:clamp(44px,6vw,72px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--red);flex:none;margin-top:2px}
+.sec-head h2{font-size:clamp(34px,5vw,58px);margin-top:10px}
+.sec-lead{margin-top:16px;max-width:62ch;font-size:clamp(15px,1.5vw,17.5px)}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;gap:14px;margin-top:42px}
+@media(min-width:820px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+.svc{background:var(--concrete);border-top:4px solid var(--blue);padding:26px 24px 30px;position:relative}
+.svc .n{font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.12em;color:var(--red)}
+.svc h3{font-size:27px;margin-top:8px}
+.svc p{margin-top:12px;font-size:14.5px}
+.svc ul{margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--mute)}
+.svc li{padding:7px 0;border-top:1px dashed var(--line);display:flex;gap:8px}
+.svc li::before{content:"—";color:var(--red);flex:none}
+
+/* ---------- NEEDED-FROM-YOU boxes (deliberate, spec-sheet styled) ---------- */
+.need{position:relative;margin-top:46px;background:var(--amber-bg);border:2px dashed var(--amber);padding:0 0 26px}
+.need-tape{height:8px;background:repeating-linear-gradient(135deg,var(--amber) 0 14px,var(--ink) 14px 28px)}
+.need-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 24px 0}
+.chip{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:var(--amber);color:#241a02;padding:5px 10px}
+.refno{font-family:var(--cond);font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
+.need h3{font-size:25px;padding:12px 24px 0;color:var(--ink)}
+.need>p{padding:10px 24px 0;font-size:14.5px;color:#5c5236;max-width:74ch}
+.need>p b{color:var(--ink)}
+/* ghost spec table */
+.ghost{margin:18px 24px 0;border:1px solid #e8d9a8;background:#fffdf6}
+.g-row{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;padding:11px 14px;border-top:1px dashed #e0cf9a;font-size:13px;color:#a08f5c}
+.g-row:first-child{border-top:0}
+.g-head{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink);background:#faf1d4}
+.g-blank{border-bottom:1px dashed #c9b477;min-height:1.2em}
+/* ghost stat slots */
+.g-slots{display:grid;gap:12px;margin:18px 24px 0}
+@media(min-width:680px){.g-slots{grid-template-columns:repeat(3,1fr)}}
+.g-slot{border:1px dashed #cdb87c;background:#fffdf6;padding:16px;text-align:center}
+.g-slot b{display:block;font-family:var(--cond);font-weight:700;font-size:34px;color:#cbb578;line-height:1}
+.g-slot span{display:block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink);margin-top:7px}
+/* ghost photo frames */
+.g-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 24px 0}
+.g-photo{aspect-ratio:4/3;border:1px dashed #cdb87c;background:#fffdf6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c0ab6e}
+/* ghost checklist */
+.g-check{margin:16px 24px 0;padding:0;list-style:none}
+.g-check li{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px dashed #e0cf9a;font-size:14px;color:#6b5e3a}
+.g-check li:first-child{border-top:0}
+.g-check li::before{content:"";width:16px;height:16px;border:2px solid #cdb87c;background:#fffdf6;flex:none}
+
+/* ---------- plants ---------- */
+.plants{background:var(--concrete)}
+.plant-grid{display:grid;gap:34px;margin-top:42px;align-items:start}
+@media(min-width:920px){.plant-grid{grid-template-columns:1.05fr .95fr;gap:54px}}
+.loc-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
+.loc-table th{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--blue);text-align:left;padding:11px 16px}
+.loc-table td{padding:16px;border-top:1px solid var(--line);vertical-align:top;font-size:14.5px}
+.loc-table td b{display:block;font-family:var(--cond);font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.loc-table td .tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+.maplink{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--blue);border-bottom:1px solid var(--blue)}
+.maplink:hover{color:var(--red);border-color:var(--red)}
+.figstack{position:relative}
+.fig{position:relative;overflow:hidden;border:1px solid var(--line);background:#fff}
+.fig img{width:100%;height:100%;object-fit:cover}
+.fig-cap{position:absolute;left:0;bottom:0;background:var(--navy);color:#fff;font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px}
+.fig-main{aspect-ratio:1/1}
+.fig-side{display:none}
+@media(min-width:920px){
+  .figstack{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+  .fig-main{aspect-ratio:auto;height:100%}
+  .fig-side{display:block;aspect-ratio:auto}
+}
+.plant-note{margin-top:22px;font-size:14px;color:var(--mute);max-width:60ch}
+
+/* ---------- record & compliance ---------- */
+.two-need{display:grid;gap:22px;margin-top:12px}
+@media(min-width:960px){.two-need{grid-template-columns:1fr 1fr;align-items:start}}
+.two-need .need{margin-top:24px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--navy);color:#cfd9ea}
+.contact .lbl{color:#9fb6dd}
+.contact h2{color:#fff}
+.contact .sec-lead{color:#b7c5dd}
+.c-grid{display:grid;gap:14px;margin-top:40px}
+@media(min-width:860px){.c-grid{grid-template-columns:1fr 1fr;gap:18px}}
+.c-card{border:1px solid rgba(255,255,255,.2);padding:24px}
+.c-card .k{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8fa9d6}
+.c-card .big{display:block;font-family:var(--cond);font-weight:700;font-size:clamp(28px,3.6vw,40px);letter-spacing:.03em;color:#fff;margin-top:8px;line-height:1.05}
+a.big:hover{color:#ffd9dd}
+.c-card .em{display:block;font-size:clamp(15px,1.8vw,19px);font-weight:600;color:#fff;margin-top:10px;word-break:break-all}
+a.em:hover{color:#ffd9dd}
+.c-card address{font-style:normal;font-size:15px;line-height:1.55;color:#cfd9ea;margin-top:8px}
+.c-card address b{display:block;font-family:var(--cond);font-size:20px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff}
+.c-card .maplink{color:#9fc0f5;border-color:#9fc0f5}
+.c-card .maplink:hover{color:#fff;border-color:#fff}
+.c-hours{margin-top:26px;font-size:12px;letter-spacing:.08em;color:#8fa2c4}
+
+/* ---------- footer ---------- */
+footer{background:#071633;color:#7e91b4;font-size:12px;padding:26px 0 32px;line-height:1.7}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
+footer b{color:#c8d4ea;font-weight:600}
+
+/* ---------- mobile sticky call bar ---------- */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 -4px 18px rgba(7,18,40,.28)}
+.callbar a{display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--cond);font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:15px 8px;color:#fff}
+.callbar .cb-tel{background:var(--red)}
+.callbar .cb-mail{background:var(--blue)}
+@media(min-width:760px){.callbar{display:none}}
+@media(max-width:759.9px){body{padding-bottom:52px}}
+</style>
+</head>
+<body>
+
+<!-- unofficial demo notice -->
+<div class="demo-bar"><b>Concept page</b> &nbsp;—&nbsp; an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.</div>
+
+<header>
+  <nav>
+    <a class="brand" href="#top" aria-label="Power Megamix Batching Inc. — home">
+      <!-- Red italic P-arrow mark, approximated from the gate signage -->
+      <svg viewBox="0 0 56 56" aria-hidden="true">
+        <path fill="#c8202f" d="M22 7h17.5C48 7 53 11.4 53 18c0 9.2-7.6 14.5-17.6 14.5h-8.1L23.6 50H12.4L22 7Z"/>
+        <path fill="#fff" d="M30.6 15.2 28.2 24h8.4c4.6 0 7.3-2.2 7.3-5.3 0-2.4-1.9-3.5-5.3-3.5h-8Z"/>
+        <path fill="#c8202f" d="M3 32.5 16.2 26l-3.6 12.6L3 32.5Z"/>
+      </svg>
+      <span class="brand-name">
+        <b>Power Megamix</b>
+        <i>Batching Inc.</i>
+      </span>
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#plants">Plants</a>
+      <a href="#record">Track record</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="cta" href="mailto:powermegamixbatchinginc@gmail.com?subject=Quotation%20request%20%E2%80%94%20ready-mix%20concrete">Request a quote</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="hero-bg">
+      <img src="img/gate.webp" alt="Main gate of the Power Megamix Batching Inc. plant in Kawit, Cavite" fetchpriority="high">
+    </div>
+    <div class="hero-inner">
+      <div class="wrap">
+        <p class="lbl rise">Kawit, Cavite — Est. 2017</p>
+        <h1 class="rise">Ready-mix concrete,<br>delivered <em>on schedule.</em></h1>
+        <p class="hero-sub rise">Batching and pumping from two plants on Cavite's main corridors.
+          A pour that waits is a pour that fails — we quote the delivery window with the price.</p>
+        <div class="hero-ctas rise">
+          <a class="btn btn-red" href="tel:+639977703807">Call 0997 770 3807</a>
+          <a class="btn btn-ghost" href="mailto:powermegamixbatchinginc@gmail.com?subject=Quotation%20request%20%E2%80%94%20ready-mix%20concrete">Email for a quote</a>
+        </div>
+        <div class="hero-meta rise">
+          <span>SEC-registered corporation</span>
+          <span>Ready-mix supply</span>
+          <span>Line &amp; boom pumping</span>
+          <span>Cavite &amp; Metro Manila</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stripes" aria-hidden="true"></div>
+
+  <!-- ================= DATA BAND ================= -->
+  <div class="band">
+    <div class="inner">
+      <div class="fact"><b>Since 2017</b><span>SEC-registered</span></div>
+      <div class="fact"><b>2 Plants</b><span>Kawit &middot; Antero Soriano Hwy</span></div>
+      <div class="fact"><b>Cavite + NCR</b><span>Delivery coverage</span></div>
+      <div class="fact"><b>Mix + Pump</b><span>Supply and placement</span></div>
+    </div>
+  </div>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">01</span>
+        <div>
+          <p class="lbl">Services</p>
+          <h2>Supply and placement,<br>one supplier</h2>
+        </div>
+      </div>
+      <p class="sec-lead reveal">The mix and the pump from the same yard — nobody stands on site
+        waiting for a second contractor's truck to arrive.</p>
+
+      <div class="svc-grid">
+        <div class="svc reveal">
+          <p class="n">SVC / 01</p>
+          <h3>Ready-mix supply</h3>
+          <p>Concrete batched to the class and slump your engineer specifies, delivered by
+            transit mixer and sequenced to your pour schedule.</p>
+          <ul>
+            <li>Batched to specification</li>
+            <li>Timed transit-mixer delivery</li>
+            <li>Scheduled multi-truck pours</li>
+          </ul>
+        </div>
+        <div class="svc reveal">
+          <p class="n">SVC / 02</p>
+          <h3>Line pump</h3>
+          <p>Horizontal reach for placements the chute cannot touch — tight urban sites, rear
+            lots, work behind an existing structure.</p>
+          <ul>
+            <li>Confined and rear-lot access</li>
+            <li>Long horizontal runs</li>
+            <li>Ground-level placements</li>
+          </ul>
+        </div>
+        <div class="svc reveal">
+          <p class="n">SVC / 03</p>
+          <h3>Boom pump</h3>
+          <p>Vertical reach for structural work — elevated decks, columns and suspended slabs
+            placed directly from the truck.</p>
+          <ul>
+            <li>Elevated decks and slabs</li>
+            <li>Columns and shear walls</li>
+            <li>Direct-from-truck placement</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- NEEDED FROM YOU — A -->
+      <aside class="need reveal" aria-label="Material needed from the company: concrete class table">
+        <div class="need-tape" aria-hidden="true"></div>
+        <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment A — Spec table</span></div>
+        <h3>Concrete classes &amp; design strengths</h3>
+        <p>An estimator looks for this before anything else on the page. Send the classes you
+          batch — the psi designations exactly as they appear on your quotations — and they are
+          typeset here as the table below.</p>
+        <div class="ghost" role="presentation">
+          <div class="g-row g-head"><span>Class</span><span>Design strength</span><span>Typical application</span></div>
+          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
+          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
+          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="stripes" aria-hidden="true"></div>
+
+  <!-- ================= PLANTS ================= -->
+  <section id="plants" class="plants">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">02</span>
+        <div>
+          <p class="lbl">Batching plants</p>
+          <h2>Sited on the roads<br>you build on</h2>
+        </div>
+      </div>
+      <p class="sec-lead reveal">Fresh concrete has a working life measured in minutes, so the
+        distance from plant to pour is not a detail — it is the business. Both plants sit on
+        Cavite's main corridors, within reach of Metro Manila.</p>
+
+      <div class="plant-grid">
+        <div>
+          <table class="loc-table reveal">
+            <tr><th>Facility</th><th>Location</th></tr>
+            <tr>
+              <td><span class="tag">Plant 01</span><b>Main plant</b></td>
+              <td>Centennial Road, Brgy. Marulas,<br>Kawit, Cavite
+                <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Centennial+Road+Barangay+Marulas+Kawit+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><span class="tag">Plant 02</span><b>Second plant</b></td>
+              <td>Antero Soriano Highway<br>(Tramo&ndash;Bantayan)
+                <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Antero+Soriano+Highway+Tramo+Bantayan+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></td>
+            </tr>
+          </table>
+          <p class="plant-note reveal">Two plants means a fallback: if a line goes down or a
+            corridor jams on the day of your pour, the schedule holds.</p>
+        </div>
+
+        <div class="figstack reveal">
+          <figure class="fig fig-main" style="margin:0">
+            <img src="img/plant.webp" alt="Transit mixer loading under the blue-and-white silos at the main plant" loading="lazy" width="640" height="640">
+            <figcaption class="fig-cap">Plant 01 — Kawit, Cavite</figcaption>
+          </figure>
+          <figure class="fig fig-side" style="margin:0">
+            <img src="img/silos.webp" alt="Brand-painted cement silos at the batching plant" loading="lazy" width="680" height="850">
+            <figcaption class="fig-cap">Cement silos</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- NEEDED FROM YOU — B -->
+      <aside class="need reveal" aria-label="Material needed from the company: capacity and fleet">
+        <div class="need-tape" aria-hidden="true"></div>
+        <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment B — Capacity sheet</span></div>
+        <h3>Plant capacity &amp; fleet count</h3>
+        <p>Three numbers decide whether a contractor believes you can carry their pour schedule
+          — and no competitor in Cavite publishes them, so putting them here is an advantage,
+          not table stakes.</p>
+        <div class="g-slots" role="presentation">
+          <div class="g-slot"><b>&mdash;</b><span>m&sup3;/hr rated output</span></div>
+          <div class="g-slot"><b>&mdash;</b><span>Transit mixers</span></div>
+          <div class="g-slot"><b>&mdash;</b><span>Line / boom pumps</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= TRACK RECORD & COMPLIANCE ================= -->
+  <section id="record">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">03</span>
+        <div>
+          <p class="lbl">Track record &amp; compliance</p>
+          <h2>The pages procurement<br>reads first</h2>
+        </div>
+      </div>
+      <p class="sec-lead reveal">Large private and government buyers check references and
+        accreditation before they look at price. Publishing them here removes a round of
+        emails from every bid — once the documents below are confirmed and current.</p>
+
+      <div class="two-need">
+        <!-- NEEDED FROM YOU — C -->
+        <aside class="need reveal" aria-label="Material needed from the company: named clients and site photographs">
+          <div class="need-tape" aria-hidden="true"></div>
+          <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment C — References</span></div>
+          <h3>Named clients &amp; site photographs</h3>
+          <p><b>The single highest-value item missing from this page.</b> One named contractor
+            client does more for a bid than any amount of design. Needed: written permission to
+            name each client, and 4&ndash;6 photographs of actual pours. Nothing is published
+            without your sign-off.</p>
+          <div class="g-photos" role="presentation">
+            <div class="g-photo">Photo</div>
+            <div class="g-photo">Photo</div>
+            <div class="g-photo">Photo</div>
+          </div>
+        </aside>
+
+        <!-- NEEDED FROM YOU — D -->
+        <aside class="need reveal" aria-label="Material needed from the company: current accreditation certificates">
+          <div class="need-tape" aria-hidden="true"></div>
+          <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment D — Certificates</span></div>
+          <h3>Current accreditation certificates</h3>
+          <p><b>Current copies only.</b> A lapsed certificate on a public website is worse than
+            none, so nothing appears in this section until the office sends documents that are
+            valid today.</p>
+          <ul class="g-check">
+            <li>PCAB licence — current validity</li>
+            <li>SEC certificate of registration</li>
+            <li>BIR registration</li>
+            <li>Mayor's / business permit</li>
+            <li>ISO or DPWH accreditation, if any</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripes" aria-hidden="true"></div>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">04</span>
+        <div>
+          <p class="lbl">Request a quote</p>
+          <h2>Class, volume, location, date</h2>
+        </div>
+      </div>
+      <p class="sec-lead reveal">Send those four things and you get back a price and a delivery
+        window. Phone is fastest for a pour already on the calendar.</p>
+
+      <div class="c-grid">
+        <div class="c-card reveal">
+          <p class="k">Phone</p>
+          <a class="big" href="tel:+639977703807">0997 770 3807</a>
+        </div>
+        <div class="c-card reveal">
+          <p class="k">Email</p>
+          <a class="em" href="mailto:powermegamixbatchinginc@gmail.com?subject=Quotation%20request%20%E2%80%94%20ready-mix%20concrete">powermegamixbatchinginc@gmail.com</a>
+        </div>
+        <div class="c-card reveal">
+          <p class="k">Plant 01 — Main plant</p>
+          <address><b>Kawit, Cavite</b>Centennial Road, Brgy. Marulas,<br>Kawit, Cavite</address>
+          <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Centennial+Road+Barangay+Marulas+Kawit+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+        </div>
+        <div class="c-card reveal">
+          <p class="k">Plant 02 — Second plant</p>
+          <address><b>Antero Soriano Hwy</b>Tramo&ndash;Bantayan<br>Antero Soriano Highway</address>
+          <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Antero+Soriano+Highway+Tramo+Bantayan+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+        </div>
+      </div>
+      <p class="c-hours reveal">Serving contractors across Cavite and Metro Manila.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Power Megamix Batching Inc.</b> &middot; Centennial Road, Brgy. Marulas, Kawit, Cavite &middot; 0997 770 3807</p>
+    <p>This page is an unsolicited design concept by Veracod. It is not the company's official
+      website, and no content here has been approved or supplied by Power Megamix Batching Inc.
+      <a href="https://veracod.com/legal/privacy" target="_blank" rel="noreferrer" style="color:inherit">Privacy</a></p>
+  </div>
+</footer>
+
+<!-- mobile sticky call bar -->
+<div class="callbar">
+  <a class="cb-tel" href="tel:+639977703807">Call now</a>
+  <a class="cb-mail" href="mailto:powermegamixbatchinginc@gmail.com?subject=Quotation%20request%20%E2%80%94%20ready-mix%20concrete">Email a quote</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !window.ScrollTrigger){
+    root.classList.remove('js');           /* CSS shows everything as-is */
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+  var mark = function(){ window.__pmxAnim = true; };
+
+  /* Hero intro — plays on load. GSAP only moves elements TO visible;
+     hidden state lives in CSS (.js .rise), and no clearProps anywhere. */
+  gsap.to('.rise', {
+    opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.11, delay:.1, onStart:mark
+  });
+
+  /* Everything below the fold reveals as it enters. */
+  ScrollTrigger.batch('.reveal', {
+    start:'top 92%',
+    once:true,
+    onEnter:function(els){
+      gsap.to(els, {opacity:1, y:0, duration:.8, ease:'power3.out', stagger:.09, overwrite:true, onStart:mark});
+    }
+  });
+
+  /* Subtle drift on the plant figures while the section scrolls. */
+  gsap.fromTo('.figstack .fig img',
+    {yPercent:-4, scale:1.1}, {yPercent:4, scale:1.1, ease:'none',
+      scrollTrigger:{trigger:'.figstack', start:'top bottom', end:'bottom top', scrub:true}});
+
+  ScrollTrigger.refresh();
+})();
+</script>
+<script>(function(){try{
+var EP="https://p.veracod.com/e",S="powermegamix",K="demo";
+var hn=location.hostname;
+if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
+if(navigator.webdriver)return;
+var L=window.localStorage;
+if(location.search.indexOf("me=1")>=0){try{L.setItem("_vme","1")}catch(e){}}
+var me=L.getItem("_vme")==="1"?"1":"";
+var vid=L.getItem("_vv");
+if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
+var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
+var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
+var sid=Math.random().toString(36).slice(2,10),t0=Date.now(),dp=0,cl=[],ref=(document.referrer||"").slice(0,120);
+function dep(){var sc=document.documentElement.scrollHeight-innerHeight;var p=sc>40?Math.round(scrollY/sc*100):100;if(p>dp)dp=Math.min(100,p)}
+addEventListener("scroll",dep,{passive:true});dep();
+function tag(a){var h=a.getAttribute("href")||"";
+ if(h.indexOf("tel:")===0)return"call";
+ if(h.indexOf("mailto:")===0)return"mail";
+ if(h.indexOf("checklist.html")>=0)return"list";
+ if(h.indexOf("/legal/")>=0)return"privacy";
+ if(h.indexOf("veracod.com")>=0)return"veracod";
+ if(h.indexOf("/maps")>=0)return"map";
+ if(h==="#book")return"book";
+ if(h==="#menu")return"menu";
+ if(h.indexOf("http")===0)return"out";
+ return""}
+addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;
+ var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
+function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n
+ +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)+(me?"&me=1":"")}
+var lastAt=0;
+function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();
+ var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
+setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
+addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});
+addEventListener("pagehide",send);
+}catch(e){}})();</script>
+</body>
+</html>
