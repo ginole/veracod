@@ -161,12 +161,12 @@ html[data-lang="zh"] .readout .num{letter-spacing:0}
 html[data-lang="zh"] p{line-height:1.85}
 
 /* language switch */
-.langsw{display:flex;border:1px solid var(--line);flex:none;margin-left:auto;margin-right:10px}
+.langsw{display:flex;border:1px solid var(--line);flex:none;margin-left:auto}
 .langsw button{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;background:#fff;color:var(--mute);border:0;padding:7px 11px;cursor:pointer;transition:background .18s,color .18s}
 .langsw button+button{border-left:1px solid var(--line)}
 .langsw button[aria-pressed="true"]{background:var(--blue);color:#fff}
 @media(min-width:960px){.langsw{margin-left:0}}
-@media(max-width:400px){.langsw button{padding:6px 8px;font-size:11px}}
+@media(max-width:700px){.langsw button{padding:6px 9px;font-size:11px}}
 
 
 /* ============================================================
@@ -210,6 +210,10 @@ html[data-lang="zh"] p{line-height:1.85}
 /* a promo film drops into the same stack as the stills */
 .hero-bg .shot video{width:100%;height:100%;object-fit:cover;display:block}
 
+/* counters: tabular figures so the width does not jitter while rolling */
+.tally{font-style:normal;font-variant-numeric:tabular-nums}
+.readout .num{font-variant-numeric:tabular-nums}
+
 /* ---------- demo notice ---------- */
 .demo-bar{background:var(--navy);color:#c6d4ec;font-size:11px;line-height:1.5;letter-spacing:.06em;text-align:center;padding:8px 16px}
 .demo-bar b{color:#fff;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
@@ -228,7 +232,16 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:12px;max-w
 .cta{font-family:var(--cond);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:10px 18px;white-space:nowrap;transition:background .2s}
 .cta:hover{background:#a81826}
 @media(min-width:960px){.navlinks{display:flex}}
-@media(max-width:520px){.brand-name b{font-size:17px}.brand-name i{letter-spacing:.2em}.brand svg{width:32px;height:32px}.cta{font-size:14px;padding:9px 13px}}
+/* the brand must be allowed to shrink, or a nowrap wordmark pushes the row wider
+   than the viewport and drags the whole page sideways */
+.brand-name{min-width:0;overflow:hidden}
+.brand-name b{overflow:hidden;text-overflow:ellipsis}
+@media(max-width:700px){
+  /* the sticky bar at the bottom already offers this — two of them crowd the row */
+  .cta{display:none}
+}
+@media(max-width:520px){.brand-name b{font-size:17px}.brand-name i{letter-spacing:.2em}.brand svg{width:32px;height:32px}}
+@media(max-width:360px){.brand-name b{font-size:15px}.brand-name i{display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
@@ -463,8 +476,8 @@ footer b{color:#c8d4ea;font-weight:600}
   <!-- ================= DATA BAND ================= -->
   <div class="band">
     <div class="inner">
-      <div class="fact"><b>Since 2017</b><span>SEC-registered</span></div>
-      <div class="fact"><b>2 Plants</b><span>Kawit &middot; Antero Soriano Hwy</span></div>
+      <div class="fact"><b><i class="tally" data-count="9">9</i> Years</b><span>Batching since 2017</span></div>
+      <div class="fact"><b><i class="tally" data-count="2">2</i> Plants</b><span>Kawit &middot; Antero Soriano Hwy</span></div>
       <div class="fact"><b>Cavite + NCR</b><span>Delivery coverage</span></div>
       <div class="fact"><b>Mix + Pump</b><span>Supply and placement</span></div>
     </div>
@@ -735,7 +748,7 @@ footer b{color:#c8d4ea;font-weight:600}
 
           <div class="readout" aria-live="polite">
             <div class="top">
-              <p class="num" id="volOut">9.5<i>m&sup3;</i></p>
+              <p class="num" id="volOut" data-v="0">0.00<i>m&sup3;</i></p>
               <p class="cap">Order volume<br>incl. 5% allowance</p>
             </div>
             <div class="rows">
@@ -859,7 +872,7 @@ footer b{color:#c8d4ea;font-weight:600}
    there is only ever one copy of each sentence to maintain.
    ============================================================ */
 (function(){
-  var ZH = {"Services": "服务项目", "Plants": "搅拌站", "Track record": "业绩与资质", "Get a quote": "在线询价", "Contact": "联系方式", "Request a quote": "索取报价", "Batching Inc.": "搅拌有限公司", "Concept page": "概念演示页", "— an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.": "— 由 Veracod 独立制作的设计演示。与 Power Megamix Batching Inc. 无隶属关系，非其委托制作，也不是其官方网站。", "Kawit, Cavite — Est. 2017": "甲米地省卡威特 — 2017 年成立", "Ready-mix concrete,": "预拌混凝土", "delivered": "准时", "on schedule.": "到场浇筑", "Batching and pumping from two plants on Cavite's main corridors. A pour that waits is a pour that fails — we quote the delivery window with the price.": "两座搅拌站坐落于甲米地主干道沿线，供应与泵送一体。等待中的浇筑就是失败的浇筑——我们报价时一并给出到场时间窗。", "Call 0997 770 3807": "致电 0997 770 3807", "Size a pour & request a price": "估算方量并索取报价", "SEC-registered corporation": "SEC 注册法人企业", "Ready-mix supply": "预拌混凝土供应", "Line & boom pumping": "地泵与泵车泵送", "Cavite & Metro Manila": "甲米地及大马尼拉地区", "Since 2017": "2017 年至今", "SEC-registered": "SEC 注册", "2 Plants": "两座搅拌站", "Kawit · Antero Soriano Hwy": "卡威特 · 安特罗索里亚诺公路", "Cavite + NCR": "甲米地 + 首都区", "Delivery coverage": "配送覆盖范围", "Mix + Pump": "供应 + 泵送", "Supply and placement": "供料与浇筑一体", "Supply and placement,": "供料与浇筑，", "one supplier": "同一家承担", "The mix and the pump from the same yard — nobody stands on site waiting for a second contractor's truck to arrive.": "混凝土和泵车出自同一个场站——现场不必再等第二家分包的车。", "Concrete batched to the class and slump your engineer specifies, delivered by transit mixer and sequenced to your pour schedule.": "按贵方工程师指定的强度等级与坍落度拌制，由罐车运送，并按浇筑计划排班到场。", "Batched to specification": "按规范配比拌制", "Timed transit-mixer delivery": "罐车定时到场", "Scheduled multi-truck pours": "多车连续浇筑排班", "Line pump": "地泵", "Horizontal reach for placements the chute cannot touch — tight urban sites, rear lots, work behind an existing structure.": "用于溜槽够不到的水平输送——市区狭窄场地、后院地块、既有建筑背后的作业面。", "Confined and rear-lot access": "狭窄及后院场地进场", "Long horizontal runs": "长距离水平输送", "Ground-level placements": "地面标高浇筑", "Boom pump": "泵车", "Vertical reach for structural work — elevated decks, columns and suspended slabs placed directly from the truck.": "用于结构工程的垂直输送——高位楼面、柱体与悬空楼板，直接由泵车布料。", "Elevated decks and slabs": "高位楼面与楼板", "Columns and shear walls": "柱体与剪力墙", "Direct-from-truck placement": "泵车直接布料", "Needed from you": "需贵司提供", "Attachment A — Spec table": "附件 A — 规格表", "Concrete classes & design strengths": "混凝土强度等级与设计强度", "An estimator looks for this before anything else on the page. Send the classes you batch — the psi designations exactly as they appear on your quotations — and they are typeset here as the table below.": "预算员打开网页第一个找的就是这张表。请提供贵司可拌制的强度等级——按报价单上的 psi 标注原样提供——我们排成下方表格。", "Class": "强度等级", "Design strength": "设计强度", "Typical application": "典型适用部位", "Batching plants": "搅拌站", "Sited on the roads": "就建在", "you build on": "你要施工的路上", "Fresh concrete has a working life measured in minutes, so the distance from plant to pour is not a detail — it is the business. Both plants sit on Cavite's main corridors, within reach of Metro Manila.": "新拌混凝土的可工作时间以分钟计，所以从搅拌站到浇筑点的距离不是细节，而是这门生意本身。两座站均位于甲米地主干道沿线，可辐射大马尼拉。", "Facility": "设施", "Location": "位置", "Plant 01": "1 号站", "Main plant": "主站", "Centennial Road, Brgy. Marulas,": "百年路，马鲁拉斯村，", "Kawit, Cavite": "甲米地省卡威特", "Open in Google Maps →": "在谷歌地图中打开 →", "Plant 02": "2 号站", "Second plant": "第二站", "Antero Soriano Highway": "安特罗索里亚诺公路", "Two plants means a fallback: if a line goes down or a corridor jams on the day of your pour, the schedule holds.": "两座站意味着有后备：浇筑当天若某条生产线停机或某条干道拥堵，工期依然守得住。", "Plant 01 — Kawit, Cavite": "1 号站 — 甲米地省卡威特", "Cement silos": "水泥筒仓", "Attachment B — Capacity sheet": "附件 B — 产能表", "Plant capacity & fleet count": "站产能与车辆数量", "Transit mixers": "罐车数量", "Track record & compliance": "业绩与合规", "The pages procurement": "采购部门", "reads first": "最先翻的几页", "Large private and government buyers check references and accreditation before they look at price. Publishing them here removes a round of emails from every bid — once the documents below are confirmed and current.": "大型民营与政府采购方在看价格之前先查业绩和资质。把它们公开在这里，等于每次投标少来回一轮邮件——前提是下列文件经核实且在有效期内。", "Attachment C — References": "附件 C — 业绩证明", "Named clients & site photographs": "具名客户与施工现场照片", "The single highest-value item missing from this page.": "本页目前最有价值的缺项。", "Attachment D — Certificates": "附件 D — 资质证书", "Current accreditation certificates": "现行有效资质证书", "Current copies only.": "仅限现行有效件。", "A lapsed certificate on a public website is worse than none, so nothing appears in this section until the office sends documents that are valid today.": "在公开网站上挂一张过期证书，比不挂更糟。因此在办公室提供当前有效的文件之前，本栏保持空白。", "PCAB licence — current validity": "PCAB 承包商执照 — 现行有效期", "SEC certificate of registration": "SEC 注册证书", "BIR registration": "BIR 税务登记", "Mayor's / business permit": "市长许可 / 营业执照", "ISO or DPWH accreditation, if any": "ISO 或 DPWH 认证（如有）", "Estimate & request": "估算与询价", "Work out the volume,": "先算出方量，", "then send it over": "再发给我们", "Contractors order in cubic metres, but plans are drawn in millimetres. Size the pour here, then send the number to the plant with the class and the date — no other ready-mix supplier in Cavite lets you do this online.": "承包商按立方米下单，图纸却按毫米绘制。在这里算出方量，连同强度等级和浇筑日期一并发给搅拌站——甲米地没有第二家预拌混凝土供应商能在线上做到这一步。", "Concrete volume calculator": "混凝土方量计算器", "Enter the pour dimensions. Results update as you type.": "输入浇筑部位尺寸，结果即时更新。", "Slab": "楼板 / 地坪", "Footing": "基础", "Column": "柱", "Length (m)": "长（米）", "Width (m)": "宽（米）", "Thickness (mm)": "厚度（毫米）", "Depth (mm)": "深度（毫米）", "Height (m)": "高（米）", "Width (mm)": "宽（毫米）", "Depth (mm) ": "深（毫米）", "How many?": "数量", "How many slabs?": "几块板？", "How many footings?": "几个基础？", "How many columns?": "几根柱？", "Order volume": "建议订购方量", "incl. 5% allowance": "含 5% 损耗", "Neat volume from dimensions": "按尺寸计算的净方量", "Waste / spillage allowance (5%)": "损耗 / 洒落余量（5%）", "Transit-mixer loads, approx.": "约需罐车车次", "Estimate only. Loads are figured on a standard 6 m³ transit mixer; formwork deflection, sub-base and pump line losses are not included. The plant confirms the final figure against your drawings.": "仅为估算。车次按标准 6 立方米罐车折算；模板变形、垫层及泵管残留未计入。最终方量以搅拌站核对图纸后确认为准。", "Use this volume in the request ↓": "把这个方量填入询价单 ↓", "Request a quotation": "索取报价单", "Four things decide the price: class, volume, location, date.": "四项决定价格：强度等级、方量、地点、日期。", "Concrete class or strength": "强度等级或设计强度", "Volume (m³)": "方量（立方米）", "Pour date": "浇筑日期", "Placement": "浇筑方式", "Chute / direct discharge": "溜槽 / 直接卸料", "Not sure — please advise": "不确定 — 请贵司建议", "Site location": "工地位置", "Your name": "您的姓名", "Company": "公司名称", "Mobile or email": "手机或邮箱", "Anything else we should know?": "还有什么需要我们知道的？", "Send request": "发送询价", "We reply with a price and a delivery window. Nothing is charged here — the plant confirms the schedule before anything is booked.": "我们会回复价格和到场时间窗。此处不产生任何费用——搅拌站确认排期后才算下单。", "Plants, phone,": "场站、电话，", "and the yard gate": "以及场区大门", "Phone is fastest for a pour already on the calendar. Anything that needs a written price goes through the request form above — same desk, same day.": "已排进日程的浇筑，打电话最快。需要书面报价的，走上方询价表——同一个人受理，当天回复。", "Phone": "电话", "Email": "邮箱", "Plant 01 — Main plant": "1 号站 — 主站", "Plant 02 — Second plant": "2 号站 — 第二站", "Antero Soriano Hwy": "安特罗索里亚诺公路", "Serving contractors across Cavite and Metro Manila.": "服务甲米地及大马尼拉地区的承包商。", "Privacy": "隐私政策", "Call now": "立即致电", "This page is an unsolicited design concept by Veracod. It is not the company's official website, and no content here has been approved or supplied by Power Megamix Batching Inc.": "本页为 Veracod 主动制作的设计概念稿，并非该公司官方网站；页面上的内容未经 Power Megamix Batching Inc. 审核或提供。", "Three numbers decide whether a contractor believes you can carry their pour schedule. The largest supplier in the region publishes all of theirs on the homepage. Leaving yours blank is the one thing here that quietly costs you bids.": "这三个数字决定承包商信不信贵司扛得住他的浇筑计划。区域内最大的同行把自己的数据全放在首页。这一栏空着，是本页唯一会默默丢标的地方。", "Rated output": "额定产能", "Line and boom pumps": "地泵与泵车", "Drawn as the finished band, with the figures missing. This is the screen the competition leads with, because it is the first thing an estimator checks.": "这就是成品的样子，只差数字。同行把这一屏放在最前面，因为预算员先看的就是它。", "The largest supplier in the region names Kajima, Shimizu and Taisei on its homepage. One international contractor named here outweighs any amount of design. Needed: written permission to name each client, and 4–6 photographs of actual pours. Nothing is published without your sign-off.": "区域内最大的同行在首页上直接写出鹿岛、清水、大成这些总包的名字。在这里写出一家国际总包，胜过任何设计。需要：每家客户的具名书面许可，以及 4–6 张真实浇筑照片。未经贵司签字确认，一律不上线。", "Site photograph": "施工现场照片", "Ongoing or finished": "在建 或 已竣工", "City, province": "市 / 省", "Client mark": "客户标志", "Each card carries a status, not only a completion date — work in progress tells a buyer the plant is running right now. Send per project: name, main contractor, location, status, one photograph.": "每张卡片带一个状态，而不只是竣工日期——“在建中”告诉采购方这个站现在就在跑。每个项目请提供：项目名、总包单位、地点、状态、一张照片。", "Contractor licence": "承包商执照", "Registration": "注册证书", "Accreditation, if held": "认证（如有）", "Certification, if held": "认证（如有）", "The competition puts its membership marks in the masthead, where every visitor sees them. These rings fill in the day current certificates arrive.": "同行把认证标志放在页顶，每个访客都看得到。收到现行有效证书当天，这几个圆就能填上。"};
+  var ZH = {"Services": "服务项目", "Plants": "座搅拌站", "Track record": "业绩与资质", "Get a quote": "在线询价", "Contact": "联系方式", "Request a quote": "索取报价", "Batching Inc.": "搅拌有限公司", "Concept page": "概念演示页", "— an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.": "— 由 Veracod 独立制作的设计演示。与 Power Megamix Batching Inc. 无隶属关系，非其委托制作，也不是其官方网站。", "Kawit, Cavite — Est. 2017": "甲米地省卡威特 — 2017 年成立", "Ready-mix concrete,": "预拌混凝土", "delivered": "准时", "on schedule.": "到场浇筑", "Batching and pumping from two plants on Cavite's main corridors. A pour that waits is a pour that fails — we quote the delivery window with the price.": "两座搅拌站坐落于甲米地主干道沿线，供应与泵送一体。等待中的浇筑就是失败的浇筑——我们报价时一并给出到场时间窗。", "Call 0997 770 3807": "致电 0997 770 3807", "Size a pour & request a price": "估算方量并索取报价", "SEC-registered corporation": "SEC 注册法人企业", "Ready-mix supply": "预拌混凝土供应", "Line & boom pumping": "地泵与泵车泵送", "Cavite & Metro Manila": "甲米地及大马尼拉地区", "Kawit · Antero Soriano Hwy": "卡威特 · 安特罗索里亚诺公路", "Cavite + NCR": "甲米地 + 首都区", "Delivery coverage": "配送覆盖范围", "Mix + Pump": "供应 + 泵送", "Supply and placement": "供料与浇筑一体", "Supply and placement,": "供料与浇筑，", "one supplier": "同一家承担", "The mix and the pump from the same yard — nobody stands on site waiting for a second contractor's truck to arrive.": "混凝土和泵车出自同一个场站——现场不必再等第二家分包的车。", "Concrete batched to the class and slump your engineer specifies, delivered by transit mixer and sequenced to your pour schedule.": "按贵方工程师指定的强度等级与坍落度拌制，由罐车运送，并按浇筑计划排班到场。", "Batched to specification": "按规范配比拌制", "Timed transit-mixer delivery": "罐车定时到场", "Scheduled multi-truck pours": "多车连续浇筑排班", "Line pump": "地泵", "Horizontal reach for placements the chute cannot touch — tight urban sites, rear lots, work behind an existing structure.": "用于溜槽够不到的水平输送——市区狭窄场地、后院地块、既有建筑背后的作业面。", "Confined and rear-lot access": "狭窄及后院场地进场", "Long horizontal runs": "长距离水平输送", "Ground-level placements": "地面标高浇筑", "Boom pump": "泵车", "Vertical reach for structural work — elevated decks, columns and suspended slabs placed directly from the truck.": "用于结构工程的垂直输送——高位楼面、柱体与悬空楼板，直接由泵车布料。", "Elevated decks and slabs": "高位楼面与楼板", "Columns and shear walls": "柱体与剪力墙", "Direct-from-truck placement": "泵车直接布料", "Needed from you": "需贵司提供", "Attachment A — Spec table": "附件 A — 规格表", "Concrete classes & design strengths": "混凝土强度等级与设计强度", "An estimator looks for this before anything else on the page. Send the classes you batch — the psi designations exactly as they appear on your quotations — and they are typeset here as the table below.": "预算员打开网页第一个找的就是这张表。请提供贵司可拌制的强度等级——按报价单上的 psi 标注原样提供——我们排成下方表格。", "Class": "强度等级", "Design strength": "设计强度", "Typical application": "典型适用部位", "Batching plants": "搅拌站", "Sited on the roads": "就建在", "you build on": "你要施工的路上", "Fresh concrete has a working life measured in minutes, so the distance from plant to pour is not a detail — it is the business. Both plants sit on Cavite's main corridors, within reach of Metro Manila.": "新拌混凝土的可工作时间以分钟计，所以从搅拌站到浇筑点的距离不是细节，而是这门生意本身。两座站均位于甲米地主干道沿线，可辐射大马尼拉。", "Facility": "设施", "Location": "位置", "Plant 01": "1 号站", "Main plant": "主站", "Centennial Road, Brgy. Marulas,": "百年路，马鲁拉斯村，", "Kawit, Cavite": "甲米地省卡威特", "Open in Google Maps →": "在谷歌地图中打开 →", "Plant 02": "2 号站", "Second plant": "第二站", "Antero Soriano Highway": "安特罗索里亚诺公路", "Two plants means a fallback: if a line goes down or a corridor jams on the day of your pour, the schedule holds.": "两座站意味着有后备：浇筑当天若某条生产线停机或某条干道拥堵，工期依然守得住。", "Plant 01 — Kawit, Cavite": "1 号站 — 甲米地省卡威特", "Cement silos": "水泥筒仓", "Attachment B — Capacity sheet": "附件 B — 产能表", "Plant capacity & fleet count": "站产能与车辆数量", "Transit mixers": "罐车数量", "Track record & compliance": "业绩与合规", "The pages procurement": "采购部门", "reads first": "最先翻的几页", "Large private and government buyers check references and accreditation before they look at price. Publishing them here removes a round of emails from every bid — once the documents below are confirmed and current.": "大型民营与政府采购方在看价格之前先查业绩和资质。把它们公开在这里，等于每次投标少来回一轮邮件——前提是下列文件经核实且在有效期内。", "Attachment C — References": "附件 C — 业绩证明", "Named clients & site photographs": "具名客户与施工现场照片", "The single highest-value item missing from this page.": "本页目前最有价值的缺项。", "Attachment D — Certificates": "附件 D — 资质证书", "Current accreditation certificates": "现行有效资质证书", "Current copies only.": "仅限现行有效件。", "A lapsed certificate on a public website is worse than none, so nothing appears in this section until the office sends documents that are valid today.": "在公开网站上挂一张过期证书，比不挂更糟。因此在办公室提供当前有效的文件之前，本栏保持空白。", "PCAB licence — current validity": "PCAB 承包商执照 — 现行有效期", "SEC certificate of registration": "SEC 注册证书", "BIR registration": "BIR 税务登记", "Mayor's / business permit": "市长许可 / 营业执照", "ISO or DPWH accreditation, if any": "ISO 或 DPWH 认证（如有）", "Estimate & request": "估算与询价", "Work out the volume,": "先算出方量，", "then send it over": "再发给我们", "Contractors order in cubic metres, but plans are drawn in millimetres. Size the pour here, then send the number to the plant with the class and the date — no other ready-mix supplier in Cavite lets you do this online.": "承包商按立方米下单，图纸却按毫米绘制。在这里算出方量，连同强度等级和浇筑日期一并发给搅拌站——甲米地没有第二家预拌混凝土供应商能在线上做到这一步。", "Concrete volume calculator": "混凝土方量计算器", "Enter the pour dimensions. Results update as you type.": "输入浇筑部位尺寸，结果即时更新。", "Slab": "楼板 / 地坪", "Footing": "基础", "Column": "柱", "Length (m)": "长（米）", "Width (m)": "宽（米）", "Thickness (mm)": "厚度（毫米）", "Depth (mm)": "深度（毫米）", "Height (m)": "高（米）", "Width (mm)": "宽（毫米）", "Depth (mm) ": "深（毫米）", "How many?": "数量", "How many slabs?": "几块板？", "How many footings?": "几个基础？", "How many columns?": "几根柱？", "Order volume": "建议订购方量", "incl. 5% allowance": "含 5% 损耗", "Neat volume from dimensions": "按尺寸计算的净方量", "Waste / spillage allowance (5%)": "损耗 / 洒落余量（5%）", "Transit-mixer loads, approx.": "约需罐车车次", "Estimate only. Loads are figured on a standard 6 m³ transit mixer; formwork deflection, sub-base and pump line losses are not included. The plant confirms the final figure against your drawings.": "仅为估算。车次按标准 6 立方米罐车折算；模板变形、垫层及泵管残留未计入。最终方量以搅拌站核对图纸后确认为准。", "Use this volume in the request ↓": "把这个方量填入询价单 ↓", "Request a quotation": "索取报价单", "Four things decide the price: class, volume, location, date.": "四项决定价格：强度等级、方量、地点、日期。", "Concrete class or strength": "强度等级或设计强度", "Volume (m³)": "方量（立方米）", "Pour date": "浇筑日期", "Placement": "浇筑方式", "Chute / direct discharge": "溜槽 / 直接卸料", "Not sure — please advise": "不确定 — 请贵司建议", "Site location": "工地位置", "Your name": "您的姓名", "Company": "公司名称", "Mobile or email": "手机或邮箱", "Anything else we should know?": "还有什么需要我们知道的？", "Send request": "发送询价", "We reply with a price and a delivery window. Nothing is charged here — the plant confirms the schedule before anything is booked.": "我们会回复价格和到场时间窗。此处不产生任何费用——搅拌站确认排期后才算下单。", "Plants, phone,": "场站、电话，", "and the yard gate": "以及场区大门", "Phone is fastest for a pour already on the calendar. Anything that needs a written price goes through the request form above — same desk, same day.": "已排进日程的浇筑，打电话最快。需要书面报价的，走上方询价表——同一个人受理，当天回复。", "Phone": "电话", "Email": "邮箱", "Plant 01 — Main plant": "1 号站 — 主站", "Plant 02 — Second plant": "2 号站 — 第二站", "Antero Soriano Hwy": "安特罗索里亚诺公路", "Serving contractors across Cavite and Metro Manila.": "服务甲米地及大马尼拉地区的承包商。", "Privacy": "隐私政策", "Call now": "立即致电", "This page is an unsolicited design concept by Veracod. It is not the company's official website, and no content here has been approved or supplied by Power Megamix Batching Inc.": "本页为 Veracod 主动制作的设计概念稿，并非该公司官方网站；页面上的内容未经 Power Megamix Batching Inc. 审核或提供。", "Three numbers decide whether a contractor believes you can carry their pour schedule. The largest supplier in the region publishes all of theirs on the homepage. Leaving yours blank is the one thing here that quietly costs you bids.": "这三个数字决定承包商信不信贵司扛得住他的浇筑计划。区域内最大的同行把自己的数据全放在首页。这一栏空着，是本页唯一会默默丢标的地方。", "Rated output": "额定产能", "Line and boom pumps": "地泵与泵车", "Drawn as the finished band, with the figures missing. This is the screen the competition leads with, because it is the first thing an estimator checks.": "这就是成品的样子，只差数字。同行把这一屏放在最前面，因为预算员先看的就是它。", "The largest supplier in the region names Kajima, Shimizu and Taisei on its homepage. One international contractor named here outweighs any amount of design. Needed: written permission to name each client, and 4–6 photographs of actual pours. Nothing is published without your sign-off.": "区域内最大的同行在首页上直接写出鹿岛、清水、大成这些总包的名字。在这里写出一家国际总包，胜过任何设计。需要：每家客户的具名书面许可，以及 4–6 张真实浇筑照片。未经贵司签字确认，一律不上线。", "Site photograph": "施工现场照片", "Ongoing or finished": "在建 或 已竣工", "City, province": "市 / 省", "Client mark": "客户标志", "Each card carries a status, not only a completion date — work in progress tells a buyer the plant is running right now. Send per project: name, main contractor, location, status, one photograph.": "每张卡片带一个状态，而不只是竣工日期——“在建中”告诉采购方这个站现在就在跑。每个项目请提供：项目名、总包单位、地点、状态、一张照片。", "Contractor licence": "承包商执照", "Registration": "注册证书", "Accreditation, if held": "认证（如有）", "Certification, if held": "认证（如有）", "The competition puts its membership marks in the masthead, where every visitor sees them. These rings fill in the day current certificates arrive.": "同行把认证标志放在页顶，每个访客都看得到。收到现行有效证书当天，这几个圆就能填上。", "Years": "年", "Batching since 2017": "2017 年开始拌制"};
   var PH = {"e.g. 3,000 psi / Class A / 21 MPa": "例如 C25 / 3,000 psi / 21 MPa", "Barangay, city / province": "村 / 市 / 省", "09xx xxx xxxx": "09xx xxx xxxx", "Access restrictions, pour window, staged deliveries…": "进场限制、浇筑时间窗、分批供料……"};
   var EN = {};
   Object.keys(ZH).forEach(function(k){ EN[ZH[k]] = k; });
@@ -1061,6 +1074,44 @@ footer b{color:#c8d4ea;font-weight:600}
         scrollTrigger:{trigger:'.figstack', start:'top bottom', end:'bottom top', scrub:true}});
   });
 
+  /* Count-up. Industrial buyers read these as capacity figures, so they are
+     worth animating — unlike, say, a founding year on a restaurant page. */
+  function rollTo(el, to, dur){
+    var obj = {v:0};
+    gsap.to(obj, {v:to, duration:dur, ease:'power2.out', overwrite:true,
+      /* The digit is only blanked once the ticker has actually produced a frame.
+         If the tween never runs, the real figure stays in the DOM untouched —
+         a counter stuck on 0 is worse than a counter that never moved. */
+      onStart:function(){ mark(); },
+      onUpdate:function(){ el.textContent = Math.round(obj.v); },
+      onComplete:function(){ el.textContent = to; }});
+  }
+  gsap.utils.toArray('.tally').forEach(function(el){
+    var to = parseFloat(el.getAttribute('data-count')) || 0;
+    ScrollTrigger.create({trigger:el, start:'top 95%', once:true,
+      onEnter:function(){ rollTo(el, to, 1.1); }});
+  });
+  /* let the calculator roll its result instead of snapping */
+  window.__pmxRoll = function(el, to, decimals){
+    var from = parseFloat((el.getAttribute('data-v') || '0')) || 0;
+    el.setAttribute('data-v', to);
+    /* No proven ticker (reduced motion, dead rAF, CDN down) — write the figure
+       straight in. The calculator must always read correctly. */
+    if(!window.__pmxAnim){ el.firstChild.nodeValue = to.toFixed(decimals); return; }
+    var obj = {v:from}, want = to.toFixed(decimals);
+    gsap.to(obj, {v:to, duration:.45, ease:'power2.out', overwrite:true,
+      onUpdate:function(){ el.firstChild.nodeValue = obj.v.toFixed(decimals); },
+      onComplete:function(){ el.firstChild.nodeValue = want; }});
+    /* This figure is the one thing on the page a contractor will act on, so it
+       never waits on an animation: if the roll has not landed shortly after it
+       was due, the value is written in regardless. */
+    setTimeout(function(){
+      if(el.getAttribute('data-v') === String(to) && el.firstChild.nodeValue !== want){
+        el.firstChild.nodeValue = want;
+      }
+    }, 700);
+  };
+
   window.__pmxResplit = function(){
     /* Re-mask the headings after a language switch. No entrance tween here — the
        reader is already looking at them; this only restores the line wrappers so
@@ -1107,7 +1158,12 @@ footer b{color:#c8d4ea;font-weight:600}
     var n = Math.max(1, parseInt(N.value,10)||1);
     var v = a*b*c*n;
     var w = v*WASTE, order = v + w;
-    out.innerHTML = (order<10 ? order.toFixed(2) : order.toFixed(1)) + '<i>m&sup3;</i>';
+    var dp = order < 10 ? 2 : 1;
+    if(window.__pmxRoll && out.firstChild && out.firstChild.nodeType === 3){
+      window.__pmxRoll(out, order, dp);
+    } else {
+      out.innerHTML = order.toFixed(dp) + '<i>m\u00b3</i>';
+    }
     neat.innerHTML  = v.toFixed(2) + ' m&sup3;';
     waste.innerHTML = w.toFixed(2) + ' m&sup3;';
     var t = order>0 ? Math.ceil(order/TRUCK) : 0;
