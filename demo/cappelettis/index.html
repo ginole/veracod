@@ -90,6 +90,10 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .hero-photo .hphoto{position:absolute;inset:0;overflow:hidden}
 .hero-photo .hphoto img{width:100%;height:100%;object-fit:cover}
 .hero-photo .hshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.16) 38%,rgba(0,0,0,.84) 86%)}
+/* 视频铺在海报图之上；⛔ 手机端整个不渲染，连请求都不发（preload=none + display:none） */
+.hero-video .hvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+@media(min-width:768px){.hero-video .hvid{display:block}}
+@media(prefers-reduced-motion:reduce){.hero-video .hvid{display:none}}
 .hero-photo .hcontent{position:relative;padding-bottom:56px;padding-top:120px;width:100%}
 .hero-photo .kick{color:#fff;opacity:.92}
 .hero-photo h1{font-family:var(--display);font-size:clamp(38px,6.6vw,76px);letter-spacing:-.03em;margin-top:18px;text-transform:none;max-width:15ch;text-shadow:0 1px 2px rgba(0,0,0,.9),0 2px 10px rgba(0,0,0,.45)}
@@ -461,7 +465,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <h2 class="oh">Like it? It&rsquo;s yours.</h2>
       <p class="olead">Andres, your homepage still tells people you're closed June 27 to July 8 — two months after you reopened. This page puts your hours, your phone number for reservations and your own photos up top, with the lunch and dinner menus as real text that fits a phone. One payment, and it's yours.</p>
       <div class="ogrid">
-        <div class="oi rv"><b>$500, once.</b><span>$50 deposit, $450 when you approve the finished site. No subscription, no renewal &mdash; first-year hosting included.</span></div>
+        <div class="oi rv"><b>$500, once.</b><span>$50 deposit, $450 when you approve the finished site. No subscription, no renewal — first-year hosting included.</span></div>
         <div class="oi rv"><b>You own it.</b><span>Your domain, registered in your name. Every file is yours to keep.</span></div>
         <div class="oi rv"><b>Nothing changes.</b><span>Whatever already works &mdash; ordering, reservations, gift cards &mdash; stays exactly as it is.</span></div>
         <div class="oi rv"><b>Everything here can change.</b><span>Photos, words, colours, sections, the order of things &mdash; say what, we change it. This page is a starting point, not the final say.</span></div>
@@ -511,14 +515,44 @@ window.addEventListener('load',function(){
   gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
   var hp0=document.querySelector('.hero .hphoto img');
   if(hp0){hp0.style.willChange='transform';
-    gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
-      onComplete:function(){hp0.style.willChange='auto'}});}   /* 跑完就摘掉，别常驻占图层 */
+    var slow=document.querySelector('.hero.hero-zoom')!==null;
+    if(slow){
+      /* 缓慢推镜（条目写 heroZoom 才开）：只动 transform，全程在合成层，
+         不触发重排重绘。来回 yoyo 所以没有跳帧那一下。离屏和切走标签页都停。 */
+      var kb=gsap.fromTo(hp0,{scale:1},{scale:1.14,duration:24,ease:'none',
+        repeat:-1,yoyo:true,onStart:alive});
+      var io2=new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting?kb.play():kb.pause(); });
+      },{threshold:0});
+      io2.observe(document.querySelector('.hero'));
+      document.addEventListener('visibilitychange',function(){
+        document.hidden?kb.pause():kb.play();
+      });
+    } else {
+      gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
+        onComplete:function(){hp0.style.willChange='auto'}});   /* 跑完就摘掉，别常驻占图层 */
+    }
+  }
 
   /* ⛔ 数字不做「从 0 滚上去」的效果（2026-09-03 他看出来了："像科技公司，不像餐厅"）。
      那是 SaaS 官网报用户数的语言；而且遇到 "3–6"、"#12"、门牌号 "7901" 这种值会滚得很荒唐。
      这一排现在只跟着通用的 .rv 淡入上移，像印在菜单上的一行小字。 */
 
   /* the studio note types itself in */
+  /* 首屏视频：进入视口才播，离开就停；标签页切走也停。省电、省流量。 */
+  (function(){
+    var v=document.querySelector('.hero-video .hvid');
+    if(!v) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var play=function(){ v.play().catch(function(){}); };
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting ? play() : v.pause(); });
+      },{threshold:.15}).observe(v);
+    } else { play(); }
+    document.addEventListener('visibilitychange',function(){ document.hidden ? v.pause() : play(); });
+  })();
+
   var oh=document.querySelector('.offer .oh');
   if(oh){try{
     var os=SplitText.create(oh,{type:'chars'});
