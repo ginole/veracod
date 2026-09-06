@@ -376,12 +376,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 <main id="top">
 
 
-  <div class="hero hero-photo hero-video">
-    <div class="hphoto">
-      <img src="img/hero-poster.jpg" alt="Inside LALA Garden Café — cluster of woven globe pendant lights and trailing ivy under the high ceiling, exposed brick columns and full-height windows" fetchpriority="high">
-      <video class="hvid" src="img/hero.mp4" poster="img/hero-poster.jpg"
-             muted loop playsinline preload="none" aria-hidden="true"></video>
-    </div>
+  <div class="hero hero-photo hero-zoom">
+    <div class="hphoto"><img src="./img/hero.webp" alt="LALA Garden Café at night — the two-storey glass and brick building lit from within, sign reading Bakery, Brunch, Coffee" fetchpriority="high" ></div>
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Bakery, brunch and coffee &middot; Angeles City, Pampanga</p>
@@ -516,8 +512,24 @@ window.addEventListener('load',function(){
   gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
   var hp0=document.querySelector('.hero .hphoto img');
   if(hp0){hp0.style.willChange='transform';
-    gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
-      onComplete:function(){hp0.style.willChange='auto'}});}   /* 跑完就摘掉，别常驻占图层 */
+    var slow=document.querySelector('.hero.hero-zoom')!==null;
+    if(slow){
+      /* 缓慢推镜（条目写 heroZoom 才开）：只动 transform，全程在合成层，
+         不触发重排重绘。来回 yoyo 所以没有跳帧那一下。离屏和切走标签页都停。 */
+      var kb=gsap.fromTo(hp0,{scale:1},{scale:1.14,duration:24,ease:'none',
+        repeat:-1,yoyo:true,onStart:alive});
+      var io2=new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting?kb.play():kb.pause(); });
+      },{threshold:0});
+      io2.observe(document.querySelector('.hero'));
+      document.addEventListener('visibilitychange',function(){
+        document.hidden?kb.pause():kb.play();
+      });
+    } else {
+      gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
+        onComplete:function(){hp0.style.willChange='auto'}});   /* 跑完就摘掉，别常驻占图层 */
+    }
+  }
 
   /* ⛔ 数字不做「从 0 滚上去」的效果（2026-09-03 他看出来了："像科技公司，不像餐厅"）。
      那是 SaaS 官网报用户数的语言；而且遇到 "3–6"、"#12"、门牌号 "7901" 这种值会滚得很荒唐。
