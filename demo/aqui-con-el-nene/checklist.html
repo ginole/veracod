@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Twisting Roots — what we need from you</title>
+<title>Aqui Con El Nene — what we need from you</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#f6f7f8;color:#191c1f;font:16px/1.65 Inter,system-ui,sans-serif}
@@ -43,11 +43,11 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
 </style></head><body><div class="w">
 <p class="kick">Veracod &middot; after you say yes</p>
 <h1>What we need from you.</h1>
-<p class="sub">Send the list below and Twisting Roots's site goes live within a week. Phone photos are genuinely fine &mdash; take them near a window, in daylight.</p>
+<p class="sub">Send the list below and Aqui Con El Nene's site goes live within a week. Phone photos are genuinely fine &mdash; take them near a window, in daylight.</p>
 
 <h2>01 &mdash; Photos (a phone is fine)</h2>
 <ul>
-<li><label><input type="checkbox"> <b>Food:</b> 6&ndash;10 plates. Plate fills the frame, daylight, no flash.</label></li>
+<li><label><input type="checkbox"> <b>Food:</b> 6&ndash;10 plates &mdash; ideally the ones on the page: Taco Yaqui, Papancha, Lorenzas, Caramelo, Tacos. Plate fills the frame, daylight, no flash.</label></li>
 <li><label><input type="checkbox"> <b>The room:</b> 2&ndash;3 shots &mdash; one from the front door, one of where people sit.</label></li>
 <li><label><input type="checkbox"> <b>Outside:</b> 1&ndash;2 of the front and your sign.</label></li>
 <li><label><input type="checkbox"> <b>People (optional but powerful):</b> you or your team at work &mdash; the story section is built for it.</label></li>
@@ -57,8 +57,8 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
 
 <h2>02 &mdash; One email confirming the facts</h2>
 <ul>
-<li><label><input type="checkbox"> Hours exactly as they are on your door (we don't have them yet)</label></li><li><label><input type="checkbox"> Phone (904) 860-8218 and address 2021 St Augustine Rd, San Marco, Jacksonville, FL 32207</label></li><li><label><input type="checkbox"> Names and story facts on the page — correct anything we got wrong</label></li>
-
+<li><label><input type="checkbox"> Hours exactly as they are on your door (we currently show: Mon - Wed 9 a.m. - 9 p.m.; Thu - Sat 9 a.m. - 10 p.m.; Sunday Closed)</label></li><li><label><input type="checkbox"> Phone (520) 889-5338 and address 65 W Valencia Rd, Tucson, AZ 85706</label></li><li><label><input type="checkbox"> Names and story facts on the page — correct anything we got wrong</label></li>
+<li><label><input type="checkbox"> The menu shortlist &mdash; keep, swap or reword any of it. Prices only if you want them shown.</label></li>
 </ul>
 
 <h2>03 &mdash; Your domain (registered in YOUR name)</h2>
@@ -106,10 +106,10 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
 <div class="field"><b>Your email (so we can reply)</b><input type="email" id="remail" placeholder="you@example.com"></div>
 <div class="btns"><button id="send">Send my answers</button><button id="copy">Copy my answers instead</button></div>
 <div id="done"></div>
-<p class="small">Veracod &mdash; this checklist accompanies the Twisting Roots concept page. Questions: just reply to the email.</p>
+<p class="small">Veracod &mdash; this checklist accompanies the Aqui Con El Nene concept page. Questions: just reply to the email.</p>
 <script>
 (function(){
-  var KEY='vck-twisting-roots';
+  var KEY='vck-aqui-con-el-nene';
   var boxes=[].slice.call(document.querySelectorAll('li input[type=checkbox]'));
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');
     boxes.forEach(function(b,i){ if(saved.c&&saved.c[i])b.checked=true; });
@@ -127,7 +127,7 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
     e:document.getElementById('remail').value}));}catch(e){}}
   document.addEventListener('change',save);document.addEventListener('input',save);
   function summary(){
-    var lines=["Checklist - Twisting Roots",''];
+    var lines=["Checklist - Aqui Con El Nene",''];
     boxes.forEach(function(b){
       var t=b.parentNode.textContent.replace(/\s+/g,' ').trim();
       lines.push((b.checked?'[x] ':'[ ] ')+t);});
@@ -144,7 +144,7 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
   document.getElementById('send').onclick=function(){
     var btn=this;btn.disabled=true;btn.textContent='Sending...';
     fetch('https://formsubmit.co/ajax/hello@veracod.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({_subject:"Checklist - Twisting Roots",summary:summary(),email:document.getElementById('remail').value,_captcha:'false'})})
+      body:JSON.stringify({_subject:"Checklist - Aqui Con El Nene",summary:summary(),email:document.getElementById('remail').value,_captcha:'false'})})
     .then(function(res){var d=document.getElementById('done');d.style.display='block';
       if(res.ok){d.textContent='Sent - thank you! We will reply within a day.';btn.textContent='Sent';}
       else{throw 0}})
@@ -154,7 +154,7 @@ ul.plain li:before{content:"\2013";position:absolute;left:3px;color:#0a8754}
 })();
 </script>
 <script>(function(){try{
-var EP="https://p.veracod.com/e",S="twisting-roots",K="list";
+var EP="https://p.veracod.com/e",S="aqui-con-el-nene",K="list";
 var hn=location.hostname;
 if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
 if(navigator.webdriver)return;
