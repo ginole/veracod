@@ -304,16 +304,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 @media(min-width:720px){.callbar{display:none}}
 /* On phones the sticky bottom call bar already carries the number, so the nav button is
    redundant — and with it gone the brand name has the whole row and stops wrapping into it. */
-/* Phones: a landscape hero photo cropped to a tall viewport turns into an unreadable wall of
-   texture (his words on the pizza: "至少要缩小到是披萨吧"). So on phones the photo stops being a
-   background and becomes a contained 4:3 band, with the text stacked below it on the brand slab. */
 @media(max-width:719px){
-  .hero-photo{display:block;min-height:0;background:var(--slabBg)}
-  .hero-photo .hphoto{position:relative;inset:auto;width:100%;aspect-ratio:4/3}
-  .hero-photo .hshade{display:none}
-  .hero-photo .hcontent{padding-top:30px;padding-bottom:36px}
-  .hero-photo h1{text-shadow:none;max-width:none}
-  .hero-photo .sub{text-shadow:none}
   nav .btn{display:none}
   nav{padding:10px 18px}
   .brand{min-width:0}
@@ -350,6 +341,31 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 .js .fig figcaption{transform:translateY(110%)}
 .js .hero h1{opacity:0}
 
+/* Phones, 2026-09-09: the hero photo is a background again and the type floats on it, the way
+   it already reads on desktop. It used to be a stacked 4:3 band with the type on the slab below
+   — that came from the pizza close-up that cropped into an unreadable wall of texture ("至少要
+   缩小到是披萨吧"), but hero photos are ambience shots now, and stacking cost the entire first
+   screen: no headline and no call button until you scrolled. Two guards keep the old problem
+   away: the hero is capped at 62svh instead of full height, so a landscape photo still reads as
+   a place rather than a texture; and the scrim is bottom-heavy, so type survives bright water,
+   sky or snow. Per-photo framing: set "mpos" on the hero photo (e.g. "50% 30%") when the
+   default crop cuts the wrong thing. Placed after the classic-layout block on purpose — it has
+   to win over its centered hero rules. */
+@media(max-width:719px){
+  .hero-photo{display:flex;align-items:flex-end;min-height:62vh;min-height:62svh}
+  .hero-photo .hphoto{position:absolute;inset:auto;inset:0;width:auto;aspect-ratio:auto}
+  .hero-photo .hphoto img{object-position:var(--mpos,50% 42%)}
+  .hero-photo .hshade{display:block;background:linear-gradient(to top,rgba(0,0,0,.90) 0,rgba(0,0,0,.72) 34%,rgba(0,0,0,.34) 66%,rgba(0,0,0,.42) 100%)}
+  .hero-photo .hcontent{padding-top:64px;padding-bottom:34px}
+  .hero-photo h1{font-size:clamp(34px,8.6vw,46px);max-width:none;text-shadow:0 1px 2px rgba(0,0,0,.9),0 2px 12px rgba(0,0,0,.5)}
+  .hero-photo .sub{text-shadow:0 1px 2px rgba(0,0,0,.85)}
+  /* 首屏那两个按钮在手机上撤掉 —— 底部固定的电话条已经有 Call / Directions / Menu，
+     重复一遍没意义，而且 360x640 这类小屏上按钮正好压在条下面，看着像坏了（他 09-09 说
+     "有些地方挡住了"）。:has 是保险：万一某家没渲染电话条（只有一个动作时不渲染），
+     按钮就留着，不至于整页没有 CTA。 */
+  body:has(.callbar) .hero-photo .acts{display:none}
+  body:has(.callbar) .hero-photo .sub{margin-bottom:4px}
+}
 
 </style>
 </head>
@@ -378,7 +394,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 
   <div class="hero hero-photo">
-    <div class="hphoto"><img src="./img/dining-room.webp" alt="The dining room at Days on Front, Kingston" fetchpriority="high" ></div>
+    <div class="hphoto" style="--mpos:50% 68%"><img src="./img/dining-room.webp" alt="The dining room at Days on Front, Kingston" fetchpriority="high" ></div>
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Contemporary Canadian &middot; Kingston, Ontario</p>
