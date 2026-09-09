@@ -98,6 +98,9 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .hero-photo .kick{color:#fff;opacity:.92}
 .hero-photo h1{font-family:var(--display);font-size:clamp(38px,6.6vw,76px);letter-spacing:-.03em;margin-top:18px;text-transform:none;max-width:15ch;text-shadow:0 1px 2px rgba(0,0,0,.9),0 2px 10px rgba(0,0,0,.45)}
 .hero-photo .sub{font-size:clamp(16px,1.8vw,19.5px);opacity:.96;max-width:52ch;margin-top:18px;text-shadow:0 1px 2px rgba(0,0,0,.85),0 1px 8px rgba(0,0,0,.5)}
+/* 首屏用的是别人拍的照片（媒体报道图）时，出处必须留在页面上 —— 验收清单里那句
+   "some pictures came from press coverage" 是给老板看的，页面上也得有一行。 */
+.hero-photo .hcrd{margin-top:16px;font-size:11.5px;letter-spacing:.04em;opacity:.72;text-shadow:0 1px 2px rgba(0,0,0,.9)}
 
 /* hero — poster variant */
 .hero-poster{background:var(--slabBg);color:var(--slabInk);padding:86px 0 70px;position:relative;overflow:hidden}
@@ -394,13 +397,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 
   <div class="hero hero-photo">
-    <div class="hphoto" style="--mpos:50% 55%"><img src="./img/sign.webp" alt="The Cape Cod Fish Co. lobster sign on Old McGregor Boulevard" fetchpriority="high" ></div>
+    <div class="hphoto"><img src="./img/harbour.webp" alt="Boats at the dock at sunset — the New England the fish house is named for" fetchpriority="high" ></div>
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Seafood &middot; Fort Myers, Florida</p>
       <h1>Wicked good, since 2013.</h1>
       <p class="sub hr-in">A New England fish house and raw seafood market in one Fort Myers plaza — lobster rolls, chowdahs and a live lobster tank.</p>
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+12393136462">Call (239) 313-6462</a><a class="btn btn-o hr-in" href="https://order.toasttab.com/online/cape-cod-fish-company-fort-myers-15501-old-mcgregor-boulevard" target="_blank" rel="noreferrer">Order online</a></div>
+      
     </div>
   </div>
 <div class="marks"><div class="in rv"><div class="seal"><svg viewBox="0 0 150 150" role="img" aria-label="Established 2013">
@@ -448,7 +452,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="wrap">
       <p class="kick rv">Have a look</p>
       <h2 class="sp">The boards and the boat.</h2>
-      <div class="gal n5"><figure class="fig g rv"><img src="./img/roll.webp" alt="The lobster roll" loading="lazy" ><figcaption>The lobster roll</figcaption></figure><figure class="fig g rv"><img src="./img/melt.webp" alt="Lobster melt" loading="lazy" ><figcaption>Lobster melt</figcaption></figure><figure class="fig g rv"><img src="./img/crab.webp" alt="Snow crab" loading="lazy" ><figcaption>Snow crab</figcaption></figure><figure class="fig g rv"><img src="./img/steamers.webp" alt="Steamers and grilled bread" loading="lazy" ><figcaption>Steamers and grilled bread</figcaption></figure><figure class="fig g rv"><img src="./img/lobster.webp" alt="Fresh lobster meat" loading="lazy" ><figcaption>Fresh lobster meat</figcaption></figure></div>
+      <div class="gal n6"><figure class="fig g rv"><img src="./img/sign.webp" alt="The Cape Cod Fish Co. lobster sign on Old McGregor Boulevard" loading="lazy" ></figure><figure class="fig g rv"><img src="./img/roll.webp" alt="The lobster roll" loading="lazy" ><figcaption>The lobster roll</figcaption></figure><figure class="fig g rv"><img src="./img/melt.webp" alt="Lobster melt" loading="lazy" ><figcaption>Lobster melt</figcaption></figure><figure class="fig g rv"><img src="./img/crab.webp" alt="Snow crab" loading="lazy" ><figcaption>Snow crab</figcaption></figure><figure class="fig g rv"><img src="./img/steamers.webp" alt="Steamers and grilled bread" loading="lazy" ><figcaption>Steamers and grilled bread</figcaption></figure><figure class="fig g rv"><img src="./img/lobster.webp" alt="Fresh lobster meat" loading="lazy" ><figcaption>Fresh lobster meat</figcaption></figure></div>
       <p class="pnote rv">Photos shown are from the restaurant's own website — to be replaced with the owner's final selection.</p>
     </div>
   </section>
