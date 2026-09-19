@@ -378,7 +378,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 <div class="notice">
   Concept page, not this restaurant&rsquo;s official site &mdash; made as a proposal by
        <b>Veracod</b>, not affiliated with Arco Seafood Restaurant. Details are from public listings;
-       <a href="tel:+17137742888">call them</a> to confirm. &mdash; <a href="#offer">owner? see the offer</a>
+       <a href="tel:+17137742888" data-vc="tel">call them</a> to confirm. &mdash; <a href="#offer">owner? see the offer</a>
 </div>
 
 <header>
@@ -388,7 +388,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="navacts">
       <a class="btn btn-o" href="https://www.arcoseafood.com/service" target="_blank" rel="noreferrer">Reservations (parties of 6+)</a>
       
-      <a class="btn btn-a" href="tel:+17137742888">(713) 774-2888</a>
+      <a class="btn btn-a" href="tel:+17137742888" data-vc="tel"><span data-vc="phone">(713) 774-2888</span></a>
     </div>
   </nav>
   <nav class="secnav"><a href="#story">The story</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#find">Find us</a><a href="https://www.arcoseafood.com/service" target="_blank" rel="noreferrer">Reservations (parties of 6+)</a></nav>
@@ -396,6 +396,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 <main id="top">
 
+<div class="own-notice" data-vc="notice" hidden><span data-vc-f="text"></span></div>
 
   <div class="hero hero-photo">
     <div class="hphoto"><img src="./img/dining-room.webp" alt="The dining room at Arco Seafood - a carved ceiling medallion and a crystal chandelier over warm peach walls" fetchpriority="high" ></div>
@@ -404,7 +405,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick hr-in">Cantonese &middot; Houston, TX</p>
       <h1>Dim sum by day. Lobster by night.</h1>
       <p class="sub hr-in">A Cantonese seafood house on Bellaire Boulevard - dim sum at lunch, lobster, Dungeness crab and whole fish at dinner, round tables under a crystal chandelier.</p>
-      <div class="acts"><a class="btn btn-a hr-in" href="tel:+17137742888">Call (713) 774-2888</a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
+      <div class="acts"><a class="btn btn-a hr-in" href="tel:+17137742888" data-vc="tel">Call <span data-vc="phone">(713) 774-2888</span></a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
       
     </div>
   </div>
@@ -428,7 +429,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick rv">From the menu</p>
       <h2 class="sp">Dim sum, and the seafood the place is named for.</h2>
       <p class="lead rv">Dishes from the restaurant's own menu. Prices are set by the menu in the restaurant.</p>
-      <div class="dishes"><div class="dish txt rv"><p class="mrow"><b>Soup Dumplings</b><i class="lead"></i></p><span>From the dim sum menu</span></div><div class="dish txt rv"><p class="mrow"><b>Fried Crab Claws</b><i class="lead"></i></p><span>From the dim sum menu</span></div><div class="dish txt rv"><p class="mrow"><b>Pan Fried Turnip Cake with XO Sauce</b><i class="lead"></i></p><span>From the dim sum menu</span></div><div class="dish txt rv"><p class="mrow"><b>Lobsters with Black Pepper</b><i class="lead"></i></p><span>From the chef's daily specials</span></div><div class="dish txt rv"><p class="mrow"><b>Steamed Dungeness Crab with Rice</b><i class="lead"></i></p><span>From the chef's daily specials</span></div><div class="dish txt rv"><p class="mrow"><b>Salt and Pepper Soft Shell Crabs</b><i class="lead"></i></p><span>From the chef's daily specials</span></div></div>
+      <div class="dishes" data-vc-list="dishes"><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Soup Dumplings</b><i class="lead"></i></p><span data-vc-f="d">From the dim sum menu</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Fried Crab Claws</b><i class="lead"></i></p><span data-vc-f="d">From the dim sum menu</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Pan Fried Turnip Cake with XO Sauce</b><i class="lead"></i></p><span data-vc-f="d">From the dim sum menu</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Lobsters with Black Pepper</b><i class="lead"></i></p><span data-vc-f="d">From the chef's daily specials</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Steamed Dungeness Crab with Rice</b><i class="lead"></i></p><span data-vc-f="d">From the chef's daily specials</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Salt and Pepper Soft Shell Crabs</b><i class="lead"></i></p><span data-vc-f="d">From the chef's daily specials</span></div><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
       
     </div>
   </section>
@@ -452,8 +453,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <div class="fi">
         <div class="rv"><span>Address</span>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Arco%20Seafood%20Restaurant%209896%20Bellaire%20Blvd%2C%20Suite%20K%2C%20Houston%2C%20TX%2077036" target="_blank" rel="noreferrer">9896 Bellaire Blvd, Suite K, Houston, TX 77036</a></div>
-        <div class="rv"><span>Phone</span><a href="tel:+17137742888">(713) 774-2888</a></div>
-        <div class="rv"><span>Email</span><a href="mailto:arcoseafood9896@gmail.com">arcoseafood9896@gmail.com</a></div>
+        <div class="rv"><span>Phone</span><a href="tel:+17137742888" data-vc="phone">(713) 774-2888</a></div>
+        <div class="rv"><span>Email</span><a href="mailto:arcoseafood9896@gmail.com" data-vc="email">arcoseafood9896@gmail.com</a></div>
         
         
         <div class="rv"><span>Reservations</span><a href="https://www.arcoseafood.com/service" target="_blank" rel="noreferrer">Reservations (parties of 6+) &rarr;</a></div>
@@ -476,6 +477,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
         <div class="oi rv"><b>Nothing changes.</b><span>Whatever already works &mdash; ordering, reservations, gift cards &mdash; stays exactly as it is.</span></div>
         <div class="oi rv"><b>Everything here can change.</b><span>Photos, words, colours, sections, the order of things &mdash; say what, we change it. This page is a starting point, not the final say.</span></div>
         <div class="oi rv"><b>Live in a week.</b><span>You send corrections once &mdash; hours, menu, photos &mdash; and it goes live.</span></div>
+        
+        <div class="oi rv"><b>You change the prices yourself.</b><span>Dishes, prices, hours, a holiday notice &mdash; you edit them from your phone and the site updates in a minute. No monthly fee, no waiting on us.</span></div>
       </div>
       <p class="oguar rv">$50 starts the work. The other $450 is due only when you&rsquo;ve seen the finished site and approve it &mdash; it goes live on your domain the same day.<br>If we can&rsquo;t get there, the page comes down &mdash; and you&rsquo;re out fifty dollars, not five hundred.</p>
       <div class="octa rv">
@@ -496,7 +499,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   </div>
 </footer>
 
-<div class="callbar"><a href="tel:+17137742888"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Arco%20Seafood%20Restaurant%209896%20Bellaire%20Blvd%2C%20Suite%20K%2C%20Houston%2C%20TX%2077036" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v1.6H3V3Zm0 4.2h10v1.6H3V7.2ZM3 11.4h6.4V13H3v-1.6Z"/></svg><b>Menu</b></a></div>
+<div class="callbar"><a href="tel:+17137742888" data-vc="tel"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Arco%20Seafood%20Restaurant%209896%20Bellaire%20Blvd%2C%20Suite%20K%2C%20Houston%2C%20TX%2077036" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v1.6H3V3Zm0 4.2h10v1.6H3V7.2ZM3 11.4h6.4V13H3v-1.6Z"/></svg><b>Menu</b></a></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
@@ -633,6 +636,54 @@ window.addEventListener('load',function(){
 });
 </script>
 
+<script>(function(){try{
+var EP="https://edit.veracod.com/v1/",S="arco-seafood";
+if(location.protocol==="file:")return;
+function q(sel,root){return (root||document).querySelector(sel)}
+function kids(cont,sel){var out=[],n=cont.firstElementChild;while(n){if(n.matches(sel))out.push(n);n=n.nextElementSibling}return out}
+function put(node,key,val){var f=q("[data-vc-f='"+key+"']",node);if(!f)return;
+ f.textContent=val||"";if(val){f.removeAttribute("hidden")}else{f.setAttribute("hidden","")}}
+function show(node,on){if(on){node.removeAttribute("hidden")}else{node.setAttribute("hidden","")}}
+function list(cont,rows,fill){if(!cont)return;
+ var tpl=kids(cont,"[data-vc-tpl]")[0],items=kids(cont,"[data-vc-item]");
+ for(var i=0;i<rows.length;i++){var n=items[i];
+  if(!n){if(!tpl)break;n=tpl.cloneNode(true);n.removeAttribute("data-vc-tpl");n.setAttribute("data-vc-item","");
+   n.classList.remove("rv");n.removeAttribute("style");n.removeAttribute("hidden");
+   var rv=n.querySelectorAll?n.querySelectorAll(".rv"):[];for(var j=0;j<rv.length;j++){rv[j].classList.remove("rv");rv[j].removeAttribute("style")}
+   cont.insertBefore(n,tpl);items.push(n)}
+  fill(n,rows[i],i);show(n,true)}
+ for(var k=rows.length;k<items.length;k++){show(items[k],false)}}
+function apply(c){
+ var nb=q("[data-vc='notice']");
+ if(nb&&c.notice){put(nb,"text",c.notice.text);show(nb,!!(c.notice.on&&c.notice.text))}
+ /* 电话在页面上有四处：首屏按钮、导航栏、Find us、手机底部拨号条。店主改一次要全改，
+    否则他会看到自己的新号码只换了一处 —— 那比不给他改还糟。 */
+ if(c.contact&&c.contact.phone){var pn=c.contact.phone,href="tel:"+pn.replace(/[^0-9+]/g,"");
+  var ps=document.querySelectorAll("[data-vc='phone']");
+  for(var a=0;a<ps.length;a++){ps[a].textContent=pn;if(ps[a].tagName==="A"){ps[a].setAttribute("href",href)}}
+  var ts=document.querySelectorAll("[data-vc='tel']");
+  for(var b=0;b<ts.length;b++){ts[b].setAttribute("href",href)}}
+ var em=q("[data-vc='email']");if(em&&c.contact&&c.contact.email){em.textContent=c.contact.email;
+  em.setAttribute("href","mailto:"+c.contact.email)}
+ list(q("[data-vc-list='hours']"),c.hours||[],function(n,r){put(n,"d",r.d);put(n,"h",r.h)});
+ list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d)});
+ var secs=(c.menu||[]).filter(function(s){return (s.items||[]).length});
+ var mc=q("[data-vc-list='menu']"),total=0;
+ for(var i=0;i<secs.length;i++){total+=secs[i].items.length}
+ if(mc){list(mc,secs,function(n,s,i){put(n,"section",s.section);
+   if(!n.id){n.id="vcs"+i}
+   list(q("[data-vc-list='items']",n),s.items,function(li,it){put(li,"n",it.n);put(li,"p",it.p);put(li,"d",it.d);put(li,"t",it.t)})});
+  var nav=q("[data-vc-nav]");
+  if(nav){var ns=kids(mc,"[data-vc-item]");
+   list(nav,secs,function(a,s,i){a.textContent=s.section||"Menu";if(ns[i]&&ns[i].id){a.setAttribute("href","#"+ns[i].id)}})}}
+ if(total){var cs=document.querySelectorAll("[data-vc='mcount']");
+  for(var m=0;m<cs.length;m++){cs[m].textContent=String(total)}}}
+/* 平时走 60 秒边缘缓存（快、省）。但店主从后台点「View your site」过来时链接带 ?v=<版本>，
+   那一次绕开缓存 —— 否则他刚保存完点进来看到的还是旧的，会以为没生效。 */
+var fresh=location.search.indexOf("v=")>=0;
+fetch(EP+S+".json",fresh?{cache:"reload"}:{}).then(function(r){return r.status===200?r.json():null})
+ .then(function(c){if(c){apply(c)}}).catch(function(){});
+}catch(e){}})();</script>
 <script>(function(){try{
 var EP="https://p.veracod.com/e",S="arco-seafood",K="demo";
 var hn=location.hostname;

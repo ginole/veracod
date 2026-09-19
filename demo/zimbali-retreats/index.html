@@ -378,7 +378,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 <div class="notice">
   Concept page, not this resort&rsquo;s official site &mdash; made as a proposal by
        <b>Veracod</b>, not affiliated with Zimbali Culinary Retreats. Details are from public listings;
-       <a href="tel:+18762523232">call them</a> to confirm. &mdash; <a href="#offer">owner? see the offer</a>
+       <a href="tel:+18762523232" data-vc="tel">call them</a> to confirm. &mdash; <a href="#offer">owner? see the offer</a>
 </div>
 
 <header>
@@ -388,7 +388,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="navacts">
       
       
-      <a class="btn btn-a" href="tel:+18762523232">1-876-252-3232</a>
+      <a class="btn btn-a" href="tel:+18762523232" data-vc="tel"><span data-vc="phone">1-876-252-3232</span></a>
     </div>
   </nav>
   <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#find">Find us</a></nav>
@@ -396,6 +396,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 <main id="top">
 
+<div class="own-notice" data-vc="notice" hidden><span data-vc-f="text"></span></div>
 
   <div class="hero hero-photo">
     <div class="hphoto" style="--mpos:62% 50%"><img src="./img/hills-aerial.webp" alt="Zimbali's roofs among the trees in the hills above Little London, seen from the air" fetchpriority="high" ></div>
@@ -404,7 +405,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick hr-in">Mountain culinary retreat &middot; Little London, Westmoreland</p>
       <h1>An oasis in the mountains, 30 minutes from Negril.</h1>
       <p class="sub hr-in">A small retreat on a working farm in the hills above Little London - poolside rooms, a private cottage, and a cooking studio where dinner comes straight from the garden.</p>
-      <div class="acts"><a class="btn btn-a hr-in" href="tel:+18762523232">Call 1-876-252-3232</a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
+      <div class="acts"><a class="btn btn-a hr-in" href="tel:+18762523232" data-vc="tel">Call <span data-vc="phone">1-876-252-3232</span></a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
       
     </div>
   </div>
@@ -428,7 +429,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick rv">Where you'll stay</p>
       <h2 class="sp">The rooms, and the rates.</h2>
       <p class="lead rv">Nightly rates in US$ as published on the retreat's own website: Winter (Dec 20 - Apr 30), Summer (May 1 - Aug 31) and Fall (Sep 1 - Dec 19). Breakfast and wifi included.</p>
-      <div class="dishes"><div class="dish txt rv"><p class="mrow"><b>Sweet Love</b><i class="lead"></i></p><span>Sleeps 2 · poolside, queen bed, deck with a hammock · US$80-90 by season</span></div><div class="dish txt rv"><p class="mrow"><b>Suite I &amp; II</b><i class="lead"></i></p><span>Sleeps 2 · queen bed · US$99-120 by season</span></div><div class="dish txt rv"><p class="mrow"><b>Sweet Blue</b><i class="lead"></i></p><span>Sleeps 2 · poolside, queen bed, porch with hammocks · US$120-140 by season</span></div><div class="dish txt rv"><p class="mrow"><b>The Cottage</b><i class="lead"></i></p><span>Sleeps 2 · the most private room, air-conditioned, back porch over the farm · US$140-170 by season</span></div><div class="dish txt rv"><p class="mrow"><b>Main Villa</b><i class="lead"></i></p><span>Sleeps 4 · two queen bedrooms, porch with hammocks · US$220-230 by season</span></div></div>
+      <div class="dishes" data-vc-list="dishes"><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Sweet Love</b><i class="lead"></i></p><span data-vc-f="d">Sleeps 2 · poolside, queen bed, deck with a hammock · US$80-90 by season</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Suite I &amp; II</b><i class="lead"></i></p><span data-vc-f="d">Sleeps 2 · queen bed · US$99-120 by season</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Sweet Blue</b><i class="lead"></i></p><span data-vc-f="d">Sleeps 2 · poolside, queen bed, porch with hammocks · US$120-140 by season</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">The Cottage</b><i class="lead"></i></p><span data-vc-f="d">Sleeps 2 · the most private room, air-conditioned, back porch over the farm · US$140-170 by season</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Main Villa</b><i class="lead"></i></p><span data-vc-f="d">Sleeps 4 · two queen bedrooms, porch with hammocks · US$220-230 by season</span></div><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
       
     </div>
   </section>
@@ -483,9 +484,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <div class="fi">
         <div class="rv"><span>Address</span>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Zimbali%20Culinary%20Retreats%20Canaan%20District%2C%20Little%20London%2C%20Westmoreland%2C%20Jamaica" target="_blank" rel="noreferrer">Canaan District, Little London, Westmoreland, Jamaica</a></div>
-        <div class="rv"><span>Phone</span><a href="tel:+18762523232">1-876-252-3232</a></div>
-        <div class="rv"><span>Email</span><a href="mailto:mark@zimbaliretreats.com">mark@zimbaliretreats.com</a></div>
-        <div class="rv"><span>Hours</span><div class="hours"><div class="hr2"><b>Minimum stay</b><span>2 nights</span></div><div class="hr2"><b>Breakfast</b><span>Included</span></div></div></div>
+        <div class="rv"><span>Phone</span><a href="tel:+18762523232" data-vc="phone">1-876-252-3232</a></div>
+        <div class="rv"><span>Email</span><a href="mailto:mark@zimbaliretreats.com" data-vc="email">mark@zimbaliretreats.com</a></div>
+        <div class="rv"><span>Hours</span><div class="hours" data-vc-list="hours"><div class="hr2" data-vc-item><b data-vc-f="d">Minimum stay</b><span data-vc-f="h">2 nights</span></div><div class="hr2" data-vc-item><b data-vc-f="d">Breakfast</b><span data-vc-f="h">Included</span></div><div class="hr2" data-vc-tpl hidden><b data-vc-f="d"></b><span data-vc-f="h"></span></div></div></div>
         
         
         
@@ -507,6 +508,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
         <div class="oi rv"><b>Nothing changes.</b><span>Whatever already works &mdash; your booking-site listings, your phone line, your email &mdash; stays exactly as it is.</span></div>
         <div class="oi rv"><b>Everything here can change.</b><span>Photos, words, colours, sections, the order of things &mdash; say what, we change it. This page is a starting point, not the final say.</span></div>
         <div class="oi rv"><b>Live in a week.</b><span>You send corrections once &mdash; hours, menu, photos &mdash; and it goes live.</span></div>
+        
+        <div class="oi rv"><b>You change the prices yourself.</b><span>Rates, rooms, opening times, a notice about a closure &mdash; you edit them from your phone and the site updates in a minute. No monthly fee, no waiting on us.</span></div>
       </div>
       <p class="oguar rv">$50 starts the work. The other $450 is due only when you&rsquo;ve seen the finished site and approve it &mdash; it goes live on your domain the same day.<br>If we can&rsquo;t get there, the page comes down &mdash; and you&rsquo;re out fifty dollars, not five hundred.</p>
       <div class="octa rv">
@@ -527,7 +530,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   </div>
 </footer>
 
-<div class="callbar"><a href="tel:+18762523232"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Zimbali%20Culinary%20Retreats%20Canaan%20District%2C%20Little%20London%2C%20Westmoreland%2C%20Jamaica" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#book"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v1.2H2.6v11.2h10.8V3.2H12V2h-1.4v1.2H5.4V2H4Zm-.1 4.6h8.2v7H3.9v-7Z"/></svg><b>Book</b></a></div>
+<div class="callbar"><a href="tel:+18762523232" data-vc="tel"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Zimbali%20Culinary%20Retreats%20Canaan%20District%2C%20Little%20London%2C%20Westmoreland%2C%20Jamaica" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#book"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v1.2H2.6v11.2h10.8V3.2H12V2h-1.4v1.2H5.4V2H4Zm-.1 4.6h8.2v7H3.9v-7Z"/></svg><b>Book</b></a></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
@@ -682,6 +685,54 @@ window.addEventListener('load',function(){
   });
 })();
 </script>
+<script>(function(){try{
+var EP="https://edit.veracod.com/v1/",S="zimbali-retreats";
+if(location.protocol==="file:")return;
+function q(sel,root){return (root||document).querySelector(sel)}
+function kids(cont,sel){var out=[],n=cont.firstElementChild;while(n){if(n.matches(sel))out.push(n);n=n.nextElementSibling}return out}
+function put(node,key,val){var f=q("[data-vc-f='"+key+"']",node);if(!f)return;
+ f.textContent=val||"";if(val){f.removeAttribute("hidden")}else{f.setAttribute("hidden","")}}
+function show(node,on){if(on){node.removeAttribute("hidden")}else{node.setAttribute("hidden","")}}
+function list(cont,rows,fill){if(!cont)return;
+ var tpl=kids(cont,"[data-vc-tpl]")[0],items=kids(cont,"[data-vc-item]");
+ for(var i=0;i<rows.length;i++){var n=items[i];
+  if(!n){if(!tpl)break;n=tpl.cloneNode(true);n.removeAttribute("data-vc-tpl");n.setAttribute("data-vc-item","");
+   n.classList.remove("rv");n.removeAttribute("style");n.removeAttribute("hidden");
+   var rv=n.querySelectorAll?n.querySelectorAll(".rv"):[];for(var j=0;j<rv.length;j++){rv[j].classList.remove("rv");rv[j].removeAttribute("style")}
+   cont.insertBefore(n,tpl);items.push(n)}
+  fill(n,rows[i],i);show(n,true)}
+ for(var k=rows.length;k<items.length;k++){show(items[k],false)}}
+function apply(c){
+ var nb=q("[data-vc='notice']");
+ if(nb&&c.notice){put(nb,"text",c.notice.text);show(nb,!!(c.notice.on&&c.notice.text))}
+ /* 电话在页面上有四处：首屏按钮、导航栏、Find us、手机底部拨号条。店主改一次要全改，
+    否则他会看到自己的新号码只换了一处 —— 那比不给他改还糟。 */
+ if(c.contact&&c.contact.phone){var pn=c.contact.phone,href="tel:"+pn.replace(/[^0-9+]/g,"");
+  var ps=document.querySelectorAll("[data-vc='phone']");
+  for(var a=0;a<ps.length;a++){ps[a].textContent=pn;if(ps[a].tagName==="A"){ps[a].setAttribute("href",href)}}
+  var ts=document.querySelectorAll("[data-vc='tel']");
+  for(var b=0;b<ts.length;b++){ts[b].setAttribute("href",href)}}
+ var em=q("[data-vc='email']");if(em&&c.contact&&c.contact.email){em.textContent=c.contact.email;
+  em.setAttribute("href","mailto:"+c.contact.email)}
+ list(q("[data-vc-list='hours']"),c.hours||[],function(n,r){put(n,"d",r.d);put(n,"h",r.h)});
+ list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d)});
+ var secs=(c.menu||[]).filter(function(s){return (s.items||[]).length});
+ var mc=q("[data-vc-list='menu']"),total=0;
+ for(var i=0;i<secs.length;i++){total+=secs[i].items.length}
+ if(mc){list(mc,secs,function(n,s,i){put(n,"section",s.section);
+   if(!n.id){n.id="vcs"+i}
+   list(q("[data-vc-list='items']",n),s.items,function(li,it){put(li,"n",it.n);put(li,"p",it.p);put(li,"d",it.d);put(li,"t",it.t)})});
+  var nav=q("[data-vc-nav]");
+  if(nav){var ns=kids(mc,"[data-vc-item]");
+   list(nav,secs,function(a,s,i){a.textContent=s.section||"Menu";if(ns[i]&&ns[i].id){a.setAttribute("href","#"+ns[i].id)}})}}
+ if(total){var cs=document.querySelectorAll("[data-vc='mcount']");
+  for(var m=0;m<cs.length;m++){cs[m].textContent=String(total)}}}
+/* 平时走 60 秒边缘缓存（快、省）。但店主从后台点「View your site」过来时链接带 ?v=<版本>，
+   那一次绕开缓存 —— 否则他刚保存完点进来看到的还是旧的，会以为没生效。 */
+var fresh=location.search.indexOf("v=")>=0;
+fetch(EP+S+".json",fresh?{cache:"reload"}:{}).then(function(r){return r.status===200?r.json():null})
+ .then(function(c){if(c){apply(c)}}).catch(function(){});
+}catch(e){}})();</script>
 <script>(function(){try{
 var EP="https://p.veracod.com/e",S="zimbali-retreats",K="demo";
 var hn=location.hostname;
