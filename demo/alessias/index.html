@@ -70,7 +70,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
 .navlinks{display:none;gap:26px}
 @media(min-width:980px){.navlinks{display:flex}}
-.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+@media(min-width:980px) and (max-width:1240px){.navlinks{gap:18px}}
+.navlinks a{white-space:nowrap;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
 .navlinks a:hover{opacity:1;color:var(--accent)}
 .navacts{display:flex;gap:9px;align-items:center}
 @media(max-width:979px){.navacts .btn-o{display:none}}

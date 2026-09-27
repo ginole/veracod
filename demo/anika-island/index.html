@@ -70,7 +70,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
 .navlinks{display:none;gap:26px}
 @media(min-width:980px){.navlinks{display:flex}}
-.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+@media(min-width:980px) and (max-width:1240px){.navlinks{gap:18px}}
+.navlinks a{white-space:nowrap;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
 .navlinks a:hover{opacity:1;color:var(--accent)}
 .navacts{display:flex;gap:9px;align-items:center}
 @media(max-width:979px){.navacts .btn-o{display:none}}
@@ -408,7 +409,7 @@ h2.sp,.lead,.pnote{text-align:center;margin-left:auto;margin-right:auto}
       <a class="btn btn-a" href="tel:+639173284898" data-vc="tel"><span data-vc="phone">0917 328 4898</span></a>
     </div>
   </nav>
-  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0"></a><a href="#x-1"></a><a href="#x-2"></a><a href="#find">Find us</a></nav>
+  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0">In every room</a><a href="#x-1">On the grounds</a><a href="#x-2">Getting here</a><a href="#find">Find us</a></nav>
 </header>
 
 <main id="top">
@@ -499,18 +500,18 @@ h2.sp,.lead,.pnote{text-align:center;margin-left:auto;margin-right:auto}
       <h2 class="sp">Everything else, one tap away.</h2>
       <div class="xgrid x3">
       <article class="xcard rv" id="x-0">
-        <h3></h3>
-        
+        <h3>In every room</h3>
+        <p>LED TV with cable, individually controlled air-conditioning, spacious closet, cotton towels and linens, hot and cold shower, complimentary toiletries</p>
         
       </article>
       <article class="xcard rv" id="x-1">
-        <h3></h3>
-        
+        <h3>On the grounds</h3>
+        <p>Chloe Café restaurant, swimming pool, safety deposit box, free on-site parking, room service until 9:00 PM</p>
         
       </article>
       <article class="xcard rv" id="x-2">
-        <h3></h3>
-        
+        <h3>Getting here</h3>
+        <p>Bus or private car from Cebu to Hagnaya port, then the barge to Santa Fe port - the resort's shuttle meets you at the terminal, free of charge. The resort can also arrange a private car from the airport or Metro Cebu to Hagnaya port.</p>
         
       </article></div>
     </div>

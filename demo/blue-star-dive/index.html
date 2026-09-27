@@ -70,7 +70,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
 .navlinks{display:none;gap:26px}
 @media(min-width:980px){.navlinks{display:flex}}
-.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+@media(min-width:980px) and (max-width:1240px){.navlinks{gap:18px}}
+.navlinks a{white-space:nowrap;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
 .navlinks a:hover{opacity:1;color:var(--accent)}
 .navacts{display:flex;gap:9px;align-items:center}
 @media(max-width:979px){.navacts .btn-o{display:none}}
@@ -391,7 +392,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <a class="btn btn-a" href="tel:+639479465386" data-vc="tel"><span data-vc="phone">+63 947 946 5386</span></a>
     </div>
   </nav>
-  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0"></a><a href="#x-1"></a><a href="#x-2"></a><a href="#find">Find us</a></nav>
+  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0">Diving</a><a href="#x-1">Tours</a><a href="#x-2">At the resort</a><a href="#find">Find us</a></nav>
 </header>
 
 <main id="top">
@@ -482,18 +483,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <h2 class="sp">Everything else, one tap away.</h2>
       <div class="xgrid x3">
       <article class="xcard rv" id="x-0">
-        <h3></h3>
-        
+        <h3>Diving</h3>
+        <p>PADI 5 Star Dive Resort: courses, scheduled boat dives three times a day, the house reef, day safaris to the surrounding islands, equipment rental and Nitrox</p>
         
       </article>
       <article class="xcard rv" id="x-1">
-        <h3></h3>
-        
+        <h3>Tours</h3>
+        <p>Whale sharks in Southern Leyte and Jagna, Camiguin Island, dolphin watching, a sunset cruise, Lamanoc Island, the Chocolate Hills and Candijay Waterfalls</p>
         
       </article>
       <article class="xcard rv" id="x-2">
-        <h3></h3>
-        
+        <h3>At the resort</h3>
+        <p>Pool, sea-view jacuzzi, massage, and Pizza Night every Wednesday from the wood-fired oven, with the acoustic house band</p>
         
       </article></div>
     </div>

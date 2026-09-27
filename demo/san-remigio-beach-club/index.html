@@ -70,7 +70,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
 .navlinks{display:none;gap:26px}
 @media(min-width:980px){.navlinks{display:flex}}
-.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+@media(min-width:980px) and (max-width:1240px){.navlinks{gap:18px}}
+.navlinks a{white-space:nowrap;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
 .navlinks a:hover{opacity:1;color:var(--accent)}
 .navacts{display:flex;gap:9px;align-items:center}
 @media(max-width:979px){.navacts .btn-o{display:none}}
@@ -391,7 +392,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <a class="btn btn-a" href="tel:+639152300093" data-vc="tel"><span data-vc="phone">0915 230 0093</span></a>
     </div>
   </nav>
-  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0"></a><a href="#x-1"></a><a href="#x-2"></a><a href="#find">Find us</a></nav>
+  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0">On the grounds</a><a href="#x-1">Events</a><a href="#x-2">Tours and transfers</a><a href="#find">Find us</a></nav>
 </header>
 
 <main id="top">
@@ -496,18 +497,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <h2 class="sp">Everything else, one tap away.</h2>
       <div class="xgrid x3">
       <article class="xcard rv" id="x-0">
-        <h3></h3>
-        
+        <h3>On the grounds</h3>
+        <p>Pool and poolside clubhouse, private beach, jacuzzi, open cottages, children's playground, basketball court, billiard room, Skipper's Lounge and Cafe Gloria</p>
         
       </article>
       <article class="xcard rv" id="x-1">
-        <h3></h3>
-        
+        <h3>Events</h3>
+        <p>Weddings, debuts, birthdays, graduations and reunions - Triton and Poseidon Halls seat 400 combined, the Bahia Vista outdoor space holds 250</p>
         
       </article>
       <article class="xcard rv" id="x-2">
-        <h3></h3>
-        
+        <h3>Tours and transfers</h3>
+        <p>Island hopping to Gibitngil and Virgin Island on the resort's 25-seat outrigger, day tours around San Remigio, and air-conditioned van transfers from Cebu City</p>
         
       </article></div>
     </div>

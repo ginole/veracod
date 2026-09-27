@@ -70,7 +70,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:14px;paddi
 .brand i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:2px;font-family:var(--body);font-weight:600}
 .navlinks{display:none;gap:26px}
 @media(min-width:980px){.navlinks{display:flex}}
-.navlinks a{font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
+@media(min-width:980px) and (max-width:1240px){.navlinks{gap:18px}}
+.navlinks a{white-space:nowrap;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;transition:opacity .15s,color .15s}
 .navlinks a:hover{opacity:1;color:var(--accent)}
 .navacts{display:flex;gap:9px;align-items:center}
 @media(max-width:979px){.navacts .btn-o{display:none}}
@@ -391,7 +392,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <a class="btn btn-a" href="tel:+639178270200" data-vc="tel"><span data-vc="phone">+63 917 827 0200</span></a>
     </div>
   </nav>
-  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#x-0"></a><a href="#x-1"></a><a href="#x-2"></a><a href="#find">Find us</a></nav>
+  <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#x-0">On the grounds</a><a href="#x-1">Things to do</a><a href="#x-2">Practical</a><a href="#find">Find us</a></nav>
 </header>
 
 <main id="top">
@@ -451,18 +452,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <h2 class="sp">Everything else, one tap away.</h2>
       <div class="xgrid x3">
       <article class="xcard rv" id="x-0">
-        <h3></h3>
-        
+        <h3>On the grounds</h3>
+        <p>Swimming pool, jacuzzi, lobby lounge, coffee shop, function rooms, roof deck lounge, gift shop, bar and karaoke lounge, business centre</p>
         
       </article>
       <article class="xcard rv" id="x-1">
-        <h3></h3>
-        
+        <h3>Things to do</h3>
+        <p>Horseback riding, outdoor camping, hiking, snorkelling, mountain biking, island picnics, and scuba diving with Johnny's Dive 'N' Fun</p>
         
       </article>
       <article class="xcard rv" id="x-2">
-        <h3></h3>
-        
+        <h3>Practical</h3>
+        <p>Safety deposit box, medical clinic, foreign exchange, laundry, mail and postage. 220 volts, 60 hertz, with a standby generator for power interruptions</p>
         
       </article></div>
     </div>
