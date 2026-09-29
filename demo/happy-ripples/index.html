@@ -28,6 +28,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 d.classList.add('js');
 setTimeout(function(){if(!window.__alive)d.classList.remove('js')},2500);})();
 </script>
+
 <style>
 :root{--bg:#FBF7EF;--bg2:#EFF3F2;--ink:#16302F;--ink2:#3f5654;--dim:#6f8280;
  --accent:#0E6E7A;--accent2:#0A555F;--rule:#DCE4E1;--slabBg:#0C2B30;--slabInk:#F3EFE3;
@@ -376,6 +377,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 </head>
 <body>
 
+
 <div class="notice">
   Preview built for Happy Ripples Beach Resort by <b>Veracod</b> &mdash; not live yet, and nothing here is final.
        Everything was put together from public listings, so tell us what to fix. <a href="#offer">What it costs &rarr;</a>
@@ -403,6 +405,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Beachfront resort &middot; San Fabian, Pangasinan</p>
+      
       <h1>Two pools, and the sun goes down over the water.</h1>
       <p class="sub hr-in">A big, quiet beachfront place on the Lingayen Gulf — room for the whole family, and staff who look after you.</p>
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+639277138968" data-vc="tel">Call <span data-vc="phone">0927 713 8968</span></a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
@@ -571,9 +574,11 @@ window.addEventListener('load',function(){
       var w=m.parentNode&&m.parentNode!==m?m.parentNode:m;
       w.style.paddingBottom='0.18em';w.style.marginBottom='-0.18em';});
     gsap.set('.hero h1',{opacity:1});
-    gsap.fromTo(split.lines,{yPercent:110},{yPercent:0,duration:1.05,ease:'power4.out',stagger:.09,delay:.1,onStart:alive});
+    var labRv=!!document.querySelector('.hero.lab-reveal'),labPre=!!document.querySelector('.lab-pre');
+    /* opening screen lifts at ~load+0.3s, the curtain takes 1.35s: the headline comes in under the open curtain */
+    gsap.fromTo(split.lines,{yPercent:110},{yPercent:0,duration:1.05,ease:'power4.out',stagger:.09,delay:labPre?(labRv?1.45:.7):(labRv?.85:.1),onStart:alive});
   }catch(e){gsap.fromTo('.hero h1',{opacity:0,y:26},{opacity:1,y:0,duration:.9,ease:'power3.out',onStart:alive})}
-  gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
+  gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:document.querySelector('.lab-pre')?(document.querySelector('.hero.lab-reveal')?1.7:.95):(document.querySelector('.hero.lab-reveal')?1.1:.45),onStart:alive});
   var hp0=document.querySelector('.hero .hphoto img');
   if(hp0){hp0.style.willChange='transform';
     var slow=document.querySelector('.hero.hero-zoom')!==null;
@@ -589,7 +594,7 @@ window.addEventListener('load',function(){
       document.addEventListener('visibilitychange',function(){
         document.hidden?kb.pause():kb.play();
       });
-    } else {
+    } else if(!document.querySelector('.hero.lab-reveal')) {
       gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
         onComplete:function(){hp0.style.willChange='auto'}});   /* 跑完就摘掉，别常驻占图层 */
     }
@@ -687,6 +692,7 @@ window.addEventListener('load',function(){
         scrollTrigger:{trigger:h,start:'top 88%'}})}});
 });
 </script>
+
 
 <script>
 (function(){

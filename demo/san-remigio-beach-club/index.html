@@ -28,6 +28,27 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 d.classList.add('js');
 setTimeout(function(){if(!window.__alive)d.classList.remove('js')},2500);})();
 </script>
+
+<style>
+.lab-pre{position:fixed;inset:0;z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;gap:30px;background:var(--bg,#fff)}
+.js .lab-pre{display:flex}
+.js.lab-ready .lab-pre{opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s .6s}
+.lab-pre .lp-logo{max-height:72px;max-width:min(62vw,300px);object-fit:contain;display:block}
+.lab-pre .lp-name{font-family:var(--display);font-size:clamp(26px,5vw,36px);letter-spacing:-.01em;color:var(--ink);text-align:center;padding:0 24px}
+.lab-pre .lp-dots{display:flex;gap:11px}
+.lab-pre .lp-dots span{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:lpBob 1.05s infinite ease-in-out}
+.lab-pre .lp-dots span:nth-child(2){animation-delay:.16s}
+.lab-pre .lp-dots span:nth-child(3){animation-delay:.32s}
+@keyframes lpBob{0%,72%,100%{transform:translateY(0);opacity:.42}36%{transform:translateY(-10px);opacity:1}}
+@media (prefers-reduced-motion: reduce){.js .lab-pre{display:none}}
+</style>
+<script>
+(function(){var d=document.documentElement,done=false;
+function ready(){if(done)return;done=true;d.classList.add('lab-ready');
+  try{window.dispatchEvent(new Event('labready'))}catch(e){}}
+window.addEventListener('load',function(){setTimeout(ready,300)});
+setTimeout(ready,2200);})();
+</script>
 <style>
 :root{--bg:#F6F3EC;--bg2:#E8ECF3;--ink:#0F2453;--ink2:#33406A;--dim:#737B93;
  --accent:#0F2453;--accent2:#967A50;--rule:#DDD6C7;--slabBg:#0F2453;--slabInk:#F6F3EC;
@@ -375,6 +396,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 </style>
 </head>
 <body>
+<div class="lab-pre" aria-hidden="true">
+  <img class="lp-logo" src="./img/logo.webp" alt="">
+  <div class="lp-dots"><span></span><span></span><span></span></div>
+</div>
 
 <div class="notice">
   Concept page, not this resort&rsquo;s official site &mdash; made as a proposal by
@@ -399,11 +424,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 <div class="own-notice" data-vc="notice" hidden><span data-vc-f="text"></span></div>
 
-  <div class="hero hero-photo">
+  <div class="hero hero-photo lab-reveal">
     <div class="hphoto"><img src="./img/sunset.webp" alt="Sunset over the sea at San Remigio Beach Club, with the resort's banners in silhouette" fetchpriority="high" ></div>
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Resort &middot; San Remigio, Cebu</p>
+      <div class="lab-row hr-in"><div class="lab-sun lab-chip" data-lat="11.0835" data-lng="123.9366" data-tz="Asia/Manila" hidden>
+        <p class="ls-cap"><b class="ls-when"></b><span class="ls-left"></span></p>
+        <span class="ls-a"></span><span class="ls-track"><i class="ls-fill"></i><i class="ls-dot"></i></span><span class="ls-b"></span></div></div>
       <h1>On the longest coastline in Cebu.</h1>
       <p class="sub hr-in">A 5.5-hectare beach resort in Baybay, Tambongon, three hours north of Cebu City - 48 rooms and suites looking out on the gardens or the sea, a pool, a private sandy beach, and open since May 2002.</p>
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+639152300093" data-vc="tel">Call <span data-vc="phone">0915 230 0093</span></a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
@@ -428,14 +456,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 <div class="mq"><div class="mq-in"><span>Beach resort<i>&bull;</i>Baybay, Tambongon, San Remigio<i>&bull;</i>Cebu, Philippines<i>&bull;</i>Pool and private sandy beach<i>&bull;</i>Beach resort<i>&bull;</i>Baybay, Tambongon, San Remigio<i>&bull;</i>Cebu, Philippines<i>&bull;</i>Pool and private sandy beach<i>&bull;</i></span><span>Beach resort<i>&bull;</i>Baybay, Tambongon, San Remigio<i>&bull;</i>Cebu, Philippines<i>&bull;</i>Pool and private sandy beach<i>&bull;</i>Beach resort<i>&bull;</i>Baybay, Tambongon, San Remigio<i>&bull;</i>Cebu, Philippines<i>&bull;</i>Pool and private sandy beach<i>&bull;</i></span></div></div>
 
   <section class="band" id="story">
-    <div class="wrap story">
-      <div class="stext">
-        <p class="kick rv">What it's like</p>
+    <div class="wrap lab-story">
+      <div class="ls-text">
+        <p class="kick rv">What it&#39;s like</p>
         <h2 class="sp">Three hours north of the city.</h2>
-        <p class="lead rv">San Remigio Beach Club opened in May 2002 in Baybay, Tambongon - 118 kilometres north-west of Cebu City, in the town with the longest coastline in the province. The resort covers 5.5 hectares, with the beach on one side and the countryside on the other. There is a pool and a private sandy beach, and every one of the 48 rooms and suites looks out on either the gardens or the sea.</p><p class="lead rv">Skipper's Lounge sits on the beachfront for the sunset, and Cafe Gloria is the all-day restaurant, cooking with local produce and the catch of the day. Triton and Poseidon Halls together seat 400, the Bahia Vista outdoor space holds 250, and the team-building grounds - zipline, wall climbing, rappelling and a maze - have run since 2018.</p>
+        <div class="ls-step" data-i="0"><p class="lead">San Remigio Beach Club opened in May 2002 in Baybay, Tambongon - 118 kilometres north-west of Cebu City, in the town with the longest coastline in the province. The resort covers 5.5 hectares, with the beach on one side and the countryside on the other. There is a pool and a private sandy beach, and every one of the 48 rooms and suites looks out on either the gardens or the sea.</p><figure class="ls-inl"><img src="./img/the-building.webp" alt="The main building, from the drive" loading="lazy" ><figcaption>The main building, from the drive</figcaption></figure></div><div class="ls-step" data-i="1"><p class="lead">Skipper&#39;s Lounge sits on the beachfront for the sunset, and Cafe Gloria is the all-day restaurant, cooking with local produce and the catch of the day. Triton and Poseidon Halls together seat 400, the Bahia Vista outdoor space holds 250, and the team-building grounds - zipline, wall climbing, rappelling and a maze - have run since 2018.</p><figure class="ls-inl"><img src="./img/the-swing.webp" alt="The swing on the shore" loading="lazy" ><figcaption>The swing on the shore</figcaption></figure></div>
         
       </div>
-      <figure class="fig sfig rv"><img src="./img/the-building.webp" alt="The main building, from the drive" loading="lazy" ><figcaption>The main building, from the drive</figcaption></figure>
+      <div class="ls-stick" aria-hidden="true">
+        <figure class="ls-shot on" data-i="0"><img src="./img/the-building.webp" alt="The main building, from the drive" loading="lazy" ><figcaption>The main building, from the drive</figcaption></figure><figure class="ls-shot" data-i="1"><img src="./img/the-swing.webp" alt="The swing on the shore" loading="lazy" ><figcaption>The swing on the shore</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -587,9 +617,11 @@ window.addEventListener('load',function(){
       var w=m.parentNode&&m.parentNode!==m?m.parentNode:m;
       w.style.paddingBottom='0.18em';w.style.marginBottom='-0.18em';});
     gsap.set('.hero h1',{opacity:1});
-    gsap.fromTo(split.lines,{yPercent:110},{yPercent:0,duration:1.05,ease:'power4.out',stagger:.09,delay:.1,onStart:alive});
+    var labRv=!!document.querySelector('.hero.lab-reveal'),labPre=!!document.querySelector('.lab-pre');
+    /* opening screen lifts at ~load+0.3s, the curtain takes 1.35s: the headline comes in under the open curtain */
+    gsap.fromTo(split.lines,{yPercent:110},{yPercent:0,duration:1.05,ease:'power4.out',stagger:.09,delay:labPre?(labRv?1.45:.7):(labRv?.85:.1),onStart:alive});
   }catch(e){gsap.fromTo('.hero h1',{opacity:0,y:26},{opacity:1,y:0,duration:.9,ease:'power3.out',onStart:alive})}
-  gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:.45,onStart:alive});
+  gsap.fromTo('.hero .hr-in',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:.8,ease:'power3.out',stagger:.1,delay:document.querySelector('.lab-pre')?(document.querySelector('.hero.lab-reveal')?1.7:.95):(document.querySelector('.hero.lab-reveal')?1.1:.45),onStart:alive});
   var hp0=document.querySelector('.hero .hphoto img');
   if(hp0){hp0.style.willChange='transform';
     var slow=document.querySelector('.hero.hero-zoom')!==null;
@@ -605,7 +637,7 @@ window.addEventListener('load',function(){
       document.addEventListener('visibilitychange',function(){
         document.hidden?kb.pause():kb.play();
       });
-    } else {
+    } else if(!document.querySelector('.hero.lab-reveal')) {
       gsap.fromTo(hp0,{scale:1.12},{scale:1,duration:2.2,ease:'power2.out',onStart:alive,
         onComplete:function(){hp0.style.willChange='auto'}});   /* 跑完就摘掉，别常驻占图层 */
     }
@@ -701,6 +733,146 @@ window.addEventListener('load',function(){
         scrollTrigger:{trigger:h,start:'top 86%'}});
     }catch(e){gsap.fromTo(h,{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.7,onStart:alive,
         scrollTrigger:{trigger:h,start:'top 88%'}})}});
+});
+</script>
+
+<style>
+/* reveal: the photo opens from a slit, then stays still */
+.hero.lab-reveal{background:#0b0b0c}
+.js .hero.lab-reveal .hphoto{clip-path:inset(47% 0 47% 0)}
+/* the shade only comes up with the photo, so the closed curtain reads as black, not grey */
+.js .hero.lab-reveal .hshade{opacity:0}
+/* live lines sit under the kicker, quiet: one line, no box */
+/* live chips: dark glass so they read on any photo (a white hairline vanished into a lit wall) */
+.lab-row{margin-top:16px}
+.lab-chip[hidden]{display:none}   /* nothing parsed → no empty chip */
+.lab-chip{display:inline-flex;background:rgba(8,10,14,.52);-webkit-backdrop-filter:blur(10px) saturate(1.15);backdrop-filter:blur(10px) saturate(1.15);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;text-shadow:none}
+.lab-open{align-items:center;gap:10px;margin:0;padding:9px 14px;font-size:14.5px;letter-spacing:.01em}
+.lab-open .lo-dot{width:8px;height:8px;border-radius:50%;background:#9be3b4;box-shadow:0 0 0 0 rgba(155,227,180,.55);flex:none}
+.lab-open.is-open .lo-dot{animation:loPulse 2.8s ease-out infinite}
+.lab-open.is-closed .lo-dot{background:transparent;border:1.5px solid rgba(255,255,255,.7);width:7px;height:7px}
+.lab-open .lo-state{font-weight:600}
+.lab-open .lo-more{opacity:.86}
+@keyframes loPulse{0%{box-shadow:0 0 0 0 rgba(155,227,180,.55)}70%{box-shadow:0 0 0 9px rgba(155,227,180,0)}100%{box-shadow:0 0 0 0 rgba(155,227,180,0)}}
+@media (prefers-reduced-motion: reduce){.lab-open.is-open .lo-dot{animation:none}}
+.lab-sun{display:inline-grid;grid-template-columns:auto minmax(110px,200px) auto;align-items:center;gap:9px 11px;padding:11px 15px 12px;font-size:12px;letter-spacing:.03em;max-width:100%}
+.lab-sun .ls-cap{grid-column:1/-1;margin:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:14.5px;letter-spacing:.01em}
+.lab-sun .ls-when{font-weight:600}
+.lab-sun .ls-left{opacity:.72;font-size:13.5px}
+.lab-sun .ls-track{position:relative;height:2px;border-radius:2px;background:rgba(255,255,255,.26)}
+.lab-sun .ls-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:linear-gradient(90deg,rgba(255,215,154,.25),#ffd79a)}
+.lab-sun .ls-dot{position:absolute;top:50%;left:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:#ffd79a;box-shadow:0 0 10px 2px rgba(255,200,120,.7)}
+.lab-sun.is-night .ls-dot{background:transparent;border:1.5px solid rgba(255,255,255,.75);box-shadow:none}
+.lab-sun .ls-a,.lab-sun .ls-b{opacity:.8;font-variant-numeric:tabular-nums}
+.find .hr2.today b::after{content:"Today";margin-left:8px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.find .hr2.today{font-weight:600}
+/* story */
+.lab-story{display:grid;gap:36px;text-align:left}
+.lab-story .kick{justify-content:flex-start}
+.lab-story .ls-step{margin-top:22px}
+.lab-story .ls-inl{margin:18px 0 0;border-radius:10px;overflow:hidden;aspect-ratio:4/3}
+.lab-story .ls-inl img{width:100%;height:100%;object-fit:cover;display:block}
+.lab-story .ls-inl figcaption{font-size:12.5px;color:var(--dim);padding-top:8px}
+.lab-story .ls-stick{display:none}
+@media (min-width:860px){
+  .lab-story{grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .lab-story .ls-step{padding:16vh 0}
+  .lab-story .ls-step:first-of-type{padding-top:4vh}
+  .lab-story .ls-inl{display:none}
+  .lab-story .ls-stick{display:block;position:sticky;top:14vh;height:72vh;border-radius:14px;overflow:hidden}
+  .lab-story .ls-shot{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s var(--ease)}
+  .lab-story .ls-shot.on{opacity:1}
+  .lab-story .ls-shot img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.6s var(--ease)}
+  .lab-story .ls-shot.on img{transform:scale(1)}
+  .lab-story .ls-shot figcaption{position:absolute;left:18px;bottom:16px;right:18px;color:#fff;font-size:13px;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+}
+</style>
+<script>
+(function(){
+  function partsIn(tz,d){var o={};new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(d).forEach(function(p){o[p.type]=p.value});
+    var wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday);return {wd:wd,min:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)}}
+  var DAYS=['sun','mon','tue','wed','thu','fri','sat'];
+  function dayIdx(s){s=s.toLowerCase().trim().slice(0,3);return DAYS.indexOf(s)}
+  function daysOf(label){label=label.toLowerCase();if(/daily|every ?day|7 days/.test(label))return [0,1,2,3,4,5,6];
+    var out=[];label.split(/,|&| and /).forEach(function(part){var m=part.split(/\s*[-–]\s*|\s+to\s+/);
+      var a=dayIdx(m[0]||''),b=m[1]!==undefined?dayIdx(m[1]):a;if(a<0)return;if(b<0)b=a;
+      for(var i=a;;i=(i+1)%7){out.push(i);if(i===b)break}});return out}
+  function tmin(s){var m=s.trim().toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?|noon)?/);if(!m)return null;
+    var h=parseInt(m[1],10)%12,mi=parseInt(m[2]||'0',10),ap=(m[3]||'').replace(/\./g,'');if(ap==='pm'||ap==='noon')h+=12;if(!ap&&h<7)h+=12;return h*60+mi}
+  function spans(txt){if(/closed/i.test(txt))return [];var out=[];txt.split(/,|;/).forEach(function(seg){var m=seg.split(/\s*[-–]\s*|\s+to\s+/);
+    if(m.length<2)return;var a=tmin(m[0]),b=tmin(m[1]);if(a==null||b==null)return;if(b<=a)b+=24*60;out.push([a,b])});return out}
+  function fmt(min){min=((min%1440)+1440)%1440;var h=Math.floor(min/60),m=min%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+(m?':'+(m<10?'0':'')+m:'')+' '+ap}
+
+  /* open now */
+  var el=document.querySelector('.lab-open');
+  if(el){try{
+    var rows=JSON.parse(el.getAttribute('data-hours')),tz=el.getAttribute('data-tz');
+    var week=[[],[],[],[],[],[],[]],parsed=0;
+    rows.forEach(function(r){var ds=daysOf(r[0]),sp=spans(r[1]);if(ds.length)parsed++;ds.forEach(function(d){week[d]=week[d].concat(sp)})});
+    if(parsed){
+      var now=partsIn(tz,new Date()),st=el.querySelector('.lo-state'),more=el.querySelector('.lo-more'),open=null;
+      week[now.wd].forEach(function(s){if(now.min>=s[0]&&now.min<s[1])open=s});
+      var y=week[(now.wd+6)%7];y.forEach(function(s){if(s[1]>1440&&now.min<s[1]-1440)open=[s[0]-1440,s[1]-1440]});
+      if(open){el.classList.add('is-open');st.textContent='Open now';more.textContent='\u00b7 until '+fmt(open[1])}
+      else{el.classList.add('is-closed');st.textContent='Closed now';
+        for(var k=0;k<8;k++){var d=(now.wd+k)%7,next=null;week[d].forEach(function(s){if((k>0||s[0]>now.min)&&(next===null||s[0]<next))next=s[0]});
+          if(next!==null){more.textContent='\u00b7 opens '+(k===0?'today ':k===1?'tomorrow ':['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d]+' ')+fmt(next);break}}}
+      el.hidden=false;
+      /* the matching row in Find us */
+      document.querySelectorAll('.find .hr2[data-vc-item]').forEach(function(row){var b=row.querySelector('b');if(b&&daysOf(b.textContent).indexOf(now.wd)>=0)row.classList.add('today')});
+    }}catch(e){}}
+
+  /* sunset (NOAA-style sunrise equation) */
+  var sun=document.querySelector('.lab-sun');
+  if(sun){try{
+    var lat=+sun.getAttribute('data-lat'),lng=+sun.getAttribute('data-lng'),tz2=sun.getAttribute('data-tz');
+    var R=Math.PI/180,now2=new Date(),JD=now2.getTime()/864e5+2440587.5;
+    /* n = the local solar day (days since J2000 at local solar noon); east longitude positive */
+    function times(n){var Js=n+0.0009-lng/360;
+      var M=(357.5291+0.98560028*Js)%360,C=1.9148*Math.sin(M*R)+0.02*Math.sin(2*M*R)+0.0003*Math.sin(3*M*R);
+      var lam=(M+C+180+102.9372)%360,Jt=2451545+Js+0.0053*Math.sin(M*R)-0.0069*Math.sin(2*lam*R);
+      var dec=Math.asin(Math.sin(lam*R)*Math.sin(23.4397*R));
+      var w=Math.acos((Math.sin(-0.833*R)-Math.sin(lat*R)*Math.sin(dec))/(Math.cos(lat*R)*Math.cos(dec)))/R;
+      return {rise:(Jt-w/360-2440587.5)*864e5,set:(Jt+w/360-2440587.5)*864e5}}
+    var nDay=Math.round(JD-2451545.0+lng/360);    /* the local solar day we are in */
+    var t=times(nDay);
+    var f2=new Intl.DateTimeFormat('en-US',{timeZone:tz2,hour:'numeric',minute:'2-digit'});
+    var nowMs=now2.getTime(),frac,when,left='';
+    if(nowMs<t.rise){frac=0;sun.classList.add('is-night');when='Sunrise at '+f2.format(t.rise)}
+    else if(nowMs<t.set){frac=(nowMs-t.rise)/(t.set-t.rise);var mins=Math.round((t.set-nowMs)/6e4);
+      when='Sunset today at '+f2.format(t.set);left='in '+(mins>=60?Math.floor(mins/60)+'h '+(mins%60)+'m':mins+'m')}
+    else{frac=1;sun.classList.add('is-night');var tm=times(nDay+1);when='The sun set at '+f2.format(t.set);left='rises at '+f2.format(tm.rise)}
+    sun.querySelector('.ls-a').textContent=f2.format(t.rise);sun.querySelector('.ls-b').textContent=f2.format(t.set);
+    sun.querySelector('.ls-when').textContent=when;sun.querySelector('.ls-left').textContent=left;sun.hidden=false;
+    var dot=sun.querySelector('.ls-dot'),fill=sun.querySelector('.ls-fill'),pc=(frac*100)+'%';
+    /* position is set outright; the load animation (below) only sweeps it in from sunrise, so a page
+       whose animation never runs still shows the right time */
+    dot.style.left=pc;fill.style.width=pc;window.__labSunPc=pc;
+  }catch(e){}}
+})();
+window.addEventListener('load',function(){
+  if(!window.gsap||!document.documentElement.classList.contains('js'))return;
+  /* sweep the sun in from sunrise to now */
+  if(window.__labSunPc){gsap.from('.lab-sun .ls-dot',{left:'0%',duration:1.6,ease:'power2.out',delay:1.3});
+    gsap.from('.lab-sun .ls-fill',{width:'0%',duration:1.6,ease:'power2.out',delay:1.3})}
+  /* reveal the hero photo from a slit, once */
+  var hp=document.querySelector('.hero.lab-reveal .hphoto'),hs=document.querySelector('.hero.lab-reveal .hshade');
+  function curtain(){
+    if(hp)gsap.fromTo(hp,{clipPath:'inset(47% 0% 47% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.35,ease:'power3.inOut',delay:.2,onStart:function(){window.__alive=true}});
+    if(hs)gsap.to(hs,{opacity:1,duration:1.1,ease:'power2.out',delay:.55});
+  }
+  /* with the opening screen, the curtain waits until it lifts */
+  if(!document.querySelector('.lab-pre')||document.documentElement.classList.contains('lab-ready'))curtain();
+  else window.addEventListener('labready',curtain,{once:true});
+  /* story: whichever paragraph sits across the middle of the screen picks the photo */
+  var shots=[].slice.call(document.querySelectorAll('.lab-story .ls-shot'));
+  if(shots.length&&window.ScrollTrigger){
+    gsap.matchMedia().add('(min-width: 860px)',function(){
+      document.querySelectorAll('.lab-story .ls-step').forEach(function(step){var i=+step.getAttribute('data-i');
+        ScrollTrigger.create({trigger:step,start:'top 60%',end:'bottom 60%',onToggle:function(s){if(!s.isActive)return;
+          shots.forEach(function(f,j){f.classList.toggle('on',j===i)})}})});
+    });
+  }
 });
 </script>
 
