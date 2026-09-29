@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Maraya Cove — a concept resort site by Veracod</title>
+<meta name="description" content="A concept website for a fictional island resort in northern Palawan, designed and built by Veracod.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+/* 动画只负责「显现」；脚本 3 秒内没跑起来就摘掉 .js，页面按静态内容显示 */
+setTimeout(function(){ if(!window.__mcReady) document.documentElement.classList.remove('js'); }, 3000);
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.remove('js');
+</script>
+<style>
+:root{
+  --sand:#F5F0E7; --sand2:#EAE2D3; --ink:#12211E; --ink2:#3C4A46; --dim:#7D8781;
+  --lagoon:#0F6B66; --clay:#C07A48; --rule:#DCD3C2;
+  --display:'Cormorant Garamond',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font:300 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:300;margin:0;letter-spacing:-.01em;line-height:1.02}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.kick{font:500 11px/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--lagoon)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:17px 28px;border:1px solid currentColor;transition:background .3s,color .3s}
+.btn:hover{background:var(--ink);color:var(--sand);border-color:var(--ink)}
+
+/* ---------- concept ribbon ---------- */
+.ribbon{position:relative;z-index:60;background:var(--ink);color:var(--sand);font-size:12px;letter-spacing:.04em;text-align:center;padding:8px 16px}
+.ribbon a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- loader ---------- */
+.loader{position:fixed;inset:0;z-index:100;background:var(--ink);color:var(--sand);display:none;align-items:center;justify-content:center;flex-direction:column;gap:22px}
+.js .loader{display:flex}
+.loader .word{font:300 clamp(46px,8vw,96px)/1 var(--display);letter-spacing:.06em;overflow:hidden;display:flex}
+.loader .word span{display:inline-block;transform:translateY(110%)}
+.loader .line{width:0;height:1px;background:rgba(245,240,231,.5)}
+.loader small{font:500 10px/1 var(--body);letter-spacing:.4em;text-transform:uppercase;opacity:0}
+
+/* ---------- nav ---------- */
+header{position:fixed;left:0;right:0;top:var(--rb,34px);z-index:50;transition:top .4s var(--ease),background .4s,color .4s,border-color .4s;color:#fff;border-bottom:1px solid transparent}
+header.solid{top:0;background:rgba(245,240,231,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);border-bottom-color:var(--rule)}
+header nav{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,3vw,44px)}
+.logo{font:400 26px/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.logo i{font-style:normal;display:block;font:500 9px/1 var(--body);letter-spacing:.5em;margin-top:6px;opacity:.75}
+.links{display:flex;gap:34px;font:400 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .35s var(--ease)}
+.links a:hover::after{right:0}
+.navbook{font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:14px 22px;background:#fff;color:var(--ink);transition:background .3s,color .3s}
+header.solid .navbook{background:var(--lagoon);color:#fff}
+@media(max-width:900px){.links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
+.slides{position:absolute;inset:0}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.slides img.on{opacity:1}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55))}
+.hcenter{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;padding:0 20px}
+.hcenter .kick{color:#fff;opacity:.9}
+.hero h1{font-size:clamp(50px,8.6vw,132px);margin-top:26px;text-shadow:0 2px 40px rgba(0,0,0,.25)}
+.hero h1 em{font-style:italic}
+.hero .line-mask{overflow:hidden;display:block;padding-bottom:.08em}
+.hero .line-mask>span{display:block}
+.dock{position:absolute;left:0;right:0;bottom:clamp(26px,6vh,58px);padding:0 20px}
+.bar{display:grid;grid-template-columns:1fr 1fr 130px auto;max-width:820px;margin:0 auto;background:rgba(255,255,255,.14);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.36)}
+.bar label{padding:13px 18px 11px;border-right:1px solid rgba(255,255,255,.26);font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.bar input,.bar select{display:block;width:100%;background:transparent;border:0;color:#fff;font:400 16px/1.2 var(--body);padding:7px 0 0;color-scheme:dark;outline:none}
+.bar select option{color:var(--ink)}
+.bar button{border:0;background:#fff;color:var(--ink);font:500 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;padding:0 34px;cursor:pointer;transition:background .3s,color .3s}
+.bar button:hover{background:var(--lagoon);color:#fff}
+.dots{position:absolute;right:clamp(20px,3vw,44px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.dots i{width:1px;height:26px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
+.dots i b{position:absolute;inset:0;background:#fff;transform:scaleY(0);transform-origin:top}
+@media(max-width:720px){.bar{grid-template-columns:1fr 1fr}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
+
+/* ---------- intro (words light up as you scroll) ---------- */
+.intro{padding:clamp(110px,15vw,210px) 0}
+.intro p{font:300 clamp(30px,4.2vw,62px)/1.18 var(--display);max-width:22ch;margin:0 auto;text-align:center}
+.intro p .w{opacity:.14;transition:none}
+.no-js .intro p .w,html:not(.js) .intro p .w{opacity:1}
+.intro .sig{display:block;text-align:center;margin-top:40px}
+
+/* ---------- island: pinned horizontal ---------- */
+.island{position:relative;background:var(--ink);color:var(--sand);overflow:hidden}
+.island-head{position:absolute;top:clamp(34px,6vh,70px);left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);display:flex;justify-content:space-between;align-items:flex-end;z-index:2;pointer-events:none}
+.island-head h2{font-size:clamp(36px,4.6vw,68px)}
+.island-head .kick{color:#8FC7C1}
+.count{font:300 18px/1 var(--display);letter-spacing:.1em}
+.track{display:flex;gap:clamp(18px,2.4vw,36px);padding:clamp(150px,22vh,220px) clamp(20px,4vw,48px) clamp(50px,9vh,90px);width:max-content;height:100vh;height:100svh;min-height:600px;align-items:stretch}
+.panel{position:relative;width:min(62vw,880px);flex:none;overflow:hidden}
+.panel img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0));font:300 22px/1.3 var(--display)}
+.panel figcaption b{display:block;font:500 10px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;opacity:.8;margin-bottom:8px}
+@media(max-width:900px){.island-head{position:static;padding:80px 20px 26px}.track{height:auto;min-height:0;padding:0 20px 80px;width:auto;overflow-x:auto;scroll-snap-type:x mandatory}.panel{width:84vw;height:62vh;scroll-snap-align:center}.panel img{transform:none}}
+
+/* ---------- villas ---------- */
+.villas{padding:clamp(110px,14vw,190px) 0}
+.villas .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:clamp(50px,6vw,80px)}
+.villas h2{font-size:clamp(40px,5.4vw,80px);max-width:12ch}
+.villas .head p{max-width:40ch;color:var(--ink2)}
+.vgrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(18px,2.2vw,32px);align-items:start}
+.vgrid .v:nth-child(2){margin-top:90px}.vgrid .v:nth-child(3){margin-top:180px}
+.v .ph{overflow:hidden;aspect-ratio:3/4;clip-path:inset(0 0 0 0)}
+.js .v .ph{clip-path:inset(100% 0 0 0)}
+.v .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.v:hover .ph img{transform:scale(1.06)}
+.v h3{font-size:34px;margin-top:22px}
+.v .meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);margin-top:14px;padding-top:12px;font-size:14px;color:var(--ink2)}
+.v .meta b{font:400 20px/1 var(--display);color:var(--ink)}
+.v p.d{color:var(--ink2);font-size:15.5px;margin-top:12px}
+.v .pick{display:inline-block;margin-top:16px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr}.vgrid .v:nth-child(n){margin-top:0}.vgrid{gap:60px}}
+
+/* ---------- a day: sticky photo + sun arc ---------- */
+.day{background:var(--sand2);padding:clamp(110px,14vw,180px) 0}
+.day .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px)}
+.stick{position:sticky;top:12vh;height:76vh}
+.stick .frame{position:relative;height:100%;overflow:hidden}
+.stick .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--ease),transform 1.6s var(--ease);transform:scale(1.05)}
+.stick .frame img.on{opacity:1;transform:scale(1)}
+.sun{position:absolute;left:24px;right:24px;top:24px;height:90px;pointer-events:none}
+.sun svg{width:100%;height:100%;overflow:visible}
+.sun .arc{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1;stroke-dasharray:3 5}
+.sun .disc{fill:#FFD9A8;filter:drop-shadow(0 0 10px rgba(255,200,140,.9))}
+.sun .t{position:absolute;right:0;top:calc(100% - 8px);font:500 11px/1 var(--body);letter-spacing:.2em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.day h2{font-size:clamp(40px,5vw,74px);margin-bottom:40px}
+.moment{padding:clamp(60px,12vh,120px) 0;border-top:1px solid var(--rule)}
+.moment:first-of-type{border-top:0;padding-top:0}
+.moment time{font:300 54px/1 var(--display);color:var(--clay);display:block}
+.moment h3{font-size:30px;margin-top:14px}
+.moment p{color:var(--ink2);margin-top:12px;max-width:40ch}
+.moment img.m{display:none}
+@media(max-width:900px){.day .grid{grid-template-columns:1fr}.stick{display:none}.moment img.m{display:block;margin-top:22px;aspect-ratio:4/3;object-fit:cover;width:100%}}
+
+/* ---------- quote over parallax ---------- */
+.quote{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
+.quote img{position:absolute;left:0;right:0;top:-12%;width:100%;height:124%;object-fit:cover}
+.quote::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.28)}
+.quote blockquote{position:relative;z-index:1;margin:0;padding:0 24px;font:300 italic clamp(34px,5vw,74px)/1.12 var(--display);max-width:18ch}
+.quote cite{display:block;font:500 11px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;font-style:normal;margin-top:30px;opacity:.85}
+
+/* ---------- booking ---------- */
+.book{padding:clamp(110px,14vw,180px) 0}
+.bgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.book h2{font-size:clamp(44px,5.6vw,84px)}
+.book .lead{color:var(--ink2);margin-top:26px;max-width:38ch}
+.book ul{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--rule)}
+.book li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.book li span:first-child{color:var(--dim)}
+form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:block;font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.f input,.f select{display:block;width:100%;margin-top:9px;border:0;border-bottom:1px solid var(--rule);padding:10px 0;font:400 17px/1.2 var(--body);color:var(--ink);background:transparent;outline:none;transition:border-color .3s}
+.f input:focus,.f select:focus{border-bottom-color:var(--lagoon)}
+.step{display:flex;align-items:center;gap:18px;margin-top:9px;border-bottom:1px solid var(--rule);padding:6px 0}
+.step button{width:34px;height:34px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
+.step output{font:400 18px/1 var(--body);min-width:2ch;text-align:center}
+.est{margin:10px 0 24px;padding:20px 0;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.est span{font-size:14px;color:var(--ink2)}
+.est b{font:400 36px/1 var(--display)}
+form.req button[type=submit]{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
+form.req button[type=submit]:hover{background:var(--ink)}
+.done{display:none;padding:18px 0 0;color:var(--lagoon);font-size:15px}
+.bgrid>*{min-width:0}
+@media(max-width:900px){.bgrid{grid-template-columns:1fr}}
+@media(max-width:600px){.hcenter .kick{letter-spacing:.2em;line-height:1.8;font-size:10px}.ribbon{font-size:11px}.book li{flex-direction:column;gap:2px}}
+
+footer{background:var(--ink);color:rgba(245,240,231,.7);padding:70px 0 40px;font-size:13.5px}
+footer .big{font:300 clamp(60px,15vw,220px)/.8 var(--display);letter-spacing:.04em;color:rgba(245,240,231,.08);text-transform:uppercase;white-space:nowrap;overflow:hidden;margin-bottom:40px}
+footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer a{text-decoration:underline;text-underline-offset:3px}
+
+/* hidden states only under .js — GSAP reveals */
+.js .rv{opacity:0;transform:translateY(34px)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Concept site by <a href="https://veracod.com/">Veracod</a> &mdash; Maraya Cove is a fictional resort, built to show what we make. Photos: Unsplash.</div>
+
+<div class="loader" aria-hidden="true">
+  <div class="word"><span>M</span><span>a</span><span>r</span><span>a</span><span>y</span><span>a</span></div>
+  <div class="line"></div>
+  <small>Northern Palawan</small>
+</div>
+
+<header id="hdr">
+  <nav>
+    <a class="logo" href="#top">Maraya<i>Cove &middot; Palawan</i></a>
+    <div class="links"><a href="#island">The island</a><a href="#villas">Villas</a><a href="#day">A day here</a><a href="#book">Stay</a></div>
+    <a class="navbook" href="#book">Book direct</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="slides">
+      <img class="on" src="img/island.webp" alt="A green limestone island in turquoise water, from above" fetchpriority="high">
+      <img src="img/lagoon-rocks.webp" alt="A white-sand cove between limestone cliffs">
+      <img src="img/pool-villa.webp" alt="A private pool villa among palms">
+    </div>
+    <div class="shade"></div>
+    <div class="hcenter">
+      <p class="kick hin">Eleven villas &middot; one cove &middot; northern Palawan</p>
+      <h1><span class="line-mask"><span>An island that keeps</span></span><span class="line-mask"><span><em>its own</em> time.</span></span></h1>
+    </div>
+    <div class="dots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="dock hin">
+      <form class="bar" id="qbar">
+        <label>Arrive<input type="date" name="in"></label>
+        <label>Leave<input type="date" name="out"></label>
+        <label>Guests<select name="g"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+        <button type="submit">Check dates</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p id="words">No road reaches Maraya. You arrive by bangka, barefoot by the second day, and leave knowing the tide by heart.</p>
+      <span class="kick sig rv">Since 2009 &middot; family-run</span>
+    </div>
+  </section>
+
+  <section class="island" id="island">
+    <div class="island-head"><div><p class="kick">The island</p><h2>Forty minutes<br>from anywhere.</h2></div><span class="count"><b id="cnum">01</b> / 04</span></div>
+    <div class="track" id="track">
+      <figure class="panel"><img src="img/lagoon-boats.webp" alt="Bangkas anchored in a lagoon between limestone walls" loading="lazy"><figcaption><b>The lagoon</b>Twelve minutes by bangka, before the day boats arrive.</figcaption></figure>
+      <figure class="panel"><img src="img/bangkas.webp" alt="Outrigger boats on turquoise water from above" loading="lazy"><figcaption><b>The fleet</b>Four boats, four captains, all from the village next door.</figcaption></figure>
+      <figure class="panel"><img src="img/limestone.webp" alt="Limestone cliffs over still water" loading="lazy"><figcaption><b>The cliffs</b>Kayaks at the jetty from six. Nobody minds if you're late.</figcaption></figure>
+      <figure class="panel"><img src="img/huts.webp" alt="Bamboo cottages under coconut palms" loading="lazy"><figcaption><b>The beach</b>Three hundred metres of it, and a hammock every thirty.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="villas" id="villas">
+    <div class="wrap">
+      <div class="head"><h2 class="rv">Three ways to wake up here.</h2><p class="rv">Every villa faces the water or the forest, never another villa. Breakfast, boat transfers and the lagoon trip are always included.</p></div>
+      <div class="vgrid">
+        <article class="v"><div class="ph"><img src="img/beach-villa.webp" alt="A thatched villa beside a pool over the beach" loading="lazy"></div><h3>Beach Villa</h3><div class="meta"><span>60 m&sup2; &middot; 2 guests &middot; 6 villas</span><b>&#8369;18,500</b></div><p class="d">Sand to the step, a daybed on the deck and the sea eight metres away.</p><a class="pick" href="#book" data-villa="Beach Villa">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/pool-villa.webp" alt="A villa with its own pool among palms" loading="lazy"></div><h3>Pool Villa</h3><div class="meta"><span>95 m&sup2; &middot; 4 guests &middot; 3 villas</span><b>&#8369;29,000</b></div><p class="d">Your own twelve-metre pool, an outdoor shower, and the garden to yourselves.</p><a class="pick" href="#book" data-villa="Pool Villa">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/jungle-loft.webp" alt="A bedroom with a wide window onto green forest" loading="lazy"></div><h3>Forest Loft</h3><div class="meta"><span>70 m&sup2; &middot; 3 guests &middot; 2 lofts</span><b>&#8369;21,000</b></div><p class="d">Up in the canopy, a wall of glass, and hornbills at breakfast.</p><a class="pick" href="#book" data-villa="Forest Loft">Check dates &rarr;</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="day" id="day">
+    <div class="wrap grid">
+      <div class="stick">
+        <div class="frame">
+          <img class="on" data-k="0" src="img/infinity.webp" alt="" loading="lazy">
+          <img data-k="1" src="img/floating-breakfast.webp" alt="" loading="lazy">
+          <img data-k="2" src="img/lagoon-aerial.webp" alt="" loading="lazy">
+          <img data-k="3" src="img/sunset.webp" alt="" loading="lazy">
+          <div class="sun"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="arc" id="arc" d="M0 88 Q200 -60 400 88"/><circle class="disc" id="disc" r="7" cx="0" cy="88"/></svg><span class="t" id="clock">05:48</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="kick">A day at Maraya</p>
+        <h2 class="rv">Planned by the tide, not the clock.</h2>
+        <div class="moment" data-k="0" data-t="05:48"><time>05:48</time><h3>First light, first swim</h3><p>The pool is glass until the first guest breaks it. Coffee is already on the deck.</p><img class="m" src="img/infinity.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="1" data-t="08:30"><time>08:30</time><h3>Breakfast, wherever you are</h3><p>On the deck, on the sand, or floating in your pool. Mangoes from the hill behind the kitchen.</p><img class="m" src="img/floating-breakfast.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="2" data-t="13:15"><time>13:15</time><h3>The lagoon, at low tide</h3><p>Captain Jun reads the water and picks the hour. Lunch is grilled on the boat.</p><img class="m" src="img/lagoon-aerial.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="3" data-t="17:52"><time>17:52</time><h3>Sunset, from the jetty</h3><p>Calamansi and something stronger, at the end of the jetty. Nobody says much.</p><img class="m" src="img/sunset.webp" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <img id="qimg" src="img/villa-dusk.webp" alt="A villa lit at dusk" loading="lazy">
+    <blockquote class="rv">&ldquo;We came for four nights and changed our flights on the second.&rdquo;<cite>A guest, March</cite></blockquote>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap bgrid">
+      <div>
+        <p class="kick">Stay with us</p>
+        <h2 class="rv">Book straight with the family.</h2>
+        <p class="lead rv">No booking site in the middle and nothing added at checkout. You hear back from Ana or Rico the same day, with the boat time and what to pack.</p>
+        <ul class="rv">
+          <li><span>Boat from El Nido</span><span>Included, 40 minutes</span></li>
+          <li><span>Breakfast &amp; lagoon trip</span><span>Included</span></li>
+          <li><span>To hold your dates</span><span>30% by bank or GCash</span></li>
+          <li><span>Change of plans</span><span>Free up to 14 days before</span></li>
+        </ul>
+      </div>
+      <form class="req" id="req">
+        <div class="row">
+          <label class="f">Arrive<input type="date" name="in" required></label>
+          <label class="f">Leave<input type="date" name="out" required></label>
+        </div>
+        <div class="row">
+          <label class="f">Villa<select name="villa"><option data-r="18500">Beach Villa</option><option data-r="29000">Pool Villa</option><option data-r="21000">Forest Loft</option></select></label>
+          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div></div>
+        </div>
+        <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
+        <label class="f">Email or mobile<input type="text" name="contact" required></label>
+        <div class="est"><span id="nights">Pick your dates</span><b id="total">&mdash;</b></div>
+        <button type="submit">Request these dates</button>
+        <p class="done" id="done">This is a concept site, so nothing was sent. On a real one, the family would have your request now.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big" aria-hidden="true">Maraya</div>
+    <div class="cols">
+      <p>Maraya Cove is fictional. A concept site designed and built by <a href="https://veracod.com/">Veracod</a>.</p>
+      <p>Photography from <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>, used under the Unsplash License.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  /* ---------- forms work with or without animation ---------- */
+  var today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());var td=today.toISOString().slice(0,10);
+  document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});
+  var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
+  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g=Math.max(1,Math.min(6,g+(+b.dataset.d)));gv.textContent=g})});
+  function est(){var a=req.elements['in'].value,b=req.elements.out.value,s=req.elements.villa;var r=+s.options[s.selectedIndex].dataset.r;
+    var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
+    if(n>0){document.getElementById('nights').textContent=n+' night'+(n>1?'s':'')+' · '+s.value+' · breakfast & boat included';document.getElementById('total').textContent='₱'+(n*r).toLocaleString('en-PH')}
+    else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—'}}
+  ['in','out','villa'].forEach(function(k){req.elements[k].addEventListener('change',est)});
+  req.elements['in'].addEventListener('change',function(){req.elements.out.min=req.elements['in'].value||td});
+  req.addEventListener('submit',function(e){e.preventDefault();document.getElementById('done').style.display='block'});
+  var q=document.getElementById('qbar');
+  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;gv.textContent=g;est();
+    document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
+  document.querySelectorAll('[data-villa]').forEach(function(a){a.addEventListener('click',function(){req.elements.villa.value=a.dataset.villa;est()})});
+
+  /* ---------- header ---------- */
+  var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
+  function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);
+  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72)}
+  sc();addEventListener('scroll',sc,{passive:true});
+
+  /* ---------- intro: split into words ---------- */
+  var wp=document.getElementById('words');
+  wp.innerHTML=wp.textContent.split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+
+  if(!window.gsap||!document.documentElement.classList.contains('js')){document.documentElement.classList.remove('js');return;}
+  window.__mcReady=true;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- loader → hero ---------- */
+  var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.to('.loader .word span',{y:0,duration:1,stagger:.06})
+    .to('.loader .line',{width:160,duration:.9,ease:'power2.inOut'},'-=.6')
+    .to('.loader small',{opacity:.7,duration:.5},'-=.5')
+    .to('.loader',{yPercent:-100,duration:1.05,ease:'expo.inOut'},'+=.25')
+    .from('.slides img.on',{scale:1.18,duration:2.4,ease:'power3.out'},'-=.8')
+    .from('.hero h1 .line-mask>span',{yPercent:110,duration:1.3,stagger:.12},'-=2')
+    .from('.hin',{opacity:0,y:24,duration:1,stagger:.15},'-=1.1')
+    .set('.loader',{display:'none'});
+
+  /* ---------- hero slideshow: slow crossfade + drift ---------- */
+  var imgs=gsap.utils.toArray('.slides img'),bars=gsap.utils.toArray('.dots b'),cur=0;
+  function drift(el){gsap.fromTo(el,{scale:1.08},{scale:1,duration:7.5,ease:'none'})}
+  function bar(i){gsap.set(bars,{scaleY:0});gsap.fromTo(bars[i],{scaleY:0},{scaleY:1,duration:6.5,ease:'none'})}
+  bar(0);
+  setInterval(function(){if(document.hidden)return;var nx=(cur+1)%imgs.length;
+    gsap.to(imgs[cur],{opacity:0,duration:1.8,ease:'power2.inOut'});gsap.to(imgs[nx],{opacity:1,duration:1.8,ease:'power2.inOut'});drift(imgs[nx]);bar(nx);cur=nx},6500);
+  gsap.to('.slides',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* ---------- intro words light up ---------- */
+  gsap.to('#words .w',{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:'#words',start:'top 80%',end:'bottom 45%',scrub:true}});
+
+  /* ---------- generic reveals ---------- */
+  ScrollTrigger.batch('.rv',{start:'top 88%',once:true,onEnter:function(b){gsap.to(b,{opacity:1,y:0,duration:1.1,stagger:.1,ease:'power3.out'})}});
+
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:901px)',function(){
+    /* ---------- island: pinned horizontal scroll ---------- */
+    var track=document.getElementById('track'),panels=gsap.utils.toArray('.panel');
+    var dist=function(){return track.scrollWidth-window.innerWidth};
+    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'.island',pin:true,scrub:.6,start:'top top',end:function(){return '+='+dist()},invalidateOnRefresh:true,
+      onUpdate:function(s){document.getElementById('cnum').textContent='0'+Math.min(4,1+Math.floor(s.progress*4*0.999))}}});
+    panels.forEach(function(p){gsap.to(p.querySelector('img'),{scale:1,ease:'none',scrollTrigger:{trigger:'.island',start:'top top',end:function(){return '+='+dist()},scrub:true}})});
+
+    /* ---------- a day: swap photo + move the sun ---------- */
+    var arc=document.getElementById('arc'),disc=document.getElementById('disc'),L=arc.getTotalLength(),clock=document.getElementById('clock');
+    var frames=gsap.utils.toArray('.stick img');
+    ScrollTrigger.create({trigger:'#day .grid',start:'top 20%',end:'bottom 70%',scrub:true,onUpdate:function(s){var p=arc.getPointAtLength(L*s.progress);disc.setAttribute('cx',p.x);disc.setAttribute('cy',p.y);
+      var mins=348+Math.round(s.progress*(1072-348));clock.textContent=String(Math.floor(mins/60)).padStart(2,'0')+':'+String(mins%60).padStart(2,'0')}});
+    gsap.utils.toArray('.moment').forEach(function(m){ScrollTrigger.create({trigger:m,start:'top 55%',end:'bottom 55%',onToggle:function(s){if(s.isActive){frames.forEach(function(f){f.classList.toggle('on',f.dataset.k===m.dataset.k)})}}})});
+  });
+
+  /* ---------- villas: photo wipes up ---------- */
+  gsap.utils.toArray('.v .ph').forEach(function(ph){gsap.to(ph,{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}});
+    gsap.fromTo(ph.querySelector('img'),{scale:1.25},{scale:1,duration:1.8,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}})});
+
+  /* ---------- quote parallax ---------- */
+  gsap.fromTo('#qimg',{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:'.quote',start:'top bottom',end:'bottom top',scrub:true}});
+})();
+</script>
+</body>
+</html>
