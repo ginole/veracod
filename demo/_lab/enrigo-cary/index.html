@@ -421,7 +421,7 @@ h2.sp,.lead,.pnote{text-align:center;margin-left:auto;margin-right:auto}
     <div class="hshade"></div>
     <div class="wrap hcontent">
       <p class="kick hr-in">Italian bistro - fresh pasta, artisan pizza, weekly regional specials &middot; Cary, North Carolina</p>
-      <p class="lab-open hr-in" data-tz="America/New_York" data-hours="[[&quot;Monday&quot;,&quot;4:30pm-9pm&quot;],[&quot;Tuesday-Thursday&quot;,&quot;11:30am-9pm&quot;],[&quot;Friday-Saturday&quot;,&quot;11:30am-9:30pm&quot;],[&quot;Sunday&quot;,&quot;Closed / Inquire for Catering &amp; Venue Rental&quot;]]" hidden><i class="lo-dot"></i><b class="lo-state"></b><span class="lo-more"></span></p>
+      <div class="lab-row hr-in"><p class="lab-open lab-chip" data-tz="America/New_York" data-hours="[[&quot;Monday&quot;,&quot;4:30pm-9pm&quot;],[&quot;Tuesday-Thursday&quot;,&quot;11:30am-9pm&quot;],[&quot;Friday-Saturday&quot;,&quot;11:30am-9:30pm&quot;],[&quot;Sunday&quot;,&quot;Closed / Inquire for Catering &amp; Venue Rental&quot;]]" hidden><i class="lo-dot"></i><b class="lo-state"></b><span class="lo-more"></span></p></div>
       <h1>From Italy to Cary.</h1>
       <p class="sub hr-in">An Italian bistro facing the fountain at Waverly Place - fresh-made pasta and sauces, artisan pizzas, and specials that change every week, from a different region of Italy.</p>
       <div class="acts"><a class="btn btn-a hr-in" href="tel:+19198547731" data-vc="tel">Call <span data-vc="phone">(919) 854-7731</span></a><a class="btn btn-o hr-in" href="https://orderstart.com/enrigoitalian" target="_blank" rel="noreferrer">Order online</a></div>
@@ -687,7 +687,11 @@ window.addEventListener('load',function(){
 /* the shade only comes up with the photo, so the closed curtain reads as black, not grey */
 .js .hero.lab-reveal .hshade{opacity:0}
 /* live lines sit under the kicker, quiet: one line, no box */
-.lab-open{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:14px;letter-spacing:.01em;text-shadow:0 1px 2px rgba(0,0,0,.8)}
+/* live chips: dark glass so they read on any photo (a white hairline vanished into a lit wall) */
+.lab-row{margin-top:16px}
+.lab-chip[hidden]{display:none}   /* nothing parsed → no empty chip */
+.lab-chip{display:inline-flex;background:rgba(8,10,14,.52);-webkit-backdrop-filter:blur(10px) saturate(1.15);backdrop-filter:blur(10px) saturate(1.15);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;text-shadow:none}
+.lab-open{align-items:center;gap:10px;margin:0;padding:9px 14px;font-size:14.5px;letter-spacing:.01em}
 .lab-open .lo-dot{width:8px;height:8px;border-radius:50%;background:#9be3b4;box-shadow:0 0 0 0 rgba(155,227,180,.55);flex:none}
 .lab-open.is-open .lo-dot{animation:loPulse 2.8s ease-out infinite}
 .lab-open.is-closed .lo-dot{background:transparent;border:1.5px solid rgba(255,255,255,.7);width:7px;height:7px}
@@ -695,12 +699,15 @@ window.addEventListener('load',function(){
 .lab-open .lo-more{opacity:.86}
 @keyframes loPulse{0%{box-shadow:0 0 0 0 rgba(155,227,180,.55)}70%{box-shadow:0 0 0 9px rgba(155,227,180,0)}100%{box-shadow:0 0 0 0 rgba(155,227,180,0)}}
 @media (prefers-reduced-motion: reduce){.lab-open.is-open .lo-dot{animation:none}}
-.lab-sun{display:grid;grid-template-columns:auto minmax(120px,190px) auto;align-items:center;gap:10px;margin-top:16px;font-size:12.5px;letter-spacing:.04em;text-shadow:0 1px 2px rgba(0,0,0,.8);max-width:420px}
-.lab-sun .ls-track{position:relative;height:1px;background:rgba(255,255,255,.45)}
-.lab-sun .ls-dot{position:absolute;top:50%;left:0;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:#ffd79a;box-shadow:0 0 12px 2px rgba(255,200,120,.65)}
+.lab-sun{display:inline-grid;grid-template-columns:auto minmax(110px,200px) auto;align-items:center;gap:9px 11px;padding:11px 15px 12px;font-size:12px;letter-spacing:.03em;max-width:100%}
+.lab-sun .ls-cap{grid-column:1/-1;margin:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:14.5px;letter-spacing:.01em}
+.lab-sun .ls-when{font-weight:600}
+.lab-sun .ls-left{opacity:.72;font-size:13.5px}
+.lab-sun .ls-track{position:relative;height:2px;border-radius:2px;background:rgba(255,255,255,.26)}
+.lab-sun .ls-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:linear-gradient(90deg,rgba(255,215,154,.25),#ffd79a)}
+.lab-sun .ls-dot{position:absolute;top:50%;left:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:#ffd79a;box-shadow:0 0 10px 2px rgba(255,200,120,.7)}
 .lab-sun.is-night .ls-dot{background:transparent;border:1.5px solid rgba(255,255,255,.75);box-shadow:none}
 .lab-sun .ls-a,.lab-sun .ls-b{opacity:.8;font-variant-numeric:tabular-nums}
-.lab-sun .ls-cap{grid-column:1/-1;font-style:normal;font-size:14px;letter-spacing:.01em;opacity:.95}
 .find .hr2.today b::after{content:"Today";margin-left:8px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
 .find .hr2.today{font-weight:600}
 /* story */
@@ -774,20 +781,24 @@ window.addEventListener('load',function(){
     var nDay=Math.round(JD-2451545.0+lng/360);    /* the local solar day we are in */
     var t=times(nDay);
     var f2=new Intl.DateTimeFormat('en-US',{timeZone:tz2,hour:'numeric',minute:'2-digit'});
-    var nowMs=now2.getTime(),frac,cap;
-    if(nowMs<t.rise){frac=0;sun.classList.add('is-night');cap='Sunrise at '+f2.format(t.rise)}
-    else if(nowMs<t.set){frac=(nowMs-t.rise)/(t.set-t.rise);var left=Math.round((t.set-nowMs)/6e4);
-      cap='Sunset today at '+f2.format(t.set)+' \u00b7 in '+(left>=60?Math.floor(left/60)+'h '+(left%60)+'m':left+'m')}
-    else{frac=1;sun.classList.add('is-night');var tm=times(nDay+1);cap='The sun set at '+f2.format(t.set)+' \u00b7 rises at '+f2.format(tm.rise)}
+    var nowMs=now2.getTime(),frac,when,left='';
+    if(nowMs<t.rise){frac=0;sun.classList.add('is-night');when='Sunrise at '+f2.format(t.rise)}
+    else if(nowMs<t.set){frac=(nowMs-t.rise)/(t.set-t.rise);var mins=Math.round((t.set-nowMs)/6e4);
+      when='Sunset today at '+f2.format(t.set);left='in '+(mins>=60?Math.floor(mins/60)+'h '+(mins%60)+'m':mins+'m')}
+    else{frac=1;sun.classList.add('is-night');var tm=times(nDay+1);when='The sun set at '+f2.format(t.set);left='rises at '+f2.format(tm.rise)}
     sun.querySelector('.ls-a').textContent=f2.format(t.rise);sun.querySelector('.ls-b').textContent=f2.format(t.set);
-    sun.querySelector('.ls-cap').textContent=cap;sun.hidden=false;
-    var dot=sun.querySelector('.ls-dot');
-    if(window.gsap&&document.documentElement.classList.contains('js')){gsap.fromTo(dot,{left:'0%'},{left:(frac*100)+'%',duration:1.6,ease:'power2.out',delay:1.1})}
-    else dot.style.left=(frac*100)+'%';
+    sun.querySelector('.ls-when').textContent=when;sun.querySelector('.ls-left').textContent=left;sun.hidden=false;
+    var dot=sun.querySelector('.ls-dot'),fill=sun.querySelector('.ls-fill'),pc=(frac*100)+'%';
+    /* position is set outright; the load animation (below) only sweeps it in from sunrise, so a page
+       whose animation never runs still shows the right time */
+    dot.style.left=pc;fill.style.width=pc;window.__labSunPc=pc;
   }catch(e){}}
 })();
 window.addEventListener('load',function(){
   if(!window.gsap||!document.documentElement.classList.contains('js'))return;
+  /* sweep the sun in from sunrise to now */
+  if(window.__labSunPc){gsap.from('.lab-sun .ls-dot',{left:'0%',duration:1.6,ease:'power2.out',delay:1.3});
+    gsap.from('.lab-sun .ls-fill',{width:'0%',duration:1.6,ease:'power2.out',delay:1.3})}
   /* reveal the hero photo from a slit, once */
   var hp=document.querySelector('.hero.lab-reveal .hphoto');
   if(hp)gsap.fromTo(hp,{clipPath:'inset(47% 0% 47% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.35,ease:'power3.inOut',onStart:function(){window.__alive=true}});
