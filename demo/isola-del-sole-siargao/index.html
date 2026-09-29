@@ -386,6 +386,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 .q .btn-o{border-width:1px}
 .q header{background:color-mix(in srgb,var(--bg) 94%,transparent)}
 .q .navlinks a{font-size:11.5px;letter-spacing:.2em;font-weight:500}
+@media(max-width:1399px){.q .navacts .btn-o[href^="tel:"]{display:none}}
+@media(min-width:980px) and (max-width:1240px){.q .navlinks{gap:14px}.q .navlinks a{letter-spacing:.14em}}
 
 .hero-quiet{padding:0}
 .hq-photo{max-width:1440px;margin:0 auto;padding:0 clamp(0px,3vw,40px)}
