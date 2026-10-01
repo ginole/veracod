@@ -406,6 +406,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 .hero-quiet{position:relative;height:100vh;height:100svh;min-height:560px;max-height:980px;color:#fff;overflow:hidden}
 .hq-photo{position:absolute;inset:0}
 .hq-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--mpos,50% 50%)}
+.hq-photo .hvid{object-position:var(--mpos,50% 50%)}
+.hero-quiet.hv-mobile .hvid{display:block}
+@media(prefers-reduced-motion:reduce){.hero-quiet.hv-mobile .hvid{display:none}}
 .hq-shade{position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(0,0,0,.42) 0,rgba(0,0,0,0) 22%),
   radial-gradient(ellipse 70% 55% at 50% 48%,rgba(0,0,0,.30),rgba(0,0,0,0) 72%),
