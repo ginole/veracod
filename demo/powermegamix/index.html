@@ -1,1354 +1,801 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex">
+<title>Power Megamix Batching Inc. — Ready-Mix Concrete, Cavite</title>
+<meta name="description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Cavite.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Power Megamix Batching Inc. — Ready-Mix Concrete, Cavite">
-<meta property="og:description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Kawit, Cavite.">
+<meta property="og:description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Cavite.">
 <meta property="og:image" content="https://veracod.com/demo/powermegamix/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<title>Power Megamix Batching Inc. — Ready-Mix Concrete &amp; Pumping, Cavite</title>
-<meta name="description" content="Ready-mix concrete supply and line/boom pumping from two batching plants in Kawit, Cavite. Serving contractors across Cavite and Metro Manila since 2017.">
 <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-/* Add .js immediately; if no tween has started within 2.5s, strip it so content
-   is never held hostage by a CDN failure or a paused rAF. */
-document.documentElement.classList.add('js');
-window.__pmxAnim = false;
-/* Dismiss the opening mark on load, or after 2.2s if something stalls. */
-(function(){
-  var done = false;
-  function ready(){ if(done) return; done = true; document.documentElement.classList.add('ready'); }
-  window.addEventListener('load', function(){ setTimeout(ready, 260); });
-  setTimeout(ready, 2200);
-})();
-setTimeout(function(){
-  if(!window.__pmxAnim){ document.documentElement.classList.remove('js'); }
-}, 2500);
+setTimeout(function(){ if(!window.__pmxReady) document.documentElement.classList.remove('js'); }, 3000);
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.remove('js');
 </script>
 <style>
-/* ============================================================
-   POWER MEGAMIX BATCHING INC.
-   Brand pulled from the plant itself: signage blue #1a4fa0, the red italic
-   P-arrow mark #c8202f, white buildings, concrete grey. Register: tender
-   attachment, not landing page — condensed caps, ruled tables, big numerals.
-   ============================================================ */
+/* Power Megamix — brand from the plant itself: signage blue, the red P-arrow, white buildings, concrete grey. */
 :root{
-  --blue:#1a4fa0;
-  --blue-deep:#123a78;
-  --navy:#0a1d3f;
-  --red:#c8202f;
-  --ink:#1a222d;
-  --body:#46515e;
-  --mute:#7b8694;
-  --concrete:#eef0f3;
-  --paper:#ffffff;
-  --line:#d9dee5;
-  --amber:#e5a012;
-  --amber-ink:#7a5406;
-  --amber-bg:#fdf7e7;
-  --cond:'Barlow Condensed','Arial Narrow',sans-serif;
-  --sans:'Inter',system-ui,sans-serif;
+  --paper:#EEF0F2; --paper2:#E2E6EA; --ink:#0E1A2E; --ink2:#43506A; --dim:#7C879A; --rule:#C9D0D9;
+  --blue:#1A4FA0; --blue2:#123B7A; --navy:#0C1F3F; --red:#C8202F; --red2:#A51824;
+  --need:#F4C430; --needbg:#FFF8DC;
+  --cond:'Barlow Condensed','PingFang SC','Microsoft YaHei',sans-serif; --sans:'Inter','PingFang SC','Microsoft YaHei',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1); --gut:clamp(16px,3.2vw,44px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-html,body{overflow-x:hidden}
-body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:var(--cond);text-transform:uppercase;color:var(--ink);margin:0;line-height:.98;font-weight:700;letter-spacing:.005em}
+h1,h2,h3{font-family:var(--cond);font-weight:700;margin:0;letter-spacing:-.005em;line-height:.95;text-transform:uppercase}
 p{margin:0}
-.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+button{font:inherit;color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+.wrap{padding:0 var(--gut)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,28px)}
+.tag{display:inline-flex;align-items:center;gap:8px}
+.tag::before{content:"";width:8px;height:8px;background:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;padding:15px 18px 15px 20px;background:var(--blue);color:#fff;font:600 15px/1 var(--sans);border:0;cursor:pointer;transition:background .25s}
+.btn:hover{background:var(--blue2)}
+.btn.red{background:var(--red)}.btn.red:hover{background:var(--red2)}
+.btn .ar{font-family:var(--mono);transition:transform .3s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
 
-/* labels: the small over-tracked spec caption used everywhere */
-.lbl{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--blue)}
-.lbl::before{content:"";width:22px;height:3px;background:var(--red);flex:none}
+/* "needed from you" — the yellow boxes that ask for material */
+.need{position:relative;border:2px dashed var(--need);background:repeating-linear-gradient(135deg,var(--needbg) 0 14px,#FFF3C4 14px 28px);color:#6B5310}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--need);color:#3D2E00;font:600 11px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:5px 8px}
+.chip::before{content:"!";font-weight:700}
+.q{display:inline-block;min-width:2.2ch;padding:0 .2em;border:2px dashed var(--need);background:var(--needbg);color:#8A6A12;line-height:1}
 
-/* silo-stripe divider — the blue/white bands off the actual silos */
-.stripes{height:9px;background:repeating-linear-gradient(135deg,var(--blue) 0 16px,#fff 16px 32px);border-top:1px solid var(--blue-deep);border-bottom:1px solid var(--blue-deep)}
+/* ribbon + header */
+.demo-bar{background:var(--ink);color:#DDE3EC;font-size:12px;text-align:center;padding:8px 16px;line-height:1.5}
+.demo-bar b{color:#fff}
+header{position:sticky;top:0;z-index:50;background:rgba(238,240,242,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+header nav{display:flex;align-items:center;gap:26px;padding:12px var(--gut)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{display:block;font:800 21px/1 var(--cond);color:var(--blue);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.brand i{display:block;font:600 10px/1 var(--mono);font-style:normal;letter-spacing:.24em;color:var(--dim);margin-top:4px;text-transform:uppercase}
+.links{display:flex;gap:24px;margin-left:auto;font-size:14px;font-weight:500}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--red);transition:right .3s var(--ease)}
+.links a:hover::after{right:0}
+.langsw{display:flex;border:1px solid var(--rule);flex:none}
+.langsw button{font:700 12px/1 var(--sans);background:#fff;color:var(--dim);border:0;padding:8px 11px;cursor:pointer}
+.langsw button+button{border-left:1px solid var(--rule)}
+.langsw button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.navcta{padding:11px 14px;background:var(--red);color:#fff;font:600 14px/1 var(--sans);white-space:nowrap}
+@media(max-width:1060px){.links{display:none}.langsw{margin-left:auto}}
+@media(max-width:560px){.navcta{display:none}.brand b{font-size:18px}}
 
-/* ---------- reveal states (CSS owns hidden; GSAP only makes visible) ---------- */
-.js .reveal,.js .rise{opacity:0;transform:translateY(26px)}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal,.js .rise{opacity:1;transform:none}
-}
+/* hero */
+.hero{padding-top:clamp(28px,5vw,60px)}
+.hero .top{align-items:end;row-gap:30px}
+.hero .copy{grid-column:1/6}
+.hero .copy .tag{margin-bottom:24px}
+.hero h1{font-size:clamp(46px,5.6vw,88px);color:var(--ink)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lede{max-width:440px;color:var(--ink2);margin-top:22px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .shot{grid-column:7/13;margin:0}
+.hero .frame{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper2)}
+.hero .frame img{width:100%;height:100%;object-fit:cover;transform-origin:50% 60%}
+.hero .spec{position:absolute;left:0;bottom:0;background:var(--paper);padding:12px 18px 0 0;display:grid;grid-template-columns:auto auto;gap:4px 16px}
+.hero .spec span{font:400 12px/1.3 var(--mono);color:var(--dim);text-transform:uppercase}
+.hero .spec b{font:500 12px/1.3 var(--mono)}
+.hero .cap{display:flex;justify-content:space-between;margin-top:10px;color:var(--dim)}
+.wordmark{margin-top:clamp(28px,4vw,52px)}
+.wordmark svg{display:block;width:100%;height:auto;overflow:visible}
+.stripes{height:14px;background:repeating-linear-gradient(90deg,var(--blue) 0 34px,#fff 34px 68px);margin-top:6px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}
+.facts div{padding:16px 14px 24px 0;border-right:1px solid var(--rule)}
+.facts div:last-child{border-right:0}
+.facts div+div{padding-left:14px}
+.facts b{text-transform:none;display:block;font:800 clamp(30px,3.4vw,46px)/1 var(--cond);letter-spacing:-.01em}
+.facts span{color:var(--dim);display:block;margin-top:8px}
+@media(max-width:900px){.hero .copy,.hero .shot{grid-column:1/-1}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(3){padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--rule)}}
 
-/* masked-line reveal: the clip box must leave room for descenders (g/y/p/j),
-   otherwise mask:'lines' shears their tails off. Padding + equal negative margin. */
-.stl{padding-bottom:.2em;margin-bottom:-.2em}
-.js h1,.js h2{text-wrap:initial}   /* text-balance rewrites line boxes after SplitText measures */
+/* section heads */
+.sec{padding:clamp(80px,10vw,140px) 0 0}
+.shead{align-items:end;margin-bottom:clamp(34px,5vw,60px);row-gap:16px}
+.shead .no{grid-column:1/3;color:var(--dim)}
+.shead h2{grid-column:3/10;font-size:clamp(40px,5.6vw,86px)}
+.shead p{grid-column:10/13;color:var(--ink2);font-size:15px}
+@media(max-width:900px){.shead .no,.shead h2,.shead p{grid-column:1/-1}}
 
+/* process */
+.flow{overflow:hidden}
+.flow .pipe{position:relative;height:6px;background:var(--paper2);margin:0 var(--gut) 26px}
+.flow .pipe i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue)}
+.flow .pipe i::after{content:"";position:absolute;right:-5px;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--red)}
+.track{display:flex;gap:clamp(14px,2vw,28px);padding:0 var(--gut);width:max-content}
+.stage{width:min(78vw,500px);flex:none}
+.stage .ph{aspect-ratio:3/2;overflow:hidden;background:var(--paper2)}
+.stage .ph img{width:100%;height:100%;object-fit:cover}
+.stage .ph.need{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;padding:28px}
+.stage .ph.need b{font:700 30px/1 var(--cond);text-transform:uppercase;color:#5C470C}
+.stage .ph.need p{font-size:14px;max-width:320px}
+.stage .meta{display:flex;justify-content:space-between;border-top:1px solid var(--ink);margin-top:16px;padding-top:10px;color:var(--dim)}
+.stage h3{font-size:clamp(28px,2.8vw,38px);margin-top:12px}
+.stage p.t{color:var(--ink2);margin-top:10px;max-width:440px;font-size:15.5px}
+@media(max-width:899px){.track{flex-direction:column;width:auto}.stage{width:100%}.flow .pipe{display:none}}
 
-/* ============================================================
-   VOLUME CALCULATOR + QUOTE FORM
-   The two things every competitor in Cavite is missing. The calculator is a
-   reason to stay on the page; its result drops straight into the form.
-   ============================================================ */
-.calc{background:var(--concrete);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.calc-grid{display:grid;gap:26px;margin-top:40px}
-@media(min-width:900px){.calc-grid{grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}}
+/* calculator (navy) */
+.calc{background:var(--navy);color:#EAF0F8;padding-bottom:clamp(70px,9vw,120px);margin-top:clamp(80px,10vw,140px)}
+.calc .sec{padding-top:clamp(70px,9vw,120px)}
+.calc .shead .no{color:#8EA0BF}.calc .shead p{color:#B4C2DA}
+.calcbox{align-items:start;row-gap:40px}
+.inputs{grid-column:1/6}.outputs{grid-column:7/13}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:26px}
+.seg button{background:transparent;border:1px solid #33496F;color:#CFD9EA;padding:10px 14px;cursor:pointer;font:500 14px/1 var(--sans)}
+.seg button[aria-pressed=true]{background:#fff;color:var(--navy);border-color:#fff}
+.field{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:1px solid #2C416A;padding:14px 0 10px;gap:12px}
+.field label{color:#9FB0CC}
+.field .val{display:flex;align-items:baseline;gap:6px}
+.field input[type=number]{width:5.4ch;background:transparent;border:0;color:#fff;font:700 36px/1 var(--cond);text-align:right;outline:none;-moz-appearance:textfield}
+.field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field input[type=number]:focus{color:#FF6B76}
+.field small{font:400 13px/1 var(--mono);color:#8EA0BF;width:2.6ch}
+.field input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--red);height:22px}
+.calcnote{color:#8EA0BF;font-size:13px;margin-top:18px;max-width:420px}
+.vol{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #2C416A;padding-bottom:16px}
+.vol b{font:800 clamp(86px,12vw,180px)/.82 var(--cond);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.vol span{font:500 22px/1 var(--mono);color:#9FB0CC}
+.trucks{display:flex;flex-wrap:wrap;gap:10px 14px;margin:24px 0 8px;min-height:56px}
+.truck{width:86px;height:46px}
+.truck.spin .stripe{animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:translateX(-12px)}}
+.more{align-self:center;font:500 14px/1 var(--mono);color:#9FB0CC}
+.readout{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #2C416A;margin-top:16px}
+.readout div{padding:16px 16px 0 0;border-right:1px solid #2C416A}
+.readout div:nth-child(even){padding-left:16px;border-right:0}
+.readout div:nth-child(n+3){border-top:1px solid #2C416A;margin-top:16px}
+.readout span{color:#8EA0BF;display:block}
+.readout b{display:block;font:600 21px/1.25 var(--sans);margin-top:6px}
+.readout b em{font-style:normal;color:#FF6B76}
+.calc .btn{background:var(--red);margin-top:28px}.calc .btn:hover{background:#fff;color:var(--navy)}
+@media(max-width:900px){.inputs,.outputs{grid-column:1/-1}}
 
-.calc-box{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--blue);padding:26px 24px;display:flex;flex-direction:column}
-.calc-box .qform,.calc-box form{display:flex;flex-direction:column;flex:1}
-.calc-box .qsubmit{margin-top:auto}
-.calc-box .usebtn{margin-top:auto}
-.calc-box .ttl{font-family:var(--cond);text-transform:uppercase;font-weight:700;font-size:23px;color:var(--ink);letter-spacing:.02em;line-height:1.05}
-.calc-box .sub{font-size:13.5px;color:var(--mute);margin-top:7px}
+/* strength */
+.curebox{align-items:center;row-gap:30px}
+.cure .left{grid-column:1/5}
+.cure .chart{grid-column:5/13}
+.daybig{font:800 clamp(100px,13vw,200px)/.8 var(--cond);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.daybig small{display:block;font:500 12px/1 var(--mono);letter-spacing:.04em;margin-bottom:12px;color:var(--dim);text-transform:uppercase}
+.pct{display:flex;gap:28px;margin-top:22px;border-top:1px solid var(--ink);padding-top:14px}
+.pct b{display:block;font:700 36px/1 var(--cond);font-variant-numeric:tabular-nums}
+.pct span{color:var(--dim)}
+.cure .left p{color:var(--ink2);margin-top:22px;font-size:15px;max-width:360px}
+.cure svg{width:100%;height:auto;display:block;overflow:visible}
+.cure .axis text{font:400 11px var(--mono);fill:var(--dim)}
+.cure .milestone text{font:500 11px var(--mono);fill:var(--ink)}
+.cure .src{color:var(--dim);margin-top:10px;font-size:12px}
+@media(max-width:900px){.cure .left,.cure .chart{grid-column:1/-1}.cure .axis text,.cure .milestone text{font-size:20px}}
 
-.shapes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
-.shape{border:1px solid var(--line);background:#fbfcfd;padding:11px 6px;text-align:center;cursor:pointer;font-family:var(--cond);font-size:15px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--body);transition:border-color .18s,color .18s,background .18s}
-.shape:hover{border-color:var(--blue)}
-.shape[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.shape svg{width:26px;height:22px;display:block;margin:0 auto 5px;fill:none;stroke:currentColor;stroke-width:1.6}
+/* reach */
+.reach .grid{align-items:start;row-gap:30px}
+.reach .mapcol{grid-column:1/7}.reach .side{grid-column:8/13}
+.map{width:100%;height:auto;display:block;background:var(--paper2)}
+.map .gl{stroke:#D3D9E1;stroke-width:.07}
+.map .gt{font:400 .8px var(--mono);fill:var(--dim)}
+.map .ring{fill:rgba(26,79,160,.06);stroke:var(--blue);stroke-width:.1;stroke-dasharray:.5 .35}
+.map .ring45{fill:rgba(26,79,160,.10)}
+.map .bay{fill:#D6E2EE}
+.map .town circle{fill:var(--ink)}
+.map .town text{font:500 .95px var(--sans);fill:var(--ink2)}
+.map .town.out circle{fill:var(--dim)}.map .town.out text{fill:var(--dim)}
+.map .town.sel circle{fill:var(--red)}
+.map .town.sel text{fill:var(--ink);font-weight:700}
+.map .plant rect{fill:var(--red)}
+.map .plant text{font:700 1.05px var(--mono);fill:var(--ink)}
+.map .route{stroke:var(--ink);stroke-width:.14;fill:none;stroke-dasharray:.6 .35}
+.mapcap{display:flex;justify-content:space-between;color:var(--dim);margin-top:10px;gap:12px;flex-wrap:wrap}
+.legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.pick label{display:block;color:var(--dim);margin-bottom:10px}
+.pick select{width:100%;font:700 28px/1.2 var(--cond);text-transform:uppercase;background:transparent;border:0;border-bottom:2px solid var(--ink);padding:6px 0 10px;color:var(--ink);outline:none;border-radius:0;cursor:pointer}
+.answer{margin-top:26px}
+.answer .big{font:800 clamp(70px,8vw,120px)/.85 var(--cond);font-variant-numeric:tabular-nums}
+.answer .big small{font:500 18px/1 var(--mono);margin-left:6px;color:var(--dim)}
+.answer p{margin-top:16px;color:var(--ink2)}
+.verdict{display:inline-block;margin-top:16px;padding:6px 10px;font:500 12px/1 var(--mono);text-transform:uppercase;background:var(--blue);color:#fff}
+.verdict.no{background:var(--red)}
+.reach .why{margin-top:36px;border-top:1px solid var(--ink);padding-top:14px;color:var(--ink2);font-size:15px}
+@media(max-width:900px){.reach .mapcol,.reach .side{grid-column:1/-1}}
 
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.fld{display:block}
-.fld span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
-.fld input,.fld select,.fld textarea{width:100%;font-family:var(--sans);font-size:15.5px;color:var(--ink);background:#fff;border:1px solid var(--line);padding:11px 12px;border-radius:0;transition:border-color .18s,box-shadow .18s}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,79,160,.13)}
-.fld textarea{resize:vertical;min-height:78px}
+/* attachments */
+.att{margin-top:clamp(60px,8vw,110px)}
+.atthead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:12px;margin-bottom:22px}
+.atthead h3{font-size:clamp(26px,2.6vw,36px)}
+.atthead .ref{color:var(--dim)}
+.mixes table{width:100%;border-collapse:collapse}
+.mixes th{font:400 12px/1 var(--mono);text-transform:uppercase;color:var(--dim);text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--ink)}
+.mixes td{padding:16px 12px 16px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;color:var(--ink2)}
+.mixes td.c{font:700 clamp(26px,3vw,38px)/1 var(--cond);color:var(--ink);white-space:nowrap}
+.mixes td.c small{font:400 12px var(--mono);color:var(--dim);margin-left:6px}
+.mixes tbody tr.hot td.c{color:var(--red)}
+.mixes .ghost td{opacity:.55}
+.needline{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;margin-top:18px}
+.needline .chip{flex:none}
+.needline p{font-size:14.5px;max-width:760px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cards .card{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
+.cards .card b{font:700 26px/1.05 var(--cond);text-transform:uppercase;color:#5C470C}
+.cards .card .mono{color:#8A6A12}
+.certs{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.certs div{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:14px;font:600 13px/1.25 var(--sans);color:#6B5310}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.certs{grid-template-columns:repeat(3,1fr)}.mixes .hide-s{display:none}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}.cards .card{aspect-ratio:auto;min-height:180px}.certs{grid-template-columns:1fr 1fr}}
 
-/* result read-out: a spec plate, not a scoreboard */
-.readout{margin-top:20px;border:1px solid var(--blue);border-left:5px solid var(--blue);background:#f4f7fc}
-.readout .top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:16px 18px 12px}
-.readout .num{font-family:var(--cond);font-weight:700;font-size:clamp(38px,6vw,52px);line-height:.9;color:var(--blue);letter-spacing:.01em}
-.readout .num i{font-style:normal;font-size:.42em;letter-spacing:.1em;margin-left:5px;color:var(--blue-deep)}
-.readout .cap{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:right;line-height:1.5}
-.readout .rows{border-top:1px solid #ccd8ea}
-.readout .r{display:flex;justify-content:space-between;gap:12px;padding:10px 18px;font-size:13.5px;border-bottom:1px solid #e0e8f4}
-.readout .r:last-child{border-bottom:0}
-.readout .r b{font-weight:600;color:var(--ink)}
-.calc-note{font-size:12px;color:var(--mute);margin-top:12px;line-height:1.5}
-.usebtn{width:100%;margin-top:14px;font-family:var(--cond);font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;border:0;padding:13px;cursor:pointer;transition:background .2s}
-.usebtn:hover{background:var(--blue)}
-.usebtn:disabled{background:#b9c1cb;cursor:default}
+/* quote ticket */
+.order{padding-bottom:clamp(80px,10vw,130px)}
+.orderbox{align-items:start;row-gap:40px}
+.order .intro{grid-column:1/5}
+.order .intro h2{font-size:clamp(40px,5vw,76px);margin-top:16px}
+.order .intro p{color:var(--ink2);margin-top:18px;max-width:360px}
+.order .direct{margin-top:28px;border-top:1px solid var(--ink);padding-top:14px;display:grid;gap:8px}
+.order .direct a{text-decoration:underline;text-underline-offset:3px}
+.order .gate{margin-top:26px;aspect-ratio:4/3;overflow:hidden}
+.order .gate img{width:100%;height:100%;object-fit:cover}
+.ticket{grid-column:6/13;position:relative;background:#FBFCFD;padding:clamp(22px,3vw,40px);box-shadow:0 1px 0 var(--rule),0 30px 60px -30px rgba(12,31,63,.35);
+  -webkit-mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.ticket .th{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--blue);padding-bottom:12px;gap:12px}
+.ticket .th .brand b{font-size:19px}
+.ticket .perf{border-top:2px dashed var(--rule);margin:22px -40px}
+.tf{display:grid;grid-template-columns:repeat(6,1fr);gap:0 18px}
+.tf label{grid-column:span 3;display:block;border-bottom:1px solid var(--rule);padding:14px 0 8px}
+.tf label.w2c{grid-column:span 2}.tf label.full{grid-column:1/-1}
+.tf label span{display:block;font:400 11px/1 var(--mono);text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.tf input,.tf select,.tf textarea{width:100%;border:0;background:transparent;font:500 16.5px/1.35 var(--sans);color:var(--ink);outline:none;padding:0;border-radius:0;resize:vertical}
+.tf input:focus,.tf select:focus,.tf textarea:focus{color:var(--blue)}
+.ticket .foot{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:16px;flex-wrap:wrap}
+.ticket .foot small{color:var(--dim);max-width:300px;font-size:13px}
+.qnote{margin-top:14px;font-size:14px;min-height:1em}
+.qnote.ok{color:#1d7a46}.qnote.bad{color:var(--red)}
+.stamp{position:absolute;right:8%;top:28%;width:230px;pointer-events:none;opacity:0;transform:rotate(-12deg) scale(1.6)}
+.stamp.on{animation:thump .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes thump{0%{opacity:0;transform:rotate(-12deg) scale(1.6)}100%{opacity:.88;transform:rotate(-12deg) scale(1)}}
+@media(max-width:900px){.order .intro,.ticket{grid-column:1/-1}.tf label,.tf label.w2c{grid-column:1/-1}.stamp{width:170px;right:4%}}
 
-/* quote form */
-.qform .fld{margin-top:14px}
-.qsubmit{width:100%;margin-top:20px;font-family:var(--cond);font-size:19px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;border:0;padding:15px;cursor:pointer;transition:background .2s}
-.qsubmit:hover{background:#a81826}
-.qsubmit:disabled{background:#c39aa0;cursor:default}
-.qnote{font-size:12.5px;color:var(--mute);margin-top:12px;line-height:1.55}
-.qnote.ok{color:#1c6b3a;font-weight:600}
-.qnote.bad{color:var(--red);font-weight:600}
-@media(max-width:420px){.frow{grid-template-columns:1fr}.shapes{grid-template-columns:1fr}.shape svg{display:inline-block;margin:0 8px -5px 0}}
+footer{background:var(--navy);color:#DDE3EC;padding:56px 0 26px;overflow:hidden}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14px;color:#A9B7CF}
+footer .cols b{display:block;color:#fff;font-weight:600;margin-bottom:6px}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer .bigname{font:800 15.6vw/.8 var(--cond);text-transform:uppercase;letter-spacing:-.01em;margin:46px 0 0 -.03em;color:#16305C;white-space:nowrap}
+footer .legal{margin-top:22px;font-size:12px;color:#7F8FAD;max-width:820px}
+@media(max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}
 
-
-/* ============================================================
-   BILINGUAL LAYER
-   Barlow Condensed carries no CJK glyphs, so Chinese headings fall back to a
-   system gothic. Left alone they read loose and weak next to the English, so the
-   condensed stack is swapped and the tracking/leading retuned. No webfont is
-   loaded for Chinese — a full CJK face is 4-8MB and would wreck the load time.
-   ============================================================ */
-html[data-lang="zh"]{
-  --cond:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Source Han Sans SC",sans-serif;
-  --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;
-}
-html[data-lang="zh"] h1,html[data-lang="zh"] h2,html[data-lang="zh"] h3{
-  letter-spacing:.01em;line-height:1.18;font-weight:800;
-}
-html[data-lang="zh"] .hero h1{font-size:clamp(34px,5.4vw,64px)}
-html[data-lang="zh"] .sec-head h2{font-size:clamp(26px,3.4vw,40px)}
-html[data-lang="zh"] .lbl,html[data-lang="zh"] .hero-meta,html[data-lang="zh"] .fld span,
-html[data-lang="zh"] .readout .cap,html[data-lang="zh"] .fig-cap{letter-spacing:.08em}
-html[data-lang="zh"] .navlinks a,html[data-lang="zh"] .btn,
-html[data-lang="zh"] .shape,html[data-lang="zh"] .usebtn,html[data-lang="zh"] .qsubmit{letter-spacing:.04em}
-html[data-lang="zh"] .brand-name i{letter-spacing:.12em}
-html[data-lang="zh"] .fact b{font-size:clamp(22px,2.4vw,30px);line-height:1.2}
-html[data-lang="zh"] .readout .num{letter-spacing:0}
+/* Chinese: system CJK stack, solid setting, no uppercase tracking games */
+html[data-lang="zh"] h1,html[data-lang="zh"] h2,html[data-lang="zh"] h3{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;font-weight:800;letter-spacing:.01em;line-height:1.15}
+html[data-lang="zh"] .hero h1{font-size:clamp(38px,4.6vw,70px)}
+html[data-lang="zh"] .shead h2{font-size:clamp(32px,4.4vw,64px)}
+html[data-lang="zh"] .mono{letter-spacing:.06em}
 html[data-lang="zh"] p{line-height:1.85}
 
-/* language switch */
-.langsw{display:flex;border:1px solid var(--line);flex:none;margin-left:auto}
-.langsw button{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;background:#fff;color:var(--mute);border:0;padding:7px 11px;cursor:pointer;transition:background .18s,color .18s}
-.langsw button+button{border-left:1px solid var(--line)}
-.langsw button[aria-pressed="true"]{background:var(--blue);color:#fff}
-@media(min-width:960px){.langsw{margin-left:0}}
-@media(max-width:700px){.langsw button{padding:6px 9px;font-size:11px}}
-
-
-/* ============================================================
-   PLACEHOLDERS DRAWN AS THE FINISHED COMPONENT
-   From citiconph.com, the strongest supplier in the region: their best screen is
-   a capacity counter (19 years / 5 plants / 900+ projects / 98 mixers / 11 pumps)
-   and project cards that carry a STATUS, not just a finished date. So these slots
-   are drawn as the finished thing with the values missing — the client sees what
-   he is filling in, not an empty box.
-   ============================================================ */
-.counter-preview{margin:18px 24px 0;background:var(--navy);display:grid;grid-template-columns:1fr;border:1px solid #0a2145}
-@media(min-width:640px){.counter-preview{grid-template-columns:repeat(3,1fr)}}
-.cp-cell{padding:22px 18px;border-bottom:1px solid rgba(255,255,255,.14);text-align:center}
-.cp-cell:last-child{border-bottom:0}
-@media(min-width:640px){
-  .cp-cell{border-bottom:0;border-right:1px solid rgba(255,255,255,.14)}
-  .cp-cell:last-child{border-right:0}
-}
-.cp-num{font-family:var(--cond);font-weight:700;font-size:clamp(40px,5.5vw,58px);line-height:.9;color:#4d6fa8;letter-spacing:.02em;display:block}
-.cp-num i{font-style:normal;font-size:.4em;letter-spacing:.06em;color:#3c5c92;margin-left:4px}
-.cp-lab{display:block;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8ea5c9;margin-top:9px}
-.cp-note{margin:12px 24px 0;font-size:12px;color:var(--amber-ink);line-height:1.6}
-
-.proj-slots{display:grid;gap:12px;margin:18px 24px 0}
-@media(min-width:560px){.proj-slots{grid-template-columns:1fr 1fr}}
-.proj{border:1px dashed #cdb87c;background:#fffdf6;padding:0 0 15px;display:flex;flex-direction:column}
-.proj-img{aspect-ratio:16/10;border-bottom:1px dashed #cdb87c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c0ab6e}
-.proj-body{padding:13px 15px 0}
-.proj-status{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:#f2e4bd;color:#7a5406;padding:4px 8px}
-.proj-loc{display:block;font-size:11px;letter-spacing:.06em;color:#a8935c;margin-top:10px}
-.proj-rule{display:block;height:11px;background:repeating-linear-gradient(90deg,#e3d3a4 0 6px,transparent 6px 10px);margin-top:9px}
-.proj-rule.short{width:62%}
-.proj-logo{margin-top:13px;display:flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c0ab6e}
-.proj-logo em{font-style:normal;width:34px;height:34px;border:1px dashed #cdb87c;flex:none}
-
-.seals{display:flex;flex-wrap:wrap;gap:14px;margin:18px 24px 0}
-.seal{width:96px;text-align:center}
-.seal .ring{width:72px;height:72px;margin:0 auto;border:2px dashed #cdb87c;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fffdf6;font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;color:#c0ab6e}
-.seal .cap{display:block;font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--amber-ink);margin-top:8px;line-height:1.45}
-
-/* a promo film drops into the same stack as the stills */
-.hero-bg .shot video{width:100%;height:100%;object-fit:cover;display:block}
-
-/* counters: tabular figures so the width does not jitter while rolling */
-.tally{font-style:normal;font-variant-numeric:tabular-nums}
-.readout .num{font-variant-numeric:tabular-nums}
-
-
-/* ---------- opening mark ----------
-   Hidden unless .js is on the root, dismissed on load or after 2.2s whichever
-   lands first. A preloader that can outlive its own script is a broken page. */
-.preload{position:fixed;inset:0;z-index:200;background:var(--paper);display:none;
-  flex-direction:column;align-items:center;justify-content:center;gap:26px}
-.js .preload{display:flex}
-.js.ready .preload{opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s}
-.preload-mark{display:flex;align-items:center;gap:14px}
-.preload-mark svg{width:52px;height:52px}
-.preload-name b{display:block;font-family:var(--cond);font-weight:700;font-size:30px;letter-spacing:.02em;color:var(--blue);text-transform:uppercase;line-height:1}
-.preload-name i{display:block;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:4px}
-.dots{display:flex;gap:11px}
-.dots span{width:11px;height:11px;border-radius:50%;background:var(--red);animation:bob 1.05s infinite ease-in-out}
-.dots span:nth-child(2){animation-delay:.16s}
-.dots span:nth-child(3){animation-delay:.32s}
-@keyframes bob{0%,72%,100%{transform:translateY(0);opacity:.42}36%{transform:translateY(-11px);opacity:1}}
-@media(prefers-reduced-motion:reduce){.js .preload{display:none}.dots span{animation:none}}
-
-
-/* ---------- the operation: three gateways ----------
-   The competition opens with three large photographic cards. It is the cheapest
-   way a plant looks like a plant rather than a brochure. */
-.works{padding:0;background:var(--navy)}
-.works-grid{display:grid;grid-template-columns:1fr}
-@media(min-width:820px){.works-grid{grid-template-columns:repeat(3,1fr)}}
-.work{position:relative;display:block;overflow:hidden;min-height:clamp(230px,32vw,360px);color:#fff}
-.work-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px dashed #cdb87c;background:#0e2246;color:#d2bd80;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.22em;line-height:1.9}
-.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform .9s cubic-bezier(.2,.7,.3,1)}
-.work::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,29,63,.18) 0%,rgba(9,25,55,.62) 42%,rgba(6,17,38,.94) 100%);transition:background .5s}
-.work:hover img{transform:scale(1.09)}
-.work:hover::after{background:linear-gradient(180deg,rgba(10,29,63,.12) 0%,rgba(18,55,112,.58) 42%,rgba(16,48,100,.92) 100%)}
-.work-body{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:28px 24px}
-.work-idx{font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.26em;color:#9db6e2}
-.work h3{color:#fff;font-size:clamp(23px,2.4vw,30px);margin-top:8px;line-height:1.02}
-.work p{color:#c5d3ea;font-size:13.5px;margin-top:9px;max-width:34ch}
-.work .go{display:inline-block;margin-top:14px;font-family:var(--cond);font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--red);padding-bottom:3px}
-.work + .work{border-top:1px solid rgba(255,255,255,.16)}
-@media(min-width:820px){.work + .work{border-top:0;border-left:1px solid rgba(255,255,255,.16)}}
-
-/* photographs arrive rather than appear */
-.js .fig img,.js .work img{will-change:transform}
-.js .fig{clip-path:inset(0 0 100% 0)}
-@media(prefers-reduced-motion:reduce){.js .fig{clip-path:none}}
-
-/* ---------- demo notice ---------- */
-.demo-bar{background:var(--navy);color:#c6d4ec;font-size:11px;line-height:1.5;letter-spacing:.06em;text-align:center;padding:8px 16px}
-.demo-bar b{color:#fff;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-
-/* ---------- header ---------- */
-header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1160px;margin:0 auto;padding:10px 20px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0}
-.brand svg{width:38px;height:38px;flex:none}
-.brand-name{line-height:1.02}
-.brand-name b{display:block;font-family:var(--cond);font-weight:700;font-size:21px;letter-spacing:.02em;color:var(--blue);text-transform:uppercase;white-space:nowrap}
-.brand-name i{display:block;font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:1px}
-.navlinks{display:none;gap:28px}
-.navlinks a{font-family:var(--cond);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
-.navlinks a:hover{color:var(--red)}
-@media(min-width:960px){.navlinks{display:flex}}
-/* the brand must be allowed to shrink, or a nowrap wordmark pushes the row wider
-   than the viewport and drags the whole page sideways */
-.brand-name{min-width:0;overflow:hidden}
-.brand-name b{overflow:hidden;text-overflow:ellipsis}
-@media(max-width:520px){.brand-name b{font-size:17px}.brand-name i{letter-spacing:.2em}.brand svg{width:32px;height:32px}}
-@media(max-width:360px){.brand-name b{font-size:15px}.brand-name i{display:none}}
-
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
-.hero-bg{position:absolute;inset:0;overflow:hidden}
-/* Stacked stills, cross-faded on a loop. Only opacity and transform move, so the
-   whole thing stays on the compositor — no layout, no paint, no jank. */
-.hero-bg .shot{position:absolute;inset:0;will-change:transform,opacity;backface-visibility:hidden}
-.hero-bg .shot img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.04)}
-.hero-bg .shot:nth-child(1) img{object-position:center 34%}
-.hero-bg .shot:nth-child(2) img{object-position:center 46%}
-/* Frames after the first are hidden by CSS; GSAP only ever brings them IN. */
-.js .hero-bg .shot + .shot{opacity:0}
-@media(prefers-reduced-motion:reduce){.js .hero-bg .shot + .shot{opacity:0}}
-.hero-bg::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(10,29,63,.46) 0%,rgba(10,29,63,.28) 40%,rgba(8,22,48,.9) 100%),
-  linear-gradient(90deg,rgba(10,29,63,.62) 0%,rgba(10,29,63,.22) 60%,rgba(10,29,63,.1) 100%)}
-.hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 46px}
-.hero .lbl{color:#bcd0f2}
-.hero h1{color:#fff;font-size:clamp(48px,7.6vw,96px);letter-spacing:.01em;margin-top:16px}
-.hero h1 em{font-style:normal;color:#fff;box-shadow:inset 0 -.14em 0 var(--red)}
-.hero-sub{color:#d3ddef;font-size:clamp(15px,1.6vw,18px);max-width:56ch;margin-top:18px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--cond);font-size:18px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 24px;transition:background .2s,border-color .2s}
-.btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:#a81826}
-.btn-ghost{border:2px solid rgba(255,255,255,.55);color:#fff}
-.btn-ghost:hover{border-color:#fff}
-.hero-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.28);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#aabde0}
-
-/* ---------- data band ---------- */
-.band{background:var(--blue);color:#fff}
-.band .inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
-.fact{padding:24px 20px;border-right:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
-.fact:nth-child(2n){border-right:0}
-.fact b{display:block;font-family:var(--cond);font-weight:700;font-size:clamp(34px,4.4vw,52px);line-height:.95;letter-spacing:.01em;text-transform:uppercase}
-.fact span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b9cbee;margin-top:8px}
-@media(min-width:860px){
-  .band .inner{grid-template-columns:repeat(4,1fr)}
-  .fact{border-bottom:0}
-  .fact:nth-child(2n){border-right:1px solid rgba(255,255,255,.22)}
-  .fact:last-child{border-right:0}
-}
-
-/* ---------- sections ---------- */
-section{padding:72px 0}
-@media(min-width:860px){section{padding:104px 0}}
-.sec-head{display:flex;gap:20px;align-items:flex-start}
-.idx{font-family:var(--cond);font-weight:700;font-size:clamp(44px,6vw,72px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--red);flex:none;margin-top:2px}
-.sec-head h2{font-size:clamp(34px,5vw,58px);margin-top:10px}
-.sec-lead{margin-top:16px;max-width:62ch;font-size:clamp(15px,1.5vw,17.5px)}
-
-/* ---------- services ---------- */
-.svc-grid{display:grid;gap:14px;margin-top:42px}
-@media(min-width:820px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-.svc{background:var(--concrete);border-top:4px solid var(--blue);padding:26px 24px 30px;position:relative}
-.svc .n{font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.12em;color:var(--red)}
-.svc h3{font-size:27px;margin-top:8px}
-.svc p{margin-top:12px;font-size:14.5px}
-.svc ul{margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--mute)}
-.svc li{padding:7px 0;border-top:1px dashed var(--line);display:flex;gap:8px}
-.svc li::before{content:"—";color:var(--red);flex:none}
-
-/* ---------- NEEDED-FROM-YOU boxes (deliberate, spec-sheet styled) ---------- */
-.need{position:relative;margin-top:46px;background:var(--amber-bg);border:2px dashed var(--amber);padding:0 0 26px}
-.need-tape{height:8px;background:repeating-linear-gradient(135deg,var(--amber) 0 14px,var(--ink) 14px 28px)}
-.need-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 24px 0}
-.chip{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:var(--amber);color:#241a02;padding:5px 10px}
-.refno{font-family:var(--cond);font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
-.need h3{font-size:25px;padding:12px 24px 0;color:var(--ink)}
-.need>p{padding:10px 24px 0;font-size:14.5px;color:#5c5236;max-width:74ch}
-.need>p b{color:var(--ink)}
-/* ghost spec table */
-.ghost{margin:18px 24px 0;border:1px solid #e8d9a8;background:#fffdf6}
-.g-row{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;padding:11px 14px;border-top:1px dashed #e0cf9a;font-size:13px;color:#a08f5c}
-.g-row:first-child{border-top:0}
-.g-head{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink);background:#faf1d4}
-.g-blank{border-bottom:1px dashed #c9b477;min-height:1.2em}
-/* ghost stat slots */
-.g-slots{display:grid;gap:12px;margin:18px 24px 0}
-@media(min-width:680px){.g-slots{grid-template-columns:repeat(3,1fr)}}
-.g-slot{border:1px dashed #cdb87c;background:#fffdf6;padding:16px;text-align:center}
-.g-slot b{display:block;font-family:var(--cond);font-weight:700;font-size:34px;color:#cbb578;line-height:1}
-.g-slot span{display:block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink);margin-top:7px}
-/* ghost photo frames */
-.g-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 24px 0}
-.g-photo{aspect-ratio:4/3;border:1px dashed #cdb87c;background:#fffdf6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c0ab6e}
-/* ghost checklist */
-.g-check{margin:16px 24px 0;padding:0;list-style:none}
-.g-check li{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px dashed #e0cf9a;font-size:14px;color:#6b5e3a}
-.g-check li:first-child{border-top:0}
-.g-check li::before{content:"";width:16px;height:16px;border:2px solid #cdb87c;background:#fffdf6;flex:none}
-
-/* ---------- plants ---------- */
-.plants{background:var(--concrete)}
-.plant-grid{display:grid;gap:34px;margin-top:42px;align-items:start}
-@media(min-width:920px){.plant-grid{grid-template-columns:1.05fr .95fr;gap:54px}}
-.loc-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
-.loc-table th{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--blue);text-align:left;padding:11px 16px}
-.loc-table td{padding:16px;border-top:1px solid var(--line);vertical-align:top;font-size:14.5px}
-.loc-table td b{display:block;font-family:var(--cond);font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
-.loc-table td .tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
-.maplink{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--blue);border-bottom:1px solid var(--blue)}
-.maplink:hover{color:var(--red);border-color:var(--red)}
-.figstack{position:relative}
-.fig{position:relative;overflow:hidden;border:1px solid var(--line);background:#fff}
-.fig img{width:100%;height:100%;object-fit:cover}
-.fig-cap{position:absolute;left:0;bottom:0;background:var(--navy);color:#fff;font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px}
-.fig-main{aspect-ratio:1/1}
-.fig-side{display:none}
-@media(min-width:920px){
-  .figstack{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
-  .fig-main{aspect-ratio:auto;height:100%}
-  .fig-side{display:block;aspect-ratio:auto}
-}
-.plant-note{margin-top:22px;font-size:14px;color:var(--mute);max-width:60ch}
-
-/* ---------- record & compliance ---------- */
-.two-need{display:grid;gap:22px;margin-top:12px}
-@media(min-width:960px){.two-need{grid-template-columns:1fr 1fr;align-items:start}}
-.two-need .need{margin-top:24px}
-
-/* ---------- contact ---------- */
-.contact{background:var(--navy);color:#cfd9ea}
-.contact .lbl{color:#9fb6dd}
-.contact h2{color:#fff}
-.contact .sec-lead{color:#b7c5dd}
-.c-grid{display:grid;gap:14px;margin-top:40px}
-@media(min-width:860px){.c-grid{grid-template-columns:1fr 1fr;gap:18px}}
-.c-card{border:1px solid rgba(255,255,255,.2);padding:24px}
-.c-card .k{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8fa9d6}
-.c-card .big{display:block;font-family:var(--cond);font-weight:700;font-size:clamp(28px,3.6vw,40px);letter-spacing:.03em;color:#fff;margin-top:8px;line-height:1.05}
-a.big:hover{color:#ffd9dd}
-.c-card .em{display:block;font-size:clamp(15px,1.8vw,19px);font-weight:600;color:#fff;margin-top:10px;word-break:break-all}
-a.em:hover{color:#ffd9dd}
-.c-card address{font-style:normal;font-size:15px;line-height:1.55;color:#cfd9ea;margin-top:8px}
-.c-card address b{display:block;font-family:var(--cond);font-size:20px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff}
-.c-card .maplink{color:#9fc0f5;border-color:#9fc0f5}
-.c-card .maplink:hover{color:#fff;border-color:#fff}
-.c-hours{margin-top:26px;font-size:12px;letter-spacing:.08em;color:#8fa2c4}
-
-/* ---------- footer ---------- */
-footer{background:#071633;color:#7e91b4;font-size:12px;padding:26px 0 32px;line-height:1.7}
-footer .wrap{display:flex;flex-direction:column;gap:6px}
-footer b{color:#c8d4ea;font-weight:600}
-
-/* ---------- mobile sticky call bar ---------- */
-@media(min-width:760px){@media(max-width:759.9px){body{padding-bottom:52px}}
+/* motion start states */
+.js .hero h1 .ln>span{transform:translateY(105%)}
+.js .hero .rv{opacity:0;transform:translateY(16px)}
+.js .hero .frame{clip-path:inset(0 0 100% 0)}
+.js .up{opacity:0;transform:translateY(36px)}
 </style>
 </head>
 <body>
 
-<!-- unofficial demo notice -->
 <div class="demo-bar"><b>Concept page</b> &nbsp;—&nbsp; an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.</div>
 
 <header>
   <nav>
     <a class="brand" href="#top" aria-label="Power Megamix Batching Inc. — home">
-      <!-- Red italic P-arrow mark, approximated from the gate signage -->
-      <svg viewBox="0 0 56 56" aria-hidden="true">
-        <path fill="#c8202f" d="M22 7h17.5C48 7 53 11.4 53 18c0 9.2-7.6 14.5-17.6 14.5h-8.1L23.6 50H12.4L22 7Z"/>
-        <path fill="#fff" d="M30.6 15.2 28.2 24h8.4c4.6 0 7.3-2.2 7.3-5.3 0-2.4-1.9-3.5-5.3-3.5h-8Z"/>
-        <path fill="#c8202f" d="M3 32.5 16.2 26l-3.6 12.6L3 32.5Z"/>
-      </svg>
-      <span class="brand-name">
-        <b>Power Megamix</b>
-        <i>Batching Inc.</i>
-      </span>
+      <svg viewBox="0 0 56 56" aria-hidden="true"><path fill="#c8202f" d="M22 7h17.5C48 7 53 11.4 53 18c0 9.2-7.6 14.5-17.6 14.5h-8.1L23.6 50H12.4L22 7Z"/><path fill="#fff" d="M30.6 15.2 28.2 24h8.4c4.6 0 7.3-2.2 7.3-5.3 0-2.4-1.9-3.5-5.3-3.5h-8Z"/><path fill="#c8202f" d="M3 32.5 16.2 26l-3.6 12.6L3 32.5Z"/></svg>
+      <span><b>Power Megamix</b><i>Batching Inc.</i></span>
     </a>
-    <div class="navlinks">
-      <a href="#works">Company</a>
-      <a href="#services">Services</a>
-      <a href="#plants">Our plants</a>
-      <a href="#record">Track record</a>
-      <a href="#estimate">Get a quote</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="langsw" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
-    </div>
+    <div class="links"><a href="#flow">How it's made</a><a href="#calc">Volume</a><a href="#cure">Strength</a><a href="#reach">Delivery area</a><a href="#record">Track record</a></div>
+    <div class="langsw" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="zh" aria-pressed="false">中文</button></div>
+    <a class="navcta" href="#quote">Get a quote</a>
   </nav>
 </header>
 
-<div class="preload" aria-hidden="true">
-  <div class="preload-mark">
-    <svg viewBox="0 0 56 56" aria-hidden="true">
-      <path fill="#c8202f" d="M22 7h17.5C48 7 53 11.4 53 18c0 9.2-7.6 14.5-17.6 14.5h-8.1L23.6 50H12.4L22 7Z"/>
-      <path fill="#fff" d="M30.6 15.2 28.2 24h8.4c4.6 0 7.3-2.2 7.3-5.3 0-2.4-1.9-3.5-5.3-3.5h-8Z"/>
-      <path fill="#c8202f" d="M3 32.5 16.2 26l-3.6 12.6L3 32.5Z"/>
-    </svg>
-    <span class="preload-name"><b>Power Megamix</b><i>Batching Inc.</i></span>
-  </div>
-  <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-</div>
-
 <main id="top">
-
-  <!-- ================= HERO ================= -->
-  <div class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="shot"><img src="img/yard.webp" alt="Transit mixer loaded beneath the batching tower at the Kawit plant" fetchpriority="high" width="1440" height="1080"></div>
-      <div class="shot"><img src="img/gate-wide.webp" alt="" loading="lazy" width="1300" height="820"></div>
-
-      <!-- PROMO FILM SLOT.
-           Drop the file in as img/hero.mp4 with a first-frame still saved as
-           img/hero-poster.jpg, then remove the two comment markers around the
-           block below. It joins the rotation automatically: the film plays with
-           no slow push (it carries its own motion), the stills keep theirs, and
-           phones are handed the poster frame instead so nothing downloads over
-           mobile data.
-      <div class="shot" data-video>
-        <video src="img/hero.mp4" poster="img/hero-poster.jpg"
-               muted loop playsinline preload="none" width="1920" height="1080"></video>
-      </div>
-      -->
+<!-- ================= HERO ================= -->
+<section class="hero wrap">
+  <div class="grid top">
+    <div class="copy">
+      <div class="tag mono rv">Ready-mix concrete · Kawit &amp; Tanza, Cavite</div>
+      <h1><span class="ln"><span>Ready-mix concrete,</span></span><span class="ln"><span>delivered</span></span><span class="ln"><span><em>on schedule.</em></span></span></h1>
+      <p class="lede rv">Batching and pumping from two plants on Cavite's main corridors. A pour that waits is a pour that fails — we quote the delivery window with the price.</p>
+      <div class="ctas rv"><a class="btn" href="#calc"><span>Work out your volume</span><span class="ar">→</span></a><a class="btn ghost" href="#quote"><span>Request a quotation</span><span class="ar">→</span></a></div>
     </div>
-    <div class="hero-inner">
-      <div class="wrap">
-        <p class="lbl rise">Kawit, Cavite — Est. 2017</p>
-        <h1 class="rise">Ready-mix concrete,<br>delivered <em>on schedule.</em></h1>
-        <p class="hero-sub rise">Batching and pumping from two plants on Cavite's main corridors.
-          A pour that waits is a pour that fails — we quote the delivery window with the price.</p>
-        <div class="hero-ctas rise">
-          <a class="btn btn-red" href="#works">See the operation</a>
-          <a class="btn btn-ghost" href="#plants">Plants &amp; fleet</a>
+    <figure class="shot">
+      <div class="frame"><img src="img/yard.webp" alt="Transit mixer beneath the blue-and-white cement silos at the Kawit plant" width="1440" height="1080" fetchpriority="high">
+        <div class="spec"><span>Plant</span><b>01 · Kawit</b><span>Silos</span><b>4 · blue &amp; white</b></div></div>
+      <figcaption class="cap mono rv"><span>Fig. 1 — Plant 01, Kawit</span><span>14.44° N 120.91° E</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="wordmark" aria-label="Power Megamix">
+    <svg viewBox="0 0 1000 150" aria-hidden="true">
+      <defs>
+        <filter id="crete" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="3" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .38  0 0 0 0 .40  0 0 0 0 .44  0 0 0 -1.8 1.3" result="spk"/><feFlood flood-color="#8C95A1" result="base"/><feComposite in="spk" in2="base" operator="over"/></filter>
+        <clipPath id="wmClip"><text x="0" y="140" textLength="1000" lengthAdjust="spacingAndGlyphs" style="font:800 186px/1 'Barlow Condensed',sans-serif">POWER MEGAMIX</text></clipPath>
+      </defs>
+      <text x="0" y="140" textLength="1000" lengthAdjust="spacingAndGlyphs" fill="none" stroke="#1A4FA0" stroke-width="1.2" style="font:800 186px/1 'Barlow Condensed',sans-serif">POWER MEGAMIX</text>
+      <g clip-path="url(#wmClip)">
+        <g id="pour">
+          <rect x="-10" y="10" width="1020" height="160" filter="url(#crete)"/>
+          <path id="wave" d="M-1000 14 Q-937.5 2 -875 14 T-750 14 T-625 14 T-500 14 T-375 14 T-250 14 T-125 14 T0 14 T125 14 T250 14 T375 14 T500 14 T625 14 T750 14 T875 14 T1000 14 T1125 14 T1250 14 V0 H-1000Z" fill="#EEF0F2"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="stripes" aria-hidden="true"></div>
+  <div class="facts mono">
+    <div><b>2017</b><span>Batching since</span></div>
+    <div><b>02</b><span>Batching plants</span></div>
+    <div><b><span class="q">?</span> m³/h</b><span>Rated output · needed</span></div>
+    <div><b><span class="q">?</span></b><span>Transit mixers · needed</span></div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="flow sec" id="flow">
+  <div class="wrap grid shead">
+    <div class="no mono">01 / Process</div>
+    <h2>From the stockpile<br>to your pour</h2>
+    <p>Four steps between a quotation and a finished slab. Two photographs are still missing, and they are marked where they go.</p>
+  </div>
+  <div class="pipe"><i id="pipe"></i></div>
+  <div class="track" id="track">
+    <article class="stage">
+      <div class="ph need"><span class="chip">Needed from you</span><b>Aggregate yard photo</b><p>Sand and gravel stockpiles at either plant. A phone photo in daylight is enough.</p></div>
+      <div class="meta mono"><span>Step 01</span><span>Aggregate</span></div>
+      <h3>Sand and gravel, graded</h3>
+      <p class="t">Coarse and fine aggregate are stockpiled separately and kept clean, so every batch starts from the same material.</p>
+    </article>
+    <article class="stage">
+      <div class="ph"><img src="img/silos-top.webp" alt="Blue-and-white cement silos carrying the Power Megamix name" loading="lazy" width="660" height="430"></div>
+      <div class="meta mono"><span>Step 02</span><span>Batch</span></div>
+      <h3>Weighed at the plant</h3>
+      <p class="t">Cement, water, sand, gravel and admixture are weighed for each load to the class and slump your engineer specifies.</p>
+    </article>
+    <article class="stage">
+      <div class="ph"><img src="img/mixer-close.webp" alt="A transit mixer truck at the Kawit plant" loading="lazy" width="600" height="600"></div>
+      <div class="meta mono"><span>Step 03</span><span>Drum</span></div>
+      <h3>Timed to your pour</h3>
+      <p class="t">Transit mixers leave in sequence with your pour schedule, so the next truck arrives as the last one empties.</p>
+    </article>
+    <article class="stage">
+      <div class="ph need"><span class="chip">Needed from you</span><b>Pour on site photo</b><p>A boom or line pump placing concrete on a real job. This is the photo buyers look for first.</p></div>
+      <div class="meta mono"><span>Step 04</span><span>Place</span></div>
+      <h3>Chute, line or boom</h3>
+      <p class="t">Direct discharge where the truck can reach, a line pump for tight lots, a boom pump for decks and columns.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= CALCULATOR ================= -->
+<section class="calc" id="calc">
+  <div class="sec">
+    <div class="wrap grid shead">
+      <div class="no mono">02 / Volume</div>
+      <h2>Work out the volume,<br>then send it over</h2>
+      <p>Contractors order in cubic metres, but plans are drawn in millimetres. Size the pour here, then send the number with the class and the date.</p>
+    </div>
+    <div class="wrap grid calcbox">
+      <div class="inputs">
+        <div class="seg" id="kind">
+          <button type="button" data-k="ground" aria-pressed="true">Ground slab</button>
+          <button type="button" data-k="susp" aria-pressed="false">Suspended slab</button>
+          <button type="button" data-k="footing" aria-pressed="false">Footings</button>
+          <button type="button" data-k="column" aria-pressed="false">Columns</button>
+          <button type="button" data-k="road" aria-pressed="false">Road / driveway</button>
         </div>
-        <div class="hero-meta rise">
-          <span>SEC-registered corporation</span>
-          <span>Ready-mix supply</span>
-          <span>Line &amp; boom pumping</span>
-          <span>Cavite &amp; Metro Manila</span>
+        <div class="field"><label class="mono" for="L">Length</label><div class="val"><input id="L" type="number" inputmode="decimal" min="0" step="0.1" value="12"><small>m</small></div><input type="range" min="1" max="60" step="0.5" value="12" aria-label="Length"></div>
+        <div class="field"><label class="mono" for="W">Width</label><div class="val"><input id="W" type="number" inputmode="decimal" min="0" step="0.1" value="8"><small>m</small></div><input type="range" min="0.3" max="40" step="0.1" value="8" aria-label="Width"></div>
+        <div class="field"><label class="mono" for="T" id="Tl">Thickness</label><div class="val"><input id="T" type="number" inputmode="decimal" min="0" step="1" value="150"><small>mm</small></div><input type="range" min="50" max="600" step="10" value="150" aria-label="Thickness"></div>
+        <div class="field"><label class="mono" for="N">How many</label><div class="val"><input id="N" type="number" inputmode="numeric" min="1" step="1" value="1"><small>×</small></div><input type="range" min="1" max="40" step="1" value="1" aria-label="How many"></div>
+        <p class="calcnote">Estimate only. Loads are figured on a standard 6 m³ transit mixer. The plant confirms the final figure against your drawings.</p>
+      </div>
+      <div class="outputs">
+        <div class="mono" style="color:#8EA0BF;margin-bottom:12px">Order volume, incl. 5% allowance</div>
+        <div class="vol"><b id="vol">15.1</b><span>m³</span></div>
+        <div class="trucks" id="trucks" aria-live="polite"></div>
+        <div class="mono" style="color:#8EA0BF" id="truckline">—</div>
+        <div class="readout">
+          <div><span class="mono">Typical class</span><b id="mix">—</b></div>
+          <div><span class="mono">Placement</span><b id="pump">—</b></div>
+          <div><span class="mono">On site for</span><b id="dur">—</b></div>
+          <div><span class="mono">Trucks every</span><b id="gap">—</b></div>
         </div>
+        <a class="btn" href="#quote" id="useCalc"><span>Use this volume in the request</span><span class="ar">↓</span></a>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="stripes" aria-hidden="true"></div>
-
-  <!-- ================= THE OPERATION ================= -->
-  <section id="works" class="works">
-    <div class="works-grid">
-      <a class="work" href="#services">
-        <img src="img/mixer-close.webp" alt="Transit mixer discharging at the plant" loading="lazy">
-        <div class="work-body">
-          <span class="work-idx">01</span>
-          <h3>Our concrete</h3>
-          <p>Batched to the class and slump your engineer specifies.</p>
-          <span class="go">Mix &amp; pumping &rarr;</span>
-        </div>
-      </a>
-      <a class="work" href="#plants">
-        <img src="img/silos-top.webp" alt="Brand-painted cement silos at the batching plant" loading="lazy">
-        <div class="work-body">
-          <span class="work-idx">02</span>
-          <h3>Plants &amp; fleet</h3>
-          <p>Two plants on Cavite's main corridors, within reach of Metro Manila.</p>
-          <span class="go">Where we batch &rarr;</span>
-        </div>
-      </a>
-      <a class="work" href="#record">
-        <div class="work-ph" aria-hidden="true"><span>项目现场照片 · SITE PHOTOS</span></div>
-        <div class="work-body">
-          <span class="work-idx">03</span>
-          <h3>Projects</h3>
-          <p>The record procurement asks for before it asks for a price.</p>
-          <span class="go">Track record &rarr;</span>
-        </div>
-      </a>
+<!-- ================= STRENGTH ================= -->
+<section class="cure sec" id="cure">
+  <div class="wrap grid shead">
+    <div class="no mono">03 / Strength</div>
+    <h2>Day 28 is the day<br>that counts</h2>
+    <p>Concrete keeps gaining strength for weeks after the pour. Scroll to watch a 4,000 psi mix get there, day by day.</p>
+  </div>
+  <div class="wrap grid curebox" id="curePin">
+    <div class="left">
+      <div class="daybig"><small>Days after pour</small><span id="day">28</span></div>
+      <div class="pct"><div><b id="pctv">100%</b><span class="mono">of design</span></div><div><b id="psiv">4,000</b><span class="mono">psi</span></div></div>
+      <p id="cureNote">—</p>
     </div>
-  </section>
-
-  <!-- ================= DATA BAND ================= -->
-  <div class="band">
-    <div class="inner">
-      <div class="fact"><b><i class="tally" data-count="9">9</i> Years</b><span>Batching since 2017</span></div>
-      <div class="fact"><b><i class="tally" data-count="2">2</i> Plants</b><span>Kawit &middot; Antero Soriano Hwy</span></div>
-      <div class="fact"><b>Cavite + NCR</b><span>Delivery coverage</span></div>
-      <div class="fact"><b>Mix + Pump</b><span>Supply and placement</span></div>
+    <div class="chart">
+      <svg viewBox="0 0 640 380" id="cureSvg" role="img" aria-label="Strength gain curve from day 1 to day 28">
+        <g class="axis" id="axis"></g>
+        <path id="curveBg" fill="none" stroke="#C9D0D9" stroke-width="2"/>
+        <path id="area" fill="rgba(26,79,160,.10)"/>
+        <path id="curve" fill="none" stroke="#1A4FA0" stroke-width="3"/>
+        <g class="milestone" id="ms"></g>
+        <line id="vline" stroke="#C8202F" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle id="dot" r="7" fill="#C8202F" stroke="#EEF0F2" stroke-width="3"/>
+      </svg>
+      <p class="src mono">Curve: ACI 209 model, moist-cured Type I cement.</p>
     </div>
   </div>
+</section>
 
-  <!-- ================= SERVICES ================= -->
-  <section id="services">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="idx">01</span>
-        <div>
-          <p class="lbl">Services</p>
-          <h2>Supply and placement,<br>one supplier</h2>
-        </div>
-      </div>
-      <p class="sec-lead reveal">The mix and the pump from the same yard — nobody stands on site
-        waiting for a second contractor's truck to arrive.</p>
-
-      <div class="svc-grid">
-        <div class="svc reveal">
-          <p class="n">SVC / 01</p>
-          <h3>Ready-mix supply</h3>
-          <p>Concrete batched to the class and slump your engineer specifies, delivered by
-            transit mixer and sequenced to your pour schedule.</p>
-          <ul>
-            <li>Batched to specification</li>
-            <li>Timed transit-mixer delivery</li>
-            <li>Scheduled multi-truck pours</li>
-          </ul>
-        </div>
-        <div class="svc reveal">
-          <p class="n">SVC / 02</p>
-          <h3>Line pump</h3>
-          <p>Horizontal reach for placements the chute cannot touch — tight urban sites, rear
-            lots, work behind an existing structure.</p>
-          <ul>
-            <li>Confined and rear-lot access</li>
-            <li>Long horizontal runs</li>
-            <li>Ground-level placements</li>
-          </ul>
-        </div>
-        <div class="svc reveal">
-          <p class="n">SVC / 03</p>
-          <h3>Boom pump</h3>
-          <p>Vertical reach for structural work — elevated decks, columns and suspended slabs
-            placed directly from the truck.</p>
-          <ul>
-            <li>Elevated decks and slabs</li>
-            <li>Columns and shear walls</li>
-            <li>Direct-from-truck placement</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- NEEDED FROM YOU — A -->
-      <aside class="need reveal" aria-label="Material needed from the company: concrete class table">
-        <div class="need-tape" aria-hidden="true"></div>
-        <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment A — Spec table</span></div>
-        <h3>Concrete classes &amp; design strengths</h3>
-        <p>An estimator looks for this before anything else on the page. Send the classes you
-          batch — the psi designations exactly as they appear on your quotations — and they are
-          typeset here as the table below.</p>
-        <div class="ghost" role="presentation">
-          <div class="g-row g-head"><span>Class</span><span>Design strength</span><span>Typical application</span></div>
-          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
-          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
-          <div class="g-row"><span class="g-blank"></span><span class="g-blank"></span><span class="g-blank"></span></div>
-        </div>
-      </aside>
+<!-- ================= REACH ================= -->
+<section class="reach sec" id="reach">
+  <div class="wrap grid shead">
+    <div class="no mono">04 / Delivery area</div>
+    <h2>Sited on the roads<br>you build on</h2>
+    <p>Fresh concrete has a working life measured in minutes. Pick your town and see how far it is from the nearest plant.</p>
+  </div>
+  <div class="wrap grid">
+    <div class="mapcol">
+      <svg class="map" id="map" viewBox="0 0 36.6 52" role="img" aria-label="Map of the two plants and towns in Cavite and Metro Manila"></svg>
+      <div class="mapcap mono"><div class="legend"><span><i style="background:#C8202F"></i>Plant</span><span><i style="background:rgba(26,79,160,.25)"></i>~45 min</span><span><i style="border:1px dashed #1A4FA0"></i>~90 min</span></div><span>Grid 0.05° · not to road scale</span></div>
     </div>
-  </section>
-
-  <div class="stripes" aria-hidden="true"></div>
-
-  <!-- ================= PLANTS ================= -->
-  <section id="plants" class="plants">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="idx">02</span>
-        <div>
-          <p class="lbl">Batching plants</p>
-          <h2>Sited on the roads<br>you build on</h2>
-        </div>
+    <div class="side">
+      <div class="pick"><label class="mono" for="town">Your site is in</label><select id="town"></select></div>
+      <div class="answer">
+        <div class="mono" style="color:var(--dim)">Estimated plant to site</div>
+        <div class="big"><span id="mins">—</span><small>min</small></div>
+        <p id="from">—</p>
+        <span class="verdict" id="verdict">—</span>
       </div>
-      <p class="sec-lead reveal">Fresh concrete has a working life measured in minutes, so the
-        distance from plant to pour is not a detail — it is the business. Both plants sit on
-        Cavite's main corridors, within reach of Metro Manila.</p>
-
-      <div class="plant-grid">
-        <div>
-          <table class="loc-table reveal">
-            <tr><th>Facility</th><th>Location</th></tr>
-            <tr>
-              <td><span class="tag">Plant 01</span><b>Main plant</b></td>
-              <td>Centennial Road, Brgy. Marulas,<br>Kawit, Cavite
-                <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Centennial+Road+Barangay+Marulas+Kawit+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></td>
-            </tr>
-            <tr>
-              <td><span class="tag">Plant 02</span><b>Second plant</b></td>
-              <td>Antero Soriano Highway<br>(Tramo&ndash;Bantayan)
-                <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Antero+Soriano+Highway+Tramo+Bantayan+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></td>
-            </tr>
-          </table>
-          <p class="plant-note reveal">Two plants means a fallback: if a line goes down or a
-            corridor jams on the day of your pour, the schedule holds.</p>
-        </div>
-
-        <div class="figstack reveal">
-          <figure class="fig fig-main" style="margin:0">
-            <img src="img/plant.webp" alt="Transit mixer loading under the blue-and-white silos at the main plant" loading="lazy" width="640" height="640">
-            <figcaption class="fig-cap">Plant 01 — Kawit, Cavite</figcaption>
-          </figure>
-          <figure class="fig fig-side" style="margin:0">
-            <img src="img/silos-top.webp" alt="Brand-painted cement silos at the batching plant" loading="lazy" width="660" height="430">
-            <figcaption class="fig-cap">Cement silos</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- NEEDED FROM YOU — B -->
-      <aside class="need reveal" aria-label="Material needed from the company: capacity and fleet">
-        <div class="need-tape" aria-hidden="true"></div>
-        <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment B — Capacity sheet</span></div>
-        <h3>Plant capacity &amp; fleet count</h3>
-        <p>Three numbers decide whether a contractor believes you can carry their pour
-          schedule. The largest supplier in the region publishes all of theirs on the homepage.
-          Leaving yours blank is the one thing here that quietly costs you bids.</p>
-        <div class="counter-preview" role="presentation">
-          <div class="cp-cell"><span class="cp-num">&mdash;<i>m&sup3;/hr</i></span><span class="cp-lab">Rated output</span></div>
-          <div class="cp-cell"><span class="cp-num">&mdash;</span><span class="cp-lab">Transit mixers</span></div>
-          <div class="cp-cell"><span class="cp-num">&mdash;</span><span class="cp-lab">Line and boom pumps</span></div>
-        </div>
-        <p class="cp-note">Drawn as the finished band, with the figures missing. This is the
-          screen the competition leads with, because it is the first thing an estimator checks.</p>
-      </aside>
+      <p class="why">Most specifications ask for ready-mix to be placed within 90 minutes of batching. Estimates assume weekday traffic and 10 minutes to load; the plant confirms a delivery window with every quotation.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= TRACK RECORD & COMPLIANCE ================= -->
-  <section id="record">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="idx">03</span>
-        <div>
-          <p class="lbl">Track record &amp; compliance</p>
-          <h2>The pages procurement<br>reads first</h2>
-        </div>
-      </div>
-      <p class="sec-lead reveal">Large private and government buyers check references and
-        accreditation before they look at price. Publishing them here removes a round of
-        emails from every bid — once the documents below are confirmed and current.</p>
+<!-- ================= RECORD: attachments ================= -->
+<section class="sec" id="record">
+  <div class="wrap grid shead">
+    <div class="no mono">05 / Track record</div>
+    <h2>The pages procurement<br>reads first</h2>
+    <p>Large private and government buyers check classes, references and accreditation before they look at price. Each block below fills in once the documents are confirmed and current.</p>
+  </div>
 
-      <div class="two-need">
-        <!-- NEEDED FROM YOU — C -->
-        <aside class="need reveal" aria-label="Material needed from the company: named clients and site photographs">
-          <div class="need-tape" aria-hidden="true"></div>
-          <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment C — References</span></div>
-          <h3>Named clients &amp; site photographs</h3>
-          <p><b>The single highest-value item missing from this page.</b> The largest supplier
-            in the region names Kajima, Shimizu and Taisei on its homepage. One international
-            contractor named here outweighs any amount of design. Needed: written permission to
-            name each client, and 4&ndash;6 photographs of actual pours. Nothing is published
-            without your sign-off.</p>
-          <div class="proj-slots" role="presentation">
-            <div class="proj">
-              <div class="proj-img">Site photograph</div>
-              <div class="proj-body">
-                <span class="proj-status">Ongoing or finished</span>
-                <span class="proj-loc">City, province</span>
-                <span class="proj-rule"></span>
-                <span class="proj-rule short"></span>
-                <span class="proj-logo"><em></em>Client mark</span>
-              </div>
-            </div>
-            <div class="proj">
-              <div class="proj-img">Site photograph</div>
-              <div class="proj-body">
-                <span class="proj-status">Ongoing or finished</span>
-                <span class="proj-loc">City, province</span>
-                <span class="proj-rule"></span>
-                <span class="proj-rule short"></span>
-                <span class="proj-logo"><em></em>Client mark</span>
-              </div>
-            </div>
-          </div>
-          <p class="cp-note">Each card carries a status, not only a completion date &mdash; work
-            in progress tells a buyer the plant is running right now. Send per project: name,
-            main contractor, location, status, one photograph.</p>
-        </aside>
+  <div class="wrap mixes">
+    <div class="atthead"><h3>Concrete classes &amp; design strengths</h3><span class="chip">Needed from you · Attachment A</span></div>
+    <table>
+      <thead><tr><th>Class</th><th>Typical application</th><th class="hide-s">Max aggregate</th><th class="hide-s">Slump</th></tr></thead>
+      <tbody id="mixRows">
+        <tr class="ghost" data-psi="2500"><td class="c">2,500<small>psi</small></td><td>Lean concrete, sidewalks, blinding</td><td class="hide-s">¾"</td><td class="hide-s">75–100 mm</td></tr>
+        <tr class="ghost" data-psi="3000"><td class="c">3,000<small>psi</small></td><td>Ground slabs, footings</td><td class="hide-s">¾"</td><td class="hide-s">75–100 mm</td></tr>
+        <tr class="ghost" data-psi="3500"><td class="c">3,500<small>psi</small></td><td>Roads, driveways, retaining walls</td><td class="hide-s">¾"</td><td class="hide-s">75–125 mm</td></tr>
+        <tr class="ghost" data-psi="4000"><td class="c">4,000<small>psi</small></td><td>Suspended slabs, beams, columns</td><td class="hide-s">¾"</td><td class="hide-s">100–150 mm</td></tr>
+      </tbody>
+    </table>
+    <div class="needline need"><span class="chip">Needed</span><p>These are typical rows, greyed out. Send the classes you batch, exactly as they appear on your quotations, and they replace the rows above.</p></div>
+  </div>
 
-        <!-- NEEDED FROM YOU — D -->
-        <aside class="need reveal" aria-label="Material needed from the company: current accreditation certificates">
-          <div class="need-tape" aria-hidden="true"></div>
-          <div class="need-head"><span class="chip">Needed from you</span><span class="refno">Attachment D — Certificates</span></div>
-          <h3>Current accreditation certificates</h3>
-          <p><b>Current copies only.</b> A lapsed certificate on a public website is worse than
-            none, so nothing appears in this section until the office sends documents that are
-            valid today.</p>
-          <div class="seals" role="presentation">
-            <div class="seal"><span class="ring">PCAB</span><span class="cap">Contractor licence</span></div>
-            <div class="seal"><span class="ring">SEC</span><span class="cap">Registration</span></div>
-            <div class="seal"><span class="ring">DPWH</span><span class="cap">Accreditation, if held</span></div>
-            <div class="seal"><span class="ring">ISO</span><span class="cap">Certification, if held</span></div>
-          </div>
-          <p class="cp-note">The competition puts its membership marks in the masthead, where
-            every visitor sees them. These rings fill in the day current certificates arrive.</p>
-          <ul class="g-check">
-            <li>PCAB licence — current validity</li>
-            <li>SEC certificate of registration</li>
-            <li>BIR registration</li>
-            <li>Mayor's / business permit</li>
-            <li>ISO or DPWH accreditation, if any</li>
-          </ul>
-        </aside>
-      </div>
+  <div class="wrap att">
+    <div class="atthead"><h3>Named clients &amp; site photographs</h3><span class="chip">Needed from you · Attachment C</span></div>
+    <div class="cards">
+      <div class="card need up"><span class="mono">Site photograph</span><b>Project name<br>Main contractor</b><span class="mono">Ongoing or finished · City, province</span></div>
+      <div class="card need up"><span class="mono">Site photograph</span><b>Project name<br>Main contractor</b><span class="mono">Ongoing or finished · City, province</span></div>
+      <div class="card need up"><span class="mono">Site photograph</span><b>Project name<br>Main contractor</b><span class="mono">Ongoing or finished · City, province</span></div>
     </div>
-  </section>
+    <div class="needline need"><span class="chip">Needed</span><p>The single highest-value item missing from this page. Needed: written permission to name each client, and 4–6 photographs of actual pours. Nothing is published without your sign-off.</p></div>
+  </div>
 
-
-  <!-- ================= VOLUME CALCULATOR + QUOTE ================= -->
-  <section id="estimate" class="calc">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="idx">04</span>
-        <div>
-          <p class="lbl">Estimate &amp; request</p>
-          <h2>Work out the volume,<br>then send it over</h2>
-        </div>
-      </div>
-      <p class="sec-lead reveal">Contractors order in cubic metres, but plans are drawn in
-        millimetres. Size the pour here, then send the number to the plant with the class and
-        the date &mdash; no other ready-mix supplier in Cavite lets you do this online.</p>
-
-      <div class="calc-grid">
-
-        <!-- ---------- calculator ---------- -->
-        <div class="calc-box reveal">
-          <p class="ttl">Concrete volume calculator</p>
-          <p class="sub">Enter the pour dimensions. Results update as you type.</p>
-
-          <div class="shapes" role="group" aria-label="Type of pour">
-            <button type="button" class="shape" data-shape="slab" aria-pressed="true">
-              <svg viewBox="0 0 32 26" aria-hidden="true"><path d="M3 9 16 3l13 6-13 6L3 9Z"/><path d="M3 9v6l13 6 13-6V9"/></svg>
-              Slab
-            </button>
-            <button type="button" class="shape" data-shape="footing" aria-pressed="false">
-              <svg viewBox="0 0 32 26" aria-hidden="true"><path d="M4 6h24v14H4z"/><path d="M4 13h24"/></svg>
-              Footing
-            </button>
-            <button type="button" class="shape" data-shape="column" aria-pressed="false">
-              <svg viewBox="0 0 32 26" aria-hidden="true"><path d="M11 4h10v18H11z"/><path d="M11 4c0 1.7 2.2 3 5 3s5-1.3 5-3"/></svg>
-              Column
-            </button>
-          </div>
-
-          <div class="frow">
-            <label class="fld"><span id="lb-a">Length (m)</span>
-              <input type="number" id="dimA" min="0" step="0.01" value="10" inputmode="decimal"></label>
-            <label class="fld"><span id="lb-b">Width (m)</span>
-              <input type="number" id="dimB" min="0" step="0.01" value="6" inputmode="decimal"></label>
-          </div>
-          <div class="frow">
-            <label class="fld"><span id="lb-c">Thickness (mm)</span>
-              <input type="number" id="dimC" min="0" step="1" value="150" inputmode="decimal"></label>
-            <label class="fld"><span id="lb-n">How many?</span>
-              <input type="number" id="dimN" min="1" step="1" value="1" inputmode="numeric"></label>
-          </div>
-
-          <div class="readout" aria-live="polite">
-            <div class="top">
-              <p class="num" id="volOut" data-v="0">0.00<i>m&sup3;</i></p>
-              <p class="cap">Order volume<br>incl. 5% allowance</p>
-            </div>
-            <div class="rows">
-              <div class="r"><span>Neat volume from dimensions</span><b id="volNeat">9.00 m&sup3;</b></div>
-              <div class="r"><span>Waste / spillage allowance (5%)</span><b id="volWaste">0.45 m&sup3;</b></div>
-              <div class="r"><span>Transit-mixer loads, approx.</span><b id="volTrucks">2 loads</b></div>
-            </div>
-          </div>
-          <p class="calc-note">Estimate only. Loads are figured on a standard 6&nbsp;m&sup3;
-            transit mixer; formwork deflection, sub-base and pump line losses are not included.
-            The plant confirms the final figure against your drawings.</p>
-          <button type="button" class="usebtn" id="useVol">Use this volume in the request &darr;</button>
-        </div>
-
-        <!-- ---------- quote form ---------- -->
-        <div class="calc-box reveal">
-          <p class="ttl">Request a quotation</p>
-          <p class="sub">Four things decide the price: class, volume, location, date.</p>
-
-          <form class="qform" id="qf" novalidate>
-            <div class="frow">
-              <label class="fld"><span>Concrete class or strength</span>
-                <input type="text" name="class" placeholder="e.g. 3,000 psi / Class A / 21 MPa" required></label>
-              <label class="fld"><span>Volume (m&sup3;)</span>
-                <input type="number" name="volume" id="qVol" min="0" step="0.1" placeholder="9.5" inputmode="decimal" required></label>
-            </div>
-            <div class="frow">
-              <label class="fld"><span>Pour date</span>
-                <input type="date" name="date"></label>
-              <label class="fld"><span>Placement</span>
-                <select name="placement">
-                  <option value="Chute / direct discharge">Chute / direct discharge</option>
-                  <option value="Line pump">Line pump</option>
-                  <option value="Boom pump">Boom pump</option>
-                  <option value="Not sure - please advise">Not sure &mdash; please advise</option>
-                </select></label>
-            </div>
-            <label class="fld"><span>Site location</span>
-              <input type="text" name="site" placeholder="Barangay, city / province" required></label>
-            <div class="frow">
-              <label class="fld"><span>Your name</span>
-                <input type="text" name="name" required></label>
-              <label class="fld"><span>Company</span>
-                <input type="text" name="company"></label>
-            </div>
-            <label class="fld"><span>Mobile or email</span>
-              <input type="text" name="contact" placeholder="09xx xxx xxxx" required></label>
-            <label class="fld"><span>Anything else we should know?</span>
-              <textarea name="notes" rows="3" placeholder="Access restrictions, pour window, staged deliveries&hellip;"></textarea></label>
-
-            <button type="submit" class="qsubmit">Send request</button>
-            <p class="qnote" id="qmsg">We reply with a price and a delivery window. Nothing is
-              charged here &mdash; the plant confirms the schedule before anything is booked.</p>
-          </form>
-        </div>
-
-      </div>
+  <div class="wrap att">
+    <div class="atthead"><h3>Current accreditation certificates</h3><span class="chip">Needed from you · Attachment D</span></div>
+    <div class="certs">
+      <div class="need up">PCAB licence — current validity</div>
+      <div class="need up">SEC certificate of registration</div>
+      <div class="need up">BIR registration</div>
+      <div class="need up">Mayor's / business permit</div>
+      <div class="need up">ISO or DPWH accreditation, if any</div>
     </div>
-  </section>
+    <div class="needline need"><span class="chip">Needed</span><p>A lapsed certificate on a public website is worse than none, so nothing appears in this section until the office sends documents that are valid today.</p></div>
+  </div>
+</section>
 
-  <div class="stripes" aria-hidden="true"></div>
-
-  <!-- ================= CONTACT ================= -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="idx">05</span>
-        <div>
-          <p class="lbl">Contact</p>
-          <h2>Plants, phone,<br>and the yard gate</h2>
-        </div>
+<!-- ================= QUOTE ================= -->
+<section class="order sec" id="quote">
+  <div class="wrap grid orderbox">
+    <div class="intro">
+      <div class="mono" style="color:var(--dim)">06 / Quotation</div>
+      <h2>Request a quotation</h2>
+      <p>Four things decide the price: class, volume, location, date. We reply with a price and a delivery window.</p>
+      <div class="direct mono">
+        <a href="tel:+639977703807">Phone · 0997 770 3807</a>
+        <a href="mailto:powermegamixbatchinginc@gmail.com">powermegamixbatchinginc@gmail.com</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Power+MegaMix+batching+inc+Centennial+Road+Kawit+Cavite" target="_blank" rel="noopener">Plant 01 · Centennial Road, Kawit →</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Antero+Soriano+Highway+Tramo+Bantayan+Cavite" target="_blank" rel="noopener">Plant 02 · Antero Soriano Hwy, Tanza →</a>
       </div>
-      <p class="sec-lead reveal">Phone is fastest for a pour already on the calendar. Anything
-        that needs a written price goes through the request form above &mdash; same desk, same day.</p>
-
-      <div class="c-grid">
-        <div class="c-card reveal">
-          <p class="k">Phone</p>
-          <a class="big" href="tel:+639977703807">0997 770 3807</a>
-        </div>
-        <div class="c-card reveal">
-          <p class="k">Email</p>
-          <a class="em" href="mailto:powermegamixbatchinginc@gmail.com?subject=Quotation%20request%20%E2%80%94%20ready-mix%20concrete">powermegamixbatchinginc@gmail.com</a>
-        </div>
-        <div class="c-card reveal">
-          <p class="k">Plant 01 — Main plant</p>
-          <address><b>Kawit, Cavite</b>Centennial Road, Brgy. Marulas,<br>Kawit, Cavite</address>
-          <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Centennial+Road+Barangay+Marulas+Kawit+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
-        </div>
-        <div class="c-card reveal">
-          <p class="k">Plant 02 — Second plant</p>
-          <address><b>Antero Soriano Hwy</b>Tramo&ndash;Bantayan<br>Antero Soriano Highway</address>
-          <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Antero+Soriano+Highway+Tramo+Bantayan+Cavite" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
-        </div>
-      </div>
-      <p class="c-hours reveal">Serving contractors across Cavite and Metro Manila.</p>
+      <div class="gate"><img src="img/gate2.webp" alt="The Power Megamix Batching Inc. gate and sign" loading="lazy" width="1440" height="1080"></div>
     </div>
-  </section>
-
+    <form class="ticket" id="qf" autocomplete="off" novalidate>
+      <div class="th"><span class="brand"><svg viewBox="0 0 56 56" aria-hidden="true" style="width:30px;height:30px"><path fill="#c8202f" d="M22 7h17.5C48 7 53 11.4 53 18c0 9.2-7.6 14.5-17.6 14.5h-8.1L23.6 50H12.4L22 7Z"/><path fill="#fff" d="M30.6 15.2 28.2 24h8.4c4.6 0 7.3-2.2 7.3-5.3 0-2.4-1.9-3.5-5.3-3.5h-8Z"/><path fill="#c8202f" d="M3 32.5 16.2 26l-3.6 12.6L3 32.5Z"/></svg><b>Power Megamix</b></span><span class="mono">Request · No. <span id="tno">—</span></span></div>
+      <div class="tf">
+        <label class="w2c"><span>Concrete class or strength</span><input name="class" id="tMix" required placeholder="e.g. 3,000 psi / Class A / 21 MPa"></label>
+        <label class="w2c"><span>Volume (m³)</span><input name="volume" id="tVol" type="number" min="1" step="0.5" required></label>
+        <label class="w2c"><span>Pour date</span><input name="date" type="date"></label>
+        <label><span>Placement</span><select name="placement" id="tPump"><option>Chute / direct discharge</option><option>Line pump</option><option>Boom pump</option><option>Not sure — please advise</option></select></label>
+        <label><span>Site location</span><select name="site" id="tTown" required></select></label>
+        <label><span>Your name</span><input name="name" required></label>
+        <label><span>Company</span><input name="company"></label>
+        <label class="full"><span>Mobile or email</span><input name="contact" required placeholder="09xx xxx xxxx"></label>
+        <label class="full"><span>Anything else we should know?</span><textarea name="notes" rows="2" placeholder="Access restrictions, pour window, staged deliveries…"></textarea></label>
+      </div>
+      <div class="perf"></div>
+      <div class="foot"><small>Nothing is charged here — the plant confirms the schedule before anything is booked.</small><button class="btn red qsubmit" type="submit"><span>Send request</span><span class="ar">→</span></button></div>
+      <p class="qnote" id="qmsg"></p>
+      <svg class="stamp" id="stamp" viewBox="0 0 230 120" aria-hidden="true">
+        <defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/><feComponentTransfer><feFuncA type="discrete" tableValues="0 1 1 1 1 1 0 1 1 1"/></feComponentTransfer></filter></defs>
+        <g filter="url(#rough)" fill="none" stroke="#1A4FA0" stroke-width="4">
+          <rect x="6" y="6" width="218" height="108" rx="6"/><rect x="14" y="14" width="202" height="92" rx="3" stroke-width="1.6"/>
+          <text x="115" y="60" text-anchor="middle" fill="#1A4FA0" stroke="none" style="font:800 40px 'Barlow Condensed',sans-serif">RECEIVED</text>
+          <text x="115" y="90" text-anchor="middle" fill="#1A4FA0" stroke="none" style="font:500 13px 'JetBrains Mono',monospace;letter-spacing:2px" id="stampDate">POWER MEGAMIX</text>
+        </g>
+      </svg>
+    </form>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p><b>Power Megamix Batching Inc.</b> &middot; Centennial Road, Brgy. Marulas, Kawit, Cavite &middot; 0997 770 3807</p>
-    <p>This page is an unsolicited design concept by Veracod. It is not the company's official
-      website, and no content here has been approved or supplied by Power Megamix Batching Inc.
-      <a href="https://veracod.com/legal/privacy" target="_blank" rel="noreferrer" style="color:inherit">Privacy</a></p>
+    <div class="cols">
+      <div><b>Power Megamix Batching Inc.</b>Ready-mix supply and line &amp; boom pumping. Serving contractors across Cavite and Metro Manila.</div>
+      <div><b>Plant 01 — Main plant</b>Centennial Road, Brgy. Marulas,<br>Kawit, Cavite</div>
+      <div><b>Plant 02 — Second plant</b>Antero Soriano Highway<br>Tramo–Bantayan, Tanza, Cavite</div>
+      <div><b>Contact</b><a href="tel:+639977703807">0997 770 3807</a><br><a href="mailto:powermegamixbatchinginc@gmail.com">Email the office</a></div>
+    </div>
+    <div class="bigname" aria-hidden="true">Power Megamix</div>
+    <p class="legal">This page is an unsolicited design concept by Veracod. It is not the company's official website, and no content here has been approved or supplied by Power Megamix Batching Inc. · <a href="https://veracod.com/legal/privacy" target="_blank" rel="noreferrer">Privacy</a></p>
   </div>
 </footer>
 
-
 <script>
-/* ============================================================
-   Bilingual swap. The page ships in English; Chinese is applied by walking text
-   nodes and replacing exact matches. Nothing is duplicated in the markup, so
-   there is only ever one copy of each sentence to maintain.
-   ============================================================ */
+/* ============ Bilingual swap: English ships in the markup, Chinese is applied by walking text nodes. ============ */
+var ZH={
+"Concept page":"概念演示页","— an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.":"— 由 Veracod 独立制作的设计演示。与 Power Megamix Batching Inc. 无隶属关系，非其委托制作，也不是其官方网站。",
+"Batching Inc.":"搅拌有限公司","How it's made":"生产流程","Volume":"方量","Strength":"强度","Delivery area":"配送范围","Track record":"业绩与资质","Get a quote":"在线询价",
+"Ready-mix concrete · Kawit & Tanza, Cavite":"预拌混凝土 · 甲米地省卡威特与坦萨","Ready-mix concrete,":"预拌混凝土，","delivered":"准时","on schedule.":"到场浇筑。",
+"Batching and pumping from two plants on Cavite's main corridors. A pour that waits is a pour that fails — we quote the delivery window with the price.":"两座搅拌站坐落于甲米地主干道沿线，供应与泵送一体。等待中的浇筑就是失败的浇筑——我们报价时一并给出到场时间窗。",
+"Work out your volume":"先算方量","Request a quotation":"索取报价单","Plant":"搅拌站","01 · Kawit":"01 · 卡威特","Silos":"料仓","4 · blue & white":"4 座 · 蓝白","Fig. 1 — Plant 01, Kawit":"图 1 — 1 号站，卡威特",
+"Batching since":"开始拌制","Batching plants":"座搅拌站","Rated output · needed":"额定产能 · 待提供","Transit mixers · needed":"罐车数量 · 待提供",
+"01 / Process":"01 / 生产流程","From the stockpile":"从料场","to your pour":"到你的浇筑面","Four steps between a quotation and a finished slab. Two photographs are still missing, and they are marked where they go.":"从报价到浇好一块板，一共四步。还缺两张照片，已经在对应位置标出来了。",
+"Needed from you":"需贵司提供","Needed":"待提供","Aggregate yard photo":"骨料堆场照片","Sand and gravel stockpiles at either plant. A phone photo in daylight is enough.":"任一站的砂石料堆。白天用手机拍一张就够。",
+"Step 01":"第 1 步","Step 02":"第 2 步","Step 03":"第 3 步","Step 04":"第 4 步","Aggregate":"骨料","Batch":"拌制","Drum":"运输","Place":"浇筑",
+"Sand and gravel, graded":"砂石分级堆放","Coarse and fine aggregate are stockpiled separately and kept clean, so every batch starts from the same material.":"粗、细骨料分开堆放、保持洁净，每一盘都从同样的原料开始。",
+"Weighed at the plant":"站内计量","Cement, water, sand, gravel and admixture are weighed for each load to the class and slump your engineer specifies.":"水泥、水、砂、石和外加剂逐车计量，按贵方工程师指定的强度等级与坍落度拌制。",
+"Timed to your pour":"按浇筑节奏发车","Transit mixers leave in sequence with your pour schedule, so the next truck arrives as the last one empties.":"罐车按浇筑计划依次发车，上一车卸完，下一车正好到。",
+"Pour on site photo":"现场浇筑照片","A boom or line pump placing concrete on a real job. This is the photo buyers look for first.":"泵车或地泵在真实工地布料的照片。采购方第一个找的就是这张。",
+"Chute, line or boom":"溜槽、地泵或泵车","Direct discharge where the truck can reach, a line pump for tight lots, a boom pump for decks and columns.":"罐车开得到就直接卸料；场地狭窄用地泵；楼面和柱子用泵车。",
+"02 / Volume":"02 / 方量","Work out the volume,":"先算出方量，","then send it over":"再发给我们",
+"Contractors order in cubic metres, but plans are drawn in millimetres. Size the pour here, then send the number with the class and the date.":"承包商按立方米下单，图纸却按毫米绘制。在这里算出方量，连同强度等级和浇筑日期一并发过来。",
+"Ground slab":"地坪","Suspended slab":"楼板","Footings":"基础","Columns":"柱","Road / driveway":"道路 / 车道","Length":"长","Width":"宽","Thickness":"厚度","Depth":"深度","Height":"高度","Side":"边长","How many":"数量",
+"Estimate only. Loads are figured on a standard 6 m³ transit mixer. The plant confirms the final figure against your drawings.":"仅为估算。车次按标准 6 立方米罐车折算。最终方量以搅拌站核对图纸后确认为准。",
+"Order volume, incl. 5% allowance":"建议订购方量（含 5% 损耗）","Typical class":"常用强度等级","Placement":"浇筑方式","On site for":"现场用时","Trucks every":"发车间隔","Use this volume in the request":"把这个方量填入询价单",
+"03 / Strength":"03 / 强度","Day 28 is the day":"第 28 天","that counts":"才算数","Concrete keeps gaining strength for weeks after the pour. Scroll to watch a 4,000 psi mix get there, day by day.":"混凝土浇筑后的几周里强度一直在长。往下滚，看一盘 4,000 psi 的混凝土一天天长到设计强度。",
+"Days after pour":"浇筑后天数","of design":"设计强度","Curve: ACI 209 model, moist-cured Type I cement.":"曲线：ACI 209 模型，湿养护 I 型水泥。",
+"04 / Delivery area":"04 / 配送范围","Sited on the roads":"就建在","you build on":"你要施工的路上","Fresh concrete has a working life measured in minutes. Pick your town and see how far it is from the nearest plant.":"新拌混凝土的可工作时间以分钟计。选你的工地所在城镇，看看离最近的站有多远。",
+"Your site is in":"工地所在地","Estimated plant to site":"预计站到工地","min":"分钟","Grid 0.05° · not to road scale":"网格 0.05° · 非道路比例","~45 min":"约 45 分钟","~90 min":"约 90 分钟",
+"Most specifications ask for ready-mix to be placed within 90 minutes of batching. Estimates assume weekday traffic and 10 minutes to load; the plant confirms a delivery window with every quotation.":"多数施工规范要求预拌混凝土在拌制后 90 分钟内浇筑完毕。估算按工作日路况、装车 10 分钟计；每份报价都会由搅拌站确认到场时间窗。",
+"05 / Track record":"05 / 业绩与资质","The pages procurement":"采购部门","reads first":"最先翻的几页","Large private and government buyers check classes, references and accreditation before they look at price. Each block below fills in once the documents are confirmed and current.":"大型民营与政府采购方在看价格之前，先查强度等级、业绩和资质。下面每一栏，等文件核实且在有效期内就填上。",
+"Concrete classes & design strengths":"混凝土强度等级与设计强度","Needed from you · Attachment A":"需贵司提供 · 附件 A","Needed from you · Attachment C":"需贵司提供 · 附件 C","Needed from you · Attachment D":"需贵司提供 · 附件 D",
+"Class":"强度等级","Typical application":"典型适用部位","Max aggregate":"最大骨料粒径","Slump":"坍落度","Lean concrete, sidewalks, blinding":"素混凝土、人行道、垫层","Ground slabs, footings":"地坪、基础","Roads, driveways, retaining walls":"道路、车道、挡土墙","Suspended slabs, beams, columns":"楼板、梁、柱",
+"These are typical rows, greyed out. Send the classes you batch, exactly as they appear on your quotations, and they replace the rows above.":"以上是置灰的常用示例。请提供贵司实际拌制的强度等级（按报价单上的写法原样提供），替换上面这几行。",
+"Named clients & site photographs":"具名客户与施工现场照片","Site photograph":"施工现场照片","Project name":"项目名称","Main contractor":"总包单位","Ongoing or finished · City, province":"在建或已竣工 · 市 / 省",
+"The single highest-value item missing from this page. Needed: written permission to name each client, and 4–6 photographs of actual pours. Nothing is published without your sign-off.":"本页目前最有价值的缺项。需要：每家客户的具名书面许可，以及 4–6 张真实浇筑照片。未经贵司签字确认，一律不上线。",
+"Current accreditation certificates":"现行有效资质证书","PCAB licence — current validity":"PCAB 承包商执照 — 现行有效期","SEC certificate of registration":"SEC 注册证书","BIR registration":"BIR 税务登记","Mayor's / business permit":"市长许可 / 营业执照","ISO or DPWH accreditation, if any":"ISO 或 DPWH 认证（如有）",
+"A lapsed certificate on a public website is worse than none, so nothing appears in this section until the office sends documents that are valid today.":"在公开网站上挂一张过期证书，比不挂更糟。因此在办公室提供当前有效的文件之前，本栏保持空白。",
+"06 / Quotation":"06 / 询价","Four things decide the price: class, volume, location, date. We reply with a price and a delivery window.":"四项决定价格：强度等级、方量、地点、日期。我们会回复价格和到场时间窗。",
+"Phone · 0997 770 3807":"电话 · 0997 770 3807","Plant 01 · Centennial Road, Kawit →":"1 号站 · 卡威特百年路 →","Plant 02 · Antero Soriano Hwy, Tanza →":"2 号站 · 坦萨安特罗索里亚诺公路 →",
+"Request · No.":"询价单 · 编号","Concrete class or strength":"强度等级或设计强度","Volume (m³)":"方量（立方米）","Pour date":"浇筑日期","Site location":"工地位置","Your name":"您的姓名","Company":"公司","Mobile or email":"手机或邮箱","Anything else we should know?":"还有什么需要我们知道的？",
+"Chute / direct discharge":"溜槽 / 直接卸料","Line pump":"地泵","Boom pump":"泵车","Not sure — please advise":"不确定 — 请贵司建议","Somewhere else":"其他地点",
+"Nothing is charged here — the plant confirms the schedule before anything is booked.":"此处不产生任何费用——搅拌站确认排期后才算下单。","Send request":"发送询价",
+"Power Megamix Batching Inc.":"Power Megamix Batching Inc.","Ready-mix supply and line & boom pumping. Serving contractors across Cavite and Metro Manila.":"预拌混凝土供应及地泵、泵车泵送。服务甲米地及大马尼拉地区的承包商。",
+"Plant 01 — Main plant":"1 号站 — 主站","Plant 02 — Second plant":"2 号站 — 第二站","Centennial Road, Brgy. Marulas,":"百年路，马鲁拉斯村，","Kawit, Cavite":"甲米地省卡威特","Antero Soriano Highway":"安特罗索里亚诺公路","Tramo–Bantayan, Tanza, Cavite":"甲米地省坦萨 Tramo–Bantayan","Contact":"联系方式","Email the office":"发邮件给办公室",
+"This page is an unsolicited design concept by Veracod. It is not the company's official website, and no content here has been approved or supplied by Power Megamix Batching Inc. ·":"本页为 Veracod 主动制作的设计概念稿，并非该公司官方网站；页面上的内容未经 Power Megamix Batching Inc. 审核或提供。·","Privacy":"隐私政策",
+/* strings the scripts write */
+"trucks":"车","truck":"车","6 m³ drums":"6 立方米罐车","last one":"最后一车","Chute is fine":"溜槽即可","Line pump or boom":"地泵或泵车","Boom pump, 36 m class":"泵车（36 米级）","About 1 hour":"约 1 小时","About":"约","hours":"小时","Plan a long pour":"需安排长时间连续浇筑","One delivery":"一车即可","min ":"分钟",
+"From Plant":"距","about":"约","km by road.":"公里路程。","Inside the 90-minute window (est.)":"估计在 90 分钟以内","Tight — ask the plant about a retarder":"偏远 — 可向搅拌站咨询缓凝剂",
+"Day 1: firm enough to walk on. Keep it wet. Don't load it.":"第 1 天：可以上人，保持湿润，不要加荷载。","Day 3: formwork can usually come off walls and column sides.":"第 3 天：墙、柱侧模一般可以拆。","Day 7: about 70% of design strength.":"第 7 天：约达设计强度的 70%。","Day 14: most slab props can come out, if your engineer agrees.":"第 14 天：经工程师同意，大部分楼板支撑可以拆。","Day 21: close to full strength.":"第 21 天：接近设计强度。","Day 28: design strength. This is the number on the test report.":"第 28 天：达到设计强度，这就是试验报告上的数字。",
+"7-day cylinders":"7 天试块","Design strength":"设计强度",
+"Please fill in class, volume, site and how to reach you.":"请填写强度等级、方量、工地位置和联系方式。","Sending...":"发送中……","Sent":"已发送","Sent. You will get a price and a delivery window back on this request.":"已发送。我们会就这份询价回复价格和到场时间窗。","Could not send from this browser — please call 0997 770 3807 instead.":"无法从此浏览器发送——请直接致电 0997 770 3807。"
+};
+var PH={"e.g. 3,000 psi / Class A / 21 MPa":"例如 C25 / 3,000 psi / 21 MPa","09xx xxx xxxx":"09xx xxx xxxx","Access restrictions, pour window, staged deliveries…":"进场限制、浇筑时间窗、分批供料……"};
 (function(){
-  var ZH = {"Services": "服务项目", "Plants": "座搅拌站", "Track record": "业绩与资质", "Get a quote": "在线询价", "Contact": "联系方式", "Batching Inc.": "搅拌有限公司", "Concept page": "概念演示页", "— an independent design demonstration by Veracod. Not affiliated with, commissioned by, or an official website of Power Megamix Batching Inc.": "— 由 Veracod 独立制作的设计演示。与 Power Megamix Batching Inc. 无隶属关系，非其委托制作，也不是其官方网站。", "Kawit, Cavite — Est. 2017": "甲米地省卡威特 — 2017 年成立", "Ready-mix concrete,": "预拌混凝土", "delivered": "准时", "on schedule.": "到场浇筑", "Batching and pumping from two plants on Cavite's main corridors. A pour that waits is a pour that fails — we quote the delivery window with the price.": "两座搅拌站坐落于甲米地主干道沿线，供应与泵送一体。等待中的浇筑就是失败的浇筑——我们报价时一并给出到场时间窗。", "SEC-registered corporation": "SEC 注册法人企业", "Ready-mix supply": "预拌混凝土供应", "Line & boom pumping": "地泵与泵车泵送", "Cavite & Metro Manila": "甲米地及大马尼拉地区", "Kawit · Antero Soriano Hwy": "卡威特 · 安特罗索里亚诺公路", "Cavite + NCR": "甲米地 + 首都区", "Delivery coverage": "配送覆盖范围", "Mix + Pump": "供应 + 泵送", "Supply and placement": "供料与浇筑一体", "Supply and placement,": "供料与浇筑，", "one supplier": "同一家承担", "The mix and the pump from the same yard — nobody stands on site waiting for a second contractor's truck to arrive.": "混凝土和泵车出自同一个场站——现场不必再等第二家分包的车。", "Concrete batched to the class and slump your engineer specifies, delivered by transit mixer and sequenced to your pour schedule.": "按贵方工程师指定的强度等级与坍落度拌制，由罐车运送，并按浇筑计划排班到场。", "Batched to specification": "按规范配比拌制", "Timed transit-mixer delivery": "罐车定时到场", "Scheduled multi-truck pours": "多车连续浇筑排班", "Line pump": "地泵", "Horizontal reach for placements the chute cannot touch — tight urban sites, rear lots, work behind an existing structure.": "用于溜槽够不到的水平输送——市区狭窄场地、后院地块、既有建筑背后的作业面。", "Confined and rear-lot access": "狭窄及后院场地进场", "Long horizontal runs": "长距离水平输送", "Ground-level placements": "地面标高浇筑", "Boom pump": "泵车", "Vertical reach for structural work — elevated decks, columns and suspended slabs placed directly from the truck.": "用于结构工程的垂直输送——高位楼面、柱体与悬空楼板，直接由泵车布料。", "Elevated decks and slabs": "高位楼面与楼板", "Columns and shear walls": "柱体与剪力墙", "Direct-from-truck placement": "泵车直接布料", "Needed from you": "需贵司提供", "Attachment A — Spec table": "附件 A — 规格表", "Concrete classes & design strengths": "混凝土强度等级与设计强度", "An estimator looks for this before anything else on the page. Send the classes you batch — the psi designations exactly as they appear on your quotations — and they are typeset here as the table below.": "预算员打开网页第一个找的就是这张表。请提供贵司可拌制的强度等级——按报价单上的 psi 标注原样提供——我们排成下方表格。", "Class": "强度等级", "Design strength": "设计强度", "Typical application": "典型适用部位", "Batching plants": "搅拌站", "Sited on the roads": "就建在", "you build on": "你要施工的路上", "Fresh concrete has a working life measured in minutes, so the distance from plant to pour is not a detail — it is the business. Both plants sit on Cavite's main corridors, within reach of Metro Manila.": "新拌混凝土的可工作时间以分钟计，所以从搅拌站到浇筑点的距离不是细节，而是这门生意本身。两座站均位于甲米地主干道沿线，可辐射大马尼拉。", "Facility": "设施", "Location": "位置", "Plant 01": "1 号站", "Main plant": "主站", "Centennial Road, Brgy. Marulas,": "百年路，马鲁拉斯村，", "Kawit, Cavite": "甲米地省卡威特", "Open in Google Maps →": "在谷歌地图中打开 →", "Plant 02": "2 号站", "Second plant": "第二站", "Antero Soriano Highway": "安特罗索里亚诺公路", "Two plants means a fallback: if a line goes down or a corridor jams on the day of your pour, the schedule holds.": "两座站意味着有后备：浇筑当天若某条生产线停机或某条干道拥堵，工期依然守得住。", "Plant 01 — Kawit, Cavite": "1 号站 — 甲米地省卡威特", "Cement silos": "水泥筒仓", "Attachment B — Capacity sheet": "附件 B — 产能表", "Plant capacity & fleet count": "站产能与车辆数量", "Transit mixers": "罐车数量", "Track record & compliance": "业绩与合规", "The pages procurement": "采购部门", "reads first": "最先翻的几页", "Large private and government buyers check references and accreditation before they look at price. Publishing them here removes a round of emails from every bid — once the documents below are confirmed and current.": "大型民营与政府采购方在看价格之前先查业绩和资质。把它们公开在这里，等于每次投标少来回一轮邮件——前提是下列文件经核实且在有效期内。", "Attachment C — References": "附件 C — 业绩证明", "Named clients & site photographs": "具名客户与施工现场照片", "The single highest-value item missing from this page.": "本页目前最有价值的缺项。", "Attachment D — Certificates": "附件 D — 资质证书", "Current accreditation certificates": "现行有效资质证书", "Current copies only.": "仅限现行有效件。", "A lapsed certificate on a public website is worse than none, so nothing appears in this section until the office sends documents that are valid today.": "在公开网站上挂一张过期证书，比不挂更糟。因此在办公室提供当前有效的文件之前，本栏保持空白。", "PCAB licence — current validity": "PCAB 承包商执照 — 现行有效期", "SEC certificate of registration": "SEC 注册证书", "BIR registration": "BIR 税务登记", "Mayor's / business permit": "市长许可 / 营业执照", "ISO or DPWH accreditation, if any": "ISO 或 DPWH 认证（如有）", "Estimate & request": "估算与询价", "Work out the volume,": "先算出方量，", "then send it over": "再发给我们", "Contractors order in cubic metres, but plans are drawn in millimetres. Size the pour here, then send the number to the plant with the class and the date — no other ready-mix supplier in Cavite lets you do this online.": "承包商按立方米下单，图纸却按毫米绘制。在这里算出方量，连同强度等级和浇筑日期一并发给搅拌站——甲米地没有第二家预拌混凝土供应商能在线上做到这一步。", "Concrete volume calculator": "混凝土方量计算器", "Enter the pour dimensions. Results update as you type.": "输入浇筑部位尺寸，结果即时更新。", "Slab": "楼板 / 地坪", "Footing": "基础", "Column": "柱", "Length (m)": "长（米）", "Width (m)": "宽（米）", "Thickness (mm)": "厚度（毫米）", "Depth (mm)": "深度（毫米）", "Height (m)": "高（米）", "Width (mm)": "宽（毫米）", "Depth (mm) ": "深（毫米）", "How many?": "数量", "How many slabs?": "几块板？", "How many footings?": "几个基础？", "How many columns?": "几根柱？", "Order volume": "建议订购方量", "incl. 5% allowance": "含 5% 损耗", "Neat volume from dimensions": "按尺寸计算的净方量", "Waste / spillage allowance (5%)": "损耗 / 洒落余量（5%）", "Transit-mixer loads, approx.": "约需罐车车次", "Estimate only. Loads are figured on a standard 6 m³ transit mixer; formwork deflection, sub-base and pump line losses are not included. The plant confirms the final figure against your drawings.": "仅为估算。车次按标准 6 立方米罐车折算；模板变形、垫层及泵管残留未计入。最终方量以搅拌站核对图纸后确认为准。", "Use this volume in the request ↓": "把这个方量填入询价单 ↓", "Request a quotation": "索取报价单", "Four things decide the price: class, volume, location, date.": "四项决定价格：强度等级、方量、地点、日期。", "Concrete class or strength": "强度等级或设计强度", "Volume (m³)": "方量（立方米）", "Pour date": "浇筑日期", "Placement": "浇筑方式", "Chute / direct discharge": "溜槽 / 直接卸料", "Not sure — please advise": "不确定 — 请贵司建议", "Site location": "工地位置", "Your name": "您的姓名", "Company": "公司", "Mobile or email": "手机或邮箱", "Anything else we should know?": "还有什么需要我们知道的？", "Send request": "发送询价", "We reply with a price and a delivery window. Nothing is charged here — the plant confirms the schedule before anything is booked.": "我们会回复价格和到场时间窗。此处不产生任何费用——搅拌站确认排期后才算下单。", "Plants, phone,": "场站、电话，", "and the yard gate": "以及场区大门", "Phone is fastest for a pour already on the calendar. Anything that needs a written price goes through the request form above — same desk, same day.": "已排进日程的浇筑，打电话最快。需要书面报价的，走上方询价表——同一个人受理，当天回复。", "Phone": "电话", "Email": "邮箱", "Plant 01 — Main plant": "1 号站 — 主站", "Plant 02 — Second plant": "2 号站 — 第二站", "Antero Soriano Hwy": "安特罗索里亚诺公路", "Serving contractors across Cavite and Metro Manila.": "服务甲米地及大马尼拉地区的承包商。", "Privacy": "隐私政策", "This page is an unsolicited design concept by Veracod. It is not the company's official website, and no content here has been approved or supplied by Power Megamix Batching Inc.": "本页为 Veracod 主动制作的设计概念稿，并非该公司官方网站；页面上的内容未经 Power Megamix Batching Inc. 审核或提供。", "Three numbers decide whether a contractor believes you can carry their pour schedule. The largest supplier in the region publishes all of theirs on the homepage. Leaving yours blank is the one thing here that quietly costs you bids.": "这三个数字决定承包商信不信贵司扛得住他的浇筑计划。区域内最大的同行把自己的数据全放在首页。这一栏空着，是本页唯一会默默丢标的地方。", "Rated output": "额定产能", "Line and boom pumps": "地泵与泵车", "Drawn as the finished band, with the figures missing. This is the screen the competition leads with, because it is the first thing an estimator checks.": "这就是成品的样子，只差数字。同行把这一屏放在最前面，因为预算员先看的就是它。", "The largest supplier in the region names Kajima, Shimizu and Taisei on its homepage. One international contractor named here outweighs any amount of design. Needed: written permission to name each client, and 4–6 photographs of actual pours. Nothing is published without your sign-off.": "区域内最大的同行在首页上直接写出鹿岛、清水、大成这些总包的名字。在这里写出一家国际总包，胜过任何设计。需要：每家客户的具名书面许可，以及 4–6 张真实浇筑照片。未经贵司签字确认，一律不上线。", "Site photograph": "施工现场照片", "Ongoing or finished": "在建 或 已竣工", "City, province": "市 / 省", "Client mark": "客户标志", "Each card carries a status, not only a completion date — work in progress tells a buyer the plant is running right now. Send per project: name, main contractor, location, status, one photograph.": "每张卡片带一个状态，而不只是竣工日期——“在建中”告诉采购方这个站现在就在跑。每个项目请提供：项目名、总包单位、地点、状态、一张照片。", "Contractor licence": "承包商执照", "Registration": "注册证书", "Accreditation, if held": "认证（如有）", "Certification, if held": "认证（如有）", "The competition puts its membership marks in the masthead, where every visitor sees them. These rings fill in the day current certificates arrive.": "同行把认证标志放在页顶，每个访客都看得到。收到现行有效证书当天，这几个圆就能填上。", "Years": "年", "Batching since 2017": "2017 年开始拌制", "See the operation": "看看我们的场站", "Our concrete": "我们的混凝土", "Batched to the class and slump your engineer specifies.": "按贵方工程师指定的强度等级与坩落度拌制。", "Mix & pumping →": "供料与泵送 →", "Plants & fleet": "场站与车队", "Two plants on Cavite's main corridors, within reach of Metro Manila.": "两座搅拌站位于甲米地主干道沿线，可辐射大马尼拉。", "Where we batch →": "站点分布 →", "Projects": "工程业绩", "The record procurement asks for before it asks for a price.": "采购方在问价格之前，先要看的就是这些。", "Track record →": "业绩与资质 →", "Our plants": "我们的场站"};
-  var PH = {"e.g. 3,000 psi / Class A / 21 MPa": "例如 C25 / 3,000 psi / 21 MPa", "Barangay, city / province": "村 / 市 / 省", "09xx xxx xxxx": "09xx xxx xxxx", "Access restrictions, pour window, staged deliveries…": "进场限制、浇筑时间窗、分批供料……"};
-  var EN = {};
-  Object.keys(ZH).forEach(function(k){ EN[ZH[k]] = k; });
-  var ORIG = new WeakMap();
-  var CJK = /[\u3000-\u9fff\uff00-\uffef]/;
-
-  /* Headings are the one place a text-node swap is not enough: SplitText rewrites
-     them into per-line wrappers, and its revert() does not always land before the
-     next statement runs. So keep a pristine English snapshot of each heading and
-     rebuild from that on every switch — no race, no dependence on revert(). */
-  var HEADS = [].slice.call(document.querySelectorAll('.hero h1, .sec-head h2'));
-  var HEAD_EN = HEADS.map(function(el){ return el.innerHTML; });
-
-  var root = document.documentElement;
-  var btns = document.querySelectorAll('.langsw button');
-  if(!btns.length) return;
-
-  function walk(map, scope){
-    var w = document.createTreeWalker(scope || document.body, NodeFilter.SHOW_TEXT, {
-      acceptNode: function(n){
-        var p = n.parentNode;
-        if(!p) return NodeFilter.FILTER_REJECT;
-        var tag = p.nodeName;
-        if(tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
-        return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-      }
-    });
-    var hits = [], n;
-    while((n = w.nextNode())) hits.push(n);
-    hits.forEach(function(node){
-      var raw = node.nodeValue;
-      var key = raw.replace(/\s+/g,' ').trim();
-      var to = map[key];
-      if(to === undefined) return;
-      if(!ORIG.has(node)) ORIG.set(node, raw);
-      if(map === ZH){
-        /* Chinese sets solid: a space either side of a CJK run is a gap, not a
-           word break. English keeps its spacing, restored verbatim on revert. */
-        var lead = /^\s/.test(raw) && !CJK.test(to.charAt(0)) ? ' ' : '';
-        var tail = /\s$/.test(raw) && !CJK.test(to.charAt(to.length-1)) ? ' ' : '';
-        node.nodeValue = lead + to + tail;
-      } else {
-        node.nodeValue = ORIG.has(node) ? ORIG.get(node) : to;
-      }
-    });
-  }
-
-  function swapAttrs(map){
-    Array.prototype.forEach.call(document.querySelectorAll('[placeholder]'), function(el){
-      var v = map[el.getAttribute('placeholder')];
-      if(v !== undefined) el.setAttribute('placeholder', v);
-    });
-  }
-
-  function setLang(lang){
-    if(root.getAttribute('data-lang') === lang) return;
-    /* SplitText rewrites headings into line wrappers; put them back before
-       touching the text, then let the page re-render plainly. */
-    if(window.__pmxRevertSplits) window.__pmxRevertSplits();
-    HEADS.forEach(function(el, i){ el.innerHTML = HEAD_EN[i]; });
-    if(lang === 'zh'){ walk(ZH); swapAttrs(PH); HEADS.forEach(function(el){ walk(ZH, el); }); }
-    else { walk(EN); swapAttrs(invert(PH)); }
-    root.setAttribute('data-lang', lang);
-    root.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : 'en');
-    try{ localStorage.setItem('_pmxLang', lang); }catch(e){}
-    Array.prototype.forEach.call(btns, function(b){
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
-    });
-    if(window.__pmxResplit) window.__pmxResplit();
-    if(window.__pmxRecalc) window.__pmxRecalc();
-    if(window.ScrollTrigger) ScrollTrigger.refresh();
-  }
-
-  function invert(o){ var r={}; Object.keys(o).forEach(function(k){ r[o[k]]=k; }); return r; }
-
-  Array.prototype.forEach.call(btns, function(b){
-    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
-  });
-
+  var EN={};Object.keys(ZH).forEach(function(k){EN[ZH[k]]=k});
+  var ORIG=new WeakMap(),CJK=/[　-鿿＀-￯]/,root=document.documentElement;
+  function walk(map){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode;if(!p)return 2;var t=p.nodeName;if(t==='SCRIPT'||t==='STYLE')return 2;return n.nodeValue.trim()?1:2}}),hits=[],n;
+    while((n=w.nextNode()))hits.push(n);
+    hits.forEach(function(node){var raw=node.nodeValue,key=raw.replace(/\s+/g,' ').trim(),to=map[key];if(to===undefined)return;if(!ORIG.has(node))ORIG.set(node,raw);
+      if(map===ZH){var lead=/^\s/.test(raw)&&!CJK.test(to.charAt(0))?' ':'',tail=/\s$/.test(raw)&&!CJK.test(to.charAt(to.length-1))?' ':'';node.nodeValue=lead+to+tail}
+      else node.nodeValue=ORIG.has(node)?ORIG.get(node):to})}
+  function attrs(map){[].forEach.call(document.querySelectorAll('[placeholder]'),function(el){var v=map[el.getAttribute('placeholder')];if(v!==undefined)el.setAttribute('placeholder',v)})}
+  function inv(o){var r={};Object.keys(o).forEach(function(k){r[o[k]]=k});return r}
+  window.__pmxT=function(s){return root.getAttribute('data-lang')==='zh'&&ZH[s]?ZH[s]:s};
+  function setLang(l){if(root.getAttribute('data-lang')===l)return;root.setAttribute('data-lang',l);root.setAttribute('lang',l==='zh'?'zh-Hans':'en');
+    if(window.__pmxRecalc)window.__pmxRecalc();
+    if(l==='zh'){walk(ZH);attrs(PH)}else{walk(EN);attrs(inv(PH))}
+    try{localStorage.setItem('_pmxLang',l)}catch(e){}
+    [].forEach.call(document.querySelectorAll('.langsw button'),function(b){b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false')});
+    if(window.ScrollTrigger)ScrollTrigger.refresh()}
+  [].forEach.call(document.querySelectorAll('.langsw button'),function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   root.setAttribute('data-lang','en');
-  var saved = null;
-  try{ saved = localStorage.getItem('_pmxLang'); }catch(e){}
-  if(!saved && /^zh/i.test(navigator.language || '')) saved = 'zh';
-  if(saved === 'zh') setLang('zh');
-
-  /* the calculator relabels its own fields, so it needs the dictionary too */
-  window.__pmxT = function(str){
-    return root.getAttribute('data-lang') === 'zh' && ZH[str] ? ZH[str] : str;
-  };
+  window.__pmxInitLang=function(){var s=null;try{s=localStorage.getItem('_pmxLang')}catch(e){}if(!s&&/^zh/i.test(navigator.language||''))s='zh';if(s==='zh')setLang('zh')};
 })();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script>
 (function(){
-  var root = document.documentElement;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !window.gsap || !window.ScrollTrigger || !window.SplitText){
-    root.classList.remove('js');           /* CSS shows everything as-is */
-    return;
-  }
-  gsap.registerPlugin(ScrollTrigger, SplitText);
-  var splits = [];
-  window.__pmxRevertSplits = function(){ splits.forEach(function(sp){ try{ sp.revert(); }catch(e){} }); splits.length = 0; };
-  var mark = function(){ window.__pmxAnim = true; };
+  var $=function(id){return document.getElementById(id)},T=function(s){return window.__pmxT(s)};
+  var fmt=function(n,d){return n.toLocaleString('en-PH',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})};
 
-  /* Hero intro — plays on load. GSAP only moves elements TO visible;
-     hidden state lives in CSS (.js .rise), and no clearProps anywhere. */
-  /* Hero headline rises line by line out of a mask. If SplitText cannot measure
-     (font still loading, odd viewport), the plain .rise tween below still runs. */
-  var h1 = document.querySelector('.hero h1');
-  if (h1){
-    try{
-      var sp = SplitText.create(h1, {type:'lines', mask:'lines', linesClass:'stl'}); splits.push(sp);
-      gsap.set(h1, {opacity:1, y:0});
-      gsap.from(sp.lines, {yPercent:112, duration:1, ease:'power4.out', stagger:.1, delay:.12, onStart:mark});
-    }catch(e){ /* fall through — h1 keeps the generic .rise tween */ }
-  }
-
-  gsap.to('.rise', {
-    opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.11, delay:.1, onStart:mark
-  });
-
-  /* ---- hero: slow push on each still, cross-faded on a continuous loop ----
-     Two shots, 9s each. opacity + scale only, so every frame is composited on
-     the GPU; there is no layout or paint work per frame. Pauses itself whenever
-     the hero is off screen or the tab is hidden, so it costs nothing to leave on. */
-  var shots = gsap.utils.toArray('.hero-bg .shot');
-  if (shots.length > 1){
-    var HOLD = 9, FADE = 1.6;
-    var loop = gsap.timeline({repeat:-1, onStart:mark});
-    /* A phone should never pull a promo film down over mobile data: swap the
-       film for its own poster frame and treat it as one more still. */
-    if (window.innerWidth < 768){
-      shots.forEach(function(shot){
-        var v = shot.querySelector('video');
-        if(!v) return;
-        var img = document.createElement('img');
-        img.src = v.getAttribute('poster') || '';
-        img.alt = '';
-        shot.replaceChild(img, v);
-      });
-    }
-
-    shots.forEach(function(shot, i){
-      var at = i * HOLD;
-      var vid = shot.querySelector('video');
-      /* Film carries its own motion, so only the stills get the slow push. */
-      var mid = vid ? 1 : 1.09, end = vid ? 1 : 1.16;
-      loop.fromTo(shot, {scale:1, opacity:(i === 0 ? 1 : 0)},
-                        {scale:mid, opacity:1, duration:FADE, ease:'power1.out',
-                         onStart:function(){ if(vid){ vid.currentTime = 0; vid.play().catch(function(){}); } }}, at)
-          .to(shot, {scale:end, duration:HOLD - FADE, ease:'none'}, at + FADE)
-          .to(shot, {opacity:0, duration:FADE, ease:'power1.in',
-                     onComplete:function(){ if(vid) vid.pause(); }}, at + HOLD - FADE/2);
-    });
-    /* last frame hands back to the first without a flash */
-    loop.set(shots[0], {opacity:1}, shots.length * HOLD - FADE/2);
-
-    ScrollTrigger.create({
-      trigger:'.hero', start:'top bottom', end:'bottom top',
-      onEnter:function(){loop.play()}, onEnterBack:function(){loop.play()},
-      onLeave:function(){loop.pause();pauseFilms()}, onLeaveBack:function(){loop.pause();pauseFilms()}
-    });
-    function pauseFilms(){
-      Array.prototype.forEach.call(document.querySelectorAll('.hero-bg video'), function(v){ v.pause(); });
-    }
-    document.addEventListener('visibilitychange', function(){
-      if (document.hidden){ loop.pause(); pauseFilms(); }
-      else if (ScrollTrigger.isInViewport('.hero')) loop.play();
-    });
-  }
-
-  /* Section headings get the same masked-line treatment as the hero. */
-  gsap.utils.toArray('.sec-head h2').forEach(function(h){
-    try{
-      var sh = SplitText.create(h, {type:'lines', mask:'lines', linesClass:'stl'}); splits.push(sh);
-      gsap.from(sh.lines, {yPercent:112, duration:.85, ease:'power4.out', stagger:.09, onStart:mark,
-        scrollTrigger:{trigger:h, start:'top 88%', once:true}});
-    }catch(e){}
-  });
-
-  /* Everything below the fold reveals as it enters. */
-  ScrollTrigger.batch('.reveal', {
-    start:'top 92%',
-    once:true,
-    onEnter:function(els){
-      gsap.to(els, {opacity:1, y:0, duration:.8, ease:'power3.out', stagger:.09, overwrite:true, onStart:mark});
-    }
-  });
-
-  /* Subtle drift on the plant figures while the section scrolls.
-     Desktop only — scrub on a phone main thread is where jank comes from. */
-  gsap.matchMedia().add('(min-width:768px)', function(){
-    gsap.fromTo('.figstack .fig img',
-      {yPercent:-4, scale:1.1}, {yPercent:4, scale:1.1, ease:'none',
-        scrollTrigger:{trigger:'.figstack', start:'top bottom', end:'bottom top', scrub:true}});
-  });
-
-  /* Count-up. Industrial buyers read these as capacity figures, so they are
-     worth animating — unlike, say, a founding year on a restaurant page. */
-  function rollTo(el, to, dur){
-    var obj = {v:0};
-    gsap.to(obj, {v:to, duration:dur, ease:'power2.out', overwrite:true,
-      /* The digit is only blanked once the ticker has actually produced a frame.
-         If the tween never runs, the real figure stays in the DOM untouched —
-         a counter stuck on 0 is worse than a counter that never moved. */
-      onStart:function(){ mark(); },
-      onUpdate:function(){ el.textContent = Math.round(obj.v); },
-      onComplete:function(){ el.textContent = to; }});
-  }
-  gsap.utils.toArray('.tally').forEach(function(el){
-    var to = parseFloat(el.getAttribute('data-count')) || 0;
-    ScrollTrigger.create({trigger:el, start:'top 95%', once:true,
-      onEnter:function(){ rollTo(el, to, 1.1); }});
-  });
-  /* let the calculator roll its result instead of snapping */
-  window.__pmxRoll = function(el, to, decimals){
-    var from = parseFloat((el.getAttribute('data-v') || '0')) || 0;
-    el.setAttribute('data-v', to);
-    /* No proven ticker (reduced motion, dead rAF, CDN down) — write the figure
-       straight in. The calculator must always read correctly. */
-    if(!window.__pmxAnim){ el.firstChild.nodeValue = to.toFixed(decimals); return; }
-    var obj = {v:from}, want = to.toFixed(decimals);
-    gsap.to(obj, {v:to, duration:.45, ease:'power2.out', overwrite:true,
-      onUpdate:function(){ el.firstChild.nodeValue = obj.v.toFixed(decimals); },
-      onComplete:function(){ el.firstChild.nodeValue = want; }});
-    /* This figure is the one thing on the page a contractor will act on, so it
-       never waits on an animation: if the roll has not landed shortly after it
-       was due, the value is written in regardless. */
-    setTimeout(function(){
-      if(el.getAttribute('data-v') === String(to) && el.firstChild.nodeValue !== want){
-        el.firstChild.nodeValue = want;
-      }
-    }, 700);
-  };
-
-  /* Photographs wipe up rather than fade — a plant looks heavier that way. */
-  gsap.utils.toArray('.fig').forEach(function(f){
-    gsap.to(f, {clipPath:'inset(0 0 0% 0)', duration:1.05, ease:'power3.out', onStart:mark,
-      scrollTrigger:{trigger:f, start:'top 90%', once:true}});
-  });
-  gsap.utils.toArray('.work').forEach(function(w, i){
-    gsap.from(w.querySelector('img'), {scale:1.18, duration:1.3, ease:'power3.out', onStart:mark,
-      scrollTrigger:{trigger:w, start:'top 92%', once:true}, delay:i * .08});
-  });
-
-  window.__pmxResplit = function(){
-    /* Re-mask the headings after a language switch. No entrance tween here — the
-       reader is already looking at them; this only restores the line wrappers so
-       the type sets identically in both languages. */
-    gsap.utils.toArray('.hero h1, .sec-head h2').forEach(function(h){
-      gsap.set(h, {opacity:1, y:0});
-      try{ splits.push(SplitText.create(h, {type:'lines', mask:'lines', linesClass:'stl'})); }catch(e){}
-    });
-    ScrollTrigger.refresh();
-  };
-
-  ScrollTrigger.refresh();
-})();
-</script>
-
-<script>
-/* ============================================================
-   Volume calculator. Pure arithmetic, no network, no dependencies.
-   Every shape is length x width x depth; only the units and the labels move.
-   ============================================================ */
-(function(){
-  var SHAPES = {
-    slab:    {a:['Length (m)',10,'m'],   b:['Width (m)',6,'m'],    c:['Thickness (mm)',150,'mm'], n:['How many slabs?',1]},
-    footing: {a:['Length (m)',1.5,'m'],  b:['Width (m)',1.5,'m'],  c:['Depth (mm)',400,'mm'],     n:['How many footings?',8]},
-    column:  {a:['Width (mm)',400,'mm'], b:['Depth (mm)',400,'mm'],c:['Height (m)',3,'m'],        n:['How many columns?',12]}
-  };
-  var TRUCK = 6;      /* m3 per standard transit mixer */
-  var WASTE = 0.05;   /* 5% spillage allowance */
-
-  var $ = function(id){ return document.getElementById(id); };
-  var T = function(x){ return (window.__pmxT ? window.__pmxT(x) : x); };
-  var A=$('dimA'), B=$('dimB'), C=$('dimC'), N=$('dimN');
-  if(!A) return;
-  var out=$('volOut'), neat=$('volNeat'), waste=$('volWaste'), trucks=$('volTrucks');
-  var shape='slab';
-
-  function metres(val, unit){ return unit === 'mm' ? val/1000 : val; }
-
+  /* ---------- calculator ---------- */
+  var KINDS={ground:{mix:'3,000 psi',t:150,tl:'Thickness',pump:false,max:600},susp:{mix:'4,000 psi',t:125,tl:'Thickness',pump:true,max:600},
+    footing:{mix:'3,000 psi',t:400,tl:'Depth',pump:false,L:1.5,W:1.5,N:8,max:1500},column:{mix:'4,000 psi',t:3000,tl:'Height',pump:true,L:0.4,W:0.4,N:12,max:6000},
+    road:{mix:'3,500 psi',t:200,tl:'Thickness',pump:false,L:50,W:6,N:1,max:600}};
+  var kind='ground',DRUM=6,lastTrucks=-1;
+  var truckSvg='<svg class="truck" viewBox="0 0 86 46"><rect x="60" y="12" width="20" height="22" rx="2" fill="#EAF0F8"/><rect x="64" y="15" width="12" height="8" fill="#0C1F3F"/><rect x="4" y="30" width="78" height="5" fill="#EAF0F8"/><circle cx="16" cy="38" r="5" fill="#EAF0F8" stroke="#0C1F3F" stroke-width="2"/><circle cx="34" cy="38" r="5" fill="#EAF0F8" stroke="#0C1F3F" stroke-width="2"/><circle cx="70" cy="38" r="5" fill="#EAF0F8" stroke="#0C1F3F" stroke-width="2"/><clipPath id="dc{i}"><ellipse cx="30" cy="17" rx="26" ry="13"/></clipPath><ellipse cx="30" cy="17" rx="26" ry="13" fill="#1d3561" stroke="#EAF0F8" stroke-width="2"/><g clip-path="url(#dc{i})"><rect x="2" y="{y}" width="58" height="30" fill="#C8202F"/><g class="stripe" opacity=".35"><path d="M0 4 L10 30 M12 4 L22 30 M24 4 L34 30 M36 4 L46 30 M48 4 L58 30 M60 4 L70 30" stroke="#fff" stroke-width="3"/></g></g></svg>';
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
   function calc(){
-    var cfg = SHAPES[shape];
-    var a = metres(parseFloat(A.value)||0, cfg.a[2]);
-    var b = metres(parseFloat(B.value)||0, cfg.b[2]);
-    var c = metres(parseFloat(C.value)||0, cfg.c[2]);
-    var n = Math.max(1, parseInt(N.value,10)||1);
-    var v = a*b*c*n;
-    var w = v*WASTE, order = v + w;
-    var dp = order < 10 ? 2 : 1;
-    if(window.__pmxRoll && out.firstChild && out.firstChild.nodeType === 3){
-      window.__pmxRoll(out, order, dp);
-    } else {
-      out.innerHTML = order.toFixed(dp) + '<i>m\u00b3</i>';
-    }
-    neat.innerHTML  = v.toFixed(2) + ' m&sup3;';
-    waste.innerHTML = w.toFixed(2) + ' m&sup3;';
-    var t = order>0 ? Math.ceil(order/TRUCK) : 0;
-    trucks.textContent = (document.documentElement.getAttribute('data-lang')==='zh')
-      ? (t + ' \u8f66\u6b21') : (t + (t===1 ? ' load' : ' loads'));
+    var L=num('L'),W=num('W'),Tm=num('T')/1000,N=Math.max(1,Math.round(num('N')||1));
+    var v=Math.round(L*W*Tm*N*1.05*10)/10;
+    $('vol').textContent=v<100?fmt(v,1):fmt(v);
+    var trucks=Math.max(1,Math.ceil(v/DRUM)),full=Math.floor(v/DRUM),rem=v-full*DRUM,show=Math.min(trucks,14),html='';
+    for(var i=0;i<show;i++){var lvl=i<full?1:rem/DRUM;html+=truckSvg.replace(/\{i\}/g,i).replace('{y}',(4+26*(1-lvl)).toFixed(1))}
+    if(trucks>show)html+='<span class="more">+'+(trucks-show)+'</span>';
+    var box=$('trucks');box.innerHTML=html;
+    if(trucks!==lastTrucks){box.querySelectorAll('.truck').forEach(function(t){t.classList.add('spin')});clearTimeout(box._t);box._t=setTimeout(function(){box.querySelectorAll('.truck').forEach(function(t){t.classList.remove('spin')})},1600);lastTrucks=trucks}
+    var zh=document.documentElement.getAttribute('data-lang')==='zh';
+    $('truckline').textContent=zh?('约 '+trucks+' 车 · 6 立方米罐车'+(rem>0&&full>0?' · 最后一车 '+fmt(rem,1)+' 立方米':'')):(trucks+' '+(trucks>1?'trucks':'truck')+' · 6 m³ drums'+(rem>0&&full>0?' · last one '+fmt(rem,1)+' m³':''));
+    var k=KINDS[kind];$('mix').textContent=k.mix;
+    var pump=k.pump||v>40;$('pump').innerHTML=pump?'<em>'+T(v>40||k.pump&&kind==='susp'?'Boom pump, 36 m class':'Line pump or boom')+'</em>':T('Chute is fine');
+    var rate=pump?30:18,hrs=v/rate+0.5;
+    $('dur').textContent=hrs<1.2?T('About 1 hour'):hrs<10?(zh?'约 '+Math.round(hrs*2)/2+' 小时':'About '+Math.round(hrs*2)/2+' hours'):T('Plan a long pour');
+    $('gap').textContent=trucks<2?T('One delivery'):Math.max(12,Math.round(DRUM/rate*60))+(zh?' 分钟':' min');
+    document.querySelectorAll('#mixRows tr').forEach(function(r){r.classList.toggle('hot',r.dataset.psi===k.mix.replace(/\D/g,''))});
+    $('Tl').textContent=T(k.tl);
+    return {v:v,mix:k.mix,pump:pump?(v>40||kind==='susp'?'Boom pump':'Line pump'):'Chute / direct discharge'};
   }
+  document.querySelectorAll('.field').forEach(function(f){var n=f.querySelector('input[type=number]'),r=f.querySelector('input[type=range]');
+    r.addEventListener('input',function(){n.value=r.value;calc()});n.addEventListener('input',function(){r.value=n.value;calc()})});
+  document.querySelectorAll('#kind button').forEach(function(b){b.addEventListener('click',function(){
+    kind=b.dataset.k;document.querySelectorAll('#kind button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    var k=KINDS[kind],set=function(id,v){$(id).value=v;$(id).closest('.field').querySelector('input[type=range]').value=v};
+    var tr=$('T').closest('.field').querySelector('input[type=range]');tr.max=k.max;tr.step=k.max>1000?50:10;
+    set('T',k.t);if(k.L){set('L',k.L);set('W',k.W);set('N',k.N)}else if(num('L')<3){set('L',12);set('W',8);set('N',1)}
+    calc()})});
+  $('useCalc').addEventListener('click',function(){var r=calc();$('tVol').value=Math.ceil(r.v*2)/2;$('tMix').value=r.mix;var s=$('tPump');[].forEach.call(s.options,function(o,i){if(o.value===r.pump||o.text===T(r.pump))s.selectedIndex=i})});
 
-  function setShape(name){
-    shape = name;
-    var cfg = SHAPES[name];
-    $('lb-a').textContent = T(cfg.a[0]); A.value = cfg.a[1];
-    $('lb-b').textContent = T(cfg.b[0]); B.value = cfg.b[1];
-    $('lb-c').textContent = T(cfg.c[0]); C.value = cfg.c[1];
-    $('lb-n').textContent = T(cfg.n[0]); N.value = cfg.n[1];
-    calc();
-  }
+  /* ---------- strength curve (ACI 209) ---------- */
+  var X0=46,X1=620,Y0=340,Y1=20,F=4000,f=function(t){return t/(4+0.85*t)};
+  var sx=function(t){return X0+(t-1)/27*(X1-X0)},sy=function(p){return Y0-p*(Y0-Y1)/1.05};
+  var pts=[];for(var t=1;t<=28.001;t+=0.25)pts.push([sx(t),sy(f(t))]);
+  var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' L');
+  $('curveBg').setAttribute('d',d);$('curve').setAttribute('d',d);
+  var ax='';[0,.25,.5,.75,1].forEach(function(p){ax+='<line x1="'+X0+'" x2="'+X1+'" y1="'+sy(p)+'" y2="'+sy(p)+'" stroke="#D3D9E1"/><text x="'+(X0-8)+'" y="'+(sy(p)+4)+'" text-anchor="end">'+(p*100)+'%</text>'});
+  [1,7,14,21,28].forEach(function(t){ax+='<text x="'+sx(t)+'" y="'+(Y0+22)+'" text-anchor="middle">D'+t+'</text>'});$('axis').innerHTML=ax;
+  function ms(){var s='';[[7,'7-day cylinders'],[28,'Design strength']].forEach(function(m){var x=sx(m[0]),y=sy(f(m[0]));s+='<line x1="'+x+'" x2="'+x+'" y1="'+y+'" y2="'+Y0+'" stroke="#0E1A2E"/><rect x="'+(x-4)+'" y="'+(y-4)+'" width="8" height="8" fill="#0E1A2E"/><text x="'+(m[0]===28?x-10:x+12)+'" y="'+(m[0]===28?y-14:y+22)+'" text-anchor="'+(m[0]===28?'end':'start')+'">'+T(m[1])+' · '+Math.min(100,Math.round(f(m[0])*100))+'%</text>'});$('ms').innerHTML=s}
+  ms();
+  var cl=$('curve').getTotalLength();$('curve').style.strokeDasharray=cl;
+  var NOTES=[[1,"Day 1: firm enough to walk on. Keep it wet. Don't load it."],[3,'Day 3: formwork can usually come off walls and column sides.'],[7,'Day 7: about 70% of design strength.'],[14,'Day 14: most slab props can come out, if your engineer agrees.'],[21,'Day 21: close to full strength.'],[28,'Day 28: design strength. This is the number on the test report.']];
+  var curT=28;
+  function setDay(t){curT=t;var p=f(t),x=sx(t),y=sy(p);
+    $('day').textContent=(t<10?'0':'')+Math.floor(t);$('pctv').textContent=Math.min(100,Math.round(p*100))+'%';$('psiv').textContent=fmt(Math.round(F*Math.min(p,1)/10)*10);
+    $('dot').setAttribute('cx',x);$('dot').setAttribute('cy',y);['x1','x2'].forEach(function(a){$('vline').setAttribute(a,x)});$('vline').setAttribute('y1',y);$('vline').setAttribute('y2',Y0);
+    var k=Math.max(1,Math.round((t-1)*4)),seg=pts.slice(0,k+1);
+    $('area').setAttribute('d','M'+X0+' '+Y0+' L'+seg.map(function(q){return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(' L')+' L'+seg[seg.length-1][0].toFixed(1)+' '+Y0+' Z');
+    $('curve').style.strokeDashoffset=cl*(1-(t-1)/27);
+    var n=NOTES[0][1];NOTES.forEach(function(q){if(t>=q[0])n=q[1]});$('cureNote').textContent=T(n)}
+  setDay(28);
 
-  Array.prototype.forEach.call(document.querySelectorAll('.shape'), function(btn){
-    btn.addEventListener('click', function(){
-      Array.prototype.forEach.call(document.querySelectorAll('.shape'), function(o){
-        o.setAttribute('aria-pressed', o === btn ? 'true' : 'false');
-      });
-      setShape(btn.getAttribute('data-shape'));
-    });
-  });
-  [A,B,C,N].forEach(function(el){ el.addEventListener('input', calc); });
-  /* Relabel in the new language WITHOUT resetting what the user typed. */
-  window.__pmxRecalc = function(){
-    var cfg = SHAPES[shape];
-    $('lb-a').textContent = T(cfg.a[0]);
-    $('lb-b').textContent = T(cfg.b[0]);
-    $('lb-c').textContent = T(cfg.c[0]);
-    $('lb-n').textContent = T(cfg.n[0]);
-    calc();
-  };
+  /* ---------- delivery map (real plant coordinates from Google Maps) ---------- */
+  var LON0=120.74,LAT0=14.62,KX=107.6,KY=110.6,px=function(lon){return (lon-LON0)*KX},py=function(lat){return (LAT0-lat)*KY};
+  var PLANTS=[['01','Kawit',14.4436,120.9139],['02','Tanza',14.3926,120.8535]];
+  var TOWNS=[['Cavite City',14.4791,120.897],['Kawit',14.4446,120.9045,1],['Noveleta',14.4294,120.8797],['Rosario',14.4167,120.8556],['Tanza',14.3944,120.8531,1],['Naic',14.3181,120.7667],['General Trias',14.3869,120.8817],['Imus',14.4297,120.9367],['Bacoor',14.459,120.96],['Dasmariñas',14.3294,120.9367],['Trece Martires',14.2833,120.8667],['Silang',14.2306,120.975],['Carmona',14.3132,121.0577],['GMA',14.293,121.0063],['Indang',14.1953,120.877],['Las Piñas',14.45,120.983],['Parañaque',14.4793,121.0198],['Muntinlupa',14.4081,121.0415],['Pasay',14.5378,121.0014],['Makati',14.5547,121.0244],['Manila',14.5995,120.9842]];
+  var ROAD=1.35,SPEED=20,LOAD=10,kmToMin=function(km){return Math.round(km*ROAD/SPEED*60+LOAD)},minToKm=function(m){return (m-LOAD)/60*SPEED/ROAD};
+  function nearest(lat,lon){var b=null;PLANTS.forEach(function(p){var dx=(lon-p[3])*KX,dy=(lat-p[2])*KY,km=Math.sqrt(dx*dx+dy*dy);if(!b||km<b.km)b={p:p,km:km}});b.min=kmToMin(b.km);return b}
+  var m='';
+  for(var lo=120.75;lo<121.1;lo+=0.05)m+='<line class="gl" x1="'+px(lo)+'" x2="'+px(lo)+'" y1="0" y2="52"/><text class="gt" x="'+(px(lo)+.25)+'" y="1.2">'+lo.toFixed(2)+'°</text>';
+  for(var la=14.2;la<14.62;la+=0.05)m+='<line class="gl" y1="'+py(la)+'" y2="'+py(la)+'" x1="0" x2="36.6"/><text class="gt" x=".3" y="'+(py(la)-.3)+'">'+la.toFixed(2)+'°</text>';
+  PLANTS.forEach(function(p){m+='<circle class="ring" cx="'+px(p[3])+'" cy="'+py(p[2])+'" r="'+minToKm(90).toFixed(2)+'"/><circle class="ring45" cx="'+px(p[3])+'" cy="'+py(p[2])+'" r="'+minToKm(45).toFixed(2)+'"/>'});
+  m+='<path class="route" id="route" d=""/>';
+  TOWNS.forEach(function(t,i){var n=nearest(t[1],t[2]);var R=px(t[2])>29;m+='<g class="town'+(n.min>90?' out':'')+'" id="tw'+i+'"><circle cx="'+px(t[2])+'" cy="'+py(t[1])+'" r=".3"/>'+(t[3]?'':'<text x="'+(px(t[2])+(R?-.6:.6))+'" y="'+(py(t[1])+.33)+'"'+(R?' text-anchor="end"':'')+'>'+t[0]+'</text>')+'</g>'});
+  PLANTS.forEach(function(p){m+='<g class="plant"><rect x="'+(px(p[3])-.6)+'" y="'+(py(p[2])-.6)+'" width="1.2" height="1.2"/><text x="'+(px(p[3])+.9)+'" y="'+(py(p[2])-.8)+'">P'+p[0]+' · '+p[1]+'</text></g>'});
+  $('map').innerHTML=m;
+  var opts=TOWNS.map(function(t,i){return [t[0],'<option value="'+i+'">'+t[0]+'</option>']}).sort(function(a,b){return a[0]<b[0]?-1:1}).map(function(x){return x[1]}).join('');
+  $('town').innerHTML=opts;$('tTown').innerHTML=opts+'<option value="x">Somewhere else</option>';
+  var curTown=7;
+  function pickTown(i){curTown=i;var t=TOWNS[i],n=nearest(t[1],t[2]),zh=document.documentElement.getAttribute('data-lang')==='zh';
+    document.querySelectorAll('.map .town').forEach(function(g){g.classList.remove('sel')});$('tw'+i).classList.add('sel');
+    $('route').setAttribute('d','M'+px(n.p[3])+' '+py(n.p[2])+' L'+px(t[2])+' '+py(t[1]));
+    $('mins').textContent=n.min;
+    $('from').textContent=zh?('距 '+n.p[0]+' 号站（'+(n.p[1]==='Kawit'?'卡威特':'坦萨')+'）约 '+Math.round(n.km*ROAD)+' 公里路程。'):('From Plant '+n.p[0]+', '+n.p[1]+' · about '+Math.round(n.km*ROAD)+' km by road.');
+    var v=$('verdict');v.classList.toggle('no',n.min>90);v.textContent=T(n.min>90?'Tight — ask the plant about a retarder':'Inside the 90-minute window (est.)');
+    $('tTown').value=String(i)}
+  $('town').addEventListener('change',function(){pickTown(+this.value)});
+  $('town').value='7';pickTown(7);
+
+  /* language hook: everything the scripts wrote gets rewritten in the new language */
+  window.__pmxRecalc=function(){setTimeout(function(){calc();ms();setDay(curT);pickTown(curTown)},0)};
+
+  /* ---------- quotation (demo target: the enquiry reaches Veracod, not the company) ---------- */
+  var td=new Date();td.setMinutes(td.getMinutes()-td.getTimezoneOffset());document.querySelector('#qf input[type=date]').min=td.toISOString().slice(0,10);
+  $('tno').textContent=String(Math.floor(Date.now()/1000)%1000000).padStart(6,'0');
+  (function(){var f=$('qf'),msg=$('qmsg');
+    f.addEventListener('submit',function(e){e.preventDefault();
+      var bad=null;[].forEach.call(f.querySelectorAll('[required]'),function(el){if(!String(el.value).trim()&&!bad)bad=el});
+      if(bad){msg.className='qnote bad';msg.textContent=T('Please fill in class, volume, site and how to reach you.');bad.focus();return}
+      var b=f.querySelector('.qsubmit'),bl=b.querySelector('span');b.disabled=true;bl.textContent=T('Sending...');
+      var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.site!=='x')d.site=TOWNS[+d.site]?TOWNS[+d.site][0]:d.site;
+      fetch('https://formsubmit.co/ajax/hello@veracod.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({_subject:'Quotation request - Power Megamix demo page',enquiry:Object.keys(d).map(function(k){return k+': '+d[k]}).join('\n'),email:d.contact||'',_captcha:'false'})})
+      .then(function(r){if(!r.ok)throw 0;msg.className='qnote ok';msg.textContent=T('Sent. You will get a price and a delivery window back on this request.');bl.textContent=T('Sent');
+        var s=$('stamp');$('stampDate').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Manila',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date()).toUpperCase();s.classList.remove('on');void s.getBoundingClientRect();s.classList.add('on')})
+      .catch(function(){msg.className='qnote bad';msg.textContent=T('Could not send from this browser — please call 0997 770 3807 instead.');b.disabled=false;bl.textContent=T('Send request')})});
+  })();
+
   calc();
+  window.__pmxInitLang();
 
-  /* carry the result into the request form */
-  var use = document.getElementById('useVol'), qv = document.getElementById('qVol');
-  if(use && qv){
-    use.addEventListener('click', function(){
-      qv.value = (out.textContent||'').replace(/[^0-9.]/g,'');
-      qv.focus({preventScroll:true});
-      qv.scrollIntoView({behavior:'smooth', block:'center'});
-    });
-  }
+  /* ================= motion ================= */
+  if(!document.documentElement.classList.contains('js')||!window.gsap){window.__pmxReady=true;return}
+  gsap.registerPlugin(ScrollTrigger);window.__pmxReady=true;
+  var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.to('.hero h1 .ln>span',{y:0,duration:1.2,stagger:.09})
+    .to('.hero .frame',{clipPath:'inset(0 0 0% 0)',duration:1.4,ease:'expo.inOut'},.1)
+    .from('.hero .frame img',{scale:1.25,duration:1.8},.3)
+    .to('.hero .rv',{opacity:1,y:0,duration:1,stagger:.08},.5);
+  gsap.set('#pour',{y:150});
+  tl.to('#pour',{y:0,duration:2.6,ease:'power2.inOut'},.6);
+  var wave=gsap.to('#wave',{x:250,duration:2.4,ease:'none',repeat:-1});
+  tl.add(function(){gsap.to(wave,{timeScale:0,duration:2.5,ease:'power2.out'})},2.9);
+  gsap.to('.hero .frame img',{yPercent:8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:900px)',function(){var track=$('track'),dist=function(){return track.scrollWidth-innerWidth};
+    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'#flow',start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.6,invalidateOnRefresh:true,onUpdate:function(s){$('pipe').style.width=(s.progress*100)+'%'}}})});
+  mm.add('(max-width:899px)',function(){gsap.utils.toArray('.stage').forEach(function(s){gsap.from(s,{opacity:0,y:40,duration:1,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 85%'}})})});
+  mm.add('(min-width:900px) and (min-height:640px)',function(){setDay(1);var o={t:1};gsap.to(o,{t:28,ease:'none',onUpdate:function(){setDay(o.t)},scrollTrigger:{trigger:'#curePin',start:'center center',end:'+=1400',pin:true,scrub:.5}});return function(){setDay(28)}});
+  mm.add('(max-width:899px), (max-height:639px)',function(){setDay(1);var o={t:1};gsap.to(o,{t:28,ease:'none',onUpdate:function(){setDay(o.t)},scrollTrigger:{trigger:'#cureSvg',start:'top 80%',end:'bottom 30%',scrub:.5}});return function(){setDay(28)}});
+  gsap.utils.toArray('.up').forEach(function(el,i){gsap.to(el,{opacity:1,y:0,duration:1.1,ease:'expo.out',delay:(i%5)*.06,scrollTrigger:{trigger:el,start:'top 90%'}})});
+  gsap.utils.toArray('.shead h2').forEach(function(h){gsap.from(h,{yPercent:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}})});
+  gsap.from('.map .town',{opacity:0,duration:.5,stagger:.025,scrollTrigger:{trigger:'#map',start:'top 75%'}});
+  gsap.from('.map .ring,.map .ring45',{attr:{r:0},duration:1.6,ease:'expo.out',stagger:.15,scrollTrigger:{trigger:'#map',start:'top 75%'}});
+  gsap.from('footer .bigname',{yPercent:40,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 90%'}});
+  addEventListener('load',function(){ScrollTrigger.refresh()});
 })();
 </script>
-
-<script>
-/* Quotation request. Demo target: the enquiry reaches Veracod, not the company. */
-(function(){
-  var f = document.getElementById('qf'); if(!f) return;
-  var msg = document.getElementById('qmsg');
-  var LBL = {cls:'Class / strength', volume:'Volume (m3)', date:'Pour date', placement:'Placement',
-             site:'Site location', name:'Name', company:'Company', contact:'Mobile or email', notes:'Notes'};
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    var need = f.querySelectorAll('[required]'), bad = null;
-    Array.prototype.forEach.call(need, function(el){ if(!el.value.trim() && !bad) bad = el; });
-    if(bad){
-      msg.className = 'qnote bad';
-      msg.textContent = 'Please fill in class, volume, site and how to reach you.';
-      bad.focus();
-      return;
-    }
-    var b = f.querySelector('.qsubmit');
-    b.disabled = true; b.textContent = 'Sending...';
-    var d = {}; new FormData(f).forEach(function(v,k){ d[k] = v; });
-    var lines = Object.keys(d).map(function(k){ return (LBL[k==='class'?'cls':k]||k) + ': ' + d[k]; });
-    fetch('https://formsubmit.co/ajax/hello@veracod.com', {
-      method:'POST',
-      headers:{'Content-Type':'application/json', Accept:'application/json'},
-      body: JSON.stringify({
-        _subject: 'Quotation request - Power Megamix demo page',
-        enquiry: lines.join(String.fromCharCode(10)),
-        email: d.contact || '',
-        _captcha: 'false'
-      })
-    }).then(function(res){
-      if(!res.ok) throw 0;
-      msg.className = 'qnote ok';
-      msg.textContent = 'Sent. You will get a price and a delivery window back on this request.';
-      b.textContent = 'Sent';
-    }).catch(function(){
-      msg.className = 'qnote bad';
-      msg.textContent = 'Could not send from this browser \u2014 please call 0997 770 3807 instead.';
-      b.disabled = false; b.textContent = 'Send request';
-    });
-  });
-})();
-</script>
-
-
 
 <script>(function(){try{
 var EP="https://p.veracod.com/e",S="powermegamix",K="demo";
