@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Lato:wght@400;700&display=swap&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400&display=swap" rel="stylesheet">
 
 <script>
 (function(){var d=document.documentElement;
@@ -30,6 +29,26 @@ d.classList.add('js');
 setTimeout(function(){if(!window.__alive)d.classList.remove('js')},2500);})();
 </script>
 
+<style>
+.lab-pre{position:fixed;inset:0;z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;gap:30px;background:var(--bg,#fff)}
+.js .lab-pre{display:flex}
+.js.lab-ready .lab-pre{opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s .6s}
+.lab-pre .lp-logo{max-height:72px;max-width:min(62vw,300px);object-fit:contain;display:block}
+.lab-pre .lp-name{font-family:var(--display);font-size:clamp(26px,5vw,36px);letter-spacing:-.01em;color:var(--ink);text-align:center;padding:0 24px}
+.lab-pre .lp-dots{display:flex;gap:11px}
+.lab-pre .lp-dots span{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:lpBob 1.05s infinite ease-in-out}
+.lab-pre .lp-dots span:nth-child(2){animation-delay:.16s}
+.lab-pre .lp-dots span:nth-child(3){animation-delay:.32s}
+@keyframes lpBob{0%,72%,100%{transform:translateY(0);opacity:.42}36%{transform:translateY(-10px);opacity:1}}
+@media (prefers-reduced-motion: reduce){.js .lab-pre{display:none}}
+</style>
+<script>
+(function(){var d=document.documentElement,done=false;
+function ready(){if(done)return;done=true;d.classList.add('lab-ready');
+  try{window.dispatchEvent(new Event('labready'))}catch(e){}}
+window.addEventListener('load',function(){setTimeout(ready,300)});
+setTimeout(ready,2200);})();
+</script>
 <style>
 :root{--bg:#FBF7EA;--bg2:#F1EAD3;--ink:#2E2A20;--ink2:#5A5340;--dim:#7E7763;
  --accent:#B8871A;--accent2:#4E8A2E;--rule:#E4DCC2;--slabBg:#5E5844;--slabInk:#FBF7EA;
@@ -374,158 +393,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   body:has(.callbar) .hero-photo .sub{margin-bottom:4px}
 }
 
-.q{--slabBg:var(--bg);--slabInk:var(--ink)}
-.q .notice{background:var(--ink);color:var(--bg)}
-.q h1,.q h2,.q h3{font-weight:400;letter-spacing:-.01em}
-.q .kick{justify-content:center;font-size:11px;letter-spacing:.26em;font-weight:600}
-.q .kick::after{display:none}
-.q h2.sp{text-align:center;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.12;margin-left:auto;margin-right:auto;max-width:22ch}
-.q .lead,.q .pnote{margin-left:auto;margin-right:auto;text-align:center}
-.q section{padding:84px 0}
-@media(min-width:820px){.q section{padding:128px 0}}
-.q .btn{border-radius:0;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px}
-.q .btn-o{border-width:1px}
-.q:not(:has(.hero-quiet)) header{color:var(--ink);background:color-mix(in srgb,var(--bg) 96%,transparent);border-bottom-color:var(--rule)}
-.q:not(:has(.hero-quiet)) header .brand img{filter:none}
-.q header{backdrop-filter:none;-webkit-backdrop-filter:none;background:transparent;border-bottom-color:transparent;transition:background .35s,border-color .35s,color .35s;color:#fff}
-.q header .brand i{color:rgba(255,255,255,.75)}
-.q header .brand img{filter:brightness(0) invert(1)}
-.q header .btn-o{border-color:rgba(255,255,255,.7)}
-.q header .secnav{border-top-color:rgba(255,255,255,.18)}
-.q nav{max-width:none;padding-left:clamp(18px,3vw,44px);padding-right:clamp(18px,3vw,44px)}
-.q header.solid{backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 96%,transparent);border-bottom-color:var(--rule);color:var(--ink)}
-.q header.solid .brand i{color:var(--dim)}
-.q header.solid .brand img{filter:none}
-.q.logo-solid header .brand img{filter:none}
-.q header.solid .btn-o{border-color:currentColor}
-.q header.solid .secnav{border-top-color:var(--rule)}
-.q .hero-quiet{margin-top:calc(-1 * var(--hh, 64px))}
-.q .navlinks a{font-size:11.5px;letter-spacing:.2em;font-weight:500}
-@media(max-width:1399px){.q .navacts .btn-o[href^="tel:"]{display:none}}
-@media(min-width:980px) and (max-width:1240px){.q .navlinks{gap:14px}.q .navlinks a{letter-spacing:.14em}}
-
-.hero-quiet{position:relative;height:100vh;height:100svh;min-height:560px;max-height:980px;color:#fff;overflow:hidden}
-.hq-photo{position:absolute;inset:0}
-.hq-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--mpos,50% 50%)}
-.hq-photo .hvid{object-position:var(--mpos,50% 50%)}
-.hero-quiet.hv-mobile .hvid{display:block}
-@media(prefers-reduced-motion:reduce){.hero-quiet.hv-mobile .hvid{display:none}}
-.hq-shade{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(0,0,0,.42) 0,rgba(0,0,0,0) 22%),
-  radial-gradient(ellipse 70% 55% at 50% 48%,rgba(0,0,0,.30),rgba(0,0,0,0) 72%),
-  linear-gradient(0deg,rgba(0,0,0,.50) 0,rgba(0,0,0,0) 34%)}
-.hq-center{position:absolute;left:0;right:0;top:50%;transform:translateY(-54%);text-align:center;padding:0 22px}
-.hq-center .kick{color:#fff;opacity:.9;justify-content:center}
-.hero-quiet h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,7.4vw,112px);line-height:1.02;letter-spacing:-.02em;
-  max-width:14ch;margin:22px auto 0;text-transform:none;text-shadow:0 2px 40px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.35)}
-.hero-quiet .acts{justify-content:center;margin-top:36px}
-.q .btn-g{border:1px solid rgba(255,255,255,.7);color:#fff;background:rgba(255,255,255,.08);backdrop-filter:blur(6px)}
-.hq-dock{position:absolute;left:0;right:0;bottom:clamp(28px,6vh,56px);padding:0 22px}
-.hq-book{display:grid;grid-template-columns:1fr 1fr 110px auto;max-width:760px;margin:0 auto;text-align:left;
-  background:rgba(255,255,255,.14);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
-  border:1px solid rgba(255,255,255,.38)}
-.hq-book label{display:block;padding:12px 16px 10px;border-right:1px solid rgba(255,255,255,.28);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.hq-book input{display:block;width:100%;border:0;background:transparent;font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:#fff;padding:4px 0 0;min-height:30px;color-scheme:dark}
-.hq-book input:focus{outline:none}
-.hq-book label:focus-within{background:rgba(255,255,255,.12)}
-.hq-book button{border:0;background:#fff;color:var(--ink);font:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:0 30px;cursor:pointer;transition:background .2s,color .2s}
-.hq-book button:hover{background:var(--accent);color:#fff}
-.hq-down{position:absolute;left:50%;bottom:14px;width:1px;height:0;transform:translateX(-50%)}
-.hero-quiet:not(:has(.hq-dock)) .hq-down{height:54px;bottom:26px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.85))}
-.hq-intro{padding:clamp(80px,11vw,150px) 0 clamp(40px,6vw,80px)}
-.hq-intro p{font-family:var(--display);font-weight:400;font-size:clamp(23px,2.6vw,34px);line-height:1.42;max-width:32ch;margin:0 auto;text-align:center;color:var(--ink)}
-.bleed{position:relative;margin:0}
-.bleed img{width:100%;height:min(88vh,900px);object-fit:cover}
-.bleed p{text-align:center;font-size:12.5px;color:var(--dim);margin-top:12px;letter-spacing:.03em}
-@media(max-width:719px){
-  .hero-quiet{min-height:600px}
-  .hq-center{top:42%}
-  .hq-book{grid-template-columns:1fr 1fr}
-  .hq-book label:nth-child(2){border-right:0}
-  .hq-book .hq-g{border-top:1px solid rgba(255,255,255,.28)}
-  .hq-book button{border-top:0;padding:15px}
-  .hq-dock{bottom:18px;padding:0 16px}
-  body:has(.callbar) .hq-dock{bottom:76px}
-  body:has(.callbar) .hq-center{top:36%}
-  .bleed img{height:62svh}
-}
-
-.q .marks{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);max-width:1080px;margin:0 auto}
-.q .marks .seal .dot{fill:var(--accent)}.q .marks .seal .arc.sub{fill:var(--accent)}
-.q .marks .seal .ri{stroke:color-mix(in srgb,var(--accent) 55%,transparent)}
-.q .marks li b{color:var(--accent)}
-
-.q .fig{border-radius:0;overflow:visible}
-.q .fig img{height:auto}
-.q .fig figcaption{position:static;background:none;color:var(--dim);text-shadow:none;padding:12px 0 0;font-size:12.5px;font-weight:500;text-align:center;letter-spacing:.03em}
-.q .sfig{aspect-ratio:auto}.q .sfig img{aspect-ratio:4/5}
-.q .band{background:var(--bg)}
-.q blockquote{border-left:0;text-align:center;padding:0;margin-top:34px}
-.q blockquote p{font-style:italic}
-.q .dish{aspect-ratio:auto}.q .dish img{aspect-ratio:4/3}
-.q .dish figcaption b{color:var(--ink);font-size:21px;font-weight:400}
-.q .dish figcaption span{color:var(--ink2);font-size:14px;font-weight:400;opacity:1}
-.q .dish.txt{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:18px 0;background:none}
-.q .gal,.q .gal[class]{display:flex!important;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(50% - 50vw);padding-inline:max(22px,calc(50vw - 540px));scrollbar-width:none}
-.q .gal>.g{flex:0 0 min(78vw,720px)!important;aspect-ratio:auto!important;grid-row:auto!important;min-height:0!important;scroll-snap-align:start}
-.q .gal .g img{aspect-ratio:3/2;height:auto}
-
-.q .hero-poster{padding:clamp(56px,8vw,110px) 0 clamp(48px,6vw,80px)}
-.q .hero-poster .kick{color:var(--accent)}
-.q .hero-poster h1{font-weight:400;font-size:clamp(36px,5.6vw,68px)}
-.q .hero-poster .sub{color:var(--ink2);opacity:1}
-.q .hero-poster:not(:has(.hgrid)) .wrap{text-align:center}
-.q .hero-poster:not(:has(.hgrid)) h1,.q .hero-poster:not(:has(.hgrid)) .sub{margin-left:auto;margin-right:auto}
-.q .hero-poster:not(:has(.hgrid)) .acts{justify-content:center}
-.q .hero-poster .hq-book{margin-left:0}
-.q .hero-poster:not(:has(.hgrid)) .hq-book{margin-left:auto}
-.q .hcard{border-radius:0;box-shadow:none}
-.q .story .stext{text-align:left}
-.q .story .kick{justify-content:flex-start}
-.q .story h2.sp{text-align:left;margin-left:0}
-.q .story .lead{text-align:left;margin-left:0}
-.q .story blockquote{text-align:left}
-@media(min-width:720px){
-  .q .dishes:not(.rooms){grid-template-columns:repeat(6,1fr);column-gap:32px}
-  .q .dishes:not(.rooms)>figure{grid-column:span 2}
-  .q .dishes:not(.rooms)>figure:only-of-type{grid-column:1/-1;justify-self:center;width:min(100%,560px)}
-  .q .dishes:not(.rooms)>figure:first-of-type:nth-last-of-type(2),.q .dishes:not(.rooms)>figure:last-of-type:nth-of-type(2){grid-column:span 3}
-  .q .dishes:not(.rooms)>.dish.txt{grid-column:span 3;order:2}
-}
-.q section[id]{scroll-margin-top:64px}
-.q .xcard{border-radius:0}
-.q .xcard:hover{box-shadow:none}
-.dishes.rooms{grid-template-columns:1fr;gap:56px;margin-top:56px}
-@media(min-width:720px){.dishes.rooms{grid-template-columns:repeat(2,1fr);gap:48px}}
-@media(min-width:960px){.dishes.rooms.r3,.dishes.rooms.r6{grid-template-columns:repeat(3,1fr);gap:36px}.dishes.rooms.r3 .room h3,.dishes.rooms.r6 .room h3{font-size:24px}}
-.room .rimg img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.room .rtext{padding-top:22px}
-.room h3{font-family:var(--display);font-size:28px;font-weight:400;text-transform:none}
-.room p{color:var(--ink2);margin-top:8px;font-size:15.5px}
-.room .rq{display:inline-block;margin-top:16px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:4px}
-
-.q .book{background:var(--bg2)}
-.q .bform{border-radius:0;border-color:var(--ink)}
-.q .bform input,.q .bform select,.q .bform textarea{border-radius:0}
-.q .bform button{border-radius:0;letter-spacing:.16em;text-transform:uppercase;font-size:13px;font-weight:600;padding:16px}
-.q .chan{border-radius:0;border-left-width:1px}
-.q .steps em{border-radius:0;background:none;color:var(--accent);border:1px solid var(--accent)}
-
-.q .find{background:var(--bg);border-top:1px solid var(--rule)}
-.q .find .kick,.q .find .fi span{color:var(--accent)}
-.q .find h2.sp{color:var(--ink)}
-.q footer{background:var(--bg2);color:var(--dim);border-top:1px solid var(--rule)}
-.q .fmark{color:color-mix(in srgb,var(--ink) 7%,transparent)}
-.q .callbar{background:color-mix(in srgb,var(--bg) 96%,transparent);border-top:1px solid var(--rule)}
-.q .callbar a{color:var(--ink)}
-.q .callbar a:first-child{color:var(--accent)}
-.q .callbar a[href="#book"]{background:var(--accent);color:#fff}
-
 
 </style>
 </head>
-<body class="q">
-
+<body>
+<div class="lab-pre" aria-hidden="true">
+  <img class="lp-logo" src="./img/logo.webp" alt="">
+  <div class="lp-dots"><span></span><span></span><span></span></div>
+</div>
 
 <div class="notice">
   Concept page, not this resort&rsquo;s official site &mdash; made as a proposal by
@@ -540,7 +415,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="navacts">
       
       
-      <a class="btn btn-o" href="tel:+639177113868" data-vc="tel"><span data-vc="phone">0917 711 3868</span></a><a class="btn btn-a" href="#book">Book direct</a>
+      <a class="btn btn-a" href="tel:+639177113868" data-vc="tel"><span data-vc="phone">0917 711 3868</span></a>
     </div>
   </nav>
   <nav class="secnav"><a href="#story">The story</a><a href="#menu">Rooms</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#x-0">Butler service</a><a href="#x-1">At the resort</a><a href="#x-2">Packages</a><a href="#find">Find us</a></nav>
@@ -550,25 +425,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
 <div class="own-notice" data-vc="notice" hidden><span data-vc-f="text"></span></div>
 
-  <div class="hero hero-quiet">
-    <div class="hq-photo"><img src="./img/overwater-cottage.webp" alt="The cottage on stilts over the water at Hof Gorei, a walkway leading out to it, green hills behind" fetchpriority="high" ></div>
-    <div class="hq-shade"></div>
-    <div class="hq-center">
-      <p class="kick hr-in">Island Garden City of Samal, Davao del Norte</p>
+  <div class="hero hero-photo lab-reveal">
+    <div class="hphoto"><img src="./img/overwater-cottage.webp" alt="The cottage on stilts over the water at Hof Gorei, a walkway leading out to it, green hills behind" fetchpriority="high" ></div>
+    <div class="hshade"></div>
+    <div class="wrap hcontent">
+      <p class="kick hr-in">Beachfront resort with butler service &middot; Island Garden City of Samal, Davao del Norte</p>
+      <div class="lab-row hr-in"><div class="lab-sun lab-chip" data-lat="7.078" data-lng="125.712" data-tz="Asia/Manila" hidden>
+        <p class="ls-cap"><b class="ls-when"></b><span class="ls-left"></span></p>
+        <span class="ls-a"></span><span class="ls-track"><i class="ls-fill"></i><i class="ls-dot"></i></span><span class="ls-b"></span></div></div>
       <h1>Your beautiful escape on Samal.</h1>
+      <p class="sub hr-in">A beachfront hideaway on the west coast of Samal, next to Pearl Farm and near Talikud Island - cabanas on the sand, huts on the ridge, a pool with hydro massage, and a butler service.</p>
+      <div class="acts"><a class="btn btn-a hr-in" href="tel:+639177113868" data-vc="tel">Call <span data-vc="phone">0917 711 3868</span></a><a class="btn btn-o hr-in" href="#find">Directions</a></div>
       
     </div>
-    <div class="hq-dock">
-      <form class="hq-book hr-in" id="hqb" novalidate>
-        <label>Check in<input type="date" name="checkin"></label>
-        <label>Check out<input type="date" name="checkout"></label>
-        <label class="hq-g">Guests<input type="number" name="guests" min="1" max="60" value="2" inputmode="numeric"></label>
-        <button type="submit">Check rates</button>
-      </form>
-</div>
-    <a class="hq-down hr-in" href="#intro" aria-label="Scroll down"><i></i></a>
   </div>
-  <section id="intro" class="hq-intro"><div class="wrap"><p class="rv">A beachfront hideaway on the west coast of Samal, next to Pearl Farm and near Talikud Island - cabanas on the sand, huts on the ridge, a pool with hydro massage, and a butler service.</p></div></section>
 <div class="marks"><div class="in rv"><div class="seal"><svg viewBox="0 0 150 150" role="img" aria-label="Established 2008">
   <defs>
     <path id="sa-hof-gorei-samal" d="M 29.5,75 A 45.5,45.5 0 0 1 120.5,75"/>
@@ -584,27 +454,29 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   <text class="est" x="75" y="63.5" text-anchor="middle">Established</text>
   <text class="yr" x="75" y="91" text-anchor="middle">2008</text>
 </svg></div><ul><li><b>9</b> Kinds of room, cabana and hut</li><li><b>8 m</b> &middot; Up on the ridge - the Round Hut</li><li><b>Samal</b> &middot; West coast, next to Pearl Farm</li></ul></div></div>
-
+<div class="mq"><div class="mq-in"><span>Adecor, Kaputian<i>&bull;</i>Island Garden City of Samal<i>&bull;</i>Davao del Norte<i>&bull;</i>Butler service<i>&bull;</i>Adecor, Kaputian<i>&bull;</i>Island Garden City of Samal<i>&bull;</i>Davao del Norte<i>&bull;</i>Butler service<i>&bull;</i></span><span>Adecor, Kaputian<i>&bull;</i>Island Garden City of Samal<i>&bull;</i>Davao del Norte<i>&bull;</i>Butler service<i>&bull;</i>Adecor, Kaputian<i>&bull;</i>Island Garden City of Samal<i>&bull;</i>Davao del Norte<i>&bull;</i>Butler service<i>&bull;</i></span></div></div>
 
   <section class="band" id="story">
-    <div class="wrap story">
-      <div class="stext">
+    <div class="wrap lab-story">
+      <div class="ls-text">
         <p class="kick rv">The story</p>
         <h2 class="sp">Named after a dairy farm in the Alps.</h2>
-        <p class="lead rv">Hof Gorei Beach Resort is a beachfront hideaway along the tranquil west coast of the Island Garden City of Samal - right next to Pearl Farm Beach Resort and near Talikud Island. It opened its doors to the public in 2008.</p><p class="lead rv">The name comes from a small dairy farm in the Alps of Pinzgau, Salzburg, Austria - a special place in the heart of the owner, Mrs. Jeanne April Celerio-Kroell. What sets it apart is the butler service - a consolidated service that gives every guest personal assistance - and rooms that run from cozy chalets for the whole family to romantic huts for two.</p>
+        <div class="ls-step" data-i="0"><p class="lead">Hof Gorei Beach Resort is a beachfront hideaway along the tranquil west coast of the Island Garden City of Samal - right next to Pearl Farm Beach Resort and near Talikud Island. It opened its doors to the public in 2008.</p><figure class="ls-inl"><img src="./img/hillside-round-huts.webp" alt="The round huts on the ridge" loading="lazy" ><figcaption>The round huts on the ridge</figcaption></figure></div><div class="ls-step" data-i="1"><p class="lead">The name comes from a small dairy farm in the Alps of Pinzgau, Salzburg, Austria - a special place in the heart of the owner, Mrs. Jeanne April Celerio-Kroell. What sets it apart is the butler service - a consolidated service that gives every guest personal assistance - and rooms that run from cozy chalets for the whole family to romantic huts for two.</p><figure class="ls-inl"><img src="./img/pool-fountain.webp" alt="The pool" loading="lazy" ><figcaption>The pool</figcaption></figure></div>
         
       </div>
-      <figure class="fig sfig rv"><img src="./img/hillside-round-huts.webp" alt="The round huts on the ridge" loading="lazy" ><figcaption>The round huts on the ridge</figcaption></figure>
+      <div class="ls-stick" aria-hidden="true">
+        <figure class="ls-shot on" data-i="0"><img src="./img/hillside-round-huts.webp" alt="The round huts on the ridge" loading="lazy" ><figcaption>The round huts on the ridge</figcaption></figure><figure class="ls-shot" data-i="1"><img src="./img/pool-fountain.webp" alt="The pool" loading="lazy" ><figcaption>The pool</figcaption></figure>
+      </div>
     </div>
   </section>
-<div class="bleed"><img src="./img/pool-fountain.webp" alt="The pool" loading="lazy" ><p>The pool</p></div>
+
 
   <section id="menu">
     <div class="wrap">
       <p class="kick rv">Where you'll stay</p>
       <h2 class="sp">Cabanas, bungalows and huts.</h2>
       <p class="lead rv">From a cabana on the sand to a hut on the ridge. Send your dates and we reply with the rate.</p>
-      <div class="dishes rooms r9" data-vc-list="dishes"><article class="room rv" data-vc-item><div class="rimg"><img src="./img/beach-front-cabana.webp" alt="Beach Front Cabanas" loading="lazy" ></div><div class="rtext"><h3 data-vc-f="n">Beach Front Cabanas</h3><p data-vc-f="d">For couples, with the waves on the white sand outside. Native rustic interiors, one Princess &quot;Dayang&quot; bed, air-conditioning, mini bar, hot and cold shower, coffee and tea, and a private balcony.</p><a class="rq" href="#book" data-room="Beach Front Cabanas">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">Gorei Bungalow</h3><p data-vc-f="d">Five bungalows tucked in the tropical garden for privacy, with trails to the Sepp Bar, the pool and the white sand beach.</p><a class="rq" href="#book" data-room="Gorei Bungalow">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rimg"><img src="./img/hillside-round-hut.webp" alt="Hillside Round Hut" loading="lazy" ></div><div class="rtext"><h3 data-vc-f="n">Hillside Round Hut</h3><p data-vc-f="d">Atop the ridges of the resort, 8 metres above sea level - a peek of the pool and a view of the coast of the Davao Gulf and Mt. Apo.</p><a class="rq" href="#book" data-room="Hillside Round Hut">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rimg"><img src="./img/garden-bungalow.webp" alt="LH Bungalow" loading="lazy" ></div><div class="rtext"><h3 data-vc-f="n">LH Bungalow</h3><p data-vc-f="d">The Leaning Hut, on top of a huge limestone rock - one of the first buildings at the resort. Cozy for two, with a queen-size bed and an al fresco breakfast spot over the garden and pond.</p><a class="rq" href="#book" data-room="LH Bungalow">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">Buddy Chamber</h3><p data-vc-f="d">Huts in a green garden, also ideal for couples - one queen-size bed, air-conditioning, mini bar, hot and cold shower and a private balcony.</p><a class="rq" href="#book" data-room="Buddy Chamber">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rimg"><img src="./img/stube-beds.webp" alt="Hof Damen's Stube" loading="lazy" ></div><div class="rtext"><h3 data-vc-f="n">Hof Damen's Stube</h3><p data-vc-f="d">A &quot;stube&quot; - quarters - for a small group of guests or a family.</p><a class="rq" href="#book" data-room="Hof Damen's Stube">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">Butcher's Room</h3><p data-vc-f="d">Just below the function hall, a few steps from the beachfront - seven single beds that can become three double sharing beds and a single.</p><a class="rq" href="#book" data-room="Butcher's Room">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">Buddy House</h3><p data-vc-f="d">Ten single beds that can become five double sharing beds, air-conditioning, a TV, mini bar, and a living nook for coffee and tea.</p><a class="rq" href="#book" data-room="Buddy House">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">Knecht's Quarters</h3><p data-vc-f="d">For lords and ladies - with Hof Gorei's butler service.</p><a class="rq" href="#book" data-room="Knecht's Quarters">Ask the rate for this room &rarr;</a></div></article><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
+      <div class="dishes" data-vc-list="dishes"><figure class="fig dish rv" data-vc-item><img src="./img/beach-front-cabana.webp" alt="Beach Front Cabanas" loading="lazy" ><figcaption><b data-vc-f="n">Beach Front Cabanas</b><span data-vc-f="d">For couples, with the waves on the white sand outside. Native rustic interiors, one Princess &quot;Dayang&quot; bed, air-conditioning, mini bar, hot and cold shower, coffee and tea, and a private balcony.</span></figcaption></figure><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Gorei Bungalow</b><i class="lead"></i></p><span data-vc-f="d">Five bungalows tucked in the tropical garden for privacy, with trails to the Sepp Bar, the pool and the white sand beach.</span></div><figure class="fig dish rv" data-vc-item><img src="./img/hillside-round-hut.webp" alt="Hillside Round Hut" loading="lazy" ><figcaption><b data-vc-f="n">Hillside Round Hut</b><span data-vc-f="d">Atop the ridges of the resort, 8 metres above sea level - a peek of the pool and a view of the coast of the Davao Gulf and Mt. Apo.</span></figcaption></figure><figure class="fig dish rv" data-vc-item><img src="./img/garden-bungalow.webp" alt="LH Bungalow" loading="lazy" ><figcaption><b data-vc-f="n">LH Bungalow</b><span data-vc-f="d">The Leaning Hut, on top of a huge limestone rock - one of the first buildings at the resort. Cozy for two, with a queen-size bed and an al fresco breakfast spot over the garden and pond.</span></figcaption></figure><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Buddy Chamber</b><i class="lead"></i></p><span data-vc-f="d">Huts in a green garden, also ideal for couples - one queen-size bed, air-conditioning, mini bar, hot and cold shower and a private balcony.</span></div><figure class="fig dish rv" data-vc-item><img src="./img/stube-beds.webp" alt="Hof Damen's Stube" loading="lazy" ><figcaption><b data-vc-f="n">Hof Damen's Stube</b><span data-vc-f="d">A &quot;stube&quot; - quarters - for a small group of guests or a family.</span></figcaption></figure><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Butcher's Room</b><i class="lead"></i></p><span data-vc-f="d">Just below the function hall, a few steps from the beachfront - seven single beds that can become three double sharing beds and a single.</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Buddy House</b><i class="lead"></i></p><span data-vc-f="d">Ten single beds that can become five double sharing beds, air-conditioning, a TV, mini bar, and a living nook for coffee and tea.</span></div><div class="dish txt rv" data-vc-item><p class="mrow"><b data-vc-f="n">Knecht's Quarters</b><i class="lead"></i></p><span data-vc-f="d">For lords and ladies - with Hof Gorei's butler service.</span></div><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
       
     </div>
   </section>
@@ -646,7 +518,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     <div class="wrap">
       <p class="kick rv">Have a look around</p>
       <h2 class="sp">The west coast of Samal.</h2>
-      <div class="gal n5"><figure class="fig g rv"><img src="./img/beach-and-palms.webp" alt="The white sand beach" loading="lazy" ><figcaption>The white sand beach</figcaption></figure><figure class="fig g rv"><img src="./img/garden-bungalow.webp" alt="The Leaning Hut" loading="lazy" ><figcaption>The Leaning Hut</figcaption></figure><figure class="fig g rv"><img src="./img/walkway-to-the-sea.webp" alt="Down to the sea" loading="lazy" ><figcaption>Down to the sea</figcaption></figure><figure class="fig g rv"><img src="./img/jetty-at-dusk.webp" alt="The jetty at dusk" loading="lazy" ><figcaption>The jetty at dusk</figcaption></figure><figure class="fig g rv"><img src="./img/sunset-jetty.webp" alt="Sunset from the jetty" loading="lazy" ><figcaption>Sunset from the jetty</figcaption></figure></div>
+      <div class="gal n6"><figure class="fig g rv"><img src="./img/pool-fountain.webp" alt="The pool" loading="lazy" ><figcaption>The pool</figcaption></figure><figure class="fig g rv"><img src="./img/beach-and-palms.webp" alt="The white sand beach" loading="lazy" ><figcaption>The white sand beach</figcaption></figure><figure class="fig g rv"><img src="./img/garden-bungalow.webp" alt="The Leaning Hut" loading="lazy" ><figcaption>The Leaning Hut</figcaption></figure><figure class="fig g rv"><img src="./img/walkway-to-the-sea.webp" alt="Down to the sea" loading="lazy" ><figcaption>Down to the sea</figcaption></figure><figure class="fig g rv"><img src="./img/jetty-at-dusk.webp" alt="The jetty at dusk" loading="lazy" ><figcaption>The jetty at dusk</figcaption></figure><figure class="fig g rv"><img src="./img/sunset-jetty.webp" alt="Sunset from the jetty" loading="lazy" ><figcaption>Sunset from the jetty</figcaption></figure></div>
       <p class="pnote rv">Photos shown are from the resort's own website — to be replaced with the owner's final selection.</p>
     </div>
   </section>
@@ -727,7 +599,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   </div>
 </footer>
 
-<div class="callbar"><a href="#book"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v1.2H2.6v11.2h10.8V3.2H12V2h-1.4v1.2H5.4V2H4Zm-.1 4.6h8.2v7H3.9v-7Z"/></svg><b>Book</b></a><a href="tel:+639177113868" data-vc="tel"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Hof%20Gorei%20Beach%20Resort%20Purok%207%2C%20Brgy.%20Adecor%2C%20Kaputian%2C%20Island%20Garden%20City%20of%20Samal%2C%20Davao%20del%20Norte" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a></div>
+<div class="callbar"><a href="tel:+639177113868" data-vc="tel"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5c0-.6.4-1 1-1h2c.4 0 .8.3.9.7l.8 2.4c.1.4 0 .8-.3 1L5.6 7.9a11 11 0 0 0 4.5 4.5l1.3-1.3c.3-.3.7-.4 1-.3l2.4.8c.4.1.7.5.7.9v2c0 .6-.4 1-1 1A12.5 12.5 0 0 1 2.5 3.5Z"/></svg><b>Call</b></a><a href="https://www.google.com/maps/search/?api=1&query=Hof%20Gorei%20Beach%20Resort%20Purok%207%2C%20Brgy.%20Adecor%2C%20Kaputian%2C%20Island%20Garden%20City%20of%20Samal%2C%20Davao%20del%20Norte" target="_blank" rel="noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.6 5 8 5 8s5-4.4 5-8a5 5 0 0 0-5-5Zm0 6.8a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z"/></svg><b>Directions</b></a><a href="#book"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v1.2H2.6v11.2h10.8V3.2H12V2h-1.4v1.2H5.4V2H4Zm-.1 4.6h8.2v7H3.9v-7Z"/></svg><b>Book</b></a></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
@@ -866,6 +738,145 @@ window.addEventListener('load',function(){
 });
 </script>
 
+<style>
+/* reveal: the photo opens from a slit, then stays still */
+.hero.lab-reveal{background:#0b0b0c}
+.js .hero.lab-reveal .hphoto{clip-path:inset(47% 0 47% 0)}
+/* the shade only comes up with the photo, so the closed curtain reads as black, not grey */
+.js .hero.lab-reveal .hshade{opacity:0}
+/* live lines sit under the kicker, quiet: one line, no box */
+/* live chips: dark glass so they read on any photo (a white hairline vanished into a lit wall) */
+.lab-row{margin-top:16px}
+.lab-chip[hidden]{display:none}   /* nothing parsed → no empty chip */
+.lab-chip{display:inline-flex;background:rgba(8,10,14,.52);-webkit-backdrop-filter:blur(10px) saturate(1.15);backdrop-filter:blur(10px) saturate(1.15);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;text-shadow:none}
+.lab-open{align-items:center;gap:10px;margin:0;padding:9px 14px;font-size:14.5px;letter-spacing:.01em}
+.lab-open .lo-dot{width:8px;height:8px;border-radius:50%;background:#9be3b4;box-shadow:0 0 0 0 rgba(155,227,180,.55);flex:none}
+.lab-open.is-open .lo-dot{animation:loPulse 2.8s ease-out infinite}
+.lab-open.is-closed .lo-dot{background:transparent;border:1.5px solid rgba(255,255,255,.7);width:7px;height:7px}
+.lab-open .lo-state{font-weight:600}
+.lab-open .lo-more{opacity:.86}
+@keyframes loPulse{0%{box-shadow:0 0 0 0 rgba(155,227,180,.55)}70%{box-shadow:0 0 0 9px rgba(155,227,180,0)}100%{box-shadow:0 0 0 0 rgba(155,227,180,0)}}
+@media (prefers-reduced-motion: reduce){.lab-open.is-open .lo-dot{animation:none}}
+.lab-sun{display:inline-grid;grid-template-columns:auto minmax(110px,200px) auto;align-items:center;gap:9px 11px;padding:11px 15px 12px;font-size:12px;letter-spacing:.03em;max-width:100%}
+.lab-sun .ls-cap{grid-column:1/-1;margin:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:14.5px;letter-spacing:.01em}
+.lab-sun .ls-when{font-weight:600}
+.lab-sun .ls-left{opacity:.72;font-size:13.5px}
+.lab-sun .ls-track{position:relative;height:2px;border-radius:2px;background:rgba(255,255,255,.26)}
+.lab-sun .ls-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:linear-gradient(90deg,rgba(255,215,154,.25),#ffd79a)}
+.lab-sun .ls-dot{position:absolute;top:50%;left:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:#ffd79a;box-shadow:0 0 10px 2px rgba(255,200,120,.7)}
+.lab-sun.is-night .ls-dot{background:transparent;border:1.5px solid rgba(255,255,255,.75);box-shadow:none}
+.lab-sun .ls-a,.lab-sun .ls-b{opacity:.8;font-variant-numeric:tabular-nums}
+.find .hr2.today b::after{content:"Today";margin-left:8px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.find .hr2.today{font-weight:600}
+/* story */
+.lab-story{display:grid;gap:36px;text-align:left}
+.lab-story .kick{justify-content:flex-start}
+.lab-story .ls-step{margin-top:22px}
+.lab-story .ls-inl{margin:18px 0 0;border-radius:10px;overflow:hidden;aspect-ratio:4/3}
+.lab-story .ls-inl img{width:100%;height:100%;object-fit:cover;display:block}
+.lab-story .ls-inl figcaption{font-size:12.5px;color:var(--dim);padding-top:8px}
+.lab-story .ls-stick{display:none}
+@media (min-width:860px){
+  .lab-story{grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .lab-story .ls-step{padding:16vh 0}
+  .lab-story .ls-step:first-of-type{padding-top:4vh}
+  .lab-story .ls-inl{display:none}
+  .lab-story .ls-stick{display:block;position:sticky;top:14vh;height:72vh;border-radius:14px;overflow:hidden}
+  .lab-story .ls-shot{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s var(--ease)}
+  .lab-story .ls-shot.on{opacity:1}
+  .lab-story .ls-shot img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.6s var(--ease)}
+  .lab-story .ls-shot.on img{transform:scale(1)}
+  .lab-story .ls-shot figcaption{position:absolute;left:18px;bottom:16px;right:18px;color:#fff;font-size:13px;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+}
+</style>
+<script>
+(function(){
+  function partsIn(tz,d){var o={};new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(d).forEach(function(p){o[p.type]=p.value});
+    var wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday);return {wd:wd,min:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)}}
+  var DAYS=['sun','mon','tue','wed','thu','fri','sat'];
+  function dayIdx(s){s=s.toLowerCase().trim().slice(0,3);return DAYS.indexOf(s)}
+  function daysOf(label){label=label.toLowerCase();if(/daily|every ?day|7 days/.test(label))return [0,1,2,3,4,5,6];
+    var out=[];label.split(/,|&| and /).forEach(function(part){var m=part.split(/\s*[-–]\s*|\s+to\s+/);
+      var a=dayIdx(m[0]||''),b=m[1]!==undefined?dayIdx(m[1]):a;if(a<0)return;if(b<0)b=a;
+      for(var i=a;;i=(i+1)%7){out.push(i);if(i===b)break}});return out}
+  function tmin(s){var m=s.trim().toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?|noon)?/);if(!m)return null;
+    var h=parseInt(m[1],10)%12,mi=parseInt(m[2]||'0',10),ap=(m[3]||'').replace(/\./g,'');if(ap==='pm'||ap==='noon')h+=12;if(!ap&&h<7)h+=12;return h*60+mi}
+  function spans(txt){if(/closed/i.test(txt))return [];var out=[];txt.split(/,|;/).forEach(function(seg){var m=seg.split(/\s*[-–]\s*|\s+to\s+/);
+    if(m.length<2)return;var a=tmin(m[0]),b=tmin(m[1]);if(a==null||b==null)return;if(b<=a)b+=24*60;out.push([a,b])});return out}
+  function fmt(min){min=((min%1440)+1440)%1440;var h=Math.floor(min/60),m=min%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+(m?':'+(m<10?'0':'')+m:'')+' '+ap}
+
+  /* open now */
+  var el=document.querySelector('.lab-open');
+  if(el){try{
+    var rows=JSON.parse(el.getAttribute('data-hours')),tz=el.getAttribute('data-tz');
+    var week=[[],[],[],[],[],[],[]],parsed=0;
+    rows.forEach(function(r){var ds=daysOf(r[0]),sp=spans(r[1]);if(ds.length)parsed++;ds.forEach(function(d){week[d]=week[d].concat(sp)})});
+    if(parsed){
+      var now=partsIn(tz,new Date()),st=el.querySelector('.lo-state'),more=el.querySelector('.lo-more'),open=null;
+      week[now.wd].forEach(function(s){if(now.min>=s[0]&&now.min<s[1])open=s});
+      var y=week[(now.wd+6)%7];y.forEach(function(s){if(s[1]>1440&&now.min<s[1]-1440)open=[s[0]-1440,s[1]-1440]});
+      if(open){el.classList.add('is-open');st.textContent='Open now';more.textContent='\u00b7 until '+fmt(open[1])}
+      else{el.classList.add('is-closed');st.textContent='Closed now';
+        for(var k=0;k<8;k++){var d=(now.wd+k)%7,next=null;week[d].forEach(function(s){if((k>0||s[0]>now.min)&&(next===null||s[0]<next))next=s[0]});
+          if(next!==null){more.textContent='\u00b7 opens '+(k===0?'today ':k===1?'tomorrow ':['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d]+' ')+fmt(next);break}}}
+      el.hidden=false;
+      /* the matching row in Find us */
+      document.querySelectorAll('.find .hr2[data-vc-item]').forEach(function(row){var b=row.querySelector('b');if(b&&daysOf(b.textContent).indexOf(now.wd)>=0)row.classList.add('today')});
+    }}catch(e){}}
+
+  /* sunset (NOAA-style sunrise equation) */
+  var sun=document.querySelector('.lab-sun');
+  if(sun){try{
+    var lat=+sun.getAttribute('data-lat'),lng=+sun.getAttribute('data-lng'),tz2=sun.getAttribute('data-tz');
+    var R=Math.PI/180,now2=new Date(),JD=now2.getTime()/864e5+2440587.5;
+    /* n = the local solar day (days since J2000 at local solar noon); east longitude positive */
+    function times(n){var Js=n+0.0009-lng/360;
+      var M=(357.5291+0.98560028*Js)%360,C=1.9148*Math.sin(M*R)+0.02*Math.sin(2*M*R)+0.0003*Math.sin(3*M*R);
+      var lam=(M+C+180+102.9372)%360,Jt=2451545+Js+0.0053*Math.sin(M*R)-0.0069*Math.sin(2*lam*R);
+      var dec=Math.asin(Math.sin(lam*R)*Math.sin(23.4397*R));
+      var w=Math.acos((Math.sin(-0.833*R)-Math.sin(lat*R)*Math.sin(dec))/(Math.cos(lat*R)*Math.cos(dec)))/R;
+      return {rise:(Jt-w/360-2440587.5)*864e5,set:(Jt+w/360-2440587.5)*864e5}}
+    var nDay=Math.round(JD-2451545.0+lng/360);    /* the local solar day we are in */
+    var t=times(nDay);
+    var f2=new Intl.DateTimeFormat('en-US',{timeZone:tz2,hour:'numeric',minute:'2-digit'});
+    var nowMs=now2.getTime(),frac,when,left='';
+    if(nowMs<t.rise){frac=0;sun.classList.add('is-night');when='Sunrise at '+f2.format(t.rise)}
+    else if(nowMs<t.set){frac=(nowMs-t.rise)/(t.set-t.rise);var mins=Math.round((t.set-nowMs)/6e4);
+      when='Sunset today at '+f2.format(t.set);left='in '+(mins>=60?Math.floor(mins/60)+'h '+(mins%60)+'m':mins+'m')}
+    else{frac=1;sun.classList.add('is-night');var tm=times(nDay+1);when='The sun set at '+f2.format(t.set);left='rises at '+f2.format(tm.rise)}
+    sun.querySelector('.ls-a').textContent=f2.format(t.rise);sun.querySelector('.ls-b').textContent=f2.format(t.set);
+    sun.querySelector('.ls-when').textContent=when;sun.querySelector('.ls-left').textContent=left;sun.hidden=false;
+    var dot=sun.querySelector('.ls-dot'),fill=sun.querySelector('.ls-fill'),pc=(frac*100)+'%';
+    /* position is set outright; the load animation (below) only sweeps it in from sunrise, so a page
+       whose animation never runs still shows the right time */
+    dot.style.left=pc;fill.style.width=pc;window.__labSunPc=pc;
+  }catch(e){}}
+})();
+window.addEventListener('load',function(){
+  if(!window.gsap||!document.documentElement.classList.contains('js'))return;
+  /* sweep the sun in from sunrise to now */
+  if(window.__labSunPc){gsap.from('.lab-sun .ls-dot',{left:'0%',duration:1.6,ease:'power2.out',delay:1.3});
+    gsap.from('.lab-sun .ls-fill',{width:'0%',duration:1.6,ease:'power2.out',delay:1.3})}
+  /* reveal the hero photo from a slit, once */
+  var hp=document.querySelector('.hero.lab-reveal .hphoto'),hs=document.querySelector('.hero.lab-reveal .hshade');
+  function curtain(){
+    if(hp)gsap.fromTo(hp,{clipPath:'inset(47% 0% 47% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.35,ease:'power3.inOut',delay:.2,onStart:function(){window.__alive=true}});
+    if(hs)gsap.to(hs,{opacity:1,duration:1.1,ease:'power2.out',delay:.55});
+  }
+  /* with the opening screen, the curtain waits until it lifts */
+  if(!document.querySelector('.lab-pre')||document.documentElement.classList.contains('lab-ready'))curtain();
+  else window.addEventListener('labready',curtain,{once:true});
+  /* story: whichever paragraph sits across the middle of the screen picks the photo */
+  var shots=[].slice.call(document.querySelectorAll('.lab-story .ls-shot'));
+  if(shots.length&&window.ScrollTrigger){
+    gsap.matchMedia().add('(min-width: 860px)',function(){
+      document.querySelectorAll('.lab-story .ls-step').forEach(function(step){var i=+step.getAttribute('data-i');
+        ScrollTrigger.create({trigger:step,start:'top 60%',end:'bottom 60%',onToggle:function(s){if(!s.isActive)return;
+          shots.forEach(function(f,j){f.classList.toggle('on',j===i)})}})});
+    });
+  }
+});
+</script>
 
 <script>
 (function(){
@@ -894,10 +905,7 @@ window.addEventListener('load',function(){
   });
 })();
 </script>
-<script>(function(){var h=document.querySelector("header"),hero=document.querySelector(".hero-quiet");if(!h)return;if(!hero){h.classList.add("solid");return}
-function sz(){document.documentElement.style.setProperty("--hh",h.offsetHeight+"px")}
-function sc(){h.classList.toggle("solid",hero.getBoundingClientRect().bottom<h.offsetHeight+10)}
-sz();sc();addEventListener("resize",sz);addEventListener("scroll",sc,{passive:true})})();</script>
+
 <script>(function(){try{
 var EP="https://edit.veracod.com/v1/",S="hof-gorei-samal";
 if(location.protocol==="file:")return;
