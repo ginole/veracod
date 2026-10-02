@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ilalom Dive House — a concept site by Veracod</title>
+<meta name="description" content="A concept website for a fictional dive centre in Moalboal, Cebu, designed and built by Veracod.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+setTimeout(function(){ if(!window.__ilmReady) document.documentElement.classList.remove('js'); }, 3000);
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.remove('js');
+</script>
+<style>
+:root{
+  --sand:#F2EEE5; --sand2:#E7E0D2; --ink:#0B2233; --ink2:#365062; --foam:#EAF6F7; --foam2:#B9DCE3;
+  --coral:#FF7A59; --coral2:#E8603F;
+  --serif:'Instrument Serif',Georgia,serif; --sans:'Manrope',system-ui,sans-serif; --mono:'DM Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --gut:clamp(16px,4vw,56px);
+  --water:#7FD6DA;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--water);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em;line-height:.95}
+h2 em,h1 em{font-style:italic}
+p{margin:0}
+button{font:inherit;color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;background:var(--coral);color:#fff;font:600 15px/1 var(--sans);transition:background .25s,transform .25s var(--ease)}
+.btn:hover{background:var(--coral2);transform:translateY(-2px)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn.line:hover{background:rgba(255,255,255,.12)}
+
+/* ribbon + header */
+.ribbon{background:var(--ink);color:var(--sand);font-size:12px;text-align:center;padding:8px 16px;position:relative;z-index:70}
+.ribbon a{text-decoration:underline;text-underline-offset:3px}
+header{position:fixed;left:0;right:0;top:var(--rb,34px);z-index:60;transition:top .35s var(--ease),color .5s,background .5s}
+header{transition:top .35s var(--ease),color .5s,background-color .5s,backdrop-filter .5s}
+header.solid{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(11,34,51,.08)}
+header nav{display:flex;align-items:center;gap:28px;padding:16px var(--gut)}
+header.deep{color:var(--foam)}
+.logo{display:flex;align-items:baseline;gap:12px}
+.logo b{font:italic 400 32px/1 var(--serif)}
+.logo span{opacity:.7}
+.links{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:500}
+.links a{opacity:.85;transition:opacity .2s}.links a:hover{opacity:1}
+.navbook{padding:12px 18px;border-radius:999px;background:var(--coral);color:#fff;font:600 14px/1 var(--sans)}
+@media(max-width:980px){.links{display:none}.navbook{margin-left:auto}}
+@media(max-width:520px){.logo span{display:none}}
+
+/* depth gauge */
+.gauge{position:fixed;right:clamp(10px,1.6vw,26px);top:110px;bottom:40px;width:64px;z-index:55;pointer-events:none;color:var(--ink);transition:color .5s,opacity .5s}
+.gauge.deep{color:var(--foam)}
+.gauge .read{position:absolute;right:0;top:0;text-align:right}
+.gauge .read b{display:block;font:400 34px/1 var(--serif);font-variant-numeric:tabular-nums;white-space:nowrap}
+.gauge .read b small{font:500 12px var(--mono);margin-left:2px}
+.gauge .read>span{display:block;font:500 10px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-top:4px;white-space:nowrap}
+.gauge .scale{position:absolute;right:0;top:130px;bottom:0;width:22px}
+.gauge .scale i{position:absolute;right:0;height:1px;background:currentColor;opacity:.45;width:8px}
+.gauge .scale i.l{width:16px;opacity:.8}
+.gauge .scale em{position:absolute;right:22px;font:500 10px/1 var(--mono);font-style:normal;opacity:.7;transform:translateY(-50%)}
+.gauge .scale .line{position:absolute;right:0;top:0;bottom:0;width:1px;background:currentColor;opacity:.3}
+.gauge .needle{position:absolute;right:0;width:22px;height:2px;background:var(--coral);transform:translateY(-1px)}
+.gauge .needle::before{content:"";position:absolute;right:22px;top:-5px;border:6px solid transparent;border-right-color:var(--coral);border-left:0}
+@media(max-width:900px){
+  .gauge{top:auto;bottom:14px;left:14px;right:auto;width:auto;background:rgba(11,34,51,.72);color:var(--foam);padding:10px 14px;border-radius:14px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .gauge.deep{color:var(--foam)}
+  .gauge .scale{display:none}
+  .gauge .read{position:static;text-align:left;display:flex;align-items:baseline;gap:12px}
+  .gauge .read b{font-size:26px}
+  .gauge .read>span{margin:0}
+  .gauge .read .temp{display:none}
+}
+.gauge.surface{opacity:0}
+
+/* hero: above the water */
+.hero{background:var(--sand);position:relative;padding:150px 0 0}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,80px);align-items:end}
+.hero .kick{display:flex;gap:18px;color:var(--ink2);margin-bottom:26px;flex-wrap:wrap}
+.hero h1{font-size:clamp(60px,9vw,150px);line-height:.88}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.hero h1 .w>span{display:inline-block}
+.hero .lede{max-width:470px;color:var(--ink2);margin-top:28px;font-size:18px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.arch{position:relative;border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:3/4;background:var(--sand2)}
+.arch img{width:100%;height:115%;object-fit:cover;object-position:50% 40%}
+.archcap{display:flex;justify-content:space-between;margin-top:12px;color:var(--ink2);gap:10px}
+.waterline{position:relative;overflow:hidden;height:150px;margin-top:-20px;z-index:2;pointer-events:none}
+.waterline svg{position:absolute;left:0;bottom:-1px;width:200%;height:100%}
+.waterline .w1{fill:var(--water)}
+.waterline .w2{fill:var(--water);opacity:.55}
+@media(max-width:900px){.hero{padding-top:120px}.hero .wrap{grid-template-columns:1fr}.arch{aspect-ratio:4/3;border-radius:200px 200px 0 0}.waterline{height:90px}}
+
+/* underwater */
+.deepzone{position:relative;color:var(--ink)}
+.rays{position:fixed;inset:-20% -10% auto -10%;height:120vh;pointer-events:none;z-index:0;opacity:.55;mix-blend-mode:soft-light;
+  background:repeating-linear-gradient(100deg,rgba(255,255,255,0) 0 60px,rgba(255,255,255,.55) 80px,rgba(255,255,255,0) 120px 190px);
+  -webkit-mask:linear-gradient(180deg,#000,transparent 85%);mask:linear-gradient(180deg,#000,transparent 85%);filter:blur(14px);animation:sway 14s ease-in-out infinite alternate;transform-origin:50% 0}
+@keyframes sway{from{transform:skewX(-6deg) translateX(-3%)}to{transform:skewX(6deg) translateX(3%)}}
+#bubbles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.deepzone section{position:relative;z-index:2}
+.lt{color:var(--foam)}
+.sec{padding:clamp(90px,12vw,170px) 0}
+.depthtag{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;opacity:.85}
+.depthtag::before{content:"";width:28px;height:1px;background:currentColor}
+.h2{font-size:clamp(46px,6.4vw,104px)}
+.sub{max-width:520px;margin-top:22px;font-size:18px;opacity:.85}
+
+/* 3 m: reef */
+.reef .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,28px);align-items:start}
+.reef .txt{grid-column:1/6;padding-top:40px}
+.reef .p1{grid-column:7/13;border-radius:22px;overflow:hidden;aspect-ratio:4/3}
+.reef .p2{grid-column:2/6;border-radius:22px;overflow:hidden;aspect-ratio:4/3;margin-top:30px}
+.reef .p1 img,.reef .p2 img{width:100%;height:100%;object-fit:cover}
+.reef .facts{grid-column:7/13;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid currentColor;margin-top:10px}
+.reef .facts div{padding:16px 12px 0 0}
+.reef .facts b{display:block;font:400 40px/1 var(--serif)}
+.reef .facts span{display:block;margin-top:6px;opacity:.75}
+@media(max-width:900px){.reef .txt,.reef .p1,.reef .p2,.reef .facts{grid-column:1/-1;margin-top:0}.reef .txt{padding-top:0}}
+
+/* 6 m: sardines */
+.school{height:100vh;height:100svh;min-height:620px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.22),transparent 60%),linear-gradient(180deg,transparent,rgba(5,40,70,.55))}
+#schoolCv{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:pan-y}
+.school .over{position:absolute;left:0;right:0;top:clamp(90px,14vh,150px);text-align:center;pointer-events:none;padding:0 20px}
+.school .over h2{font-size:clamp(42px,6vw,96px);text-shadow:0 2px 40px rgba(0,30,50,.35)}
+.school .hint{position:absolute;left:0;right:0;bottom:clamp(30px,6vh,60px);text-align:center;pointer-events:none;color:var(--foam)}
+.school .hint span{display:inline-flex;gap:10px;align-items:center;padding:10px 16px;border-radius:999px;background:rgba(11,34,51,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.school .count{position:absolute;right:var(--gut);top:24px;color:var(--foam);opacity:.8;text-align:right}
+@media(max-width:900px){.school .count{display:none}}
+
+/* 12 m: courses as depth columns */
+.courses .head{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:end;margin-bottom:56px}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,22px);position:relative}
+.cols .gridlines{position:absolute;left:0;right:0;top:118px;height:440px;pointer-events:none}
+.cols .gridlines i{position:absolute;left:0;right:0;border-top:1px dashed rgba(234,246,247,.22)}
+.cols .gridlines em{position:absolute;right:0;transform:translateY(-120%);font:500 10px var(--mono);font-style:normal;opacity:.6}
+.course{position:relative}
+.course .top{height:118px;border-top:1px solid currentColor;padding-top:12px}
+.course .top h3{font-size:clamp(26px,2.4vw,36px)}
+.course .top .mono{opacity:.75;margin-top:6px;display:block}
+.course .bar{position:relative;height:440px}
+.course .bar i{position:absolute;left:0;right:0;top:0;border-radius:0 0 16px 16px;background:linear-gradient(180deg,rgba(234,246,247,.28),rgba(234,246,247,.08));border:1px solid rgba(234,246,247,.35);border-top:0;transform-origin:50% 0}
+.course .bar b{position:absolute;left:14px;font:400 44px/1 var(--serif);transform:translateY(-110%)}
+.course .info{margin-top:20px;font-size:15px}
+.course .info p{opacity:.85}
+.course .price{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(234,246,247,.3);margin-top:16px;padding-top:12px}
+.course .price b{font:400 30px/1 var(--serif)}
+@media(max-width:900px){.courses .head{grid-template-columns:1fr}.cols{grid-template-columns:1fr 1fr}.cols .gridlines{display:none}.course .bar{height:220px}}
+
+/* 18 m: sites */
+.sites .list{border-top:1px solid rgba(234,246,247,.4);margin-top:56px}
+.site{display:grid;grid-template-columns:70px 1.3fr 1fr 220px;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid rgba(234,246,247,.25);position:relative;cursor:default}
+.site .n{opacity:.6}
+.site h3{font-size:clamp(32px,3.4vw,52px);transition:transform .5s var(--ease)}
+.site:hover h3{transform:translateX(10px)}
+.site p{opacity:.85;font-size:15px}
+.site svg{width:100%;height:70px;overflow:visible}
+.site svg .sea{fill:rgba(234,246,247,.16);stroke:rgba(234,246,247,.7);stroke-width:1.2}
+.site svg text{font:500 10px var(--mono);fill:var(--foam);opacity:.75}
+.peek{position:fixed;left:0;top:0;width:300px;aspect-ratio:4/3;border-radius:18px;overflow:hidden;pointer-events:none;z-index:58;opacity:0;transform:scale(.85);transition:opacity .3s,transform .4s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.peek.on{opacity:1;transform:scale(1)}
+.peek img{width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){.site{grid-template-columns:44px 1fr;row-gap:10px}.site p,.site svg{grid-column:2}.peek{display:none}}
+
+/* 24 m: cathedral */
+.cathedral{min-height:120vh;display:flex;align-items:flex-end;overflow:hidden}
+.cathedral .bg{position:absolute;inset:-10% 0;z-index:-1}
+.cathedral .bg img{width:100%;height:100%;object-fit:cover}
+.cathedral .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,30,52,.2),rgba(6,30,52,.15) 40%,rgba(5,24,42,.92))}
+.cathedral .wrap{padding-bottom:clamp(60px,10vw,120px);width:100%}
+.cathedral h2{max-width:900px}
+
+/* 30 m: planner */
+.plan .box{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,64px);margin-top:56px;align-items:start}
+.pill{display:flex;flex-wrap:wrap;gap:8px}
+.pill button{border:1px solid rgba(234,246,247,.4);background:transparent;color:var(--foam);padding:11px 16px;border-radius:999px;cursor:pointer;font:500 14px/1 var(--sans);transition:all .2s}
+.pill button[aria-pressed=true]{background:var(--foam);color:var(--ink);border-color:var(--foam)}
+.plan label.lab{display:block;margin:30px 0 12px;opacity:.75}
+.depthin{display:flex;align-items:baseline;gap:8px}
+.depthin b{font:400 72px/1 var(--serif);font-variant-numeric:tabular-nums}
+.plan input[type=range]{width:100%;accent-color:var(--coral);margin-top:8px}
+.limit{margin-top:6px;opacity:.7;font-size:14px}
+.ok{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid rgba(234,246,247,.3)}
+.ok li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(234,246,247,.18);font-size:15px;transition:opacity .3s}
+.ok li .mono{opacity:.75}
+.ok li.no{opacity:.38}
+.ok li .yes{color:#9FE7C4}
+.profile{background:rgba(3,18,33,.35);border:1px solid rgba(234,246,247,.18);border-radius:22px;padding:clamp(16px,2vw,26px)}
+.profile svg{width:100%;height:auto;display:block;overflow:visible}
+.profile .ax text{font:500 11px var(--mono);fill:var(--foam);opacity:.6}
+.profile .ax line{stroke:rgba(234,246,247,.15)}
+.profile .lbl{font:500 11px var(--mono);fill:var(--foam)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:18px;border-top:1px solid rgba(234,246,247,.25)}
+.stats div{padding:14px 10px 0 0}
+.stats b{display:block;font:400 38px/1 var(--serif);font-variant-numeric:tabular-nums}
+.stats span{opacity:.7}
+.plan .note{font-size:13px;opacity:.6;margin-top:14px}
+@media(max-width:900px){.plan .box{grid-template-columns:1fr}}
+
+/* 40 m: logbook */
+.book .box{display:grid;grid-template-columns:4fr 7fr;gap:clamp(24px,4vw,64px);margin-top:56px;align-items:start}
+.book .side p{opacity:.85;margin-top:16px}
+.book .side .contact{margin-top:30px;border-top:1px solid rgba(234,246,247,.3);padding-top:16px;display:grid;gap:8px}
+.logbook{position:relative;background:#F6F1E6;color:var(--ink);border-radius:6px 18px 18px 6px;padding:clamp(22px,3vw,40px) clamp(22px,3vw,40px) clamp(22px,3vw,40px) clamp(40px,5vw,64px);
+  background-image:linear-gradient(90deg,transparent 0 22px,rgba(255,122,89,.35) 22px 23px,transparent 23px),repeating-linear-gradient(180deg,transparent 0 31px,rgba(11,34,51,.08) 31px 32px);box-shadow:0 40px 80px -30px rgba(0,0,0,.6),-6px 0 0 #D8CDB8}
+.logbook .lh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px;gap:10px;flex-wrap:wrap}
+.logbook .lh b{font:italic 400 30px/1 var(--serif)}
+.lf{display:grid;grid-template-columns:repeat(6,1fr);gap:0 18px}
+.lf label{grid-column:span 3;display:block;border-bottom:1px solid rgba(11,34,51,.25);padding:14px 0 8px}
+.lf label.s2{grid-column:span 2}.lf label.full{grid-column:1/-1}
+.lf label span{display:block;font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+.lf input,.lf select{width:100%;border:0;background:transparent;font:500 17px/1.3 var(--sans);color:var(--ink);outline:none;padding:0;border-radius:0}
+.lf input:focus,.lf select:focus{color:var(--coral2)}
+.total{display:flex;justify-content:space-between;align-items:flex-end;margin-top:24px;gap:16px;flex-wrap:wrap}
+.total b{font:400 46px/1 var(--serif)}
+.total small{display:block;color:var(--ink2);font-size:13px;margin-top:4px;max-width:300px}
+.logbook .btn{border:0;cursor:pointer}
+.sent{display:none;margin-top:14px;font-size:14px;color:var(--ink2)}
+.seal{position:absolute;right:6%;top:22%;width:170px;opacity:0;pointer-events:none}
+.seal.on{animation:press .5s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes press{0%{opacity:0;transform:rotate(-18deg) scale(1.7)}100%{opacity:.85;transform:rotate(-12deg) scale(1)}}
+@media(max-width:900px){.book .box{grid-template-columns:1fr}.lf label,.lf label.s2{grid-column:1/-1}.seal{width:130px;right:4%}}
+
+.surfacebtn{display:block;margin:80px auto 0;text-align:center}
+footer{position:relative;z-index:2;color:var(--foam);padding:40px 0 30px}
+footer .cols2{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14px;opacity:.8;border-top:1px solid rgba(234,246,247,.2);padding-top:30px}
+footer b{display:block;font-weight:600;margin-bottom:6px;opacity:1}
+footer a{text-decoration:underline;text-underline-offset:3px}
+footer .big{font:italic 400 24vw/.8 var(--serif);opacity:.1;margin-top:40px;white-space:nowrap;letter-spacing:-.02em}
+@media(max-width:800px){footer .cols2{grid-template-columns:1fr 1fr}}
+
+/* motion start states */
+.js .hero h1 .w>span{transform:translateY(110%)}
+.js .hero .rv{opacity:0;transform:translateY(16px)}
+.js .arch{clip-path:inset(100% 0 0 0 round 999px 999px 0 0)}
+.js .up{opacity:0;transform:translateY(40px)}
+</style>
+</head>
+<body>
+<div class="ribbon">Concept site by <a href="https://veracod.com/">Veracod</a> &mdash; Ilalom Dive House is a fictional dive centre, built to show what we make. Photos: Unsplash.</div>
+
+<header id="hdr">
+  <nav>
+    <a class="logo" href="#top"><b>Ilalom</b><span class="mono">Dive House · Moalboal</span></a>
+    <div class="links"><a href="#reef">House reef</a><a href="#school">Sardines</a><a href="#courses">Courses</a><a href="#sites">Sites</a><a href="#plan">Plan a dive</a></div>
+    <a class="navbook" href="#book">Book a dive</a>
+  </nav>
+</header>
+
+<aside class="gauge surface" id="gauge" aria-hidden="true">
+  <div class="read"><b><span id="gD">0.0</span><small>m</small></b><span id="gN">No-stop · —</span><span class="temp" id="gT">Water 29°C</span></div>
+  <div class="scale" id="scale"><div class="line"></div><div class="needle" id="needle"></div></div>
+</aside>
+
+<main id="top">
+<!-- ===== SURFACE ===== -->
+<section class="hero" data-depth="0">
+  <div class="wrap">
+    <div>
+      <div class="kick mono rv"><span>Moalboal, Cebu</span><span>Shore &amp; boat diving</span><span>Est. 2009</span></div>
+      <h1><span class="w"><span>Everything</span></span> <span class="w"><span>good</span></span> <span class="w"><span>is</span></span> <span class="w"><span><em>below.</em></span></span></h1>
+      <p class="lede rv">A small dive house on Panagsama Beach. The turtles are forty steps from our door, the sardines are thirty metres out, and Pescador Island is fifteen minutes by bangka.</p>
+      <div class="ctas rv"><a class="btn" href="#reef">Start the descent <span>↓</span></a><a class="btn line" href="#plan">Plan a dive</a></div>
+    </div>
+    <figure style="margin:0">
+      <div class="arch"><img src="img/pescador.webp" alt="Aerial view of a small green island with dive boats moored alongside" width="1700" height="955" id="archImg"></div>
+      <figcaption class="archcap mono rv"><span>Pescador Island</span><span>3 km offshore</span></figcaption>
+    </figure>
+  </div>
+  <div class="waterline" aria-hidden="true">
+    <svg viewBox="0 0 2880 150" preserveAspectRatio="none" id="wl">
+      <path class="w2" d="M0 70 C 240 30 480 110 720 70 S 1200 30 1440 70 S 1920 110 2160 70 S 2640 30 2880 70 V150 H0Z"/>
+      <path class="w1" d="M0 95 C 240 60 480 130 720 95 S 1200 60 1440 95 S 1920 130 2160 95 S 2640 60 2880 95 V150 H0Z"/>
+    </svg>
+  </div>
+</section>
+
+<div class="deepzone" id="deep">
+  <div class="rays" id="rays" aria-hidden="true"></div>
+  <canvas id="bubbles" aria-hidden="true"></canvas>
+
+  <!-- ===== 3 m ===== -->
+  <section class="reef sec" id="reef" data-depth="3">
+    <div class="wrap">
+      <div class="txt up">
+        <div class="depthtag mono">3 m · House reef</div>
+        <h2 class="h2">The reef starts where the <em>sand</em> ends.</h2>
+        <p class="sub">Walk out from our steps and drop in. Green turtles graze the shallow reef most mornings, so close you will need to slow down to let them pass.</p>
+      </div>
+      <div class="p1 up"><img src="img/turtle.webp" alt="A green sea turtle swimming over sand and coral" loading="lazy" width="1700" height="1275"></div>
+      <div class="p2 up"><img src="img/bangka.webp" alt="A traditional outrigger boat on clear turquoise water" loading="lazy" width="1700" height="1069"></div>
+      <div class="facts up">
+        <div><b>28°</b><span class="mono">Water, avg °C</span></div>
+        <div><b>20 m</b><span class="mono">Visibility, typical</span></div>
+        <div><b>40</b><span class="mono">Steps to the water</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6 m: sardines ===== -->
+  <section class="school" id="school" data-depth="7">
+    <canvas id="schoolCv" aria-label="An animated school of sardines that scatters when you move through it" role="img"></canvas>
+    <div class="over lt"><div class="depthtag mono" style="justify-content:center">7 m · The sardine run</div><h2>A few million sardines<br>live <em>thirty metres</em> out.</h2></div>
+    <div class="count mono" id="count"></div>
+    <div class="hint mono"><span id="hintT">Move through the school</span></div>
+  </section>
+
+  <!-- ===== 12 m: courses ===== -->
+  <section class="courses sec lt" id="courses" data-depth="12">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="depthtag mono">12 m · Courses</div><h2 class="h2">Each course takes<br>you a little <em>deeper</em>.</h2></div>
+        <p class="sub">Small groups, never more than four students to one instructor. Prices include gear, boat, and your certification card.</p>
+      </div>
+      <div class="cols" id="cols">
+        <div class="gridlines" aria-hidden="true"><i style="top:25%"></i><i style="top:50%"></i><i style="top:75%"></i><i style="top:100%"></i></div>
+        <article class="course" data-max="12"><div class="top"><h3>Discover Scuba</h3><span class="mono">1 day · no experience</span></div><div class="bar"><i></i><b>12 m</b></div><div class="info"><p>A pool skills session, then one guided dive on the house reef holding an instructor's hand.</p><div class="price"><span class="mono">From</span><b>₱4,500</b></div></div></article>
+        <article class="course" data-max="18"><div class="top"><h3>Open Water</h3><span class="mono">3–4 days · first card</span></div><div class="bar"><i></i><b>18 m</b></div><div class="info"><p>The licence to dive anywhere in the world with a buddy. Four ocean dives, one with the sardines.</p><div class="price"><span class="mono">From</span><b>₱23,000</b></div></div></article>
+        <article class="course" data-max="30"><div class="top"><h3>Advanced</h3><span class="mono">2 days · 5 dives</span></div><div class="bar"><i></i><b>30 m</b></div><div class="info"><p>Deep, navigation, night, and two of your choice. This is the card that opens Pescador's cave.</p><div class="price"><span class="mono">From</span><b>₱19,000</b></div></div></article>
+        <article class="course" data-max="40"><div class="top"><h3>Deep Specialty</h3><span class="mono">2 days · 4 dives</span></div><div class="bar"><i></i><b>40 m</b></div><div class="info"><p>Gas planning, narcosis, and the walls at the edge of recreational limits. Advanced card required.</p><div class="price"><span class="mono">From</span><b>₱15,000</b></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 18 m: sites ===== -->
+  <section class="sites sec lt" id="sites" data-depth="18">
+    <div class="wrap">
+      <div class="depthtag mono">18 m · Dive sites</div>
+      <h2 class="h2">Four sites we<br>know by <em>heart</em>.</h2>
+      <div class="list" id="siteList">
+        <div class="site up" data-img="img/turtle.webp"><span class="mono n">01</span><h3>Panagsama House Reef</h3><p>Shore entry. Sloping reef with turtles, frogfish, and the sardine school in the shallows.</p><svg viewBox="0 0 220 70"><path class="sea" d="M0 6 L60 10 L120 30 L180 52 L220 62 V70 H0Z"/><text x="0" y="68">3–25 m · Shore</text></svg></div>
+        <div class="site up" data-img="img/wall.webp"><span class="mono n">02</span><h3>Pescador Island</h3><p>Fifteen minutes by bangka. A sheer wall on all sides, soft corals, and a cave they call the Cathedral.</p><svg viewBox="0 0 220 70"><path class="sea" d="M0 4 L50 4 L56 64 L220 66 V70 H0Z"/><text x="70" y="58">5–40 m · Boat</text></svg></div>
+        <div class="site up" data-img="img/reef.webp"><span class="mono n">03</span><h3>Tongo Point</h3><p>Coral gardens on top, a wall below. Gentle current, good for a second dive of the day.</p><svg viewBox="0 0 220 70"><path class="sea" d="M0 8 L90 12 L100 40 L150 46 L160 64 L220 66 V70 H0Z"/><text x="0" y="68">5–30 m · Boat</text></svg></div>
+        <div class="site up" data-img="img/seafan.webp"><span class="mono n">04</span><h3>Kasai Wall</h3><p>Big gorgonian fans and the deepest diving we offer. Advanced card and a deep briefing.</p><svg viewBox="0 0 220 70"><path class="sea" d="M0 6 L30 8 L36 66 L220 68 V70 H0Z"/><text x="50" y="58">8–40 m · Boat</text></svg></div>
+      </div>
+    </div>
+    <div class="peek" id="peek"><img alt="" id="peekImg"></div>
+  </section>
+
+  <!-- ===== 24 m: cathedral ===== -->
+  <section class="cathedral lt" id="cathedral" data-depth="24">
+    <div class="bg"><img src="img/cave.webp" alt="A diver inside an underwater cave with light falling through the opening" loading="lazy" width="1700" height="1133"></div>
+    <div class="wrap up">
+      <div class="depthtag mono">24 m · The Cathedral</div>
+      <h2 class="h2">At noon, the light falls<br>straight <em>through the rock</em>.</h2>
+      <p class="sub">A chimney in Pescador's wall opens to the sky. Hang still in the middle and watch the beam move across the sand. Advanced divers only.</p>
+    </div>
+  </section>
+
+  <!-- ===== 30 m: planner ===== -->
+  <section class="plan sec lt" id="plan" data-depth="30">
+    <div class="wrap">
+      <div class="depthtag mono">30 m · Plan a dive</div>
+      <h2 class="h2">How deep, and<br>for how <em>long</em>?</h2>
+      <p class="sub">Pick your card and a depth. We draw the dive the way a guide would brief it, using the recreational dive planner's no-stop limits.</p>
+      <div class="box">
+        <div>
+          <label class="lab mono">Your certification</label>
+          <div class="pill" id="cert">
+            <button type="button" data-max="12" aria-pressed="false">None yet</button>
+            <button type="button" data-max="18" aria-pressed="true">Open Water</button>
+            <button type="button" data-max="30" aria-pressed="false">Advanced</button>
+            <button type="button" data-max="40" aria-pressed="false">Deep</button>
+          </div>
+          <label class="lab mono" for="pd">Planned depth</label>
+          <div class="depthin"><b id="pdv">18</b><span class="mono">metres</span></div>
+          <input type="range" id="pd" min="5" max="18" step="1" value="18">
+          <div class="limit" id="lim">Your Open Water card allows 18 m.</div>
+          <ul class="ok" id="okList"></ul>
+        </div>
+        <div class="profile">
+          <svg viewBox="0 0 640 330" id="prof" role="img" aria-label="Dive profile chart"></svg>
+          <div class="stats">
+            <div><b id="sN">56</b><span class="mono">No-stop limit, min</span></div>
+            <div><b id="sB">40</b><span class="mono">Bottom time, min</span></div>
+            <div><b id="sT">50</b><span class="mono">Whole dive, min</span></div>
+          </div>
+          <p class="note">For illustration only. Real dives are planned with your guide and your own dive computer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 40 m: book ===== -->
+  <section class="book sec lt" id="book" data-depth="40">
+    <div class="wrap">
+      <div class="depthtag mono">40 m · Book</div>
+      <h2 class="h2">Write it in the <em>log</em>.</h2>
+      <div class="box">
+        <div class="side">
+          <p>Tell us your dates and what you want to do. We reply on WhatsApp the same day with times and a plan. Nothing is paid until you arrive.</p>
+          <div class="contact mono"><span>WhatsApp · +63 917 555 0177</span><span>Panagsama Beach, Moalboal</span><span>hello@ilalom.example</span></div>
+        </div>
+        <form class="logbook" id="log" autocomplete="off">
+          <div class="lh"><b>Ilalom dive log</b><span class="mono">Page <span id="pg">—</span></span></div>
+          <div class="lf">
+            <label><span>Name</span><input name="name" required placeholder="Your name"></label>
+            <label><span>WhatsApp or email</span><input name="contact" required placeholder="+63 … or you@…"></label>
+            <label class="s2"><span>Arriving</span><input type="date" name="from" required></label>
+            <label class="s2"><span>Divers</span><select name="divers" id="lDiv"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+            <label class="s2"><span>Your card</span><select name="cert" id="lCert"><option>None yet</option><option selected>Open Water</option><option>Advanced</option><option>Deep</option></select></label>
+            <label class="full"><span>What you want</span><select name="what" id="lWhat">
+              <option value="fun" data-p="1800">Fun dives with a guide</option>
+              <option value="dsd" data-p="4500">Discover Scuba</option>
+              <option value="ow" data-p="23000">Open Water course</option>
+              <option value="aow" data-p="19000">Advanced course</option>
+              <option value="deep" data-p="15000">Deep Specialty</option>
+            </select></label>
+            <label class="s2" id="nWrap"><span>Dives each</span><select name="dives" id="lN"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>10</option></select></label>
+            <label class="s2"><span>Rent gear</span><select name="gear" id="lGear"><option value="0">No, I have mine</option><option value="600" selected>Yes, full set</option></select></label>
+            <label class="s2"><span>Sardine snorkel</span><select name="snork" id="lSn"><option value="0">No</option><option value="300">Add, ₱300</option></select></label>
+          </div>
+          <div class="total"><div><span class="mono" style="color:var(--ink2)">Estimate</span><b id="tot">₱—</b><small id="totNote">—</small></div><button class="btn" type="submit">Send to the dive house →</button></div>
+          <p class="sent" id="sent">This is a concept site, so nothing was sent. On a real one, the dive house would message you today.</p>
+          <svg class="seal" id="seal" viewBox="0 0 170 170" aria-hidden="true">
+            <defs>
+              <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/><feComponentTransfer><feFuncA type="discrete" tableValues="0 1 1 1 1 0 1 1 1 1 1"/></feComponentTransfer></filter>
+              <path id="arcT" d="M85 85 m-58 0 a58 58 0 1 1 116 0"/><path id="arcB" d="M85 85 m-62 0 a62 62 0 0 0 124 0"/>
+            </defs>
+            <g filter="url(#ink)" fill="none" stroke="#1F5F8B" stroke-width="3">
+              <circle cx="85" cy="85" r="78"/><circle cx="85" cy="85" r="44" stroke-width="1.6"/>
+              <text fill="#1F5F8B" stroke="none" style="font:600 13px 'DM Mono',monospace;letter-spacing:3px"><textPath href="#arcT" startOffset="50%" text-anchor="middle">ILALOM DIVE HOUSE</textPath></text>
+              <text fill="#1F5F8B" stroke="none" style="font:600 11px 'DM Mono',monospace;letter-spacing:3px"><textPath href="#arcB" startOffset="50%" text-anchor="middle">MOALBOAL · CEBU</textPath></text>
+              <text x="85" y="82" text-anchor="middle" fill="#1F5F8B" stroke="none" style="font:italic 400 26px 'Instrument Serif',serif">logged</text>
+              <text x="85" y="100" text-anchor="middle" fill="#1F5F8B" stroke="none" style="font:500 10px 'DM Mono',monospace" id="sealD">—</text>
+            </g>
+          </svg>
+        </form>
+      </div>
+      <a class="btn line surfacebtn" href="#top" id="ascend" style="width:max-content">↑ Ascend slowly, back to the surface</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols2">
+        <div><b>Ilalom Dive House</b>A fictional dive centre. Concept site designed and built by <a href="https://veracod.com/">Veracod</a>.</div>
+        <div><b>Where</b>Panagsama Beach<br>Moalboal, Cebu</div>
+        <div><b>Hours</b>Every day, 7:00–18:00<br>Night dives on request</div>
+        <div><b>Credits</b>Photography from <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>. No-stop limits from the recreational dive planner (air).</div>
+      </div>
+      <div class="big" aria-hidden="true">Ilalom</div>
+    </div>
+  </footer>
+</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var reduce=!document.documentElement.classList.contains('js');
+  var peso=function(n){return '₱'+Math.round(n).toLocaleString('en-PH')};
+
+  /* ---------- no-stop limits (air, recreational dive planner) ---------- */
+  var NDL_D=[10,12,14,16,18,20,22,25,30,35,40],NDL_T=[219,147,98,72,56,45,37,29,20,14,9];
+  function ndl(d){if(d<=0)return null;for(var i=0;i<NDL_D.length;i++)if(d<=NDL_D[i])return NDL_T[i];return 9}
+
+  /* ---------- water colour by depth ---------- */
+  var STOPS=[[0,[127,214,218]],[4,[79,191,203]],[8,[33,148,174]],[14,[17,105,141]],[22,[11,68,104]],[32,[8,42,73]],[40,[4,22,42]]];
+  function water(d){for(var i=1;i<STOPS.length;i++){if(d<=STOPS[i][0]){var a=STOPS[i-1],b=STOPS[i],t=(d-a[0])/(b[0]-a[0]);return 'rgb('+a[1].map(function(v,k){return Math.round(v+(b[1][k]-v)*t)}).join(',')+')'}}return 'rgb(4,22,42)'}
+
+  /* ---------- gauge scale ---------- */
+  var sc=$('scale'),h='';for(var m=0;m<=40;m+=2){h+='<i class="'+(m%10===0?'l':'')+'" style="top:'+(m/40*100)+'%"></i>';if(m%10===0)h+='<em style="top:'+(m/40*100)+'%">'+m+'</em>'}
+  sc.insertAdjacentHTML('beforeend',h);
+
+  /* ---------- depth from scroll ---------- */
+  var anchors=[];
+  function measure(){anchors=[].map.call(document.querySelectorAll('[data-depth]'),function(s){return [s.getBoundingClientRect().top+scrollY,+s.dataset.depth]});
+    var hero=document.querySelector('.hero');anchors[0]=[hero.offsetTop+hero.offsetHeight-80,0];
+    var last=document.querySelector('footer');anchors.push([last.getBoundingClientRect().top+scrollY,40])}
+  var curD=-1,hdr=$('hdr'),gauge=$('gauge'),rays=$('rays'),rb=document.querySelector('.ribbon');
+  function onScroll(){
+    var y=scrollY+innerHeight*.5,d=0;
+    for(var i=1;i<anchors.length;i++){if(y<anchors[i][0]){var a=anchors[i-1],b=anchors[i];d=a[1]+(b[1]-a[1])*Math.max(0,Math.min(1,(y-a[0])/(b[0]-a[0])));break}d=anchors[i][1]}
+    if(y<anchors[0][0])d=0;
+    d=Math.max(0,Math.min(40,d));
+    if(Math.abs(d-curD)>.04){curD=d;
+      document.body.style.background=water(d);document.documentElement.style.setProperty('--water',water(d));
+      $('gD').textContent=d.toFixed(1);
+      var n=ndl(d);$('gN').textContent=d<1?'At the surface':'No-stop · '+(n>200?'200+':n)+' min';
+      $('gT').textContent='Water '+(d<10?29:d<20?28:d<30?27:26)+'°C';
+      $('needle').style.top=(d/40*100)+'%';
+      gauge.classList.toggle('surface',d<.3);gauge.classList.toggle('deep',d>9);
+      hdr.classList.toggle('deep',d>9);
+      rays.style.opacity=Math.max(0,.6-d/30).toFixed(2);
+    }
+    var r=rb.getBoundingClientRect().bottom;hdr.style.top=Math.max(0,r)+'px';
+    var solid=r<=0;hdr.classList.toggle('solid',solid);
+    if(solid){var c=d<.3?'rgba(242,238,229,.9)':water(d).replace('rgb(','rgba(').replace(')',',.82)');hdr.style.backgroundColor=c}else hdr.style.backgroundColor='transparent';
+  }
+  measure();onScroll();
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){measure();onScroll()});
+  addEventListener('load',function(){measure();onScroll()});
+
+  /* ---------- bubbles ---------- */
+  var bc=$('bubbles'),bx=bc.getContext('2d'),B=[],DPR=Math.min(2,devicePixelRatio||1);
+  function bsize(){bc.width=innerWidth*DPR;bc.height=innerHeight*DPR}bsize();addEventListener('resize',bsize);
+  for(var i=0;i<(innerWidth<700?18:36);i++)B.push({x:Math.random(),y:Math.random(),r:1+Math.random()*3.5,s:.3+Math.random()*.9,w:Math.random()*6.28});
+  function bub(){
+    bx.clearRect(0,0,bc.width,bc.height);
+    var a=curD<.3?0:Math.min(.55,.15+curD/60);
+    if(a>0){bx.strokeStyle='rgba(234,246,247,'+a+')';bx.lineWidth=1*DPR;
+      B.forEach(function(b){b.y-=b.s*.0012;b.w+=.03;if(b.y<-.05){b.y=1.05;b.x=Math.random()}
+        bx.beginPath();bx.arc((b.x*innerWidth+Math.sin(b.w)*6)*DPR,b.y*innerHeight*DPR,b.r*DPR,0,6.283);bx.stroke()})}
+    if(!reduce)requestAnimationFrame(bub)}
+  bub();
+
+  /* ---------- sardine school (boids) ---------- */
+  var cv=$('schoolCv'),cx=cv.getContext('2d'),W=0,H=0,F=[],N=innerWidth<700?320:640,ptr={x:-999,y:-999,on:false,t:0},pred={x:-200,y:0,vx:0,vy:0,next:2},running=false,frame=0;
+  function csize(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0)}
+  csize();addEventListener('resize',csize);
+  for(var k=0;k<N;k++){var ang=Math.random()*6.28,rad=Math.random()*Math.min(W,H)*.28;F.push({x:W/2+Math.cos(ang)*rad,y:H*.58+Math.sin(ang)*rad*.6,vx:Math.cos(ang+1.57)*1.5,vy:Math.sin(ang+1.57)*1.5,g:0,sh:.55+Math.random()*.45})}
+  $('count').textContent=N+' fish drawn · the real school is a few million';
+  var CELL=36,grid=new Map();
+  function step(){
+    var t=performance.now()/1000,ccx=W/2+Math.sin(t*.23)*W*.12,ccy=H*.58+Math.cos(t*.31)*H*.07;
+    /* a passing jack when nobody is touching */
+    if(!ptr.on||t-ptr.t>2.5){pred.next-=1/60;if(pred.next<=0&&pred.vx===0){var fromL=Math.random()<.5;pred.x=fromL?-80:W+80;pred.y=H*(.4+Math.random()*.35);pred.vx=(fromL?1:-1)*(5+Math.random()*2);pred.vy=(Math.random()-.5)*1.2}
+      if(pred.vx!==0){pred.x+=pred.vx;pred.y+=pred.vy;if(pred.x<-120||pred.x>W+120){pred.vx=0;pred.next=3+Math.random()*3}}}
+    grid.clear();
+    for(var i=0;i<F.length;i++){var f=F[i],key=((f.x/CELL)|0)+','+((f.y/CELL)|0);var c=grid.get(key);if(!c){c=[];grid.set(key,c)}c.push(f)}
+    for(i=0;i<F.length;i++){f=F[i];
+      var gx=(f.x/CELL)|0,gy=(f.y/CELL)|0,ax=0,ay=0,cxs=0,cys=0,sx=0,sy=0,n=0;
+      for(var ox=-1;ox<=1;ox++)for(var oy=-1;oy<=1;oy++){var cell=grid.get((gx+ox)+','+(gy+oy));if(!cell)continue;
+        for(var j=0;j<cell.length;j++){var o=cell[j];if(o===f)continue;var dx=o.x-f.x,dy=o.y-f.y,d2=dx*dx+dy*dy;if(d2>CELL*CELL)continue;
+          n++;ax+=o.vx;ay+=o.vy;cxs+=o.x;cys+=o.y;if(d2<64){sx-=dx/(d2+1)*8;sy-=dy/(d2+1)*8}}}
+      var vx=f.vx,vy=f.vy;
+      if(n){vx+=(ax/n-vx)*.05;vy+=(ay/n-vy)*.05;vx+=(cxs/n-f.x)*.004;vy+=(cys/n-f.y)*.004}
+      vx+=sx*.6;vy+=sy*.6;
+      /* bait ball: pull to centre and swirl around it */
+      var tx=ccx-f.x,ty=ccy-f.y,td=Math.sqrt(tx*tx+ty*ty)+1;
+      vx+=tx/td*.06+(-ty/td)*.05;vy+=ty/td*.06*1.25+(tx/td)*.05;
+      /* flee pointer and predator */
+      [[ptr.on?ptr.x:-999,ptr.on?ptr.y:-999,130],[pred.vx?pred.x:-999,pred.y,110]].forEach(function(p){var px=f.x-p[0],py=f.y-p[1],pd=px*px+py*py;if(pd<p[2]*p[2]){var s=(1-Math.sqrt(pd)/p[2])*1.4;vx+=px/Math.sqrt(pd+1)*s*2.2;vy+=py/Math.sqrt(pd+1)*s*2.2}});
+      var sp=Math.sqrt(vx*vx+vy*vy),mx=4.2,mn=1.3;if(sp>mx){vx=vx/sp*mx;vy=vy/sp*mx}else if(sp<mn){vx=vx/sp*mn;vy=vy/sp*mn}
+      var turn=Math.abs(f.vx*vy-f.vy*vx);f.g=Math.min(1,f.g*.9+turn*.18);
+      f.vx=vx;f.vy=vy;f.x+=vx;f.y+=vy;
+      if(f.x<-40)f.x=W+40;if(f.x>W+40)f.x=-40;if(f.y<-40)f.y=H+40;if(f.y>H+40)f.y=-40;
+    }
+  }
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    cx.lineCap='round';
+    for(var i=0;i<F.length;i++){var f=F[i],sp=Math.sqrt(f.vx*f.vx+f.vy*f.vy)+.001,ux=f.vx/sp,uy=f.vy/sp,len=7;
+      var l=Math.round(150+f.sh*70+f.g*35);cx.strokeStyle='rgba('+(l-10)+','+(l+8)+','+(l+14)+','+(.55+f.sh*.35+f.g*.1).toFixed(2)+')';
+      cx.lineWidth=2.1;cx.beginPath();cx.moveTo(f.x+ux*len*.5,f.y+uy*len*.5);cx.lineTo(f.x-ux*len*.5,f.y-uy*len*.5);cx.stroke();
+      cx.lineWidth=1;cx.beginPath();cx.moveTo(f.x-ux*len*.5,f.y-uy*len*.5);cx.lineTo(f.x-ux*len*.5-ux*2.5+uy*1.6,f.y-uy*len*.5-uy*2.5-ux*1.6);cx.moveTo(f.x-ux*len*.5,f.y-uy*len*.5);cx.lineTo(f.x-ux*len*.5-ux*2.5-uy*1.6,f.y-uy*len*.5-uy*2.5+ux*1.6);cx.stroke()}
+    if(pred.vx){var pu=pred.vx>0?1:-1;cx.fillStyle='rgba(10,40,60,.55)';cx.beginPath();cx.ellipse(pred.x,pred.y,34,10,Math.atan2(pred.vy,pred.vx),0,6.283);cx.fill();cx.beginPath();cx.moveTo(pred.x-pu*30,pred.y);cx.lineTo(pred.x-pu*48,pred.y-12);cx.lineTo(pred.x-pu*48,pred.y+12);cx.closePath();cx.fill()}
+  }
+  function loop(){if(!running)return;step();draw();requestAnimationFrame(loop)}
+  for(var w=0;w<120;w++)step();draw();
+  if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v&&!running){running=true;requestAnimationFrame(loop)}else if(!v)running=false},{threshold:.05}).observe(cv)}
+  function pt(e){var r=cv.getBoundingClientRect(),p=e.touches?e.touches[0]:e;ptr.x=p.clientX-r.left;ptr.y=p.clientY-r.top;ptr.on=true;ptr.t=performance.now()/1000}
+  cv.addEventListener('pointermove',pt);cv.addEventListener('pointerdown',pt);cv.addEventListener('touchmove',pt,{passive:true});
+  cv.addEventListener('pointerleave',function(){ptr.on=false});cv.addEventListener('touchend',function(){ptr.on=false});
+  if(matchMedia('(hover:none)').matches)$('hintT').textContent='Touch the water to scatter them';
+
+  /* ---------- site peek ---------- */
+  var peek=$('peek'),pimg=$('peekImg');
+  document.querySelectorAll('.site').forEach(function(s){
+    s.addEventListener('mouseenter',function(){pimg.src=s.dataset.img;peek.classList.add('on')});
+    s.addEventListener('mouseleave',function(){peek.classList.remove('on')});
+    s.addEventListener('mousemove',function(e){peek.style.left=(e.clientX+24)+'px';peek.style.top=(e.clientY-120)+'px'})});
+
+  /* ---------- course depth bars ---------- */
+  function bars(){document.querySelectorAll('.course').forEach(function(c){var h=c.querySelector('.bar').offsetHeight*(+c.dataset.max)/40;c.querySelector('.bar i').style.height=h+'px';c.querySelector('.bar b').style.top=h+'px'})}
+  bars();addEventListener('resize',bars);
+
+  /* ---------- planner ---------- */
+  var SITES=[['Sardine run',3,10,0],['Turtle house reef',5,12,0],['Pescador wall',10,18,18],['Tongo Point wall',12,24,30],['Cathedral cave',20,28,30],['Kasai deep wall',30,40,40]];
+  var cert=18,CN={12:'Discover Scuba (with an instructor)',18:'Open Water card',30:'Advanced card',40:'Deep Specialty'};
+  function plan(){
+    var d=+$('pd').value;$('pdv').textContent=d;
+    var n=ndl(d),bt=Math.min(n-5,45),desc=d/18,asc=Math.max(0,(d-5)/9),stop=3,last=5/9,total=desc+bt+asc+stop+last;
+    $('sN').textContent=n>200?'200+':n;$('sB').textContent=Math.round(bt);$('sT').textContent=Math.round(total);
+    var X0=46,X1=620,Y0=26,Y1=300,T=Math.max(70,Math.ceil(total/10)*10);
+    var X=function(t){return X0+t/T*(X1-X0)},Y=function(z){return Y0+z/40*(Y1-Y0)};
+    var s='<g class="ax">';for(var z=0;z<=40;z+=10)s+='<line x1="'+X0+'" x2="'+X1+'" y1="'+Y(z)+'" y2="'+Y(z)+'"/><text x="'+(X0-8)+'" y="'+(Y(z)+4)+'" text-anchor="end">'+z+'m</text>';
+    for(var t=0;t<=T;t+=10)s+='<text x="'+X(t)+'" y="'+(Y1+20)+'" text-anchor="middle">'+t+'′</text>';
+    s+='</g>';
+    s+='<rect x="'+X0+'" y="'+Y(cert)+'" width="'+(X1-X0)+'" height="'+(Y(40)-Y(cert))+'" fill="rgba(255,122,89,.10)"/><line x1="'+X0+'" x2="'+X1+'" y1="'+Y(cert)+'" y2="'+Y(cert)+'" stroke="#FF7A59" stroke-dasharray="4 4"/><text class="lbl" x="'+(X1)+'" y="'+(Y(cert)+16)+'" text-anchor="end" fill="#FF7A59" style="fill:#FF7A59">Your limit · '+cert+' m</text>';
+    var p=[[0,0],[desc,d],[desc+bt,d],[desc+bt+asc,5],[desc+bt+asc+stop,5],[total,0]];
+    var path='M'+p.map(function(q){return X(q[0]).toFixed(1)+' '+Y(q[1]).toFixed(1)}).join(' L');
+    s+='<path d="'+path+' L'+X(total)+' '+Y(0)+' Z" fill="rgba(234,246,247,.10)"/>';
+    s+='<path id="pp" d="'+path+'" fill="none" stroke="#EAF6F7" stroke-width="3" stroke-linejoin="round"/>';
+    s+='<text class="lbl" x="'+X(desc+bt/2)+'" y="'+(Y(d)-10)+'" text-anchor="middle">Bottom · '+Math.round(bt)+' min at '+d+' m</text>';
+    s+='<text class="lbl" x="'+X(desc+bt+asc+stop/2)+'" y="'+(Y(5)-26)+'" text-anchor="middle">Safety stop · 3 min</text>';
+    s+='<circle cx="'+X(desc+bt+asc+stop/2)+'" cy="'+Y(5)+'" r="4" fill="#FF7A59"/>';
+    $('prof').innerHTML=s;
+    if(!reduce){var pp=$('pp'),L=pp.getTotalLength();pp.style.strokeDasharray=L;pp.style.strokeDashoffset=L;pp.getBoundingClientRect();pp.style.transition='stroke-dashoffset 1.1s cubic-bezier(.22,1,.36,1)';pp.style.strokeDashoffset=0}
+    $('okList').innerHTML=SITES.map(function(x){var can=cert>=x[2]&&(x[3]===0||cert>=x[3]);return '<li class="'+(can?'':'no')+'"><span>'+x[0]+'</span><span class="mono'+(can?' yes':'')+'">'+x[1]+'–'+x[2]+' m · '+(can?'✓ open to you':'needs '+(x[3]>=40?'Deep':x[3]>=30?'Advanced':'Open Water'))+'</span></li>'}).join('');
+  }
+  document.querySelectorAll('#cert button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#cert button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    cert=+b.dataset.max;var r=$('pd');r.max=cert;if(+r.value>cert)r.value=cert;$('lim').textContent='Your '+CN[cert]+' allows '+cert+' m.';
+    $('lCert').selectedIndex=[12,18,30,40].indexOf(cert);plan()})});
+  $('pd').addEventListener('input',plan);plan();
+
+  /* ---------- logbook ---------- */
+  var td=new Date();td.setMinutes(td.getMinutes()-td.getTimezoneOffset());document.querySelector('#log input[type=date]').min=td.toISOString().slice(0,10);
+  $('pg').textContent=String(Math.floor(Date.now()/86400000)%400+1);
+  function total(){var w=$('lWhat'),o=w.options[w.selectedIndex],p=+o.dataset.p,div=+$('lDiv').value,fun=w.value==='fun',n=fun?+$('lN').value:1;
+    $('nWrap').style.display=fun?'':'none';
+    var per=fun?(n>=10?1500:n>=4?1650:1800):p,gearDays=fun?Math.ceil(n/2):(w.value==='aow'||w.value==='deep'?2:0),gear=+$('lGear').value*gearDays;
+    var sum=(per*n+gear+ +$('lSn').value)*div;
+    $('tot').textContent=peso(sum);
+    $('totNote').textContent=fun?(div+' diver'+(div>1?'s':'')+' × '+n+' dive'+(n>1?'s':'')+' at '+peso(per)+(gear?' + gear':'')+'. Boat and guide included.'):(div+' × '+o.text+(gear?' + 2 days gear rental':'')+'. '+(gearDays?'':'Gear, ')+'boat and card included.').replace('. boat','. Boat');}
+  ['lWhat','lDiv','lN','lGear','lSn'].forEach(function(id){$(id).addEventListener('change',total)});total();
+  $('log').addEventListener('submit',function(e){e.preventDefault();var s=$('seal');$('sealD').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Manila',day:'2-digit',month:'short',year:'numeric'}).format(new Date()).toUpperCase();s.classList.remove('on');void s.getBoundingClientRect();s.classList.add('on');$('sent').style.display='block'});
+
+  /* ================= motion ================= */
+  if(reduce||!window.gsap){window.__ilmReady=true;return}
+  gsap.registerPlugin(ScrollTrigger);window.__ilmReady=true;
+  var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.to('.hero h1 .w>span',{y:0,duration:1.3,stagger:.08})
+    .to('.arch',{clipPath:'inset(0% 0 0 0 round 999px 999px 0 0)',duration:1.6,ease:'expo.inOut'},0)
+    .from('#archImg',{scale:1.3,duration:2,ease:'expo.out'},.2)
+    .to('.hero .rv',{opacity:1,y:0,duration:1,stagger:.08},.5);
+  gsap.to('#wl',{xPercent:-50,duration:9,ease:'none',repeat:-1});
+  gsap.to('#archImg',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.utils.toArray('.up').forEach(function(el){gsap.to(el,{opacity:1,y:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}})});
+  gsap.utils.toArray('.deepzone .h2').forEach(function(h){gsap.from(h,{y:60,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 90%'}})});
+  gsap.utils.toArray('.course').forEach(function(c,i){var max=+c.dataset.max,bar=c.querySelector('.bar'),H=bar.offsetHeight,h=H*max/40;
+    var i_=c.querySelector('.bar i'),b=c.querySelector('.bar b');
+    gsap.from(i_,{scaleY:0,duration:1.6,ease:'expo.inOut',delay:i*.12,scrollTrigger:{trigger:'#cols',start:'top 70%'}});
+    gsap.from(b,{top:0,opacity:0,duration:1.6,ease:'expo.inOut',delay:i*.12,scrollTrigger:{trigger:'#cols',start:'top 70%'}})});
+  gsap.fromTo('.cathedral .bg',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.cathedral',start:'top bottom',end:'bottom top',scrub:true}});
+  $('ascend').addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
+  ScrollTrigger.addEventListener('refresh',function(){measure();onScroll()});
+  addEventListener('load',function(){ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>
