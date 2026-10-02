@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ilog Ready-Mix — a concept site by Veracod</title>
+<meta name="description" content="A concept website for a fictional ready-mix concrete supplier in Central Luzon, designed and built by Veracod.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+/* 动画只负责「显现」；脚本 3 秒内没跑起来就摘掉 .js，页面按静态内容显示 */
+setTimeout(function(){ if(!window.__ilReady) document.documentElement.classList.remove('js'); }, 3000);
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.remove('js');
+</script>
+<style>
+:root{
+  --paper:#ECEAE4; --paper2:#E1DED6; --ink:#151513; --ink2:#46463F; --dim:#85827A; --rule:#CBC7BC;
+  --signal:#EE4F1C; --wet:#6F6D66;
+  --sans:'Archivo',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --gut:clamp(16px,3.2vw,44px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);font-stretch:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.025em;line-height:.98}
+p{margin:0}
+button{font:inherit;color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.02em;text-transform:uppercase}
+.wrap{padding:0 var(--gut)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,28px)}
+.rule{border-top:1px solid var(--ink)}
+.tag{display:inline-flex;align-items:center;gap:8px}
+.tag::before{content:"";width:8px;height:8px;background:var(--signal)}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:28px;padding:16px 18px 16px 20px;background:var(--ink);color:var(--paper);font:600 15px/1 var(--sans);letter-spacing:.01em;transition:background .25s}
+.btn:hover{background:var(--signal)}
+.btn .ar{font-family:var(--mono);transition:transform .3s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- ribbon + header ---------- */
+.ribbon{background:var(--ink);color:var(--paper);font-size:12px;text-align:center;padding:8px 16px}
+.ribbon a{text-decoration:underline;text-underline-offset:3px}
+header{position:sticky;top:0;z-index:50;background:rgba(236,234,228,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+header nav{display:flex;align-items:center;gap:28px;padding:14px var(--gut)}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo b{font:900 24px/1 var(--sans);font-stretch:125%;letter-spacing:-.02em}
+.logo span{color:var(--dim)}
+.links{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:500}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--signal);transition:right .3s var(--ease)}
+.links a:hover::after{right:0}
+.status{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:#2E9E5B;box-shadow:0 0 0 0 rgba(46,158,91,.5);animation:ping 2s infinite}
+.status.closed i{background:var(--dim);animation:none}
+@keyframes ping{70%{box-shadow:0 0 0 7px rgba(46,158,91,0)}100%{box-shadow:0 0 0 0 rgba(46,158,91,0)}}
+.navcta{padding:11px 14px;background:var(--signal);color:#fff;font:600 14px/1 var(--sans)}
+@media(max-width:1000px){.links{display:none}.status{margin-left:auto}}
+@media(max-width:560px){.logo span{display:none}.status .t{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(28px,5vw,64px)}
+.hero .top{align-items:end;row-gap:32px}
+.hero .copy{grid-column:1/6}
+.hero .copy .tag{margin-bottom:26px}
+.hero h1{font-size:clamp(38px,4.6vw,70px);font-stretch:88%;font-weight:700}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block}
+.hero .lede{max-width:430px;color:var(--ink2);margin-top:22px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero .shot{grid-column:7/13;position:relative}
+.hero .shot .frame{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper2)}
+.hero .shot img{width:100%;height:100%;object-fit:cover;transform-origin:50% 60%}
+.hero .shot .cap{display:flex;justify-content:space-between;margin-top:10px;color:var(--dim)}
+.hero .shot .spec{position:absolute;left:0;bottom:0;background:var(--paper);padding:14px 18px 0 0;display:grid;grid-template-columns:auto auto;gap:4px 18px}
+.hero .shot .spec b{font:500 12px/1.3 var(--mono);color:var(--ink)}
+.hero .shot .spec span{font:400 12px/1.3 var(--mono);color:var(--dim);text-transform:uppercase}
+.wordmark{margin-top:clamp(28px,4vw,56px)}
+.wordmark svg{display:block;width:100%;height:auto;overflow:visible}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);margin-top:10px}
+.facts div{padding:14px 0 26px;border-right:1px solid var(--rule);padding-right:14px}
+.facts div:last-child{border-right:0}
+.facts div+div{padding-left:14px}
+.facts b{display:block;font:700 clamp(26px,3vw,40px)/1 var(--sans);font-stretch:80%;letter-spacing:-.02em}
+.facts span{color:var(--dim);display:block;margin-top:8px}
+@media(max-width:900px){.hero .copy,.hero .shot{grid-column:1/-1}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(3){padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* ---------- section heads ---------- */
+section{position:relative}
+.sec{padding:clamp(80px,11vw,150px) 0 0}
+.shead{align-items:end;margin-bottom:clamp(36px,5vw,64px);row-gap:18px}
+.shead .no{grid-column:1/3;color:var(--dim)}
+.shead h2{grid-column:3/10;font-size:clamp(36px,5.4vw,84px);font-stretch:82%}
+.shead p{grid-column:10/13;color:var(--ink2);font-size:15px}
+@media(max-width:900px){.shead .no,.shead h2,.shead p{grid-column:1/-1}}
+
+/* ---------- river to slab ---------- */
+.flow{overflow:hidden}
+.flow .pipe{position:relative;height:6px;background:var(--paper2);margin:0 var(--gut) 28px}
+.flow .pipe i{position:absolute;inset:0;right:auto;width:0;background:var(--wet)}
+.flow .pipe i::after{content:"";position:absolute;right:-4px;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--signal)}
+.track{display:flex;gap:clamp(14px,2vw,28px);padding:0 var(--gut);width:max-content}
+.stage{width:min(78vw,560px);flex:none}
+.stage .ph{aspect-ratio:5/4;overflow:hidden;background:var(--paper2)}
+.stage .ph img{width:100%;height:100%;object-fit:cover}
+.stage .meta{display:flex;justify-content:space-between;border-top:1px solid var(--ink);margin-top:16px;padding-top:10px;color:var(--dim)}
+.stage h3{font-size:clamp(28px,3vw,40px);font-stretch:85%;margin-top:14px}
+.stage p{color:var(--ink2);margin-top:10px;max-width:440px;font-size:16px}
+.stage dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:16px 0 0;font:400 12px/1.5 var(--mono)}
+.stage dt{color:var(--dim);text-transform:uppercase}
+.stage dd{margin:0}
+@media(max-width:899px){.track{flex-direction:column;width:auto}.stage{width:100%}.flow .pipe{display:none}}
+
+/* ---------- calculator ---------- */
+.calc{background:var(--ink);color:var(--paper);padding-bottom:clamp(70px,9vw,120px);margin-top:clamp(80px,11vw,150px)}
+.calc .sec{padding-top:clamp(70px,9vw,120px)}
+.calc .shead .no{color:#8d8a82}
+.calc .shead p{color:#B9B6AE}
+.calcbox{align-items:start;row-gap:40px}
+.inputs{grid-column:1/6}
+.outputs{grid-column:7/13}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.seg button{background:transparent;border:1px solid #4a4944;color:#cfccc4;padding:10px 14px;cursor:pointer;font:500 14px/1 var(--sans);transition:all .2s}
+.seg button[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.field{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:1px solid #4a4944;padding:14px 0 10px;gap:12px}
+.field label{color:#a6a39b}
+.field .val{display:flex;align-items:baseline;gap:6px}
+.field input{width:5.2ch;background:transparent;border:0;color:var(--paper);font:600 34px/1 var(--sans);font-stretch:80%;text-align:right;outline:none;-moz-appearance:textfield}
+.field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field input:focus{color:var(--signal)}
+.field small{font:400 13px/1 var(--mono);color:#8d8a82;width:2.6ch}
+.field input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--signal);height:22px}
+.calcnote{color:#8d8a82;font-size:13px;margin-top:18px;max-width:420px}
+.vol{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #4a4944;padding-bottom:18px}
+.vol b{font:800 clamp(80px,12vw,180px)/.82 var(--sans);font-stretch:70%;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.vol span{font:500 22px/1 var(--mono);color:#a6a39b}
+.trucks{display:flex;flex-wrap:wrap;gap:10px 14px;margin:26px 0 8px;min-height:56px}
+.truck{width:86px;height:46px}
+.truck .drum{transform-box:fill-box;transform-origin:50% 50%}
+.truck.spin .stripe{animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:translateX(-12px)}}
+.more{align-self:center;font:500 14px/1 var(--mono);color:#a6a39b}
+.readout{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #4a4944;margin-top:18px}
+.readout div{padding:16px 16px 0 0;border-right:1px solid #4a4944}
+.readout div+div{padding-left:16px;border-right:0}
+.readout div:nth-child(n+3){border-top:1px solid #4a4944;margin-top:16px}
+.readout div:nth-child(3){padding-left:0;border-right:1px solid #4a4944}
+.readout span{color:#8d8a82;display:block}
+.readout b{display:block;font:600 22px/1.25 var(--sans);margin-top:6px}
+.readout b em{font-style:normal;color:var(--signal)}
+.calc .btn{background:var(--signal);margin-top:30px}
+.calc .btn:hover{background:var(--paper);color:var(--ink)}
+@media(max-width:900px){.inputs,.outputs{grid-column:1/-1}}
+
+/* ---------- strength ---------- */
+.cure{height:auto}
+.curebox{align-items:center;row-gap:30px}
+.cure .left{grid-column:1/5}
+.cure .chart{grid-column:5/13;position:relative}
+.daybig{font:800 clamp(90px,13vw,200px)/.8 var(--sans);font-stretch:66%;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.daybig small{display:block;font:500 12px/1 var(--mono);letter-spacing:.04em;margin-bottom:12px;color:var(--dim)}
+.pct{display:flex;gap:28px;margin-top:22px;border-top:1px solid var(--ink);padding-top:14px}
+.pct b{display:block;font:700 34px/1 var(--sans);font-stretch:80%;font-variant-numeric:tabular-nums}
+.pct span{color:var(--dim)}
+.cure .left p{color:var(--ink2);margin-top:22px;font-size:15px;max-width:360px}
+.cure svg{width:100%;height:auto;display:block;overflow:visible}
+.cure .axis text{font:400 11px var(--mono);fill:var(--dim)}
+.cure .milestone text{font:500 11px var(--mono);fill:var(--ink)}
+.cure .src{color:var(--dim);margin-top:10px;font-size:12px}
+.cyl{position:absolute;right:0;top:0;width:54px}
+@media(max-width:900px){.cure .left,.cure .chart{grid-column:1/-1}.cyl{display:none}.cure .axis text,.cure .milestone text{font-size:20px}}
+
+/* ---------- reach map ---------- */
+.reach .grid{align-items:start;row-gap:30px}
+.reach .mapcol{grid-column:1/7}
+.reach .side{grid-column:8/13}
+.map{width:100%;height:auto;display:block;background:var(--paper2)}
+.map .gl{stroke:#d3cfc5;stroke-width:.12}
+.map .gt{font:400 1.5px var(--mono);fill:var(--dim)}
+.map .ring{fill:rgba(238,79,28,.06);stroke:var(--signal);stroke-width:.18;stroke-dasharray:.8 .6}
+.map .ring45{fill:rgba(238,79,28,.08);stroke:none}
+.map .town circle{fill:var(--ink)}
+.map .town text{font:500 1.7px var(--sans);fill:var(--ink2)}
+.map .town.out circle{fill:var(--dim)}
+.map .town.out text{fill:var(--dim)}
+.map .town.sel circle{fill:var(--signal);r:.9}
+.map .town.sel text{fill:var(--ink);font-weight:700}
+.map .plant rect{fill:var(--signal)}
+.map .plant text{font:700 1.9px var(--mono);fill:var(--ink)}
+.map .route{stroke:var(--ink);stroke-width:.25;fill:none;stroke-dasharray:1 .6}
+.mapcap{display:flex;justify-content:space-between;color:var(--dim);margin-top:10px;gap:12px;flex-wrap:wrap}
+.legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.pick label{display:block;color:var(--dim);margin-bottom:10px}
+.pick select{width:100%;font:600 26px/1.2 var(--sans);font-stretch:85%;background:transparent;border:0;border-bottom:2px solid var(--ink);padding:6px 0 10px;color:var(--ink);outline:none;border-radius:0;cursor:pointer}
+.answer{margin-top:26px}
+.answer .big{font:800 clamp(64px,8vw,120px)/.85 var(--sans);font-stretch:68%;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.answer .big small{font:500 18px/1 var(--mono);letter-spacing:0;margin-left:6px;color:var(--dim)}
+.answer p{margin-top:16px;color:var(--ink2)}
+.answer .verdict{display:inline-block;margin-top:16px;padding:6px 10px;font:500 12px/1 var(--mono);text-transform:uppercase;background:var(--ink);color:var(--paper)}
+.answer .verdict.no{background:var(--signal)}
+.reach .why{margin-top:40px;border-top:1px solid var(--ink);padding-top:14px;color:var(--ink2);font-size:15px}
+@media(max-width:900px){.reach .mapcol,.reach .side{grid-column:1/-1}}
+
+/* ---------- mixes ---------- */
+.mixes table{width:100%;border-collapse:collapse}
+.mixes th{font:400 12px/1 var(--mono);text-transform:uppercase;color:var(--dim);text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--ink)}
+.mixes td{padding:18px 12px 18px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.mixes td.c{font:700 clamp(26px,3vw,40px)/1 var(--sans);font-stretch:78%;letter-spacing:-.02em;white-space:nowrap}
+.mixes td.c small{font:400 12px var(--mono);color:var(--dim);letter-spacing:0;margin-left:6px}
+.mixes td.m{font:400 13px/1.5 var(--mono);color:var(--ink2);white-space:nowrap}
+.mixes tr{transition:background .2s}
+.mixes tbody tr:hover{background:var(--paper2)}
+.mixes tbody tr.hot td.c{color:var(--signal)}
+@media(max-width:700px){.mixes .hide-s{display:none}.mixes td.m{white-space:normal}}
+
+/* ---------- projects ---------- */
+.works{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,28px);row-gap:clamp(50px,7vw,100px)}
+.work .ph{overflow:hidden;background:var(--paper2)}
+.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.work:hover .ph img{transform:scale(1.04)}
+.work .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ink);margin-top:14px;padding-top:10px;gap:12px}
+.work h3{font-size:clamp(24px,2.4vw,34px);font-stretch:85%}
+.work .row span{color:var(--dim);text-align:right}
+.work .nums{display:flex;gap:22px;margin-top:10px;font:400 13px/1.4 var(--mono);color:var(--ink2);flex-wrap:wrap}
+.w1{grid-column:1/8}.w1 .ph{aspect-ratio:3/2}
+.w2{grid-column:9/13;margin-top:18vh}.w2 .ph{aspect-ratio:4/5}
+.w3{grid-column:3/7}.w3 .ph{aspect-ratio:2/3}
+.w4{grid-column:8/13;align-self:end}.w4 .ph{aspect-ratio:4/3}
+@media(max-width:900px){.w1,.w2,.w3,.w4{grid-column:1/-1;margin-top:0}}
+
+/* ---------- ticket ---------- */
+.order{padding-bottom:clamp(80px,10vw,140px)}
+.orderbox{align-items:start;row-gap:40px}
+.order .intro{grid-column:1/5}
+.order .intro p{color:var(--ink2);margin-top:20px;max-width:360px}
+.order .intro .direct{margin-top:30px;border-top:1px solid var(--ink);padding-top:14px;display:grid;gap:6px}
+.ticket{grid-column:6/13;position:relative;background:#F7F5F0;padding:clamp(22px,3vw,40px);box-shadow:0 1px 0 var(--rule),0 30px 60px -30px rgba(0,0,0,.25);
+  -webkit-mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.ticket .th{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px;gap:12px}
+.ticket .th b{font:900 26px/1 var(--sans);font-stretch:125%}
+.ticket .perf{border-top:2px dashed var(--rule);margin:22px -40px}
+.tf{display:grid;grid-template-columns:repeat(6,1fr);gap:0 18px}
+.tf label{grid-column:span 3;display:block;border-bottom:1px solid var(--rule);padding:14px 0 8px}
+.tf label.w2c{grid-column:span 2}
+.tf label.full{grid-column:1/-1}
+.tf label span{display:block;font:400 11px/1 var(--mono);text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.tf input,.tf select{width:100%;border:0;background:transparent;font:500 17px/1.3 var(--sans);color:var(--ink);outline:none;padding:0;border-radius:0}
+.tf input:focus,.tf select:focus{color:var(--signal)}
+.ticket .foot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:16px;flex-wrap:wrap}
+.ticket .foot small{color:var(--dim);max-width:280px;font-size:13px}
+.ticket button.btn{border:0;cursor:pointer}
+.stamp{position:absolute;right:8%;top:30%;width:230px;pointer-events:none;opacity:0;transform:rotate(-14deg) scale(1.6)}
+.stamp.on{animation:thump .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes thump{0%{opacity:0;transform:rotate(-14deg) scale(1.6)}100%{opacity:.88;transform:rotate(-14deg) scale(1)}}
+.sent{display:none;margin-top:16px;font-size:14px;color:var(--ink2)}
+@media(max-width:900px){.order .intro,.ticket{grid-column:1/-1}.tf label,.tf label.w2c{grid-column:1/-1}.stamp{width:170px;right:4%}}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--paper);padding:60px 0 30px;overflow:hidden}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14px;color:#b9b6ae}
+footer .cols b{display:block;color:var(--paper);font-weight:600;margin-bottom:6px}
+footer .cols a{text-decoration:underline;text-underline-offset:3px}
+footer .bigname{font:900 31.5vw/.78 var(--sans);font-stretch:125%;letter-spacing:-.04em;margin:50px 0 0 -.04em;color:#26261f;white-space:nowrap}
+@media(max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* ---------- motion start states (only with .js) ---------- */
+.js .hero h1 .ln>span{transform:translateY(105%)}
+.js .hero .rv{opacity:0;transform:translateY(16px)}
+.js .hero .shot .frame{clip-path:inset(0 0 100% 0)}
+.js .up{opacity:0;transform:translateY(40px)}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Concept site by <a href="https://veracod.com/">Veracod</a> &mdash; Ilog Ready-Mix is a fictional company, built to show what we make. Photos: Unsplash.</div>
+
+<header>
+  <nav>
+    <a class="logo" href="#top"><b>ILOG</b><span class="mono">Ready-Mix</span></a>
+    <div class="links"><a href="#flow">How it's made</a><a href="#calc">Volume</a><a href="#cure">Strength</a><a href="#reach">Delivery area</a><a href="#mixes">Mixes</a></div>
+    <div class="status mono" id="status"><i></i><span class="t" id="statusT">Dispatch</span></div>
+    <a class="navcta" href="#order">Order a pour</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero wrap">
+  <div class="grid top">
+    <div class="copy">
+      <div class="tag mono rv">Ready-mix concrete · Pampanga · Bulacan · Tarlac</div>
+      <h1><span class="ln"><span>Concrete that</span></span><span class="ln"><span>shows up on time,</span></span><span class="ln"><span>at the strength</span></span><span class="ln"><span>you paid for.</span></span></h1>
+      <p class="lede rv">Three batching plants in Central Luzon. Every load leaves with a printed batch ticket, reaches your slab inside 90 minutes, and is cylinder-tested at 7 and 28 days.</p>
+      <div class="ctas rv"><a class="btn" href="#calc">Work out your volume <span class="ar">→</span></a><a class="btn ghost" href="#order">Order a pour <span class="ar">→</span></a></div>
+    </div>
+    <figure class="shot" style="margin:0">
+      <div class="frame"><img src="img/plant.webp" alt="Sand and gravel stockpiles beside a conveyor at a batching plant" width="1800" height="1200">
+      <div class="spec"><span>Plant</span><b>01 · San Fernando</b><span>Lines</span><b>4 × 3 m³ twin-shaft</b></div></div>
+      <figcaption class="cap mono rv"><span>Fig. 1 — Aggregate yard</span><span>15.03° N 120.69° E</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="wordmark" aria-label="ILOG">
+    <svg viewBox="0 0 1000 268" aria-hidden="true">
+      <defs>
+        <pattern id="tex" patternUnits="userSpaceOnUse" width="1000" height="268"><image href="img/texture.webp" x="0" y="-180" width="1000" height="667" preserveAspectRatio="xMidYMid slice"/></pattern>
+        <clipPath id="wmClip"><text x="0" y="258" textLength="1000" lengthAdjust="spacingAndGlyphs" style="font:900 344px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:-8px">ILOG</text></clipPath>
+      </defs>
+      <text x="0" y="258" textLength="1000" lengthAdjust="spacingAndGlyphs" fill="none" stroke="#151513" stroke-width="1.3" style="font:900 344px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:-8px">ILOG</text>
+      <g clip-path="url(#wmClip)">
+        <g id="pour" transform="translate(0 0)">
+          <path id="wave" d="M-1000 14 Q-937.5 0 -875 14 T-750 14 T-625 14 T-500 14 T-375 14 T-250 14 T-125 14 T0 14 T125 14 T250 14 T375 14 T500 14 T625 14 T750 14 T875 14 T1000 14 T1125 14 T1250 14 V600 H-1000 Z" fill="url(#tex)"/>
+          <path d="M-1000 14 Q-937.5 0 -875 14 T-750 14 T-625 14 T-500 14 T-375 14 T-250 14 T-125 14 T0 14 T125 14 T250 14 T375 14 T500 14 T625 14 T750 14 T875 14 T1000 14 T1125 14 T1250 14 V600 H-1000 Z" fill="#151513" opacity=".38" id="wave2"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="facts mono">
+    <div><b>03</b><span>Batching plants</span></div>
+    <div><b>41</b><span>Drums on the road</span></div>
+    <div><b>90 min</b><span>Plant to pour, max</span></div>
+    <div><b>7 + 28</b><span>Days we test every pour</span></div>
+  </div>
+</section>
+
+<!-- ================= RIVER TO SLAB ================= -->
+<section class="flow sec" id="flow">
+  <div class="wrap grid shead">
+    <div class="no mono">01 / Process</div>
+    <h2>From the river<br>to your slab.</h2>
+    <p>Ilog means river. Our sand and gravel come from the Pampanga basin, and everything after that is measured, printed and timed.</p>
+  </div>
+  <div class="pipe"><i id="pipe"></i></div>
+  <div class="track" id="track">
+    <article class="stage">
+      <div class="ph"><img src="img/river.webp" alt="Rounded river stones" loading="lazy" width="1800" height="1200"></div>
+      <div class="meta mono"><span>Stage 01</span><span>Aggregate</span></div>
+      <h3>Washed, graded, tested weekly.</h3>
+      <p>River sand and gravel are washed of silt and clay, then screened into sizes. A sieve test every week keeps the grading inside spec.</p>
+      <dl><dt>Coarse</dt><dd>¾" and ⅜" crushed gravel</dd><dt>Fine</dt><dd>Washed river sand, FM 2.6–2.9</dd><dt>Test</dt><dd>Sieve analysis, every Monday</dd></dl>
+    </article>
+    <article class="stage">
+      <div class="ph"><img src="img/sand.webp" alt="Grey gravel stockpiles at a plant" loading="lazy" width="1800" height="1200"></div>
+      <div class="meta mono"><span>Stage 02</span><span>Batch</span></div>
+      <h3>Weighed by computer, to the kilo.</h3>
+      <p>Cement, water, sand, gravel and admixture are weighed by load cells, not shovels. Each batch prints a ticket you keep.</p>
+      <dl><dt>Accuracy</dt><dd>±1% cement, ±2% aggregate</dd><dt>Ticket</dt><dd>Mix, weights, slump, time out</dd><dt>Cement</dt><dd>Type I Portland, local mills</dd></dl>
+    </article>
+    <article class="stage">
+      <div class="ph"><img src="img/truck-top.webp" alt="Transit mixer truck arriving at a site" loading="lazy" width="1800" height="1200"></div>
+      <div class="meta mono"><span>Stage 03</span><span>Drum</span></div>
+      <h3>The clock starts at loading.</h3>
+      <p>The drum keeps turning on the road. Every truck is tracked, and anything older than 90 minutes at your gate goes back. You don't pay for it.</p>
+      <dl><dt>Drum</dt><dd>7 m³ transit mixers</dd><dt>Limit</dt><dd>90 min batch-to-discharge</dd><dt>Tracking</dt><dd>GPS, shared with your foreman</dd></dl>
+    </article>
+    <article class="stage">
+      <div class="ph"><img src="img/pour-hose.webp" alt="Workers placing concrete with a pump hose" loading="lazy" width="1800" height="1200"></div>
+      <div class="meta mono"><span>Stage 04</span><span>Pour</span></div>
+      <h3>Checked at your gate.</h3>
+      <p>Before discharge we test slump in front of your engineer and cast six cylinders. Two are crushed at 7 days, the rest at 28.</p>
+      <dl><dt>Slump</dt><dd>Tested every truck</dd><dt>Cylinders</dt><dd>6 per pour, 150 × 300 mm</dd><dt>Report</dt><dd>Emailed, signed by our lab</dd></dl>
+    </article>
+  </div>
+</section>
+
+<!-- ================= CALCULATOR ================= -->
+<section class="calc" id="calc">
+  <div class="sec">
+    <div class="wrap grid shead">
+      <div class="no mono">02 / Volume</div>
+      <h2>How much concrete<br>do you need?</h2>
+      <p>Put in the size. We add 5% for spillage and uneven ground, round to the truck, and suggest a mix. Your engineer's specification always wins.</p>
+    </div>
+    <div class="wrap grid calcbox">
+      <div class="inputs">
+        <div class="seg" id="kind">
+          <button type="button" data-k="ground" aria-pressed="true">Ground slab</button>
+          <button type="button" data-k="susp" aria-pressed="false">Suspended slab</button>
+          <button type="button" data-k="footing" aria-pressed="false">Footings</button>
+          <button type="button" data-k="column" aria-pressed="false">Columns</button>
+          <button type="button" data-k="road" aria-pressed="false">Driveway</button>
+        </div>
+        <div class="field"><label class="mono" for="L">Length</label><div class="val"><input id="L" type="number" inputmode="decimal" min="0" step="0.1" value="12"><small>m</small></div><input type="range" min="1" max="60" step="0.5" value="12" data-for="L" aria-label="Length slider"></div>
+        <div class="field"><label class="mono" for="W">Width</label><div class="val"><input id="W" type="number" inputmode="decimal" min="0" step="0.1" value="8"><small>m</small></div><input type="range" min="0.3" max="40" step="0.1" value="8" data-for="W" aria-label="Width slider"></div>
+        <div class="field"><label class="mono" for="T" id="Tl">Thickness</label><div class="val"><input id="T" type="number" inputmode="decimal" min="0" step="1" value="10"><small id="Tu">cm</small></div><input type="range" min="5" max="60" step="1" value="10" data-for="T" aria-label="Thickness slider"></div>
+        <div class="field"><label class="mono" for="N">How many</label><div class="val"><input id="N" type="number" inputmode="numeric" min="1" step="1" value="1"><small>×</small></div><input type="range" min="1" max="40" step="1" value="1" data-for="N" aria-label="Count slider"></div>
+        <p class="calcnote">A rough guide, not a structural design. For columns and footings, enter one piece and how many there are.</p>
+      </div>
+      <div class="outputs">
+        <div class="mono" style="color:#8d8a82;margin-bottom:12px">You need about</div>
+        <div class="vol"><b id="vol">10.1</b><span>m³</span></div>
+        <div class="trucks" id="trucks" aria-live="polite"></div>
+        <div class="mono" style="color:#8d8a82" id="truckline">2 trucks · 7 m³ drums</div>
+        <div class="readout">
+          <div><span class="mono">Suggested mix</span><b id="mix">3,000 psi</b></div>
+          <div><span class="mono">Pump</span><b id="pump">Chute is fine</b></div>
+          <div><span class="mono">On site for</span><b id="dur">About 1 hour</b></div>
+          <div><span class="mono">Trucks every</span><b id="gap">25 min</b></div>
+        </div>
+        <a class="btn" href="#order" id="useCalc">Put this on an order <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRENGTH ================= -->
+<section class="cure sec" id="cure">
+  <div class="wrap grid shead">
+    <div class="no mono">03 / Strength</div>
+    <h2>Day 28 is the<br>day that counts.</h2>
+    <p>Concrete keeps getting stronger for weeks after the pour. Scroll to watch a 4,000 psi mix gain strength, day by day.</p>
+  </div>
+  <div class="wrap grid curebox" id="curePin">
+    <div class="left">
+      <div class="daybig"><small>Days after pour</small><span id="day">01</span></div>
+      <div class="pct">
+        <div><b id="pctv">21%</b><span class="mono">of design</span></div>
+        <div><b id="psiv">840</b><span class="mono">psi</span></div>
+      </div>
+      <p id="cureNote">Day 1: firm enough to walk on. Keep it wet. Don't load it.</p>
+    </div>
+    <div class="chart">
+      <svg viewBox="0 0 640 380" id="cureSvg" role="img" aria-label="Strength gain curve from day 1 to day 28">
+        <g class="axis" id="axis"></g>
+        <path id="curveBg" fill="none" stroke="#CBC7BC" stroke-width="2"/>
+        <path id="curve" fill="none" stroke="#151513" stroke-width="3"/>
+        <path id="area" fill="rgba(238,79,28,.10)"/>
+        <g class="milestone" id="ms"></g>
+        <line id="vline" stroke="#EE4F1C" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle id="dot" r="7" fill="#EE4F1C" stroke="#ECEAE4" stroke-width="3"/>
+      </svg>
+      <p class="src mono">Curve: ACI 209 model, moist-cured Type I cement, f(t) = t / (4 + 0.85t) × f'c.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REACH ================= -->
+<section class="reach sec" id="reach">
+  <div class="wrap grid shead">
+    <div class="no mono">04 / Delivery area</div>
+    <h2>Inside 90 minutes,<br>or we don't send it.</h2>
+    <p>Concrete starts setting in the drum. We only take jobs our trucks can reach in time, so pick your town and see.</p>
+  </div>
+  <div class="wrap grid">
+    <div class="mapcol">
+      <svg class="map" id="map" viewBox="0 0 70 127" role="img" aria-label="Map of plants and towns served in Central Luzon"></svg>
+      <div class="mapcap mono"><div class="legend"><span><i style="background:#EE4F1C"></i>Plant</span><span><i style="background:rgba(238,79,28,.25)"></i>~45 min</span><span><i style="border:1px dashed #EE4F1C"></i>~90 min</span></div><span>Grid 0.1° · not to road scale</span></div>
+    </div>
+    <div class="side">
+      <div class="pick"><label class="mono" for="town">Your site is in</label><select id="town"></select></div>
+      <div class="answer">
+        <div class="mono" style="color:var(--dim)">Estimated plant to gate</div>
+        <div class="big"><span id="mins">—</span><small>min</small></div>
+        <p id="from">—</p>
+        <span class="verdict" id="verdict">Inside the window</span>
+      </div>
+      <p class="why">Estimates assume weekday traffic and include 10 minutes to load. For a big pour we schedule outside rush hour, and for sites further out we can set up a mobile plant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MIXES ================= -->
+<section class="mixes sec" id="mixes">
+  <div class="wrap grid shead">
+    <div class="no mono">05 / Mixes</div>
+    <h2>Five standard mixes.<br>Anything else, ask.</h2>
+    <p>Strength is measured on cylinders at 28 days. Higher strength, retarders for long pours, and fibre are available on request.</p>
+  </div>
+  <div class="wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Used for</th><th class="hide-s">Max aggregate</th><th class="hide-s">Slump</th></tr></thead>
+      <tbody id="mixRows">
+        <tr data-psi="2500"><td class="c">2,500<small>psi</small></td><td>Lean concrete, sidewalks, blinding under footings</td><td class="m hide-s">¾"</td><td class="m hide-s">75–100 mm</td></tr>
+        <tr data-psi="3000"><td class="c">3,000<small>psi</small></td><td>Ground slabs, house footings, garage floors</td><td class="m hide-s">¾"</td><td class="m hide-s">75–100 mm</td></tr>
+        <tr data-psi="3500"><td class="c">3,500<small>psi</small></td><td>Driveways, retaining walls, warehouse floors</td><td class="m hide-s">¾"</td><td class="m hide-s">75–125 mm</td></tr>
+        <tr data-psi="4000"><td class="c">4,000<small>psi</small></td><td>Suspended slabs, beams and columns up to 5 storeys</td><td class="m hide-s">¾"</td><td class="m hide-s">100–150 mm</td></tr>
+        <tr data-psi="5000"><td class="c">5,000<small>psi</small></td><td>Columns in taller buildings, precast, heavy-duty slabs</td><td class="m hide-s">⅜"</td><td class="m hide-s">100–150 mm</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="sec" id="work">
+  <div class="wrap grid shead">
+    <div class="no mono">06 / Recent pours</div>
+    <h2>What we've<br>poured lately.</h2>
+    <p>From one-house footings to warehouse floors poured overnight in a single run.</p>
+  </div>
+  <div class="wrap works">
+    <article class="work w1 up"><div class="ph"><img src="img/slab-aerial.webp" alt="Aerial view of a large finished concrete slab with workers" loading="lazy" width="1800" height="1200"></div>
+      <div class="row"><h3>Logistics warehouse floor</h3><span class="mono">Porac, Pampanga</span></div>
+      <div class="nums"><span>2,400 m²</span><span>312 m³</span><span>3,500 psi + fibre</span><span>One 14-hour night pour</span></div></article>
+    <article class="work w2 up"><div class="ph"><img src="img/rebar-cols.webp" alt="Workers tying rebar for columns on a building frame" loading="lazy" width="1800" height="1311"></div>
+      <div class="row"><h3>Six-storey dormitory</h3><span class="mono">Malolos, Bulacan</span></div>
+      <div class="nums"><span>1,850 m³</span><span>Columns 5,000 psi</span><span>22 pours</span></div></article>
+    <article class="work w3 up"><div class="ph"><img src="img/arch.webp" alt="Board-formed concrete columns" loading="lazy" width="1200" height="1800"></div>
+      <div class="row"><h3>Parish hall</h3><span class="mono">Capas, Tarlac</span></div>
+      <div class="nums"><span>Exposed finish</span><span>4,000 psi</span><span>Retarded mix</span></div></article>
+    <article class="work w4 up"><div class="ph"><img src="img/truck-field.webp" alt="Transit mixer reversing to a site" loading="lazy" width="1800" height="1200"></div>
+      <div class="row"><h3>Subdivision roads, phase 2</h3><span class="mono">Mexico, Pampanga</span></div>
+      <div class="nums"><span>3.2 km</span><span>1,100 m³</span><span>Flexural 650 psi</span></div></article>
+  </div>
+</section>
+
+<!-- ================= ORDER ================= -->
+<section class="order sec" id="order">
+  <div class="wrap grid orderbox">
+    <div class="intro">
+      <div class="no mono" style="color:var(--dim)">07 / Order</div>
+      <h2 style="font-size:clamp(36px,5vw,76px);font-stretch:82%;margin-top:18px">Book a pour.</h2>
+      <p>Send the details and our dispatcher calls you back within the hour, Monday to Saturday, 6 am to 8 pm. Orders for tomorrow close at 3 pm.</p>
+      <div class="direct mono"><span>Dispatch · (045) 555 0142</span><span>Viber · 0917 555 0142</span><span>dispatch@ilog-readymix.example</span></div>
+    </div>
+    <form class="ticket" id="ticket" autocomplete="off">
+      <div class="th"><b>ILOG</b><span class="mono">Pour request · No. <span id="tno">—</span></span></div>
+      <div class="tf">
+        <label><span>Name</span><input name="name" required placeholder="Juan dela Cruz"></label>
+        <label><span>Mobile</span><input name="phone" required inputmode="tel" placeholder="0917 …"></label>
+        <label class="w2c"><span>Site town</span><select name="town" id="tTown"></select></label>
+        <label class="w2c"><span>Pour date</span><input name="date" type="date" required></label>
+        <label class="w2c"><span>Start time</span><select name="time"><option>06:00</option><option selected>07:00</option><option>08:00</option><option>09:00</option><option>13:00</option><option>Night pour</option></select></label>
+        <label class="w2c"><span>Volume (m³)</span><input name="vol" id="tVol" type="number" min="1" step="0.5" value="10.5" required></label>
+        <label class="w2c"><span>Mix</span><select name="mix" id="tMix"><option>2,500 psi</option><option selected>3,000 psi</option><option>3,500 psi</option><option>4,000 psi</option><option>5,000 psi</option><option>Not sure yet</option></select></label>
+        <label class="w2c"><span>Pump</span><select name="pump" id="tPump"><option>No pump</option><option>Line pump</option><option>Boom pump 36 m</option><option>Not sure</option></select></label>
+      </div>
+      <div class="perf"></div>
+      <div class="foot"><small>We confirm the price and slot by phone before anything is batched. Nothing is charged online.</small><button class="btn" type="submit">Send to dispatch <span class="ar">→</span></button></div>
+      <p class="sent" id="sent">This is a concept site, so nothing was sent. On a real one, a dispatcher would be calling you now.</p>
+      <svg class="stamp" id="stamp" viewBox="0 0 230 120" aria-hidden="true">
+        <defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/><feComponentTransfer><feFuncA type="discrete" tableValues="0 1 1 1 1 1 0 1 1 1"/></feComponentTransfer></filter></defs>
+        <g filter="url(#rough)" fill="none" stroke="#C43A12" stroke-width="4">
+          <rect x="6" y="6" width="218" height="108" rx="6"/><rect x="14" y="14" width="202" height="92" rx="3" stroke-width="1.6"/>
+          <text x="115" y="58" text-anchor="middle" fill="#C43A12" stroke="none" style="font:900 34px Archivo,sans-serif;font-stretch:115%">RECEIVED</text>
+          <text x="115" y="88" text-anchor="middle" fill="#C43A12" stroke="none" style="font:500 13px 'JetBrains Mono',monospace;letter-spacing:2px" id="stampDate">ILOG DISPATCH</text>
+        </g>
+      </svg>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><b>Ilog Ready-Mix</b>A fictional company. Concept site designed and built by <a href="https://veracod.com/">Veracod</a>.</div>
+      <div><b>Plants</b>San Fernando, Pampanga<br>Malolos, Bulacan<br>Tarlac City, Tarlac</div>
+      <div><b>Dispatch hours</b>Mon–Sat, 6:00–20:00<br>Night pours by arrangement</div>
+      <div><b>Credits</b>Photography from <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>, used under the Unsplash License.</div>
+    </div>
+    <div class="bigname" aria-hidden="true">ILOG</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n,d){return n.toLocaleString('en-PH',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})};
+
+  /* ---------- dispatch status: real Manila time ---------- */
+  function status(){
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Manila',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var g={};p.forEach(function(x){g[x.type]=x.value});
+    var h=+g.hour,open=g.weekday!=='Sun'&&h>=6&&h<20;
+    $('status').classList.toggle('closed',!open);
+    $('statusT').textContent=(open?'Dispatch open · ':'Dispatch closed · ')+g.hour+':'+g.minute+' Manila';
+  }
+  status();setInterval(status,30000);
+
+  /* ---------- calculator ---------- */
+  var KINDS={
+    ground:{mix:'3,000 psi',t:10,tl:'Thickness',tu:'cm',pump:false},
+    susp:{mix:'4,000 psi',t:12,tl:'Thickness',tu:'cm',pump:true},
+    footing:{mix:'3,000 psi',t:40,tl:'Depth',tu:'cm',pump:false,L:1.5,W:1.5,N:8},
+    column:{mix:'4,000 psi',t:300,tl:'Height',tu:'cm',pump:true,L:0.4,W:0.4,N:12},
+    road:{mix:'3,500 psi',t:15,tl:'Thickness',tu:'cm',pump:false,L:30,W:4,N:1}
+  };
+  var kind='ground',DRUM=7,lastTrucks=-1;
+  var truckSvg='<svg class="truck" viewBox="0 0 86 46"><rect x="60" y="12" width="20" height="22" rx="2" fill="#ECEAE4"/><rect x="64" y="15" width="12" height="8" fill="#151513"/><rect x="4" y="30" width="78" height="5" fill="#ECEAE4"/><circle cx="16" cy="38" r="5" fill="#ECEAE4" stroke="#151513" stroke-width="2"/><circle cx="34" cy="38" r="5" fill="#ECEAE4" stroke="#151513" stroke-width="2"/><circle cx="70" cy="38" r="5" fill="#ECEAE4" stroke="#151513" stroke-width="2"/><clipPath id="dc{i}"><ellipse cx="30" cy="17" rx="26" ry="13"/></clipPath><ellipse cx="30" cy="17" rx="26" ry="13" fill="#2a2a26" stroke="#ECEAE4" stroke-width="2"/><g clip-path="url(#dc{i})"><rect class="fill" x="2" y="{y}" width="58" height="30" fill="#EE4F1C"/><g class="stripe" opacity=".35"><path d="M0 4 L10 30 M12 4 L22 30 M24 4 L34 30 M36 4 L46 30 M48 4 L58 30 M60 4 L70 30" stroke="#151513" stroke-width="3"/></g></g></svg>';
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
+  function calc(){
+    var L=num('L'),W=num('W'),T=num('T')/100,N=Math.max(1,Math.round(num('N')||1));
+    var v=L*W*T*N*1.05; v=Math.round(v*10)/10;
+    $('vol').textContent=v<100?fmt(v,1):fmt(v);
+    var trucks=Math.max(1,Math.ceil(v/DRUM)),full=Math.floor(v/DRUM),rem=v-full*DRUM;
+    var show=Math.min(trucks,14),html='';
+    for(var i=0;i<show;i++){var lvl=i<full?1:(rem/DRUM);var y=4+26*(1-lvl);html+=truckSvg.replace(/\{i\}/g,i).replace('{y}',y.toFixed(1))}
+    if(trucks>show)html+='<span class="more">+'+(trucks-show)+' more</span>';
+    var box=$('trucks');box.innerHTML=html;
+    if(trucks!==lastTrucks){box.querySelectorAll('.truck').forEach(function(t){t.classList.add('spin')});clearTimeout(box._t);box._t=setTimeout(function(){box.querySelectorAll('.truck').forEach(function(t){t.classList.remove('spin')})},1600);lastTrucks=trucks}
+    $('truckline').textContent=trucks+' truck'+(trucks>1?'s':'')+' · '+DRUM+' m³ drums'+(rem>0&&full>0?' · last one '+fmt(rem,1)+' m³':'');
+    var k=KINDS[kind];$('mix').textContent=k.mix;
+    var pump=k.pump||v>40;$('pump').innerHTML=pump?(v>40?'<em>Boom pump</em>, 36 m':'<em>Line pump</em> or boom'):'Chute is fine';
+    var rate=pump?30:18; var hrs=v/rate+0.5;
+    $('dur').textContent=hrs<1.2?'About 1 hour':hrs<10?'About '+Math.round(hrs*2)/2+' hours':'Plan a night pour';
+    $('gap').textContent=trucks<2?'One delivery':Math.max(12,Math.round(DRUM/rate*60))+' min';
+    document.querySelectorAll('#mixRows tr').forEach(function(r){r.classList.toggle('hot',r.dataset.psi===k.mix.replace(/\D/g,''))});
+    return {v:v,mix:k.mix,pump:pump?(v>40?'Boom pump 36 m':'Line pump'):'No pump'};
+  }
+  document.querySelectorAll('.field').forEach(function(f){
+    var n=f.querySelector('input[type=number]'),r=f.querySelector('input[type=range]');
+    r.addEventListener('input',function(){n.value=r.value;calc()});
+    n.addEventListener('input',function(){r.value=n.value;calc()});
+  });
+  document.querySelectorAll('#kind button').forEach(function(b){b.addEventListener('click',function(){
+    kind=b.dataset.k;document.querySelectorAll('#kind button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    var k=KINDS[kind];$('Tl').textContent=k.tl;
+    var set=function(id,v){$(id).value=v;$(id).closest('.field').querySelector('input[type=range]').value=v};
+    var tr=$('T').closest('.field').querySelector('input[type=range]');tr.max=kind==='column'?600:60;
+    set('T',k.t);if(k.L){set('L',k.L);set('W',k.W);set('N',k.N)}else if(kind!=='road'&&num('L')<3){set('L',12);set('W',8);set('N',1)}
+    calc();
+  })});
+  calc();
+  $('useCalc').addEventListener('click',function(){var r=calc();$('tVol').value=Math.ceil(r.v*2)/2;$('tMix').value=r.mix;$('tPump').value=r.pump});
+
+  /* ---------- strength curve (ACI 209) ---------- */
+  var X0=46,X1=620,Y0=340,Y1=20,F=4000;
+  var f=function(t){return t/(4+0.85*t)};
+  var sx=function(t){return X0+(t-1)/27*(X1-X0)},sy=function(p){return Y0-p*(Y0-Y1)/1.05};
+  var pts=[];for(var t=1;t<=28.001;t+=0.25)pts.push([sx(t),sy(f(t))]);
+  var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' L');
+  $('curveBg').setAttribute('d',d);$('curve').setAttribute('d',d);
+  var ax='';[0,.25,.5,.75,1].forEach(function(p){ax+='<line x1="'+X0+'" x2="'+X1+'" y1="'+sy(p)+'" y2="'+sy(p)+'" stroke="#d6d2c8" stroke-width="1"/><text x="'+(X0-8)+'" y="'+(sy(p)+4)+'" text-anchor="end">'+(p*100)+'%</text>'});
+  [1,7,14,21,28].forEach(function(t){ax+='<text x="'+sx(t)+'" y="'+(Y0+22)+'" text-anchor="middle">D'+t+'</text>'});
+  $('axis').innerHTML=ax;
+  var ms='';[[7,'7-day cylinders'],[28,'Design strength']].forEach(function(m){var x=sx(m[0]),y=sy(f(m[0]));ms+='<line x1="'+x+'" x2="'+x+'" y1="'+y+'" y2="'+Y0+'" stroke="#151513" stroke-width="1"/><rect x="'+(x-4)+'" y="'+(y-4)+'" width="8" height="8" fill="#151513"/><text x="'+(m[0]===28?x-10:x+12)+'" y="'+(m[0]===28?y-14:y+22)+'" text-anchor="'+(m[0]===28?'end':'start')+'">'+m[1]+' · '+Math.min(100,Math.round(f(m[0])*100))+'%</text>'});
+  $('ms').innerHTML=ms;
+  var curveLen=$('curve').getTotalLength();$('curve').style.strokeDasharray=curveLen;
+  var NOTES=[[1,'Day 1: firm enough to walk on. Keep it wet. Don’t load it.'],[3,'Day 3: formwork can come off walls and column sides.'],[7,'Day 7: we crush the first two cylinders. Expect about 70%.'],[14,'Day 14: most slab props can usually come out, if your engineer agrees.'],[21,'Day 21: close to full strength. Light traffic is fine.'],[28,'Day 28: design strength. This is the number on your report.']];
+  function setDay(t){
+    var p=f(t),x=sx(t),y=sy(p);
+    $('day').textContent=(t<10?'0':'')+Math.floor(t);
+    $('pctv').textContent=Math.min(100,Math.round(p*100))+'%';
+    $('psiv').textContent=fmt(Math.round(F*Math.min(p,1.0)/10)*10);
+    $('dot').setAttribute('cx',x);$('dot').setAttribute('cy',y);
+    $('vline').setAttribute('x1',x);$('vline').setAttribute('x2',x);$('vline').setAttribute('y1',y);$('vline').setAttribute('y2',Y0);
+    var k=Math.max(1,Math.round((t-1)*4)),seg=pts.slice(0,k+1);
+    $('area').setAttribute('d','M'+X0+' '+Y0+' L'+seg.map(function(q){return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(' L')+' L'+seg[seg.length-1][0].toFixed(1)+' '+Y0+' Z');
+    $('curve').style.strokeDashoffset=curveLen*(1-(t-1)/27);
+    var n=NOTES[0][1];NOTES.forEach(function(q){if(t>=q[0])n=q[1]});$('cureNote').textContent=n;
+  }
+  setDay(28);
+
+  /* ---------- delivery map ---------- */
+  var LON0=120.45,LAT0=15.75,KX=107.5,KY=110.6;
+  var px=function(lon){return (lon-LON0)*KX},py=function(lat){return (LAT0-lat)*KY};
+  var PLANTS=[['01','San Fernando',15.03,120.69],['02','Malolos',14.843,120.811],['03','Tarlac City',15.486,120.59]];
+  var TOWNS=[['Angeles City',15.145,120.585],['Mabalacat',15.222,120.573],['Porac',15.072,120.542],['Guagua',14.965,120.633],['Lubao',14.939,120.601],['Mexico',15.065,120.72],['Arayat',15.15,120.769],['Candaba',15.093,120.828],['Apalit',14.949,120.758],['Calumpit',14.915,120.766],['Hagonoy',14.834,120.732],['Plaridel',14.887,120.857],['Baliuag',14.954,120.897],['Guiguinto',14.833,120.879],['Bocaue',14.798,120.926],['Marilao',14.758,120.948],['Meycauayan',14.737,120.961],['Valenzuela',14.7,120.983],['San Ildefonso',15.079,120.942],['San Miguel',15.146,120.978],['Bamban',15.274,120.566],['Capas',15.329,120.59],['Concepcion',15.325,120.655],['Gerona',15.607,120.598],['Paniqui',15.668,120.58],['La Paz',15.442,120.729],['Victoria',15.578,120.682]];
+  var ROAD=1.35,SPEED=30,LOAD=10;
+  var kmToMin=function(km){return Math.round(km*ROAD/SPEED*60+LOAD)},minToKm=function(m){return (m-LOAD)/60*SPEED/ROAD};
+  function nearest(lat,lon){var best=null;PLANTS.forEach(function(p){var dx=(lon-p[3])*KX,dy=(lat-p[2])*KY,km=Math.sqrt(dx*dx+dy*dy);if(!best||km<best.km)best={p:p,km:km}});best.min=kmToMin(best.km);return best}
+  var m='';
+  for(var lo=120.5;lo<121.1;lo+=0.1)m+='<line class="gl" x1="'+px(lo)+'" x2="'+px(lo)+'" y1="0" y2="127"/><text class="gt" x="'+(px(lo)+.4)+'" y="2.2">'+lo.toFixed(1)+'°E</text>';
+  for(var la=14.6;la<15.75;la+=0.1)m+='<line class="gl" y1="'+py(la)+'" y2="'+py(la)+'" x1="0" x2="70"/><text class="gt" x=".5" y="'+(py(la)-.5)+'">'+la.toFixed(1)+'°N</text>';
+  PLANTS.forEach(function(p){m+='<circle class="ring" cx="'+px(p[3])+'" cy="'+py(p[2])+'" r="'+minToKm(90).toFixed(2)+'"/><circle class="ring45" cx="'+px(p[3])+'" cy="'+py(p[2])+'" r="'+minToKm(45).toFixed(2)+'"/>'});
+  m+='<path class="route" id="route" d=""/>';
+  TOWNS.forEach(function(t,i){var n=nearest(t[1],t[2]);m+='<g class="town'+(n.min>90?' out':'')+'" id="tw'+i+'"><circle cx="'+px(t[2])+'" cy="'+py(t[1])+'" r=".55"/><text x="'+(px(t[2])+1.1)+'" y="'+(py(t[1])+.6)+'">'+t[0]+'</text></g>'});
+  PLANTS.forEach(function(p){m+='<g class="plant"><rect x="'+(px(p[3])-1.1)+'" y="'+(py(p[2])-1.1)+'" width="2.2" height="2.2"/><text x="'+(px(p[3])-1.6)+'" y="'+(py(p[2])+3.6)+'" text-anchor="end">P'+p[0]+'</text></g>'});
+  $('map').innerHTML=m;
+  var opts=TOWNS.map(function(t,i){return '<option value="'+i+'">'+t[0]+'</option>'}).sort(function(a,b){return a.replace(/<[^>]+>/g,'')<b.replace(/<[^>]+>/g,'')?-1:1}).join('');
+  $('town').innerHTML=opts;$('tTown').innerHTML=opts+'<option value="x">Somewhere else</option>';
+  function pickTown(i){
+    var t=TOWNS[i],n=nearest(t[1],t[2]);
+    document.querySelectorAll('.map .town').forEach(function(g){g.classList.remove('sel')});$('tw'+i).classList.add('sel');
+    $('route').setAttribute('d','M'+px(n.p[3])+' '+py(n.p[2])+' L'+px(t[2])+' '+py(t[1]));
+    $('mins').textContent=n.min;
+    $('from').textContent='From Plant '+n.p[0]+', '+n.p[1]+' · about '+Math.round(n.km*ROAD)+' km by road.';
+    var v=$('verdict');v.classList.toggle('no',n.min>90);v.textContent=n.min>90?'Outside the window · ask about a mobile plant':'Inside the 90-minute window';
+    $('tTown').value=String(i);
+  }
+  $('town').addEventListener('change',function(){pickTown(+this.value)});
+  $('town').value='4';pickTown(4);
+
+  /* ---------- ticket ---------- */
+  var today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+  var tk=document.querySelector('#ticket input[type=date]');tk.min=today.toISOString().slice(0,10);
+  $('tno').textContent=String(Math.floor(today.getTime()/1000)%1000000).padStart(6,'0');
+  $('ticket').addEventListener('submit',function(e){e.preventDefault();
+    var s=$('stamp');$('stampDate').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Manila',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date()).toUpperCase();
+    s.classList.remove('on');void s.getBoundingClientRect();s.classList.add('on');$('sent').style.display='block'});
+
+  /* ================= motion ================= */
+  if(!document.documentElement.classList.contains('js')||!window.gsap){window.__ilReady=true;return}
+  gsap.registerPlugin(ScrollTrigger);
+  window.__ilReady=true;
+
+  /* hero */
+  var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.to('.hero h1 .ln>span',{y:0,duration:1.2,stagger:.09})
+    .to('.hero .shot .frame',{clipPath:'inset(0 0 0% 0)',duration:1.4,ease:'expo.inOut'},0.1)
+    .from('.hero .shot img',{scale:1.25,duration:1.8,ease:'expo.out'},0.3)
+    .to('.hero .rv',{opacity:1,y:0,duration:1,stagger:.08},0.5);
+  /* wordmark: concrete pours into the letters */
+  gsap.set('#pour',{y:268});
+  tl.to('#pour',{y:-14,duration:2.6,ease:'power2.inOut'},0.6);
+  var waves=gsap.to(['#wave','#wave2'],{x:250,duration:2.4,ease:'none',repeat:-1});
+  gsap.to('#wave2',{y:6,duration:1.7,ease:'sine.inOut',yoyo:true,repeat:-1});
+  tl.add(function(){gsap.to(waves,{timeScale:0,duration:2.5,ease:'power2.out'});gsap.to('#wave2',{opacity:0,duration:2.5})},2.9);
+  gsap.to('.hero .shot img',{yPercent:8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  var mm=gsap.matchMedia();
+  /* river to slab: pinned horizontal run on wide screens */
+  mm.add('(min-width:900px)',function(){
+    var track=$('track');
+    var dist=function(){return track.scrollWidth-window.innerWidth};
+    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'#flow',start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.6,invalidateOnRefresh:true,
+      onUpdate:function(s){$('pipe').style.width=(s.progress*100)+'%'}}});
+  });
+  mm.add('(max-width:899px)',function(){
+    gsap.utils.toArray('.stage').forEach(function(s){gsap.from(s,{opacity:0,y:40,duration:1,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 85%'}})});
+  });
+  /* strength: pin and scrub day 1 → 28 */
+  mm.add('(min-width:900px) and (min-height:640px)',function(){
+    setDay(1);
+    var o={t:1};
+    gsap.to(o,{t:28,ease:'none',onUpdate:function(){setDay(o.t)},scrollTrigger:{trigger:'#curePin',start:'center center',end:'+=1400',pin:true,scrub:.5}});
+    return function(){setDay(28)};
+  });
+  mm.add('(max-width:899px), (max-height:639px)',function(){
+    setDay(1);var o={t:1};
+    gsap.to(o,{t:28,ease:'none',onUpdate:function(){setDay(o.t)},scrollTrigger:{trigger:'#cureSvg',start:'top 80%',end:'bottom 30%',scrub:.5}});
+    return function(){setDay(28)};
+  });
+  /* the rest just rises in */
+  gsap.utils.toArray('.up').forEach(function(el){gsap.to(el,{opacity:1,y:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}})});
+  gsap.utils.toArray('.shead h2').forEach(function(h){gsap.from(h,{yPercent:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}})});
+  gsap.from('#mixRows tr',{opacity:0,x:-20,duration:.8,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:'#mixRows',start:'top 85%'}});
+  gsap.from('.map .town',{opacity:0,duration:.5,stagger:.025,scrollTrigger:{trigger:'#map',start:'top 75%'}});
+  gsap.from('.map .ring,.map .ring45',{attr:{r:0},duration:1.6,ease:'expo.out',stagger:.15,scrollTrigger:{trigger:'#map',start:'top 75%'}});
+  gsap.from('footer .bigname',{yPercent:40,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 90%'}});
+  window.addEventListener('load',function(){ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>
