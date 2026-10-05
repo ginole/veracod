@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Happy Ripples Beach Resort | San Fabian, Pangasinan</title>
+<meta name="description" content="Two pools on the sunset side of the Lingayen Gulf. A big, quiet beachfront resort in San Fabian, Pangasinan.">
+<meta property="og:title" content="Happy Ripples Beach Resort">
+<meta property="og:description" content="Two pools on the sunset side of the Lingayen Gulf.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/pool-sea.webp">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<!--
+  Happy Ripples v2 (2026-10-06). Hand-built, not from build.mjs.
+  Design read: family beach-resort site for Filipino families planning trips on their phones,
+  warm-coastal and plain-spoken, native CSS + a little IntersectionObserver motion.
+  Dials: DESIGN_VARIANCE 6 / MOTION_INTENSITY 4 / VISUAL_DENSITY 4.
+  Shape system: images + panels 14px, inputs 10px, buttons full pill. One accent (sunset coral).
+-->
+<style>
+:root{
+  --bg:#F3F5F4; --bg2:#E8EEEC; --panel:#FFFFFF;
+  --ink:#13292B; --ink2:#465B5D; --dim:#6B7D7E; --rule:#D5DEDC;
+  --accent:#C4542F; --accent-ink:#FFFFFF; --accent-soft:#F6DED3;
+  --quiet:#9FC3BE; --mid:#E9C79A; --busy:#C4542F;
+  --shadow:0 18px 40px -22px rgba(19,41,43,.35);
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0F1B1C; --bg2:#152425; --panel:#1A2B2C;
+  --ink:#E6EDEB; --ink2:#AFC0BE; --dim:#8A9C9B; --rule:#2A3D3E;
+  --accent:#E07650; --accent-ink:#1A0D07; --accent-soft:#3A2419;
+  --quiet:#4F7B76; --mid:#9C7A4C; --busy:#E07650;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.6);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:650;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(30px,4vw,46px)}
+p.lead{color:var(--ink2);max-width:58ch;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 24px;font:600 15px/1 var(--body);text-decoration:none;white-space:nowrap;transition:transform .2s cubic-bezier(.16,1,.3,1),background .2s}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-a{background:var(--accent);color:var(--accent-ink)}
+.btn-a:hover{filter:brightness(1.06)}
+.btn-o{border:1.5px solid var(--rule);color:var(--ink)}
+.btn-o:hover{border-color:var(--ink2)}
+.ph{border-radius:14px;overflow:hidden;background:var(--bg2)}
+
+/* preview note: this is a friend's page, so it says plainly that it is not live */
+.note{background:var(--ink);color:var(--bg);font-size:13.5px;text-align:center;padding:9px 16px}
+.note a{color:inherit;font-weight:600}
+
+/* nav: one line, 68px */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand{font-family:var(--display);font-weight:650;font-size:20px;text-decoration:none;letter-spacing:-.01em}
+.links{display:flex;gap:28px;font-size:15px;font-weight:500}
+.links a{text-decoration:none;color:var(--ink2)}
+.links a:hover{color:var(--ink)}
+nav .btn{padding:10px 18px;font-size:14px}
+@media(max-width:860px){.links{display:none}}
+
+/* hero: asymmetric split, text left, photo pair right */
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.kick{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(40px,5.4vw,66px);margin-top:16px;max-width:12ch}
+.hero p{color:var(--ink2);font-size:19px;max-width:40ch;margin-top:20px}
+.acts{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.pair{position:relative;padding-bottom:64px}
+.pair .big{aspect-ratio:4/3;box-shadow:var(--shadow)}
+.pair .small{position:absolute;left:-40px;bottom:0;width:46%;aspect-ratio:16/10;border:6px solid var(--bg);box-shadow:var(--shadow)}
+@media(max-width:860px){
+  .hero{padding:32px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .pair .small{left:auto;right:-8px;width:52%}
+}
+
+/* facts: four plain numbers, no cards */
+.facts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 20px 28px}
+.fact+.fact{border-left:1px solid var(--rule)}
+.fact b{display:block;font-family:var(--display);font-weight:650;font-size:40px;letter-spacing:-.02em;line-height:1}
+.fact span{display:block;color:var(--ink2);font-size:15px;margin-top:8px}
+@media(max-width:860px){.facts .wrap{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* grounds: bento, 5 cells for 5 pieces of content */
+section{padding:96px 0}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:260px 260px;gap:14px;margin-top:40px}
+.bento .ph{position:relative}
+.b1{grid-column:1/3;grid-row:1/3}
+.b2{grid-column:3;grid-row:1/3}
+.b3{grid-column:4;grid-row:1}
+.b4{grid-column:4;grid-row:2}
+.bento figcaption{margin-top:10px;font-size:14px;color:var(--dim)}
+.cap{position:absolute;inset:auto 0 0 0;padding:28px 16px 12px;font-size:14px;font-weight:500;color:#fff;background:linear-gradient(transparent,rgba(10,22,23,.62))}
+.story{max-width:62ch}
+.story h2{margin-bottom:18px}
+.story p{color:var(--ink2)}
+.story p+p{margin-top:14px}
+@media(max-width:860px){
+  .story{grid-template-columns:1fr;gap:18px}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:240px 200px 200px}
+  .b1{grid-column:1/3;grid-row:1}.b2{grid-column:1;grid-row:2/4}.b3{grid-column:2;grid-row:2}.b4{grid-column:2;grid-row:3}
+}
+
+/* rooms: two featured with photos, the rest as a compact panel */
+#rooms{background:var(--bg2)}
+.rooms{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.room .ph{aspect-ratio:16/9}
+.room h3{font-size:26px;margin-top:18px}
+.room p{color:var(--ink2);margin-top:6px}
+.room .from{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink)}
+.more{margin-top:28px;background:var(--panel);border-radius:14px;padding:8px 28px;display:grid;grid-template-columns:repeat(3,1fr)}
+.more div{padding:20px 0}
+.more div+div{padding-left:24px;border-left:1px solid var(--rule)}
+.more b{display:block;font-family:var(--display);font-size:19px;font-weight:650}
+.more span{display:block;color:var(--ink2);font-size:15px;margin-top:4px}
+.fine{color:var(--dim);font-size:14px;margin-top:18px;max-width:70ch}
+@media(max-width:860px){
+  .rooms{grid-template-columns:1fr}
+  .more{grid-template-columns:1fr;padding:4px 20px}
+  .more div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+}
+
+/* when to come: real sunset time + a 12-month strip */
+.when{display:grid;grid-template-columns:4fr 8fr;gap:56px;align-items:start}
+.sun{background:var(--panel);border-radius:14px;padding:28px;box-shadow:var(--shadow)}
+.sun small{display:block;color:var(--dim);font-size:14px}
+.sun b{display:block;font-family:var(--display);font-weight:650;font-size:54px;letter-spacing:-.03em;line-height:1;margin:10px 0 8px}
+.sun p{color:var(--ink2);font-size:15px}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:28px}
+.m{text-align:center;font-size:13px;color:var(--ink2)}
+.m i{display:block;height:44px;border-radius:10px;margin-bottom:8px}
+.q i{background:var(--quiet)}.r i{background:var(--mid)}.h i{background:var(--busy)}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.legend b{display:flex;align-items:center;gap:8px;font-size:15px}
+.legend b::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--c)}
+.legend p{color:var(--ink2);font-size:15px;margin-top:6px}
+@media(max-width:860px){
+  .when{grid-template-columns:1fr;gap:28px}
+  .months{gap:3px}.m{font-size:11px}.m i{height:34px;border-radius:6px}
+  .legend{grid-template-columns:1fr;gap:16px}
+}
+
+/* getting here: one owner quote, full width */
+#find{background:var(--bg2)}
+.quote{font-family:var(--display);font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.3;letter-spacing:-.01em;max-width:30ch}
+.who{color:var(--dim);font-size:15px;margin-top:16px}
+.where{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:48px;margin-top:44px}
+.where small{display:block;color:var(--dim);font-size:14px}
+.where div{font-weight:500;margin-top:4px}
+@media(max-width:860px){.where{grid-template-columns:1fr;gap:20px}}
+
+/* book: form + direct lines */
+.book{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:40px;align-items:start}
+form{background:var(--panel);border-radius:14px;padding:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f{display:grid;gap:8px}
+.f.full{grid-column:1/3}
+label{font-size:14px;font-weight:600;color:var(--ink)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:11px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.err{color:var(--accent);font-size:13.5px;min-height:0}
+form .btn{grid-column:1/3;justify-content:center;border:0;cursor:pointer;padding:15px}
+.helper{grid-column:1/3;color:var(--dim);font-size:14px}
+.lines a{display:flex;gap:14px;align-items:flex-start;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--rule)}
+.lines a:first-child{padding-top:0}
+.lines i{font-size:24px;color:var(--accent);margin-top:2px}
+.lines b{display:block;font-weight:600}
+.lines span{display:block;color:var(--ink2);font-size:15px}
+.steps{margin-top:24px;color:var(--ink2);font-size:15px;counter-reset:s;display:grid;gap:10px}
+.steps li{list-style:none;display:grid;grid-template-columns:28px 1fr}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:650;color:var(--accent)}
+@media(max-width:860px){.book{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:22px}.f.full,form .btn,.helper{grid-column:1}}
+
+/* owner note: the only place that talks to the owner, kept short */
+.owner{border-top:1px solid var(--rule);padding:72px 0}
+.owner .wrap{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
+.owner h2{font-size:clamp(26px,3vw,36px)}
+.owner p{color:var(--ink2);margin-top:12px;max-width:56ch}
+.owner ul{list-style:none;display:grid;gap:10px;color:var(--ink2);font-size:15.5px}
+.owner li{padding-left:22px;position:relative}
+.owner li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent)}
+@media(max-width:860px){.owner .wrap{grid-template-columns:1fr;gap:24px}}
+footer{padding:28px 0 96px;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* mobile action bar */
+.bar{display:none}
+@media(max-width:860px){
+  .bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:30}
+  .bar .btn{justify-content:center;box-shadow:var(--shadow)}
+  .bar .btn-o{background:var(--panel)}
+}
+
+/* motion: entry + reveal only, off for reduced motion */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .hero .rv{transition-delay:calc(var(--i,0)*90ms)}
+}
+</style>
+</head>
+<body>
+<div class="note">A preview built for Happy Ripples by <a href="https://veracod.com" target="_blank" rel="noreferrer">Veracod</a>. Not live yet, nothing here is final. <a href="#owner">What happens next</a></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">Happy Ripples</a>
+  <div class="links"><a href="#grounds">The place</a><a href="#rooms">Rooms</a><a href="#when">When to come</a><a href="#find">Getting here</a></div>
+  <a class="btn btn-a" href="#book">Check dates</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <p class="kick rv" style="--i:0">San Fabian, Pangasinan</p>
+    <h1 class="rv" style="--i:1">Two pools on the sunset side of the gulf.</h1>
+    <p class="rv" style="--i:2">A big, quiet beachfront resort with room for the whole family, and staff who look after you.</p>
+    <div class="acts rv" style="--i:3"><a class="btn btn-a" href="#book">Check dates</a><a class="btn btn-o" href="#rooms">See the rooms</a></div>
+  </div>
+  <div class="pair rv" style="--i:2">
+    <div class="ph big"><img src="img/pool-sea.webp" alt="The lap pool at Happy Ripples, with the lawn and palm trees around it" width="960" height="720" fetchpriority="high"></div>
+    <div class="ph small"><img src="img/pool-kids.webp" alt="Children swimming in the pool by the restaurant" width="960" height="720" loading="lazy"></div>
+  </div>
+</div></header>
+
+<div class="facts"><div class="wrap">
+  <div class="fact rv"><b>2</b><span>pools, one by the sand</span></div>
+  <div class="fact rv"><b>8.5</b><span>guests' score for the staff</span></div>
+  <div class="fact rv"><b>5</b><span>room types</span></div>
+  <div class="fact rv"><b>8</b><span>guests in the biggest house</span></div>
+</div></div>
+
+<section id="grounds"><div class="wrap">
+  <div class="story">
+    <h2 class="rv">Room to breathe on the Lingayen Gulf.</h2>
+    <div class="rv">
+      <p>Happy Ripples is on the shore at Mabilao, on the west side of the Lingayen Gulf. That is why the sun sets over the water here.</p>
+      <p>Two pools, a long lawn, a volleyball court, BBQ grills, billiards and a restaurant. Guests keep saying the same two things: the staff look after you, and there is space for everyone.</p>
+    </div>
+  </div>
+  <div class="bento">
+    <figure class="ph b1 rv"><img src="img/pool-lap.webp" alt="Families swimming in the big pool beside the restaurant" loading="lazy"><figcaption class="cap">The big pool, by the restaurant</figcaption></figure>
+    <figure class="ph b2 rv"><img src="img/lawn-dusk.webp" alt="The lawn and stone path at dusk" loading="lazy"><figcaption class="cap">The lawn at dusk</figcaption></figure>
+    <figure class="ph b3 rv"><img src="img/volleyball.webp" alt="The volleyball net on the grass" loading="lazy"><figcaption class="cap">Volleyball on the grass</figcaption></figure>
+    <figure class="ph b4 rv"><img src="img/corridor.webp" alt="The covered walkway outside the rooms" loading="lazy" style="object-position:50% 70%"><figcaption class="cap">Outside the rooms</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="rooms"><div class="wrap">
+  <h2 class="rv">Where you'll sleep.</h2>
+  <p class="lead rv">From a studio for four to a two-bedroom Capiz house for eight. Prices are what the booking sites charge. Booking direct should beat them.</p>
+  <div class="rooms">
+    <article class="room rv">
+      <div class="ph"><img src="img/room-king.webp" alt="Studio room with a king bed" loading="lazy"></div>
+      <h3>Studio</h3>
+      <p>24 sqm, sleeps 4. Also with a pool view, 30 sqm.</p>
+      <span class="from">From ₱2,400 a night</span>
+    </article>
+    <article class="room rv">
+      <div class="ph"><img src="img/room-family.webp" alt="Capiz house bedroom with three beds" loading="lazy"></div>
+      <h3>Capiz House</h3>
+      <p>Two bedrooms. House 1 is 50 sqm for 5, House 2 is 55 sqm for 8.</p>
+      <span class="from">From ₱6,300 a night</span>
+    </article>
+  </div>
+  <div class="more rv">
+    <div><b>Studio, pool view</b><span>30 sqm, sleeps 4. From ₱2,600</span></div>
+    <div><b>Garden View Villa</b><span>40 sqm, super king bed. From ₱6,000</span></div>
+    <div><b>Extra breakfast</b><span>₱150 a person. Extra bed for ages 6 to 12</span></div>
+  </div>
+  <p class="fine rv">Rates move with the season and between weekdays and weekends. Send your dates and the resort replies with the exact price.</p>
+</div></section>
+
+<section id="when"><div class="wrap when">
+  <div class="sun rv">
+    <small>Sunset tonight in San Fabian</small>
+    <b id="sunset">5:40 PM</b>
+    <p>The gulf faces west here, so the sun goes down over the water. Worked out for today's date.</p>
+  </div>
+  <div>
+    <p class="kick rv">When to come</p>
+    <h2 class="rv" style="margin-top:12px">The quiet weeks and the busy ones.</h2>
+    <div class="months rv" aria-label="Season by month">
+      <div class="m r"><i></i>Jan</div><div class="m r"><i></i>Feb</div><div class="m h"><i></i>Mar</div><div class="m h"><i></i>Apr</div><div class="m h"><i></i>May</div><div class="m q"><i></i>Jun</div><div class="m q"><i></i>Jul</div><div class="m q"><i></i>Aug</div><div class="m q"><i></i>Sep</div><div class="m q"><i></i>Oct</div><div class="m r"><i></i>Nov</div><div class="m h"><i></i>Dec</div>
+    </div>
+    <div class="legend">
+      <div class="rv"><b style="--c:var(--quiet)">Quietest</b><p>June to October. The gulf is calm and the place is nearly yours.</p></div>
+      <div class="rv"><b style="--c:var(--mid)">Regular</b><p>November to February. Weekdays are quieter than weekends.</p></div>
+      <div class="rv"><b style="--c:var(--busy)">Busiest</b><p>Holy Week, Christmas, New Year and summer weekends. Book the Capiz houses early.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="find"><div class="wrap">
+  <p class="quote rv">"Take the bus to Mangaldan, then another bus going to San Fernando, then get off at Osave in Mabilao."</p>
+  <p class="who rv">How to get here, in the resort's own words</p>
+  <div class="where rv">
+    <div><small>Address</small><div>Brgy. Mabilao, San Fabian, Pangasinan 2433</div></div>
+    <div><small>Check in / check out</small><div>2:00 PM / 12:00 noon</div></div>
+    <div><small>Map</small><div><a href="https://www.google.com/maps/search/?api=1&query=16.1596813,120.4231003" target="_blank" rel="noreferrer">Open in Google Maps</a></div></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap">
+  <h2 class="rv">Tell us your dates.</h2>
+  <p class="lead rv">This goes straight to the resort. No booking site in the middle, no commission on top.</p>
+  <div class="book">
+    <form id="ask" class="rv" novalidate>
+      <div class="f"><label for="in">Check in</label><input id="in" type="date" required><span class="err" id="e-in"></span></div>
+      <div class="f"><label for="out">Check out</label><input id="out" type="date" required><span class="err" id="e-out"></span></div>
+      <div class="f"><label for="guests">Guests</label><input id="guests" type="number" min="1" max="40" value="2"></div>
+      <div class="f"><label for="room">Room</label><select id="room"><option>Any room</option><option>Studio</option><option>Studio, pool view</option><option>Garden View Villa</option><option>Capiz House 1</option><option>Capiz House 2</option></select></div>
+      <div class="f full"><label for="name">Your name</label><input id="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
+      <div class="f full"><label for="msg">Anything we should know?</label><textarea id="msg" rows="3"></textarea></div>
+      <button class="btn btn-a" type="submit">Send my dates</button>
+      <p class="helper">Opens your email with everything filled in. Prefer Messenger? Use the Facebook link.</p>
+    </form>
+    <div class="rv">
+      <div class="lines">
+        <a href="https://m.me/HappyRipplesBeachResort" target="_blank" rel="noreferrer"><i class="ph-light ph-messenger-logo"></i><div><b>Message on Facebook</b><span>14,000 people follow the page</span></div></a>
+        <a href="tel:+639277138968"><i class="ph-light ph-phone"></i><div><b>0927 713 8968</b><span>Call or text, 24-hour front desk</span></div></a>
+        <a href="mailto:happyripples08@gmail.com"><i class="ph-light ph-envelope-simple"></i><div><b>happyripples08@gmail.com</b><span>Groups and functions</span></div></a>
+      </div>
+      <ol class="steps">
+        <li>Send your dates and how many of you there are.</li>
+        <li>The resort replies with the rate for those exact dates.</li>
+        <li>Hold the dates with a deposit, settle the rest at check in.</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<div class="owner" id="owner"><div class="wrap">
+  <div>
+    <h2>For the owners: this is a starting point.</h2>
+    <p>Everything here came from public listings, so some of it will be wrong. Tell us what to change and we change it. When you like it, it goes on your own domain, in your name.</p>
+  </div>
+  <ul>
+    <li>Send 10 phone photos, especially the beach. There is not one beach photo of yours online yet.</li>
+    <li>Tell us the real rates and anything that has changed.</li>
+    <li>You can edit rooms, rates and notices yourself from your phone afterwards.</li>
+  </ul>
+</div></div>
+
+<footer><div class="wrap">
+  <span>Happy Ripples Beach Resort, Brgy. Mabilao, San Fabian, Pangasinan</span>
+  <span>Preview by <a href="https://veracod.com" target="_blank" rel="noreferrer">Veracod</a>, not affiliated with the resort.</span>
+</div></footer>
+
+<div class="bar"><a class="btn btn-o" href="tel:+639277138968"><i class="ph-light ph-phone"></i>Call</a><a class="btn btn-a" href="#book">Check dates</a></div>
+
+<script>
+document.documentElement.classList.add('js');
+/* reveal on scroll (IntersectionObserver, no scroll listener) */
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+/* sunset for San Fabian (16.16 N, 120.42 E, UTC+8), NOAA approximation */
+(function(){
+  var lat=16.1597,lng=120.4231,tz=8,d=new Date();
+  var rad=Math.PI/180,start=new Date(d.getFullYear(),0,0),N=Math.floor((d-start)/864e5);
+  var g=2*Math.PI/365*(N-1+(18-12)/24);
+  var eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  var dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  var ha=Math.acos(Math.cos(90.833*rad)/(Math.cos(lat*rad)*Math.cos(dec))-Math.tan(lat*rad)*Math.tan(dec))/rad;
+  var mins=720-4*(lng-ha)-eq+tz*60, h=Math.floor(mins/60), m=Math.round(mins%60);
+  if(m===60){h++;m=0}
+  document.getElementById('sunset').textContent=((h+11)%12+1)+':'+String(m).padStart(2,'0')+(h>=12?' PM':' AM');
+})();
+/* enquiry form: inline errors, then a pre-filled email */
+(function(){
+  var f=document.getElementById('ask'),$=function(id){return document.getElementById(id)};
+  var today=new Date().toISOString().slice(0,10);$('in').min=today;$('out').min=today;
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var ok=true,set=function(id,t){$('e-'+id).textContent=t;if(t)ok=false};
+    set('in',$('in').value?'':'Pick a check-in date.');
+    set('out',!$('out').value?'Pick a check-out date.':($('in').value&&$('out').value<=$('in').value?'Check-out has to be after check-in.':''));
+    set('name',$('name').value.trim()?'':'So the resort knows who to reply to.');
+    if(!ok)return;
+    var body='Hi Happy Ripples,\n\nCheck in: '+$('in').value+'\nCheck out: '+$('out').value+'\nGuests: '+$('guests').value+'\nRoom: '+$('room').value+'\nName: '+$('name').value.trim()+'\n\n'+$('msg').value.trim();
+    location.href='mailto:happyripples08@gmail.com?subject='+encodeURIComponent('Dates enquiry: '+$('in').value+' to '+$('out').value)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
+<script>
+(function(){try{
+var EP="https://p.veracod.com/e",S="happy-ripples",K="demo";
+var hn=location.hostname;
+if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
+if(navigator.webdriver)return;
+var L=window.localStorage;
+if(location.search.indexOf("me=1")>=0){try{L.setItem("_vme","1")}catch(e){}}
+var me=L.getItem("_vme")==="1"?"1":"";
+var vid=L.getItem("_vv");
+if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
+var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
+var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
+var sid=Math.random().toString(36).slice(2,10),t0=Date.now(),dp=0,cl=[],ref=(document.referrer||"").slice(0,120);
+function dep(){var sc=document.documentElement.scrollHeight-innerHeight;var p=sc>40?Math.round(scrollY/sc*100):100;if(p>dp)dp=Math.min(100,p)}
+addEventListener("scroll",dep,{passive:true});dep();
+function tag(a){var h=a.getAttribute("href")||"";
+ if(h.indexOf("tel:")===0)return"call";
+ if(h.indexOf("mailto:")===0)return"mail";
+ if(h.indexOf("veracod.com")>=0)return"veracod";
+ if(h.indexOf("/maps")>=0)return"map";
+ if(h==="#book")return"book";
+ if(h==="#rooms")return"menu";
+ if(h.indexOf("http")===0)return"out";
+ return""}
+addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;
+ var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
+function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n
+ +"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)+(me?"&me=1":"")}
+var lastAt=0;
+function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();
+ var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
+setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
+addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});
+addEventListener("pagehide",send);
+}catch(e){}})();
+</script>
+</body>
+</html>
