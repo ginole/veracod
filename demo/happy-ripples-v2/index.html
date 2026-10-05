@@ -56,9 +56,9 @@ h2{font-size:clamp(38px,5vw,60px)}
 .note a{color:var(--ink);font-weight:600}
 
 /* hero: full-bleed photo, nav sits on it */
-.hero{position:relative;min-height:min(92dvh,860px);color:#fff;display:flex;flex-direction:column}
+.hero{position:relative;min-height:min(100dvh,max(min(92dvh,860px),36vw));color:#fff;display:flex;flex-direction:column}
 .hero>.bg{position:absolute;inset:0;overflow:hidden}
-.hero>.bg img{object-position:50% 42%}
+.hero>.bg img{object-position:50% 70%}
 @media(max-width:860px){.hero>.bg img{object-position:30% 50%}}
 .hero>.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,18,19,.45) 0%,rgba(8,18,19,0) 28%,rgba(8,18,19,0) 45%,rgba(8,18,19,.62) 100%)}
 .top{position:relative;z-index:2}
