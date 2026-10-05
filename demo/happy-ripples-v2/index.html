@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/pool-sea.webp">
+<link rel="preload" as="image" href="img/sunset.webp">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
 <!--
   Happy Ripples v2.1 (2026-10-06). Hand-built, not from build.mjs.
@@ -58,6 +58,8 @@ h2{font-size:clamp(38px,5vw,60px)}
 /* hero: full-bleed photo, nav sits on it */
 .hero{position:relative;min-height:min(92dvh,860px);color:#fff;display:flex;flex-direction:column}
 .hero>.bg{position:absolute;inset:0;overflow:hidden}
+.hero>.bg img{object-position:50% 42%}
+@media(max-width:860px){.hero>.bg img{object-position:30% 50%}}
 .hero>.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,18,19,.45) 0%,rgba(8,18,19,0) 28%,rgba(8,18,19,0) 45%,rgba(8,18,19,.62) 100%)}
 .top{position:relative;z-index:2}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
@@ -69,6 +71,8 @@ h2{font-size:clamp(38px,5vw,60px)}
 .hcopy{position:relative;z-index:2;margin-top:auto;padding-bottom:64px;width:100%}
 .hero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;line-height:1}
 .hero p{font-size:19px;max-width:38ch;margin-top:18px;opacity:.92}
+/* the sun sits left of centre in the photo: on desktop the copy moves right so it stays visible */
+@media(min-width:861px){.hc{margin-left:auto;max-width:600px}}
 @media(max-width:860px){
   .links{display:none}.top .btn{display:none}
   .hero{min-height:min(82dvh,760px)}.hcopy{padding-bottom:40px}
@@ -196,15 +200,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="note">A preview built for Happy Ripples by <a href="https://veracod.com" target="_blank" rel="noreferrer">Veracod</a>. Not live yet, nothing here is final. <a href="#owner">What happens next</a></div>
 
 <header class="hero" id="top">
-  <div class="bg"><img src="img/pool-sea.webp" alt="The lap pool at Happy Ripples, with the lawn and palm trees around it" fetchpriority="high"></div>
+  <div class="bg"><img src="img/sunset.webp" alt="Sunset over the Lingayen Gulf from the shore at Mabilao" fetchpriority="high"></div>
   <div class="top"><div class="wrap">
     <a class="brand" href="#top">Happy Ripples</a>
     <div class="links"><a href="#grounds">The place</a><a href="#rooms">Rooms</a><a href="#when">When to come</a><a href="#know">Good to know</a></div>
     <a class="btn btn-l" href="#book">Enquire</a>
   </div></div>
   <div class="hcopy wrap">
+    <div class="hc">
     <h1 class="rv" style="--i:0">Two pools on the sunset side of the gulf.</h1>
     <p class="rv" style="--i:1">A big, quiet beachfront resort in San Fabian, Pangasinan.</p>
+    </div>
   </div>
 </header>
 
@@ -227,7 +233,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
   <div class="strip">
-    <figure class="rv"><div class="ph"><img src="img/pool-kids.webp" alt="Children swimming in the second pool" loading="lazy"></div></figure>
+    <figure class="rv"><div class="ph"><img src="img/pool-sea.webp" alt="The lap pool, with the lawn and palm trees around it" loading="lazy"></div></figure>
     <p class="rv">Happy Ripples sits on the shore at Mabilao, on the west side of the Lingayen Gulf. Two pools, BBQ grills, billiards and a restaurant, with enough space that it never feels crowded.</p>
   </div>
 </div></section>
@@ -314,10 +320,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="owner" id="owner"><div class="wrap">
   <div>
     <h2>For the owners: this is a starting point.</h2>
-    <p>Everything here came from public listings, so some of it will be wrong. Tell us what to change and we change it. When you like it, it goes on your own domain, in your name.</p>
+    <p>Everything here came from public listings, so some of it will be wrong. Tell us what to change and we change it. When you like it, it goes on your own domain, in your name. There is no charge.</p>
   </div>
   <ul>
-    <li>Send 10 phone photos, especially the beach. There is not one beach photo of yours online yet.</li>
+    <li>Send 10 phone photos of the rooms, the pools and the beach.</li>
     <li>Tell us the real rates and anything that has changed.</li>
     <li>Afterwards you can change rooms, rates and notices yourself from your phone.</li>
   </ul>
