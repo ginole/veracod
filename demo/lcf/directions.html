@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>爱华团契网站：三个方向</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!--
+  Three hero directions for LCF, to let Gino pick before building the full site.
+  References looked at (2026-10-06): hillsong.com, mosaic.org ("Welcome Home" heroes, restrained palette, huge type),
+  churchome.org (white editorial, giant headline). Motion borrows the warm drifting bokeh of LCF's own worship slides.
+  Borrowed direction only: no copy, no photos, no code from those sites.
+-->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#222}
+.label{position:sticky;top:0;z-index:50;background:#FFF4C4;color:#5C4A00;font-size:14px;padding:10px 16px;text-align:center;border-bottom:1px dashed #C9A227}
+.tag{position:absolute;top:78px;right:20px;z-index:20;background:#FFF4C4;color:#5C4A00;border:1px dashed #C9A227;border-radius:999px;font-size:13.5px;padding:5px 14px;font-weight:700}
+section.hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;max-width:1200px;width:100%;margin:0 auto;padding:22px 28px}
+.nav b{font-family:'Noto Serif SC',serif;font-size:21px;font-weight:700}
+.nav span{display:flex;gap:28px;font-size:14.5px;opacity:.8}
+@media(max-width:760px){.nav span{display:none}}
+.body{position:relative;z-index:10;max-width:1200px;width:100%;margin:auto;padding:0 28px 12vh}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;border-radius:999px;padding:13px 26px;font-size:15.5px;font-weight:500;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.btn:hover{transform:translateY(-2px)}
+.rise{opacity:0;transform:translateY(28px);animation:rise 1.4s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.d1{animation-delay:.25s}.d2{animation-delay:.5s}.d3{animation-delay:.75s}.d4{animation-delay:1s}
+
+/* A: warm light, like the worship slides */
+#a{color:#fff;background:linear-gradient(180deg,#2B0F14 0%,#5A1C22 45%,#8E3A28 100%)}
+#a .k{font-size:14px;letter-spacing:.3em;opacity:.75}
+#a h1{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(64px,12vw,168px);line-height:1.05;margin-top:16px;text-shadow:0 8px 40px rgba(60,10,10,.35)}
+#a p{font-size:clamp(17px,1.6vw,20px);opacity:.88;margin-top:18px;max-width:30em;font-weight:300}
+#a .btn-1{background:#fff;color:#4A1A1A}
+#a .btn-2{border:1px solid rgba(255,255,255,.55);color:#fff}
+
+/* B: morning light, white editorial */
+#b{color:#1C1A17;background:#FAF7F1}
+#b .sun{position:absolute;width:min(70vw,820px);aspect-ratio:1;right:-12vw;top:-18vw;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,rgba(255,196,120,.95),rgba(246,150,120,.55) 38%,rgba(246,150,120,0) 70%);filter:blur(30px);animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:translate(0,0) scale(1);opacity:.85}to{transform:translate(-3vw,2vw) scale(1.08);opacity:1}}
+#b .k{font-size:14px;letter-spacing:.3em;color:#9A6B3C}
+#b h1{font-family:'Noto Serif SC',serif;font-weight:700;font-size:clamp(68px,13vw,184px);line-height:1;margin-top:18px;letter-spacing:.04em}
+#b h1 i{font-style:normal;display:inline-block;opacity:0;transform:translateY(40px);animation:rise 1.2s cubic-bezier(.16,1,.3,1) forwards}
+#b p{font-size:clamp(17px,1.6vw,20px);color:#5B5650;margin-top:22px;max-width:30em}
+#b .btn-1{background:#1C1A17;color:#FAF7F1}
+#b .btn-2{border:1px solid #CFC8BC;color:#1C1A17}
+#b .line{position:relative;z-index:10;max-width:1200px;width:100%;margin:0 auto;padding:0 28px 34px;display:flex;gap:40px;flex-wrap:wrap;color:#5B5650;font-size:14.5px}
+#b .line b{color:#1C1A17;font-weight:500}
+
+/* C: words made of light */
+#c{color:#F3EEE6;background:#0E0B0A}
+#c .k{font-size:14px;letter-spacing:.3em;color:#E7B76A}
+#c .ghost{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(76px,15vw,220px);line-height:1;margin-top:10px;color:transparent;height:1.05em}
+#c p{font-size:clamp(17px,1.6vw,20px);opacity:.78;margin-top:18px;max-width:30em;font-weight:300}
+#c .btn-1{background:#E7B76A;color:#1A1205}
+#c .btn-2{border:1px solid rgba(243,238,230,.4);color:#F3EEE6}
+
+.foot{background:#111;color:#bbb;text-align:center;font-size:14px;padding:28px 16px 48px;line-height:1.8}
+@media (prefers-reduced-motion:reduce){.rise,#b h1 i{animation:none;opacity:1;transform:none}#b .sun{animation:none}}
+</style>
+</head>
+<body>
+<div class="label">爱华团契网站：三个方向，往下滑看。只是首屏样子，挑中一个我再做完整网站。</div>
+
+<section class="hero" id="a">
+  <span class="tag">方向 A · 暖光（像敬拜投影）</span>
+  <canvas id="ca"></canvas>
+  <div class="nav"><b>爱华团契</b><span>聚会　活动　讲道　第一次来　联系</span></div>
+  <div class="body">
+    <div class="k rise">LOVE CHINESE FELLOWSHIP · MANILA</div>
+    <h1 class="rise d1">欢迎回家</h1>
+    <p class="rise d2">马尼拉的华语基督徒团契。周六晚 Ortigas，周日 Makati，都有车接车送。</p>
+    <div class="btns rise d3"><a class="btn btn-1" href="#a">聚会时间和地点</a><a class="btn btn-2" href="#a">第一次来？</a></div>
+  </div>
+</section>
+
+<section class="hero" id="b">
+  <span class="tag">方向 B · 晨光留白</span>
+  <div class="sun"></div>
+  <div class="nav"><b>爱华团契</b><span>聚会　活动　讲道　第一次来　联系</span></div>
+  <div class="body">
+    <div class="k rise">爱华团契 · LOVE CHINESE FELLOWSHIP</div>
+    <h1><i style="animation-delay:.2s">欢</i><i style="animation-delay:.35s">迎</i><i style="animation-delay:.5s">回</i><i style="animation-delay:.65s">家</i></h1>
+    <p class="rise d3">马尼拉的华语基督徒团契，2009 年成立。用中文一起敬拜、一起吃饭、一起生活。</p>
+    <div class="btns rise d4"><a class="btn btn-1" href="#b">聚会时间和地点</a><a class="btn btn-2" href="#b">第一次来？</a></div>
+  </div>
+  <div class="line rise d4"><span><b>周六 6:00 PM</b>　Ortigas 团契聚会 · 有中国餐</span><span><b>周日</b>　Makati 主日聚会</span><span><b>车接车送</b>　两处都有</span></div>
+</section>
+
+<section class="hero" id="c">
+  <span class="tag">方向 C · 光写成的字</span>
+  <canvas id="cc"></canvas>
+  <div class="nav"><b>爱华团契</b><span>聚会　活动　讲道　第一次来　联系</span></div>
+  <div class="body">
+    <div class="k rise">爱华团契 · LOVE CHINESE FELLOWSHIP</div>
+    <div class="ghost" id="ghost" aria-hidden="true">欢迎回家</div>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">爱华团契，欢迎回家</h1>
+    <p class="rise d2">马尼拉的华语基督徒团契。周六晚 Ortigas，周日 Makati，都有车接车送。</p>
+    <div class="btns rise d3"><a class="btn btn-1" href="#c">聚会时间和地点</a><a class="btn btn-2" href="#c">第一次来？</a></div>
+  </div>
+</section>
+
+<div class="foot">A：暖色光点慢慢飘，和你们敬拜时投影的画面一个感觉。<br>B：大面积留白 + 一团慢慢呼吸的晨光，字一个一个浮现，最安静。<br>C：深色底，「欢迎回家」四个字是用流动的光填出来的，最有冲击力。</div>
+
+<script>
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ?only=a|b|c shows one direction (for checking on a phone) */
+(function(){var m=location.search.match(/only=([abc])/);if(!m)return;['a','b','c'].forEach(function(k){if(k!==m[1])document.getElementById(k).style.display='none'})})();
+/* warm bokeh field; mode 'fill' = whole canvas, mode 'text' = only inside the given text */
+function bokeh(canvas,opts){
+  var ctx=canvas.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),W,H,parts=[];
+  var cols=opts.colors;
+  function size(){var r=canvas.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(opts.count*(W*H)/(1280*800));parts=[];for(var i=0;i<n;i++)parts.push(mk(true))}
+  function mk(any){var r=opts.rmin+Math.random()*(opts.rmax-opts.rmin);return{x:Math.random()*W,y:any?Math.random()*H:H+r,r:r,
+    vy:-(0.12+Math.random()*0.35)*(opts.speed||1),vx:(Math.random()-.5)*0.18,a:0.25+Math.random()*0.55,c:cols[Math.floor(Math.random()*cols.length)],ph:Math.random()*6.28}}
+  function frame(t){
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
+    if(opts.mode==='text'){var lg=ctx.createLinearGradient(0,0,W,0);lg.addColorStop(0,'rgba(231,170,100,.55)');lg.addColorStop(.5,'rgba(250,215,160,.62)');lg.addColorStop(1,'rgba(225,140,95,.55)');ctx.fillStyle=lg;ctx.fillRect(0,0,W,H)}
+    ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<parts.length;i++){var p=parts[i];
+      if(!reduce){p.y+=p.vy;p.x+=p.vx+Math.sin(t/2400+p.ph)*0.12;if(p.y<-p.r){parts[i]=mk(false);continue}}
+      var tw=0.75+0.25*Math.sin(t/900+p.ph);
+      var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      g.addColorStop(0,'rgba('+p.c+','+(p.a*tw)+')');g.addColorStop(.55,'rgba('+p.c+','+(p.a*tw*.35)+')');g.addColorStop(1,'rgba('+p.c+',0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fill()}
+    if(opts.mode==='text'){
+      var el=opts.textEl,rc=el.getBoundingClientRect(),cr=canvas.getBoundingClientRect(),fs=parseFloat(getComputedStyle(el).fontSize);
+      ctx.globalCompositeOperation='destination-in';
+      ctx.font='900 '+fs+'px "Noto Serif SC", serif';ctx.textBaseline='top';ctx.fillStyle='#000';
+      ctx.fillText(el.textContent,rc.left-cr.left,rc.top-cr.top+fs*0.02);
+      /* faint glow of the field outside the letters */
+      ctx.globalCompositeOperation='destination-over';ctx.fillStyle='rgba(14,11,10,0)';
+    }
+    if(!reduce)requestAnimationFrame(frame)}
+  size();addEventListener('resize',size);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){requestAnimationFrame(frame)});else requestAnimationFrame(frame);
+}
+bokeh(document.getElementById('ca'),{colors:['255,190,120','255,150,110','255,220,170','240,120,100'],count:70,rmin:10,rmax:90,mode:'fill'});
+bokeh(document.getElementById('cc'),{colors:['255,220,160','255,180,120','255,240,210','240,160,100'],count:240,rmin:10,rmax:70,speed:1.6,mode:'text',textEl:document.getElementById('ghost')});
+</script>
+</body>
+</html>
