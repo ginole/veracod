@@ -77,7 +77,7 @@ section{padding:120px 0}
 .hbody{position:relative;z-index:5;margin:auto 0;padding:0 0 4vh}
 .headline{position:relative;margin-top:14px;font-family:var(--serif);font-weight:900;font-size:clamp(78px,15vw,212px);line-height:1;letter-spacing:.03em}
 .headline .ghost{color:transparent;display:block;height:1.06em;white-space:nowrap}
-.headline canvas{position:absolute;left:-40px;top:-40px;pointer-events:none}
+.headline canvas{position:absolute;left:-40px;top:-40px;pointer-events:none;filter:drop-shadow(0 4px 26px rgba(196,120,100,.22))}
 .hero p.sub{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);margin-top:20px;max-width:30em}
 .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 .hline{position:relative;z-index:5;border-top:1px solid var(--rule);background:rgba(250,247,241,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -260,7 +260,7 @@ footer p{color:var(--dim);font-size:14px;margin-top:10px}
 
 <section id="events"><div class="wrap">
   <div class="k rv">活动</div>
-  <h2 class="rv" style="margin-top:12px">一起过的<span class="dawn">日子</span>。</h2>
+  <h2 class="rv" style="margin-top:12px">近期<span class="dawn">活动</span>。</h2>
   <div class="tl" id="tl">
     <span class="line"></span>
     <div class="ev up rv"><time>即将举行</time><h3><span class="need">需提供：下一场活动的名称和日期</span></h3><p>例如：圣诞节聚会、跨年营会、受洗礼。</p></div>
@@ -348,17 +348,18 @@ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     W=r.width+pad*2;H=r.height+pad*2;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
     var n=Math.round(W*H/5200);parts=[];for(var i=0;i<n;i++)parts.push(mk(true));
   }
-  function mk(any){var r=fs*.12+Math.random()*fs*.32;return{x:Math.random()*W,y:any?Math.random()*H:H+r,r:r,vy:-(0.1+Math.random()*0.25),vx:(Math.random()-.5)*.15,a:.12+Math.random()*.28,c:cols[Math.floor(Math.random()*cols.length)],ph:Math.random()*6.28}}
+  function mk(any){var r=fs*.12+Math.random()*fs*.32;return{x:Math.random()*W,y:any?Math.random()*H:H+r,r:r,vy:-(0.1+Math.random()*0.25),vx:(Math.random()-.5)*.15,a:.05+Math.random()*.12,c:cols[Math.floor(Math.random()*cols.length)],ph:Math.random()*6.28}}
   function frame(t){
     ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
     /* dawn: violet -> rose -> gold, so it reads as morning light, not fire */
     var lg=ctx.createLinearGradient(0,H*.7,W,H*.3);lg.addColorStop(0,'#3F3358');lg.addColorStop(.32,'#7C4D72');lg.addColorStop(.62,'#C46E5E');lg.addColorStop(.92,'#D9A05A');
     ctx.fillStyle=lg;ctx.fillRect(0,0,W,H);
     ctx.globalCompositeOperation='lighter';
-    /* a soft band of light sweeps across every ~6 s, like sun through a window */
-    var cyc=reduce?0.42:((t-t0)%6200)/6200,bx=-fs+cyc*(W+2*fs),sw=ctx.createLinearGradient(bx-fs*.7,0,bx+fs*.7,0);
-    sw.addColorStop(0,'rgba(255,240,220,0)');sw.addColorStop(.5,'rgba(255,244,228,.62)');sw.addColorStop(1,'rgba(255,240,220,0)');
-    ctx.save();ctx.translate(bx,H/2);ctx.transform(1,0,-.35,1,0,0);ctx.translate(-bx,-H/2);ctx.fillStyle=sw;ctx.fillRect(bx-fs*.7,-H,fs*1.4,H*3);ctx.restore();
+    /* one wide, faint warm glow drifts slowly across the words (~14 s): alive, not flashy */
+    var cyc=reduce?0.45:((t-t0)%14000)/14000,gx=-fs*.6+(.5-.5*Math.cos(cyc*6.283))*(W+fs*1.2),gr=fs*1.25,
+        gg=ctx.createRadialGradient(gx,H*.5,0,gx,H*.5,gr);
+    gg.addColorStop(0,'rgba(255,214,170,.22)');gg.addColorStop(.6,'rgba(255,214,170,.07)');gg.addColorStop(1,'rgba(255,214,170,0)');
+    ctx.fillStyle=gg;ctx.fillRect(gx-gr,0,gr*2,H);
     for(var i=0;i<parts.length;i++){var p=parts[i];
       if(!reduce){p.y+=p.vy;p.x+=p.vx+Math.sin(t/2200+p.ph)*.2;if(p.y<-p.r){parts[i]=mk(false);continue}}
       var tw=.7+.3*Math.sin(t/800+p.ph),g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
