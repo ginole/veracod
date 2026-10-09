@@ -50,13 +50,14 @@ p{margin:0}
 header{position:fixed;left:0;right:0;top:var(--rb,34px);z-index:50;transition:top .4s var(--ease),background .4s,color .4s,border-color .4s;color:#fff;border-bottom:1px solid transparent}
 header.solid{top:0;background:rgba(246,242,234,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);border-bottom-color:var(--rule)}
 header nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,3vw,44px)}
-.logo{font:400 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.logo{font:400 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis}
+.logo i{overflow:hidden;text-overflow:ellipsis}
 .logo i{font-style:normal;display:block;font:500 9px/1 var(--body);letter-spacing:.42em;margin-top:6px;opacity:.75}
 .links{display:flex;gap:34px;font:400 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
 .links a{position:relative;padding:4px 0}
 .links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .35s var(--ease)}
 .links a:hover::after{right:0}
-.navbook{font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:14px 22px;background:#fff;color:var(--ink);transition:background .3s,color .3s;white-space:nowrap}
+.navbook{font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:14px 22px;background:#fff;color:var(--ink);transition:background .3s,color .3s;white-space:nowrap;flex:none;max-width:48%;overflow:hidden;text-overflow:ellipsis}
 header.solid .navbook{background:var(--lagoon);color:#fff}
 @media(max-width:900px){.links{display:none}}
 @media(max-width:420px){.logo{font-size:19px;letter-spacing:.08em}.navbook{padding:12px 14px;font-size:11px;letter-spacing:.14em}}
@@ -116,13 +117,16 @@ html:not(.js) .intro p .w{opacity:1}
 .v:hover .ph img{transform:scale(1.06)}
 .v h3{font-size:34px;margin-top:22px}
 .v .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--rule);margin-top:14px;padding-top:12px;font-size:14px;color:var(--ink2)}
-.v .meta b{font:400 20px/1 var(--display);color:var(--ink);white-space:nowrap}
+.v .meta{flex-wrap:wrap}.v .meta b{font:400 20px/1 var(--display);color:var(--ink);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .v .meta b small{font:400 12px/1 var(--body);color:var(--dim)}
 .v p.d{color:var(--ink2);font-size:15.5px;margin-top:12px}
 .v .pick{display:inline-block;margin-top:16px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
 .amen{margin-top:clamp(60px,7vw,90px);border-top:1px solid var(--rule);padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--ink2)}
 .amen b{font-weight:500;color:var(--ink);margin-right:6px}
-@media(max-width:900px){.vgrid{grid-template-columns:1fr;gap:60px}}
+@media(max-width:900px){.vgrid{grid-template-columns:minmax(0,1fr);gap:60px}}
+/* 10-09 他用 Google 翻译后字变长：卡片/标题允许缩、长词可断 */
+.v,.moment,.find .cols>div,.book li span,.island-head>div{min-width:0}
+h1,h2,h3,.v .meta span,.panel figcaption{overflow-wrap:anywhere}
 
 /* ---------- a day: sticky photo + sun arc ---------- */
 .day{background:var(--sand2);padding:clamp(110px,14vw,180px) 0}
@@ -170,7 +174,7 @@ form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--r
 .step button{width:34px;height:34px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
 .step output{font:400 18px/1 var(--body);min-width:2ch;text-align:center}
 .sum{margin:10px 0 24px;border-top:1px solid var(--ink)}
-.sum div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px;color:var(--ink2)}
+.sum div{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px;color:var(--ink2)}
 .sum div b{font:400 22px/1 var(--display);color:var(--ink);white-space:nowrap}
 .sum div.dep b{font-size:34px;color:var(--lagoon)}
 .sum .note{font-size:12.5px;color:var(--dim);padding-top:10px;line-height:1.55}
@@ -394,7 +398,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
-  function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);
+  function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);if(window.ResizeObserver)new ResizeObserver(rbh).observe(rb);
   function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72)}
   sc();addEventListener('scroll',sc,{passive:true});
 
