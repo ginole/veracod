@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E2A30">
+<title>Bookings · California Coral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* 给店主用的订房管理页（演示，v2 跟正式站同风格）。像手机 App，不像后台；大字、大按钮、没有技术词。
+   收款全自动（PayMongo），所以没有「等你确认」；他只做两件事：看谁要来、把 Messenger 来的单在日历上点掉。 */
+:root{
+  --bg:#F6F2EA; --card:#FFFFFF; --ink:#0E2A30; --ink2:#36535A; --dim:#6F8A8F; --line:#E3DDD0;
+  --teal:#0E8791; --teal-soft:#E3F1F1; --sun:#E0A146; --sun-soft:#FBF0DD; --coral:#E0612E; --coral-soft:#FBE6DC;
+  --font:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif; --display:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--font);-webkit-font-smoothing:antialiased;padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;cursor:pointer}
+.demo{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+.top{background:var(--ink);color:#F6F2EA;padding:24px 20px 28px}
+.top small{display:block;font:500 11px/1.4 var(--font);letter-spacing:.32em;text-transform:uppercase;opacity:.8}
+.top h1{margin:8px 0 0;font:400 40px/1 var(--display);letter-spacing:-.01em}
+.top p{margin:6px 0 0;opacity:.9;font-size:16px}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
+.card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 1px 2px rgba(22,48,46,.06),0 6px 20px rgba(22,48,46,.05);margin-bottom:12px}
+.attn{border:2px solid var(--sun)}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px}
+.t-wait{background:var(--sun-soft);color:#8a5a12}
+.t-paid{background:var(--teal-soft);color:var(--teal)}
+.t-you{background:#ECEFF5;color:#44506a}
+.when{font:500 25px/1.15 var(--display);margin:10px 0 2px}
+.room{font-size:16px;color:var(--ink2);font-weight:600}
+.who{margin-top:10px;font-size:16px}
+.money{display:flex;justify-content:space-between;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--ink2)}
+.money b{color:var(--ink)}
+.row2{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;margin-top:16px}
+.big{border:0;border-radius:12px;padding:16px 14px;font-size:16px;font-weight:600;letter-spacing:.02em}
+.go{background:var(--teal);color:#fff}
+.soft{background:#EEF2F1;color:var(--ink2)}
+.danger{background:var(--coral-soft);color:var(--coral)}
+.note{font-size:14px;color:var(--dim);margin-top:10px}
+.empty{color:var(--dim);font-size:16px;padding:6px 4px}
+.sumrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:-18px}
+.sumrow div{background:var(--card);border-radius:14px;padding:14px 12px;box-shadow:0 1px 2px rgba(14,42,48,.06),0 6px 20px rgba(14,42,48,.05)}
+.sumrow b{display:block;font:500 30px/1 var(--display);color:var(--ink)}
+.sumrow span{display:block;font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.3}
+
+/* calendar */
+.rooms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:2px 0 12px}
+.rooms button:last-child{grid-column:1/-1}
+.rooms::-webkit-scrollbar{display:none}
+.rooms button{flex:none;border:2px solid var(--line);background:var(--card);border-radius:99px;padding:11px 16px;font-size:16px;font-weight:700;color:var(--ink2)}
+.rooms button[aria-pressed=true]{border-color:var(--teal);background:var(--teal);color:#fff}
+.month{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
+.month b{font:500 24px/1 var(--display)}
+.month button{width:46px;height:46px;border-radius:50%;border:0;background:var(--card);font-size:22px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.dow,.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.dow span{text-align:center;font-size:13px;font-weight:700;color:var(--dim);padding-bottom:4px}
+.day{aspect-ratio:1;border:0;border-radius:12px;background:var(--card);font-size:17px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
+.day small{font-size:10px;font-weight:700;line-height:1;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 2px}
+.day.past{opacity:.35}
+.day.paid{background:var(--teal);color:#fff}
+.day.you{background:#5B6B8C;color:#fff}
+.day.wait{background:var(--sun);color:#fff}
+.day.pick{outline:3px solid var(--coral);outline-offset:-3px}
+.day.today::after{content:"";position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:var(--coral)}
+.day.paid.today::after,.day.you.today::after,.day.wait.today::after{background:#fff}
+.legend{display:grid;grid-template-columns:1fr;gap:8px;margin:14px 2px 0;font-size:14px;color:var(--ink2)}
+.sumrow b,.when,.month b,.sheet h3,.top h1{font-variant-numeric:lining-nums}
+@media(min-width:700px){.day small{font-size:12px}}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+.how{background:var(--teal-soft);color:var(--teal);border-radius:14px;padding:12px 14px;font-size:15px;font-weight:600;margin-bottom:12px}
+
+.dl{width:100%;margin-top:6px;background:var(--card);border:2px dashed var(--line);border-radius:14px;padding:18px;font-size:17px;font-weight:600;color:var(--teal)}
+.dl span{display:block;font-size:14px;font-weight:600;color:var(--dim);margin-top:2px}
+
+/* bottom sheet */
+.veil{position:fixed;inset:0;background:rgba(22,48,46,.38);opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:24px 24px 0 0;padding:10px 20px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);z-index:60;max-width:600px;margin:0 auto}
+.open .veil{opacity:1;pointer-events:auto}.open .sheet{transform:none}
+.grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 16px}
+.sheet h3{margin:0;font:500 28px/1.1 var(--display)}
+.sheet .sub{color:var(--ink2);margin:4px 0 16px}
+.sheet label{display:block;font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.sheet input{width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none}
+.sheet input:focus{border-color:var(--teal)}
+.sheet .stack{display:grid;gap:10px;margin-top:18px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:18px;font-weight:600;font-size:16px;opacity:0;transition:all .25s;z-index:70;white-space:normal;max-width:calc(100% - 32px);width:max-content;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="demo">Example only · the bookings below are made up so you can try it. Nothing here is saved anywhere but this phone.</div>
+
+<div class="top">
+  <div class="wrap">
+    <small>California Coral Beach Resort</small>
+    <h1>Bookings</h1>
+    <p id="hello">Good morning, Michael.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="sumrow" id="sumrow"></div>
+
+  <h2>Who's coming</h2>
+  <div id="coming"></div>
+
+  <h2 id="cal">Room calendar</h2>
+  <div class="how" id="how">Someone booked with you on Messenger? Choose the room, then tap their first night and their last night.</div>
+  <div class="rooms" id="rooms"></div>
+  <div class="month"><button id="prev" aria-label="Previous month">‹</button><b id="mname"></b><button id="next" aria-label="Next month">›</button></div>
+  <div class="dow"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+  <div class="grid" id="grid"></div>
+  <div class="legend"><span><i style="background:var(--card);border:1px solid var(--line)"></i>Free</span><span><i style="background:var(--teal)"></i>Booked online &middot; deposit paid</span><span><i style="background:#5B6B8C"></i>Booked by you</span></div>
+
+  <h2>Your records</h2>
+  <button class="dl" id="dl">Download all bookings<span>Opens in Excel or Google Sheets</span></button>
+</div>
+
+<div class="veil" id="veil"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div id="sheetBody"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var ROOMS=[
+    {id:'g1',name:'Garden Room 1',rate:2800},{id:'g2',name:'Garden Room 2',rate:2800},
+    {id:'h1',name:'Hillview Room 1',rate:3200},{id:'h2',name:'Hillview Room 2',rate:3200},
+    {id:'b',name:'Beachfront Balcony',rate:3800}];
+  var DEP=1000, EXTRA=400; /* 他们资料页：订金每间每晚 1,000 比索、取消不退；超过 2 人每人 400 比索 */
+  var today=new Date();today.setHours(0,0,0,0);
+  function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+  function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+  function parse(k){var p=k.split('-');return new Date(+p[0],p[1]-1,+p[2])}
+  function nice(d,o){return d.toLocaleDateString('en-US',o||{weekday:'short',month:'short',day:'numeric'})}
+  function peso(n){return '\u20B1'+Math.round(n).toLocaleString('en-US')}
+  function nights(b){return Math.round((parse(b.out)-parse(b.in))/864e5)}
+
+  var seed=[
+    {id:2,room:'g1',in:key(add(today,1)),out:key(add(today,4)),g:2,name:'Tom & Kate Walker',contact:'tom.walker@example.com',status:'paid',via:'Card'},
+    {id:3,room:'b',in:key(add(today,5)),out:key(add(today,8)),g:2,name:'Mr & Mrs Dela Cruz',contact:'Messenger',status:'you'},
+    {id:1,room:'h1',in:key(add(today,9)),out:key(add(today,11)),g:4,name:'Maria Santos',contact:'maria.santos@example.com',status:'paid',via:'GCash'},
+    {id:4,room:'g2',in:key(add(today,14)),out:key(add(today,16)),g:3,name:'Jun Reyes',contact:'jun.reyes@example.com',status:'paid',via:'Maya'}
+  ];
+  var S;try{S=JSON.parse(localStorage.getItem('cc2-bookings'))}catch(e){}
+  if(!S||!S.length)S=seed;
+  function save(){try{localStorage.setItem('cc2-bookings',JSON.stringify(S))}catch(e){}}
+  function roomOf(id){return ROOMS.find(function(r){return r.id===id})}
+  function total(b){return nights(b)*(roomOf(b.room).rate+Math.max(0,(b.g||2)-2)*EXTRA)}
+  function deposit(b){return nights(b)*DEP}
+
+  var h=new Date().getHours();document.getElementById('hello').textContent=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', Michael.';
+
+  function stay(b){return nice(parse(b.in))+' → '+nice(parse(b.out))}
+  function card(b){
+    var n=nights(b),t=total(b),dep=deposit(b);
+    var tag=b.status==='paid'?'<span class="tag t-paid">Deposit paid \u00b7 '+b.via+'</span>':'<span class="tag t-you">Booked by you</span>';
+    var money=b.status==='you'?'<div class="money"><span>No deposit online</span><span>At check-in <b>'+peso(t)+'</b></span></div>':'<div class="money"><span>Deposit paid <b>'+peso(dep)+'</b></span><span>At check-in <b>'+peso(t-dep)+'</b></span></div>';
+    return '<div class="card" data-id="'+b.id+'">'+tag+
+      '<div class="when">'+stay(b)+'</div><div class="room">'+roomOf(b.room).name+' \u00b7 '+n+' night'+(n>1?'s':'')+(b.g?' \u00b7 '+b.g+' guest'+(b.g>1?'s':''):'')+'</div>'+
+      '<div class="who">'+b.name+' \u00b7 '+b.contact+'</div>'+money+'</div>';
+  }
+  function lists(){
+    var up=S.filter(function(b){return parse(b.out)>=today}).sort(function(a,b){return a.in<b.in?-1:1});
+    var t0=key(today),wk=key(add(today,7));
+    var arriving=up.filter(function(b){return b.in>=t0&&b.in<=wk}).length;
+    var inHouse=up.filter(function(b){return b.in<=t0&&t0<b.out}).length;
+    var deps=up.filter(function(b){return b.status==='paid'}).reduce(function(a,b){return a+deposit(b)},0);
+    document.getElementById('sumrow').innerHTML='<div><b>'+inHouse+'</b><span>Rooms in use tonight</span></div><div><b>'+arriving+'</b><span>Arriving in the next 7 days</span></div><div><b>'+peso(deps)+'</b><span>Deposits already paid</span></div>';
+    document.getElementById('coming').innerHTML=up.length?up.map(card).join(''):'<p class="empty">No one booked yet.</p>';
+  }
+
+  /* calendar */
+  var cur=ROOMS[0].id,view=new Date(today.getFullYear(),today.getMonth(),1),pickA=null;
+  var rb=document.getElementById('rooms');
+  rb.innerHTML=ROOMS.map(function(r){return '<button data-r="'+r.id+'" aria-pressed="'+(r.id===cur)+'">'+r.name+'</button>'}).join('');
+  rb.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.r;pickA=null;rb.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});cal()});
+  function bookingOn(d){var k=key(d);return S.find(function(b){return b.room===cur&&b.in<=k&&k<b.out})}
+  function cal(){
+    document.getElementById('mname').textContent=view.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    var g=document.getElementById('grid'),first=view.getDay(),days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate(),html='';
+    for(var i=0;i<first;i++)html+='<span></span>';
+    for(var d=1;d<=days;d++){var dt=new Date(view.getFullYear(),view.getMonth(),d),b=bookingOn(dt),cls='day';
+      if(dt<today)cls+=' past';if(+dt===+today)cls+=' today';if(b)cls+=' '+b.status;if(pickA&&+dt===+pickA)cls+=' pick';
+      html+='<button class="'+cls+'" data-d="'+key(dt)+'"'+(dt<today?' disabled':'')+'>'+d+(b?'<small>'+b.name.split(' ')[0]+'</small>':'')+'</button>'}
+    g.innerHTML=html;
+    document.getElementById('how').textContent=pickA?'Now tap their last night.':'Someone booked with you on Messenger? Choose the room, then tap their first night and their last night.';
+  }
+  document.getElementById('prev').onclick=function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);cal()};
+  document.getElementById('next').onclick=function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);cal()};
+  document.getElementById('grid').addEventListener('click',function(e){
+    var t=e.target.closest('button.day');if(!t||t.disabled)return;var d=parse(t.dataset.d),b=bookingOn(d);
+    if(b){pickA=null;cal();showBooking(b);return}
+    if(!pickA){pickA=d;cal();return}
+    var a=pickA,z=d;if(z<a){var tmp=a;a=z;z=tmp}
+    for(var x=new Date(a);x<=z;x=add(x,1))if(bookingOn(x)){pickA=null;cal();toast('Some of those nights are already booked');return}
+    pickA=null;cal();askBlock(a,add(z,1));
+  });
+
+  /* sheets */
+  var body=document.getElementById('sheetBody');
+  function open(html){body.innerHTML=html;document.body.classList.add('open')}
+  function close(){document.body.classList.remove('open')}
+  document.getElementById('veil').onclick=close;
+  function askBlock(a,out){
+    var n=Math.round((out-a)/864e5);
+    open('<h3>'+roomOf(cur).name+'</h3><p class="sub">'+n+' night'+(n>1?'s':'')+': '+nice(a)+(n>1?' – '+nice(add(out,-1)):'')+' · leaves '+nice(out)+'</p>'+
+      '<label for="gname">Guest name (if you like)</label><input id="gname" placeholder="e.g. Dela Cruz family" autocomplete="off">'+
+      '<label style="margin-top:14px">How many guests</label><div style="display:flex;align-items:center;gap:16px"><button type="button" class="big soft" id="gm" style="width:56px;padding:12px 0">\u2212</button><b id="gc" style="font-size:22px;min-width:2ch;text-align:center">2</b><button type="button" class="big soft" id="gp" style="width:56px;padding:12px 0">+</button></div>'+
+      '<div class="stack"><button class="big go" id="doBlock">Mark as booked</button><button class="big soft" id="cancel">Not now</button></div>');
+    document.getElementById('cancel').onclick=close;
+    var gmax=cur==='b'?2:5,gc=2;function gset(v){gc=Math.max(1,Math.min(gmax,v));document.getElementById('gc').textContent=gc}
+    document.getElementById('gm').onclick=function(){gset(gc-1)};document.getElementById('gp').onclick=function(){gset(gc+1)};
+    document.getElementById('doBlock').onclick=function(){
+      S.push({id:Date.now(),room:cur,in:key(a),out:key(out),g:gc,name:document.getElementById('gname').value.trim()||'Guest',contact:'Messenger',status:'you'});
+      save();close();cal();lists();toast('Done. On your real site, these nights would show as taken.');
+    };
+  }
+  function showBooking(b){
+    var n=nights(b),paidB=b.status==='paid';
+    open('<h3>'+b.name+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
+      '<p style="margin:0 0 6px">'+(paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
+      '<p style="margin:0;color:var(--ink2)">Contact: '+b.contact+'</p>'+
+      '<div class="stack"><button class="big danger" id="del">'+(paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
+    document.getElementById('cl').onclick=close;
+    document.getElementById('del').onclick=function(){confirmCancel(b)};
+  }
+  function confirmCancel(b){
+    var paidB=b.status==='paid';
+    open('<h3>'+(b.name==='Guest'?'Cancel this booking?':'Cancel '+b.name+'\u2019s booking?')+'</h3>'+
+      '<p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+'</p>'+
+      '<p style="margin:0">'+(paidB?'The nights become free on the website. As your house rules say, the '+peso(deposit(b))+' deposit isn\u2019t refunded if the guest cancels. If you\u2019re the one cancelling, you can refund it from your PayMongo account.':'The nights become free on the website again.')+'</p>'+
+      '<div class="stack"><button class="big danger" id="yes">Yes, cancel it</button><button class="big soft" id="keep">Keep booking</button></div>');
+    document.getElementById('keep').onclick=close;
+    document.getElementById('yes').onclick=function(){S=S.filter(function(x){return x.id!==b.id});save();close();cal();lists();toast('Those nights are free again.')};
+  }
+  document.addEventListener('click',function(e){
+    var c=e.target.closest('.card');if(c&&!e.target.closest('button')){var bb=S.find(function(y){return y.id==c.dataset.id});if(bb)showBooking(bb)}
+  });
+
+  /* records */
+  document.getElementById('dl').onclick=function(){
+    var rows=[['Guest','Contact','Room','Arrive','Leave','Nights','Guests','Total','Deposit paid','Due at check-in','How booked']].concat(S.map(function(b){var p=b.status==='paid';return[b.name,b.contact,roomOf(b.room).name,b.in,b.out,nights(b),b.g||'',total(b),p?deposit(b):0,p?total(b)-deposit(b):total(b),p?'Online \u00b7 '+b.via:'Messenger']}));
+    var csv=rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(',')}).join(String.fromCharCode(10));
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv'}));a.download='california-coral-bookings.csv';a.click();
+    toast('Saved to your phone.');
+  };
+
+  var tt;function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2600)}
+  lists();cal();
+})();
+</script>
+</body>
+</html>
