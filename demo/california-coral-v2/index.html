@@ -492,6 +492,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   /* availability calendar */
   var cm=td.slice(0,7)+'-01',cgrid=document.getElementById('cgrid');
   function cal(){
+    if(!AV){cgrid.innerHTML='';document.getElementById('cmon').innerHTML='&nbsp;';return} /* 没拿到空房数据就不画格子，免得看着全都有空 */
     var y=+cm.slice(0,4),m=+cm.slice(5,7)-1,first=new Date(Date.UTC(y,m,1)).getUTCDay(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate();
     document.getElementById('cmon').textContent=new Date(Date.UTC(y,m,1)).toLocaleDateString('en-US',{timeZone:'UTC',month:'long',year:'numeric'});
     document.getElementById('cprev').disabled=cm<=td.slice(0,7)+'-01';
@@ -504,7 +505,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     cgrid.innerHTML=h}
   document.getElementById('cprev').onclick=function(){cm=addD(cm,-1).slice(0,8)+'01';cal()};
   document.getElementById('cnext').onclick=function(){cm=addD(addD(cm,31).slice(0,8)+'01',0);cal()};
-  cgrid.addEventListener('click',function(e){var bt=e.target.closest('button');if(!bt||bt.disabled)return;var k=bt.dataset.k,I=req.elements['in'],O=req.elements.out;
+  cgrid.addEventListener('click',function(e){var bt=e.target.closest('button');if(!AV||!bt||bt.disabled)return;var k=bt.dataset.k,I=req.elements['in'],O=req.elements.out;
     if(!I.value||O.value||k<=I.value){ if(AV&&fullOn(type(),k)){setMsg('That night is already booked for the '+TNAME[type()]+'. Pick another arrival day, or try another room.','bad');return}
       I.value=k;O.value='';O.min=addD(k,1);setMsg('Now tap the day you leave.')}
     else O.value=k;
