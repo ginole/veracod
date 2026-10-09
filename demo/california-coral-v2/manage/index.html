@@ -81,7 +81,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .day.you{background:#5B6B8C;color:#fff}
 .day.ext{background:#C9B79C;color:#fff}
 .sites .rowc{background:var(--card);border-radius:14px;padding:16px;margin-bottom:10px;box-shadow:0 1px 2px rgba(14,42,48,.06),0 6px 20px rgba(14,42,48,.05)}
-.sites .rowc b{display:block;font:500 22px/1.1 var(--display);margin-bottom:8px}
+.sites .rowc b{display:block;font:500 22px/1.1 var(--display);margin-bottom:8px;font-variant-numeric:lining-nums}
 .sites label{display:block;font-size:14px;color:var(--ink2);margin:10px 0 6px;font-weight:500}
 .sites .cp{display:flex;gap:8px}
 .sites input{flex:1;min-width:0;border:2px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;outline:none;background:#fff}
@@ -279,7 +279,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     for(var i=0;i<first;i++)html+='<span></span>';
     for(var d=1;d<=days;d++){var dt=new Date(view.getFullYear(),view.getMonth(),d),b=bookingOn(dt),cls='day';
       if(dt<today)cls+=' past';if(+dt===+today)cls+=' today';if(b)cls+=' '+b.status;if(pickA&&+dt===+pickA)cls+=' pick';
-      html+='<button class="'+cls+'" data-d="'+key(dt)+'"'+(dt<today?' disabled':'')+'>'+d+(b?'<small>'+esc(b.name.split(' ')[0])+'</small>':'')+'</button>'}
+      html+='<button class="'+cls+'" data-d="'+key(dt)+'"'+(dt<today?' disabled':'')+'>'+d+(b?'<small>'+(b.status==='ext'?'Other':esc(b.name.split(' ')[0]))+'</small>':'')+'</button>'}
     g.innerHTML=html;
     document.getElementById('how').textContent=pickA?'Now tap their last night.':'Someone booked with you on Messenger? Choose the room, then tap their first night and their last night.';
   }
