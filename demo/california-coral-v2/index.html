@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>California Coral Beach Resort — Alubihod Beach, Guimaras</title>
+<meta name="description" content="A small, family-run, accredited resort with only five rooms, right on Alubihod Beach in Nueva Valencia, Guimaras.">
+<meta property="og:title" content="California Coral Beach Resort — Alubihod Beach, Guimaras">
+<meta property="og:description" content="Five rooms on the sand at Alubihod Beach, and the Seahorse out front for island hopping.">
+<meta property="og:image" content="https://veracod.com/demo/california-coral-v2/img/og.jpg">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+/* 动画只负责「显现」；脚本 3 秒内没跑起来就摘掉 .js，页面按静态内容显示 */
+setTimeout(function(){ if(!window.__ccReady) document.documentElement.classList.remove('js'); }, 3000);
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.remove('js');
+</script>
+<style>
+:root{
+  --sand:#F6F2EA; --sand2:#E9F2F1; --ink:#0E2A30; --ink2:#36535A; --dim:#6F8A8F;
+  --lagoon:#0E8791; --clay:#E0612E; --rule:#D6E3E2;
+  --display:'Cormorant Garamond',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--sand);color:var(--ink);font:300 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:300;margin:0;letter-spacing:-.01em;line-height:1.02}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.kick{font:500 11px/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--lagoon)}
+
+/* ---------- preview ribbon ---------- */
+.ribbon{position:relative;z-index:60;background:var(--ink);color:var(--sand);font-size:12px;letter-spacing:.04em;text-align:center;padding:8px 16px}
+
+/* ---------- loader ---------- */
+.loader{position:fixed;inset:0;z-index:100;background:var(--ink);color:var(--sand);display:none;align-items:center;justify-content:center;flex-direction:column;gap:22px}
+.js .loader{display:flex}
+.loader .word{font:300 clamp(40px,8vw,96px)/1 var(--display);letter-spacing:.06em;overflow:hidden;display:flex}
+.loader .word span{display:inline-block;transform:translateY(110%)}
+.loader .line{width:0;height:1px;background:rgba(246,242,234,.5)}
+.loader small{font:500 10px/1 var(--body);letter-spacing:.4em;text-transform:uppercase;opacity:0;text-align:center;padding:0 20px}
+
+/* ---------- nav ---------- */
+header{position:fixed;left:0;right:0;top:var(--rb,34px);z-index:50;transition:top .4s var(--ease),background .4s,color .4s,border-color .4s;color:#fff;border-bottom:1px solid transparent}
+header.solid{top:0;background:rgba(246,242,234,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);border-bottom-color:var(--rule)}
+header nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,3vw,44px)}
+.logo{font:400 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.logo i{font-style:normal;display:block;font:500 9px/1 var(--body);letter-spacing:.42em;margin-top:6px;opacity:.75}
+.links{display:flex;gap:34px;font:400 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .35s var(--ease)}
+.links a:hover::after{right:0}
+.navbook{font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:14px 22px;background:#fff;color:var(--ink);transition:background .3s,color .3s;white-space:nowrap}
+header.solid .navbook{background:var(--lagoon);color:#fff}
+@media(max-width:900px){.links{display:none}}
+@media(max-width:420px){.logo{font-size:19px;letter-spacing:.08em}.navbook{padding:12px 14px;font-size:11px;letter-spacing:.14em}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
+.slides{position:absolute;inset:0}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.slides img.on{opacity:1}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.05) 30%,rgba(0,0,0,.05) 50%,rgba(0,0,0,.6))}
+.hcenter{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;padding:0 20px}
+.hcenter .kick{color:#fff;opacity:.92}
+.hero h1{font-size:clamp(48px,8.4vw,128px);margin-top:26px;text-shadow:0 2px 40px rgba(0,0,0,.3)}
+.hero h1 em{font-style:italic}
+.hero .line-mask{overflow:hidden;display:block;padding-bottom:.08em}
+.hero .line-mask>span{display:block}
+.dock{position:absolute;left:0;right:0;bottom:clamp(26px,6vh,58px);padding:0 20px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 130px auto;max-width:820px;margin:0 auto;background:rgba(255,255,255,.14);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.36)}
+.bar label{padding:13px 18px 11px;border-right:1px solid rgba(255,255,255,.26);font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.85);min-width:0}
+.bar input,.bar select{display:block;width:100%;min-width:0;background:transparent;border:0;color:#fff;font:400 16px/1.2 var(--body);padding:7px 0 0;color-scheme:dark;outline:none}
+.bar select option{color:var(--ink)}
+.bar button{border:0;background:#fff;color:var(--ink);font:500 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;padding:0 34px;cursor:pointer;transition:background .3s,color .3s}
+.bar button:hover{background:var(--lagoon);color:#fff}
+.dots{position:absolute;right:clamp(20px,3vw,44px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.dots i{width:1px;height:26px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
+.dots i b{position:absolute;inset:0;background:#fff;transform:scaleY(0);transform-origin:top}
+@media(max-width:720px){.bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
+
+/* ---------- intro (words light up as you scroll) ---------- */
+.intro{padding:clamp(110px,15vw,210px) 0}
+.intro p{font:300 clamp(30px,4.2vw,62px)/1.18 var(--display);max-width:22ch;margin:0 auto;text-align:center}
+.intro p .w{opacity:.14;transition:none}
+html:not(.js) .intro p .w{opacity:1}
+.intro .sig{display:block;text-align:center;margin-top:40px;line-height:1.8}
+
+/* ---------- the bay: pinned horizontal ---------- */
+.island{position:relative;background:var(--ink);color:var(--sand);overflow:hidden}
+.island-head{position:absolute;top:clamp(34px,6vh,70px);left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);display:flex;justify-content:space-between;align-items:flex-end;z-index:2;pointer-events:none}
+.island-head h2{font-size:clamp(36px,4.6vw,68px)}
+.island-head .kick{color:#8FD3D8}
+.count{font:300 18px/1 var(--display);letter-spacing:.1em}
+.track{display:flex;gap:clamp(18px,2.4vw,36px);padding:clamp(150px,22vh,220px) clamp(20px,4vw,48px) clamp(50px,9vh,90px);width:max-content;height:100vh;height:100svh;min-height:600px;align-items:stretch}
+.panel{position:relative;width:min(62vw,880px);flex:none;overflow:hidden;margin:0}
+.panel img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;background:linear-gradient(0deg,rgba(0,0,0,.6),rgba(0,0,0,0));font:300 22px/1.3 var(--display)}
+.panel figcaption b{display:block;font:500 10px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;opacity:.85;margin-bottom:8px}
+@media(max-width:900px){.island-head{position:static;padding:80px 20px 26px}.track{height:auto;min-height:0;padding:0 20px 80px;width:auto;overflow-x:auto;scroll-snap-type:x mandatory}.panel{width:84vw;height:62vh;scroll-snap-align:center}.panel img{transform:none}}
+
+/* ---------- rooms ---------- */
+.villas{padding:clamp(110px,14vw,190px) 0}
+.villas .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:clamp(50px,6vw,80px)}
+.villas h2{font-size:clamp(40px,5.4vw,80px);max-width:12ch}
+.villas .head p{max-width:42ch;color:var(--ink2)}
+.vgrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(18px,2.2vw,32px);align-items:start}
+.vgrid .v:nth-child(2){margin-top:90px}.vgrid .v:nth-child(3){margin-top:180px}
+.v .ph{overflow:hidden;aspect-ratio:4/5;clip-path:inset(0 0 0 0)}
+.js .v .ph{clip-path:inset(100% 0 0 0)}
+.v .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 78%;transition:transform 1.4s var(--ease)}
+.v:hover .ph img{transform:scale(1.06)}
+.v h3{font-size:34px;margin-top:22px}
+.v .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--rule);margin-top:14px;padding-top:12px;font-size:14px;color:var(--ink2)}
+.v .meta b{font:400 20px/1 var(--display);color:var(--ink);white-space:nowrap}
+.v .meta b small{font:400 12px/1 var(--body);color:var(--dim)}
+.v p.d{color:var(--ink2);font-size:15.5px;margin-top:12px}
+.v .pick{display:inline-block;margin-top:16px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
+.amen{margin-top:clamp(60px,7vw,90px);border-top:1px solid var(--rule);padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--ink2)}
+.amen b{font-weight:500;color:var(--ink);margin-right:6px}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr}.vgrid .v:nth-child(n){margin-top:0}.vgrid{gap:60px}}
+
+/* ---------- a day: sticky photo + sun arc ---------- */
+.day{background:var(--sand2);padding:clamp(110px,14vw,180px) 0}
+.day .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px)}
+.stick{position:sticky;top:12vh;height:76vh}
+.stick .frame{position:relative;height:100%;overflow:hidden}
+.stick .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--ease),transform 1.6s var(--ease);transform:scale(1.05)}
+.stick .frame img.on{opacity:1;transform:scale(1)}
+.sun{position:absolute;left:24px;right:24px;top:24px;height:90px;pointer-events:none}
+.sun svg{width:100%;height:100%;overflow:visible}
+.sun .arc{fill:none;stroke:rgba(255,255,255,.6);stroke-width:1;stroke-dasharray:3 5}
+.sun .disc{fill:#FFD9A8;filter:drop-shadow(0 0 10px rgba(255,200,140,.9))}
+.day h2{font-size:clamp(40px,5vw,74px);margin-bottom:40px}
+.moment{padding:clamp(60px,12vh,120px) 0;border-top:1px solid var(--rule)}
+.moment:first-of-type{border-top:0;padding-top:0}
+.moment time{font:300 italic 46px/1 var(--display);color:var(--clay);display:block}
+.moment h3{font-size:30px;margin-top:14px}
+.moment p{color:var(--ink2);margin-top:12px;max-width:42ch}
+.moment img.m{display:none}
+@media(max-width:900px){.day .grid{grid-template-columns:1fr}.stick{display:none}.moment img.m{display:block;margin-top:22px;aspect-ratio:4/3;object-fit:cover;width:100%}}
+
+/* ---------- line over parallax ---------- */
+.quote{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
+.quote img{position:absolute;left:0;right:0;top:-12%;width:100%;height:124%;object-fit:cover}
+.quote::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.32)}
+.quote blockquote{position:relative;z-index:1;margin:0;padding:0 24px;font:300 italic clamp(34px,5vw,74px)/1.12 var(--display);max-width:19ch}
+.quote cite{display:block;font:500 11px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;font-style:normal;margin-top:30px;opacity:.88}
+
+/* ---------- booking ---------- */
+.book{padding:clamp(110px,14vw,180px) 0}
+.bgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:start}
+.bgrid>*{min-width:0}
+.book h2{font-size:clamp(44px,5.6vw,84px)}
+.book .lead{color:var(--ink2);margin-top:26px;max-width:40ch}
+.book ul{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--rule)}
+.book li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.book li span:first-child{color:var(--dim)}
+.book li span:last-child{text-align:right}
+form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--rule);min-width:0}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.f{display:block;font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:18px;min-width:0}
+.f input,.f select{display:block;width:100%;min-width:0;margin-top:9px;border:0;border-bottom:1px solid var(--rule);padding:10px 0;font:400 17px/1.2 var(--body);color:var(--ink);background:transparent;outline:none;transition:border-color .3s;border-radius:0}
+.f input:focus,.f select:focus{border-bottom-color:var(--lagoon)}
+.step{display:flex;align-items:center;gap:18px;margin-top:9px;border-bottom:1px solid var(--rule);padding:6px 0}
+.step button{width:34px;height:34px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
+.step output{font:400 18px/1 var(--body);min-width:2ch;text-align:center}
+.sum{margin:10px 0 24px;border-top:1px solid var(--ink)}
+.sum div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px;color:var(--ink2)}
+.sum div b{font:400 22px/1 var(--display);color:var(--ink);white-space:nowrap}
+.sum div.dep b{font-size:34px;color:var(--lagoon)}
+.sum .note{font-size:12.5px;color:var(--dim);padding-top:10px;line-height:1.55}
+form.req button[type=submit]{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
+form.req button[type=submit]:hover{background:var(--ink)}
+form.req .pays{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--dim);letter-spacing:.06em}
+.done{display:none;padding:18px 0 0;color:var(--lagoon);font-size:15px}
+@media(max-width:900px){.bgrid{grid-template-columns:1fr}}
+@media(max-width:600px){.hcenter .kick{letter-spacing:.2em;line-height:1.8;font-size:10px}.ribbon{font-size:11px}.book li{flex-direction:column;gap:2px}.book li span:last-child{text-align:left}}
+
+/* ---------- find us ---------- */
+.find{background:var(--sand2);padding:clamp(90px,11vw,150px) 0}
+.find .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,60px)}
+.find h3{font-size:30px;margin:14px 0 12px}
+.find p{color:var(--ink2);font-size:15.5px}
+.find a.ln{display:inline-block;margin-top:12px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
+@media(max-width:900px){.find .cols{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:rgba(246,242,234,.72);padding:70px 0 40px;font-size:13.5px}
+footer .big{font:300 clamp(48px,11vw,180px)/.85 var(--display);letter-spacing:.04em;color:rgba(246,242,234,.08);text-transform:uppercase;white-space:nowrap;overflow:hidden;margin-bottom:40px}
+footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer a{text-decoration:underline;text-underline-offset:3px}
+
+/* hidden states only under .js — GSAP reveals */
+.js .rv{opacity:0;transform:translateY(34px)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Preview for California Coral Beach Resort &mdash; not live yet. Booking and payments are switched off on this preview.</div>
+
+<div class="loader" aria-hidden="true">
+  <div class="word"><span>C</span><span>a</span><span>l</span><span>i</span><span>f</span><span>o</span><span>r</span><span>n</span><span>i</span><span>a</span></div>
+  <div class="line"></div>
+  <small>Coral Beach Resort &middot; Guimaras</small>
+</div>
+
+<header id="hdr">
+  <nav>
+    <a class="logo" href="#top">California<i>Coral Beach Resort</i></a>
+    <div class="links"><a href="#bay">The bay</a><a href="#rooms">Rooms</a><a href="#day">A day here</a><a href="#find">Find us</a></div>
+    <a class="navbook" href="#book">Book direct</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="slides">
+      <img class="on" src="img/hero-resort.webp" alt="California Coral Beach Resort, blue arches and a red roof, on the white sand of Alubihod Beach under the palms" fetchpriority="high">
+      <img src="img/hero-sail.webp" alt="A paraw with white sails pulled up on the beach at Alubihod">
+      <img src="img/hero-arches.webp" alt="The view to the sea through the resort's arches">
+    </div>
+    <div class="shade"></div>
+    <div class="hcenter">
+      <p class="kick hin">Five rooms &middot; Alubihod Beach &middot; Guimaras</p>
+      <h1><span class="line-mask"><span>Five rooms,</span></span><span class="line-mask"><span><em>right on</em> the sand.</span></span></h1>
+    </div>
+    <div class="dots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="dock hin">
+      <form class="bar" id="qbar">
+        <label>Arrive<input type="date" name="in"></label>
+        <label>Leave<input type="date" name="out"></label>
+        <label>Guests<select name="g"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></label>
+        <button type="submit">Check dates</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p id="words">A small, family-run resort with only five rooms, right on the coral sand of Alubihod Beach, and our own boat waiting out front.</p>
+      <span class="kick sig rv">Lourdes &amp; Michael Rainey &middot; Nueva Valencia, Guimaras</span>
+    </div>
+  </section>
+
+  <section class="island" id="bay">
+    <div class="island-head"><div><p class="kick">The bay</p><h2>Everything starts<br>at the water.</h2></div><span class="count"><b id="cnum">01</b> / 04</span></div>
+    <div class="track" id="track">
+      <figure class="panel"><img src="img/seahorse.webp" alt="The Seahorse, the resort's own outrigger boat, on clear water by the beach" loading="lazy"><figcaption><b>The Seahorse</b>Our own 40-foot boat, for up to ten people. You decide where to go and how long to stay.</figcaption></figure>
+      <figure class="panel"><img src="img/painted-sails.webp" alt="Boats with painted sails pulled up on the beach" loading="lazy"><figcaption><b>The beach</b>Painted sails and outriggers pulled up on the white sand of Alubihod.</figcaption></figure>
+      <figure class="panel"><img src="img/boats.webp" alt="Boats of every kind stopping in front of the resort" loading="lazy"><figcaption><b>Out front</b>Boats of every size stop right in front of the resort.</figcaption></figure>
+      <figure class="panel"><img src="img/from-the-sand.webp" alt="The resort seen from the sand, between two coconut palms" loading="lazy"><figcaption><b>Home</b>Three floors of blue arches, and the beach right below the balcony.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="villas" id="rooms">
+    <div class="wrap">
+      <div class="head"><h2 class="rv">Five rooms. Pick your view.</h2><p class="rv">Two garden rooms on the ground floor, two hillview rooms upstairs, and one beachfront balcony room right over the sand. Rates are for two people.</p></div>
+      <div class="vgrid">
+        <article class="v"><div class="ph"><img src="img/room-beachfront.webp" alt="The Beachfront Balcony Room: a king-size bed and arched windows onto the sea" loading="lazy"></div><h3>Beachfront Balcony Room</h3><div class="meta"><span>King bed &middot; 1&ndash;2 adults &middot; only one</span><b>&#8369;3,800 <small>/ night</small></b></div><p class="d">Third floor, right over the beach, with two large windows and a private balcony onto the boats and the islands across the bay. His-and-hers sinks and a walk-in shower.</p><a class="pick" href="#book" data-room="beachfront">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/room-garden.webp" alt="A Garden Room with a queen bed and a single bed" loading="lazy"></div><h3>Garden Room</h3><div class="meta"><span>Queen + single &middot; up to 5 &middot; two rooms</span><b>&#8369;2,800 <small>/ night</small></b></div><p class="d">On the ground floor facing the gardens, just steps from the beach. The two rooms sit side by side with adjoining, lockable double doors.</p><a class="pick" href="#book" data-room="garden">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/room-hillview.webp" alt="A Hillview Room with two queen beds" loading="lazy"></div><h3>Hillview Room</h3><div class="meta"><span>Two queens &middot; up to 5 &middot; two rooms</span><b>&#8369;3,200 <small>/ night</small></b></div><p class="d">Upstairs on the third floor facing the hillside, with high ceilings and a narrow view of the sea. Adjoining, lockable doors between the two.</p><a class="pick" href="#book" data-room="hillview">Check dates &rarr;</a></article>
+      </div>
+      <p class="amen rv"><span><b>In every room</b>warm shower &middot; air-con &middot; ceiling fan &middot; fridge &middot; 55&quot; smart TV &middot; Starlink WiFi &middot; kettle &middot; coffee and bottled water for two</span><span><b>Extra guests</b>&#8369;400 each &middot; extra mattress &#8369;300</span></p>
+    </div>
+  </section>
+
+  <section class="day" id="day">
+    <div class="wrap grid">
+      <div class="stick">
+        <div class="frame">
+          <img class="on" data-k="0" src="img/day-balcony.webp" alt="" loading="lazy">
+          <img data-k="1" src="img/day-islands.webp" alt="" loading="lazy">
+          <img data-k="2" src="img/day-garden.webp" alt="" loading="lazy">
+          <img data-k="3" src="img/day-fire.webp" alt="" loading="lazy">
+          <div class="sun"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="arc" id="arc" d="M0 88 Q200 -60 400 88"/><circle class="disc" id="disc" r="7" cx="0" cy="88"/></svg></div>
+        </div>
+      </div>
+      <div>
+        <p class="kick">A day at Alubihod</p>
+        <h2 class="rv">No schedule. Just the beach.</h2>
+        <div class="moment" data-k="0"><time>Morning</time><h3>Coffee on the balcony</h3><p>Coffee and bottled water for two are waiting in your room. The beach is right there when you open the door.</p><img class="m" src="img/day-balcony.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,000 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkels for rent.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="2"><time>Afternoon</time><h3>The gardens and the bamboo hut</h3><p>Shade, a table and the sea breeze, free for room guests. Three restaurants on the beach serve lunch and dinner, one of them next door.</p><img class="m" src="img/day-garden.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="3"><time>Evening</time><h3>Evening on the beach</h3><p>The BBQ area is free to use, and charcoal and cold drinks are at our sari-sari store, open every day.</p><img class="m" src="img/day-fire.webp" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <img id="qimg" src="img/quote-palm.webp" alt="The tallest coconut palm on Alubihod Beach against the sky" loading="lazy">
+    <blockquote class="rv">&ldquo;The nicest rooms on Alubihod Beach, in a relaxed atmosphere.&rdquo;<cite>From the resort</cite></blockquote>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap bgrid">
+      <div>
+        <p class="kick">Book direct</p>
+        <h2 class="rv">Book straight with us.</h2>
+        <p class="lead rv">No booking site in the middle. Pick your dates, pay the deposit by card, GCash or Maya, and your room is yours - the booking confirms itself. You get an email with everything you need, and so do we.</p>
+        <ul class="rv">
+          <li><span>Check-in &middot; check-out</span><span>After 2 PM &middot; before 12 noon</span></li>
+          <li><span>To hold your room</span><span>&#8369;1,000 per room per night, counted toward your stay</span></li>
+          <li><span>The balance</span><span>Cash or bank transfer at check-in</span></li>
+          <li><span>If you cancel</span><span>The deposit isn't refunded</span></li>
+          <li><span>Seniors &amp; PWD</span><span>20% off their share of the rate, with ID</span></li>
+          <li><span>Children &amp; pets</span><span>Infants who are carried stay free &middot; sorry, no pets</span></li>
+        </ul>
+      </div>
+      <form class="req" id="req">
+        <div class="row">
+          <label class="f">Arrive<input type="date" name="in" required></label>
+          <label class="f">Leave<input type="date" name="out" required></label>
+        </div>
+        <div class="row">
+          <label class="f">Room<select name="room">
+            <option value="beachfront" data-r="3800" data-max="2">Beachfront Balcony</option>
+            <option value="garden" data-r="2800" data-max="5" selected>Garden Room</option>
+            <option value="hillview" data-r="3200" data-max="5">Hillview Room</option>
+          </select></label>
+          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div></div>
+        </div>
+        <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
+        <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
+        <div class="sum">
+          <div><span id="nights">Pick your dates</span><b id="total">&mdash;</b></div>
+          <div class="dep"><span>Deposit to pay now</span><b id="deposit">&mdash;</b></div>
+          <p class="note" id="bal">The rest is paid at check-in.</p>
+        </div>
+        <button type="submit" id="pay">Pay deposit &amp; book</button>
+        <p class="pays">Card &middot; GCash &middot; Maya</p>
+        <p class="done" id="done">This is a preview, so payments are switched off and nothing was booked. On the live site, this button opens a secure PayMongo checkout and the booking confirms itself once the deposit is paid.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap">
+      <p class="kick rv">Find us</p>
+      <div class="cols" style="margin-top:10px">
+        <div class="rv"><h3>Where</h3><p>Sitio Alubihod, Brgy. Poblacion, Nueva Valencia, Guimaras, Philippines</p><a class="ln" href="https://www.google.com/maps/search/?api=1&query=California+Coral+Beach+Resort+Alubihod+Guimaras" target="_blank" rel="noreferrer">Open the map &rarr;</a></div>
+        <div class="rv"><h3>Message us</h3><p>On Facebook, by text at 0927 727 0145, or by email at californiacoralbeachresort@gmail.com.</p><a class="ln" href="https://www.facebook.com/CaliforniaResort" target="_blank" rel="noreferrer">Facebook page &rarr;</a></div>
+        <div class="rv"><h3>Day visitors</h3><p>Room guests pay no entrance fee. If you're only passing through to the beach, it's &#8369;50.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big" aria-hidden="true">California</div>
+    <div class="cols">
+      <p>California Coral Beach Resort &middot; a small, family-run, accredited resort on Alubihod Beach, Guimaras.</p>
+      <p>Website by <a href="https://veracod.com/">Veracod</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  /* ---------- booking form works with or without animation ---------- */
+  var DEP=1000, EXTRA=400;
+  var today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());var td=today.toISOString().slice(0,10);
+  document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});
+  var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
+  var peso=function(n){return '₱'+n.toLocaleString('en-PH')};
+  function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
+  function clampG(){var mx=+room().dataset.max;if(g>mx)g=mx;if(g<1)g=1;gv.textContent=g}
+  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g+=(+b.dataset.d);clampG();est()})});
+  function est(){var a=req.elements['in'].value,b=req.elements.out.value,o=room();var r=+o.dataset.r;
+    var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
+    if(n>0){var extra=Math.max(0,g-2)*EXTRA,tot=n*(r+extra),dep=n*DEP;
+      document.getElementById('nights').textContent=n+' night'+(n>1?'s':'')+' · '+o.textContent+' · '+g+' guest'+(g>1?'s':'');
+      document.getElementById('total').textContent=peso(tot);document.getElementById('deposit').textContent=peso(dep);
+      document.getElementById('bal').textContent=peso(tot-dep)+' is paid at check-in, in cash or by bank transfer.';
+      document.getElementById('pay').textContent='Pay '+peso(dep)+' deposit & book'}
+    else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—';document.getElementById('deposit').textContent='—';document.getElementById('bal').textContent='The rest is paid at check-in.';document.getElementById('pay').textContent='Pay deposit & book'}}
+  ['in','out','room'].forEach(function(k){req.elements[k].addEventListener('change',function(){clampG();est()})});
+  req.elements['in'].addEventListener('change',function(){req.elements.out.min=req.elements['in'].value||td});
+  req.addEventListener('submit',function(e){e.preventDefault();document.getElementById('done').style.display='block'});
+  var q=document.getElementById('qbar');
+  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;clampG();est();
+    document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
+  document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est()})});
+
+  /* ---------- header ---------- */
+  var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
+  function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);
+  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72)}
+  sc();addEventListener('scroll',sc,{passive:true});
+
+  /* ---------- intro: split into words ---------- */
+  var wp=document.getElementById('words');
+  wp.innerHTML=wp.textContent.split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+
+  if(!window.gsap||!document.documentElement.classList.contains('js')){document.documentElement.classList.remove('js');return;}
+  window.__ccReady=true;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- loader → hero ---------- */
+  var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.to('.loader .word span',{y:0,duration:1,stagger:.05})
+    .to('.loader .line',{width:160,duration:.9,ease:'power2.inOut'},'-=.6')
+    .to('.loader small',{opacity:.7,duration:.5},'-=.5')
+    .to('.loader',{yPercent:-100,duration:1.05,ease:'expo.inOut'},'+=.25')
+    .from('.slides img.on',{scale:1.18,duration:2.4,ease:'power3.out'},'-=.8')
+    .from('.hero h1 .line-mask>span',{yPercent:110,duration:1.3,stagger:.12},'-=2')
+    .from('.hin',{opacity:0,y:24,duration:1,stagger:.15},'-=1.1')
+    .set('.loader',{display:'none'});
+
+  /* ---------- hero slideshow: slow crossfade + drift ---------- */
+  var imgs=gsap.utils.toArray('.slides img'),bars=gsap.utils.toArray('.dots b'),cur=0;
+  function drift(el){gsap.fromTo(el,{scale:1.08},{scale:1,duration:7.5,ease:'none'})}
+  function bar(i){gsap.set(bars,{scaleY:0});gsap.fromTo(bars[i],{scaleY:0},{scaleY:1,duration:6.5,ease:'none'})}
+  bar(0);
+  setInterval(function(){if(document.hidden)return;var nx=(cur+1)%imgs.length;
+    gsap.to(imgs[cur],{opacity:0,duration:1.8,ease:'power2.inOut'});gsap.to(imgs[nx],{opacity:1,duration:1.8,ease:'power2.inOut'});drift(imgs[nx]);bar(nx);cur=nx},6500);
+  gsap.to('.slides',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* ---------- intro words light up ---------- */
+  gsap.to('#words .w',{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:'#words',start:'top 80%',end:'bottom 45%',scrub:true}});
+
+  /* ---------- generic reveals ---------- */
+  ScrollTrigger.batch('.rv',{start:'top 88%',once:true,onEnter:function(b){gsap.to(b,{opacity:1,y:0,duration:1.1,stagger:.1,ease:'power3.out'})}});
+
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:901px)',function(){
+    /* ---------- the bay: pinned horizontal scroll ---------- */
+    var track=document.getElementById('track'),panels=gsap.utils.toArray('.panel');
+    var dist=function(){return track.scrollWidth-window.innerWidth};
+    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'.island',pin:true,scrub:.6,start:'top top',end:function(){return '+='+dist()},invalidateOnRefresh:true,
+      onUpdate:function(s){document.getElementById('cnum').textContent='0'+Math.min(4,1+Math.floor(s.progress*4*0.999))}}});
+    panels.forEach(function(p){gsap.to(p.querySelector('img'),{scale:1,ease:'none',scrollTrigger:{trigger:'.island',start:'top top',end:function(){return '+='+dist()},scrub:true}})});
+
+    /* ---------- a day: swap photo + move the sun ---------- */
+    var arc=document.getElementById('arc'),disc=document.getElementById('disc'),L=arc.getTotalLength();
+    var frames=gsap.utils.toArray('.stick img');
+    ScrollTrigger.create({trigger:'#day .grid',start:'top 20%',end:'bottom 70%',scrub:true,onUpdate:function(s){var p=arc.getPointAtLength(L*s.progress);disc.setAttribute('cx',p.x);disc.setAttribute('cy',p.y)}});
+    gsap.utils.toArray('.moment').forEach(function(m){ScrollTrigger.create({trigger:m,start:'top 55%',end:'bottom 55%',onToggle:function(s){if(s.isActive){frames.forEach(function(f){f.classList.toggle('on',f.dataset.k===m.dataset.k)})}}})});
+  });
+
+  /* ---------- rooms: photo wipes up ---------- */
+  gsap.utils.toArray('.v .ph').forEach(function(ph){gsap.to(ph,{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}});
+    gsap.fromTo(ph.querySelector('img'),{scale:1.25},{scale:1,duration:1.8,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}})});
+
+  /* ---------- line parallax ---------- */
+  gsap.fromTo('#qimg',{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:'.quote',start:'top bottom',end:'bottom top',scrub:true}});
+})();
+</script>
+<script>
+(function(){try{
+var EP="https://p.veracod.com/e",S="california-coral-v2",K="demo";
+var hn=location.hostname;
+if(location.protocol==="file:"||hn==="localhost"||hn.indexOf("127.")===0||hn.indexOf("192.168.")===0)return;
+if(navigator.webdriver)return;
+var L=window.localStorage;
+if(location.search.indexOf("me=1")>=0){try{L.setItem("_vme","1")}catch(e){}}
+var me=L.getItem("_vme")==="1"?"1":"";
+var vid=L.getItem("_vv");
+if(!vid){vid=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);L.setItem("_vv",vid)}
+var fk="_vf:"+S,first=L.getItem(fk);if(!first){first=new Date().toISOString();L.setItem(fk,first)}
+var nk="_vn:"+S,n=(parseInt(L.getItem(nk)||"0",10)||0)+1;L.setItem(nk,String(n));
+var sid=Math.random().toString(36).slice(2,10),t0=Date.now(),dp=0,cl=[],ref=(document.referrer||"").slice(0,120);
+function dep(){var sc=document.documentElement.scrollHeight-innerHeight;var p=sc>40?Math.round(scrollY/sc*100):100;if(p>dp)dp=Math.min(100,p)}
+addEventListener("scroll",dep,{passive:true});dep();
+function tag(a){var h=a.getAttribute("href")||"";if(h.indexOf("youtube.com")>=0)return"video";if(h.indexOf("waze.com")>=0||h.indexOf("/maps")>=0)return"map";if(h.indexOf("http")===0)return"out";return""}
+addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a)return;var t=tag(a);if(t&&cl.indexOf(t)<0){cl.push(t);send()}},true);
+function url(){return EP+"?s="+S+"&k="+K+"&vid="+vid+"&sid="+sid+"&f="+encodeURIComponent(first)+"&n="+n+"&t="+Math.round((Date.now()-t0)/1000)+"&d="+dp+"&c="+encodeURIComponent(cl.join(","))+"&r="+encodeURIComponent(ref)+(me?"&me=1":"")}
+var lastAt=0;function send(){var now=Date.now();if(now-lastAt<1500)return;lastAt=now;dep();var u=url();if(navigator.sendBeacon){navigator.sendBeacon(u)}else{new Image().src=u}}
+setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
+addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});addEventListener("pagehide",send);
+}catch(e){}})();
+</script>
+</body>
+</html>
