@@ -193,13 +193,13 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   /* 列表只放近期：在住的 + 7 天内到的，全显示；更远的收起来，点一下多看 10 张。
      卡片只写日期、房间、名字、入住时收多少；点开再看邮箱、人数等。 */
   function card(b){
-    var n=nights(b),t=total(b),due=b.status==='paid'?t-deposit(b):t;
+    var n=nights(b),t=total(b),due=b.status==='paid'?t-deposit(b):t,cf=b.status==='conflict';
     var t0=key(today),here=b.in<=t0&&t0<b.out;
     var tag=b.status==='conflict'?'<span class="tag" style="background:var(--coral-soft);color:var(--coral)">Paid, but the room was taken \u2013 please refund</span> ':b.in===t0?'<span class="tag t-paid">Arriving today</span> ':here?'<span class="tag t-paid">Here now</span> ':(b.status==='you'?'<span class="tag t-you">Booked by you</span> ':'');
     return '<div class="card slim" data-id="'+b.id+'">'+(tag?'<div style="margin-bottom:8px">'+tag+'</div>':'')+
       '<div class="when">'+stay(b)+'</div>'+
       '<div class="line"><span>'+roomOf(b.room).name+' \u00b7 '+n+' night'+(n>1?'s':'')+'</span></div>'+
-      '<div class="line"><span>'+esc(b.name)+'</span><span>At check-in <b>'+peso(due)+'</b></span></div></div>';
+      '<div class="line"><span>'+esc(b.name)+'</span>'+(cf?'<span>Refund <b>'+peso(b.deposit)+'</b></span>':'<span>At check-in <b>'+peso(due)+'</b></span>')+'</div></div>';
   }
   var laterShown=0;
   function lists(){
@@ -271,9 +271,9 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   function showBooking(b){
     var n=nights(b),paidB=b.status==='paid';
     open('<h3>'+esc(b.name)+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
-      '<p style="margin:0 0 6px">'+(b.status==='conflict'?'This guest paid a '+peso(b.deposit)+' deposit by '+esc(b.via)+', but by the time the payment came in, those nights had been taken. Please refund the deposit from your PayMongo account and let them know. ':'')+(paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
+      '<p style="margin:0 0 6px">'+(b.status==='conflict'?'This guest paid a '+peso(b.deposit)+' deposit by '+esc(b.via)+', but by the time the payment came in, those nights had been taken. Please refund the deposit from your PayMongo account and let them know. ':'')+(b.status==='conflict'?'':paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
       '<p style="margin:0;color:var(--ink2)">'+(b.g?b.g+' guest'+(b.g>1?'s':'')+' \u00b7 ':'')+'Contact: '+esc(b.contact)+'</p>'+
-      '<div class="stack"><button class="big danger" id="del">'+(paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
+      '<div class="stack"><button class="big danger" id="del">'+(b.status==='conflict'?'I’ve refunded it – remove':paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
     document.getElementById('cl').onclick=close;
     document.getElementById('del').onclick=function(){confirmCancel(b)};
   }
@@ -281,7 +281,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     var paidB=b.status==='paid';
     open('<h3>'+(b.name==='Guest'?'Cancel this booking?':'Cancel '+esc(b.name)+'\u2019s booking?')+'</h3>'+
       '<p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+'</p>'+
-      '<p style="margin:0">'+(paidB?'The nights become free on the website. As your house rules say, the '+peso(deposit(b))+' deposit isn\u2019t refunded if the guest cancels. If you\u2019re the one cancelling, you can refund it from your PayMongo account.':'The nights become free on the website again.')+'</p>'+
+      '<p style="margin:0">'+(b.status==='conflict'?'Only do this after you’ve refunded the '+peso(b.deposit)+' deposit. This booking never held a room, so the calendar doesn’t change.':paidB?'The nights become free on the website. As your house rules say, the '+peso(deposit(b))+' deposit isn\u2019t refunded if the guest cancels. If you\u2019re the one cancelling, you can refund it from your PayMongo account.':'The nights become free on the website again.')+'</p>'+
       '<div class="stack"><button class="big danger" id="yes">Yes, cancel it</button><button class="big soft" id="keep">Keep booking</button></div>');
     document.getElementById('keep').onclick=close;
     document.getElementById('yes').onclick=function(){var btn=this;btn.disabled=true;api('/owner/cancel',{id:b.id}).then(function(){close();return load()}).then(function(){toast('Those nights are free again.')}).catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)})};
@@ -292,7 +292,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 
   /* records */
   document.getElementById('dl').onclick=function(){
-    var rows=[['Reference','Booked on','Guest','Contact','Room','Arrive','Leave','Nights','Guests','Total','Deposit paid','Due at check-in','How booked']].concat(S.map(function(b){var p=b.status==='paid';return[b.id,b.created?key(new Date(b.created)):'',b.name,b.contact,roomOf(b.room).name,b.in,b.out,nights(b),b.g||'',total(b),p?deposit(b):0,p?total(b)-deposit(b):total(b),b.status==='conflict'?'PAID - NO ROOM, REFUND':p?'Online \u00b7 '+b.via:'Messenger']}));
+    var rows=[['Reference','Booked on','Guest','Contact','Room','Arrive','Leave','Nights','Guests','Total','Deposit paid','Due at check-in','How booked']].concat(S.map(function(b){var p=b.status==='paid';return[b.id,b.created?key(new Date(b.created)):'',b.name,b.contact,roomOf(b.room).name,b.in,b.out,nights(b),b.g||'',total(b),b.status==='conflict'?b.deposit:p?deposit(b):0,b.status==='conflict'?'REFUND '+b.deposit:p?total(b)-deposit(b):total(b),b.status==='conflict'?'PAID - NO ROOM, REFUND':p?'Online \u00b7 '+b.via:'Messenger']}));
     var csv=rows.map(function(r){return r.map(function(v){var x=String(v);if(/^[=+\-@\t\r]/.test(x))x="'"+x;return '"'+x.replace(/"/g,'""')+'"'}).join(',')}).join(String.fromCharCode(10));
     var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv'}));a.download='california-coral-bookings.csv';a.click();
     toast('Saved to your phone.');
