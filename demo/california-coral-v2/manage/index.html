@@ -124,6 +124,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     <p style="margin:0 0 16px;color:var(--ink2)">Enter the password we gave you.</p>
     <input id="pw" type="password" autocomplete="current-password" style="width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none">
     <p id="lerr" style="color:var(--coral);margin:10px 0 0;display:none"></p>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--dim)">Forgot it? Message Gino and we’ll reset it for you.</p>
     <button class="big go" style="width:100%;margin-top:14px" type="submit">Sign in</button>
   </form>
 </div>
@@ -145,7 +146,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 
   <h2>Your records</h2>
   <button class="dl" id="dl">Download all bookings<span>Opens in Excel or Google Sheets</span></button>
-  <p style="text-align:center;margin:26px 0 0"><button id="out" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Sign out</button></p>
+  <p style="text-align:center;margin:26px 0 0;display:flex;justify-content:center;gap:28px"><button id="chpw" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Change password</button><button id="out" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Sign out</button></p>
 </div>
 
 <div class="veil" id="veil"></div>
@@ -178,13 +179,31 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   function load(){return api('/owner/bookings').then(function(j){
     today=parse(j.today); /* 用度假村那边（菲律宾）的今天，他人在加州也不会错一天 */
     S=j.bookings.map(function(b){return {id:b.id,room:b.room,'in':b.ci,out:b.co,g:b.guests,name:b.name||'Guest',contact:b.email||b.contact,status:b.status,via:b.via,total:b.total,deposit:b.deposit,created:b.created}});
-    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';lists();cal()})
+    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';lists();cal();if(j.mustChange&&!mustCh){mustCh=true;changePw(true)}})
     .catch(function(e){if(e.message!=='auth')toast(e.message)})}
   function showLogin(){document.getElementById('app').style.display='none';document.getElementById('login').style.display='';setTimeout(function(){document.getElementById('pw').focus()},50)}
   document.getElementById('lf').addEventListener('submit',function(e){e.preventDefault();var le=document.getElementById('lerr');le.style.display='none';
     fetch(API+'/owner/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:document.getElementById('pw').value})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
       .then(function(x){if(!x[0]){le.textContent=x[1].error||'That password isn\u2019t right.';le.style.display='block';return}try{localStorage.setItem(TK,x[1].token)}catch(e){}document.getElementById('pw').value='';load()})
       .catch(function(){le.textContent='Can\u2019t connect right now. Please try again.';le.style.display='block'})});
+  document.getElementById('chpw').onclick=function(){changePw(false)};
+  function changePw(forced){
+    var inp='width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none;margin-bottom:12px';
+    open('<h3>'+(forced?'Choose your own password':'Change password')+'</h3><p class="sub">'+(forced?'The password we sent you is only for your first sign-in. Pick one only you know - after this, not even we can see it. At least 8 characters.':'At least 8 characters. You\u2019ll stay signed in on this phone.')+'</p>'+
+      '<label for="cp1">Current password</label><input id="cp1" type="password" autocomplete="current-password" style="'+inp+'">'+
+      '<label for="cp2">New password</label><input id="cp2" type="password" autocomplete="new-password" style="'+inp+'">'+
+      '<label for="cp3">New password again</label><input id="cp3" type="password" autocomplete="new-password" style="'+inp+'">'+
+      '<p id="cperr" style="color:var(--coral);margin:0;display:none"></p>'+
+      '<div class="stack"><button class="big go" id="cpGo">Save new password</button>'+(forced?'':'<button class="big soft" id="cpNo">Not now</button>')+'</div>');
+    if(!forced)document.getElementById('cpNo').onclick=close;
+    document.getElementById('cpGo').onclick=function(){var er=document.getElementById('cperr'),a=document.getElementById('cp2').value,b=document.getElementById('cp3').value;er.style.display='none';
+      function bad(t){er.textContent=t;er.style.display='block'}
+      if(a.length<8)return bad('Please use at least 8 characters.');if(a!==b)return bad('The two new passwords don\u2019t match.');
+      var btn=this;btn.disabled=true;
+      api('/owner/password',{current:document.getElementById('cp1').value,next:a}).then(function(j){try{localStorage.setItem(TK,j.token)}catch(e){}close();mustCh=false;toast('Password changed.')})
+        .catch(function(e){btn.disabled=false;if(e.message!=='auth')bad(e.message)})};
+  }
+  var mustCh=false;
   document.getElementById('out').onclick=function(){try{localStorage.removeItem(TK)}catch(e){}S=[];showLogin()};
 
   var h=new Date().getHours();document.getElementById('hello').textContent=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+'.';
@@ -252,7 +271,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   var body=document.getElementById('sheetBody');
   function open(html){body.innerHTML=html;document.body.classList.add('open')}
   function close(){document.body.classList.remove('open')}
-  document.getElementById('veil').onclick=close;
+  document.getElementById('veil').onclick=function(){if(!mustCh)close()};
   function askBlock(a,out){
     var n=Math.round((out-a)/864e5);
     open('<h3>'+roomOf(cur).name+'</h3><p class="sub">'+n+' night'+(n>1?'s':'')+': '+nice(a)+(n>1?' – '+nice(add(out,-1)):'')+' · leaves '+nice(out)+'</p>'+
