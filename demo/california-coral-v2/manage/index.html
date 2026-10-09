@@ -85,7 +85,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .sites label{display:block;font-size:14px;color:var(--ink2);margin:10px 0 6px;font-weight:500}
 .sites .cp{display:flex;gap:8px}
 .sites input{flex:1;min-width:0;border:2px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;outline:none;background:#fff}
-.sites .cp button{flex:none;border:0;border-radius:10px;padding:0 14px;font:inherit;font-size:15px;font-weight:600;background:var(--teal-soft);color:var(--teal)}
+.sites .cp button{flex:none;width:72px;border:0;border-radius:10px;padding:0;font:inherit;font-size:15px;font-weight:600;background:var(--teal-soft);color:var(--teal)}
 .sites .st{font-size:13px;color:var(--dim);margin-top:8px}
 .sites .st.err{color:var(--coral)}
 .day.wait{background:var(--sun);color:#fff}
@@ -155,7 +155,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   <div class="legend"><span><i style="background:var(--card);border:1px solid var(--line)"></i>Free</span><span><i style="background:var(--teal)"></i>Booked online &middot; deposit paid</span><span><i style="background:#5B6B8C"></i>Booked by you</span><span><i style="background:#C9B79C"></i>Booked on Booking.com / Agoda</span></div>
 
   <h2>Other booking sites</h2>
-  <div class="how">Also on Booking.com or Agoda? Connect each room once, and the calendars keep each other up to date - so the same night can’t be sold twice.</div>
+  <div class="how">Also on Booking.com or Agoda? Connect each room once, and the calendars keep each other up to date. Booking.com and Agoda check our calendar every few hours, so a night booked very recently can take a little while to show there.</div>
   <div class="sites" id="sites"></div>
   <button class="more" id="syncNow" style="margin-bottom:6px">Check the other sites now</button>
 
@@ -202,11 +202,11 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
       return '<div class="rowc"><b>'+r.name+'</b>'+
         '<label>1. Give this link to Booking.com / Agoda (their \u201cimport calendar\u201d box)</label><div class="cp"><input readonly value="'+esc(c.exportUrl||'')+'" id="ex-'+r.id+'"><button type="button" data-copy="'+r.id+'">Copy</button></div>'+
         '<label>2. Paste the calendar link they give you (\u201cexport calendar\u201d)</label><div class="cp"><input placeholder="https://..." value="'+esc(c.importUrl||'')+'" id="im-'+r.id+'"><button type="button" data-save="'+r.id+'">Save</button></div>'+
-        '<p class="st'+(c.error?' err':'')+'">'+(c.importUrl?(c.error?'Couldn\u2019t read their link: '+esc(c.error):'Connected \u00b7 '+ago(c.lastSync)):'Not connected')+'</p></div>'}).join('')}
+        '<p class="st'+(c.error?' err':'')+'">'+(c.importUrl?(c.error?esc(c.error):'Connected \u00b7 '+ago(c.lastSync)):'Not connected')+'</p></div>'}).join('')}
   document.getElementById('sites').addEventListener('click',function(e){
     var c=e.target.closest('[data-copy]');if(c){var i=document.getElementById('ex-'+c.dataset.copy);i.select();try{navigator.clipboard.writeText(i.value).then(function(){toast('Copied.')},function(){document.execCommand('copy');toast('Copied.')})}catch(x){document.execCommand('copy');toast('Copied.')}return}
     var sv=e.target.closest('[data-save]');if(sv){var r=sv.dataset.save,v=document.getElementById('im-'+r).value.trim();sv.disabled=true;
-      api('/owner/ical',{room:r,url:v}).then(function(j){toast(v?'Connected. '+j.events+' booked night'+(j.events===1?'':'s')+' found.':'Disconnected.');return load()}).catch(function(x){if(x.message!=='auth')toast(x.message)}).then(function(){sv.disabled=false})}});
+      api('/owner/ical',{room:r,url:v}).then(function(j){toast(v?'Connected. '+j.events+' booking'+(j.events===1?'':'s')+' found.':'Disconnected.');return load()}).catch(function(x){if(x.message!=='auth')toast(x.message)}).then(function(){sv.disabled=false})}});
   document.getElementById('syncNow').onclick=function(){var b=this;b.disabled=true;b.textContent='Checking\u2026';api('/owner/ical-sync',{}).then(function(){return load()}).then(function(){toast('Up to date.')}).catch(function(x){if(x.message!=='auth')toast(x.message)}).then(function(){b.disabled=false;b.textContent='Check the other sites now'})};
   function showLogin(){document.getElementById('app').style.display='none';document.getElementById('login').style.display='';setTimeout(function(){document.getElementById('pw').focus()},50)}
   document.getElementById('lf').addEventListener('submit',function(e){e.preventDefault();var le=document.getElementById('lerr');le.style.display='none';
