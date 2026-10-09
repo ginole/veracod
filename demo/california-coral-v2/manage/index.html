@@ -52,9 +52,15 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .danger{background:var(--coral-soft);color:var(--coral)}
 .note{font-size:14px;color:var(--dim);margin-top:10px}
 .empty{color:var(--dim);font-size:16px;padding:6px 4px}
+.card.slim{padding:14px 16px}
+.card.slim .when{font-size:21px;margin:0}
+.card.slim .line{display:flex;justify-content:space-between;align-items:baseline;gap:6px 12px;flex-wrap:wrap;margin-top:4px;font-size:15px;color:var(--ink2)}
+.card.slim .line b{color:var(--ink)}
+.more{width:100%;border:2px solid var(--line);background:var(--card);border-radius:14px;padding:16px;font-size:16px;font-weight:600;color:var(--teal);margin-top:2px}
+.later-h{font:500 22px/1.1 var(--display);margin:22px 4px 10px;color:var(--ink2)}
 .sumrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:-18px}
 .sumrow div{background:var(--card);border-radius:14px;padding:14px 12px;box-shadow:0 1px 2px rgba(14,42,48,.06),0 6px 20px rgba(14,42,48,.05)}
-.sumrow b{display:block;font:500 30px/1 var(--display);color:var(--ink)}
+.sumrow b{display:block;font:500 clamp(20px,6.4vw,30px)/1 var(--display);color:var(--ink);white-space:nowrap;font-variant-numeric:lining-nums}
 .sumrow span{display:block;font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.3}
 
 /* calendar */
@@ -91,7 +97,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .sheet{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-radius:24px 24px 0 0;padding:10px 20px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);z-index:60;max-width:600px;margin:0 auto}
 .open .veil{opacity:1;pointer-events:auto}.open .sheet{transform:none}
 .grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 16px}
-.sheet h3{margin:0;font:500 28px/1.1 var(--display)}
+.sheet h3{margin:0;font:500 28px/1.1 var(--display);font-variant-numeric:lining-nums}
 .sheet .sub{color:var(--ink2);margin:4px 0 16px}
 .sheet label{display:block;font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:6px}
 .sheet input{width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none}
@@ -102,7 +108,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 </style>
 </head>
 <body>
-<div class="demo">Example only · the bookings below are made up so you can try it. Nothing here is saved anywhere but this phone.</div>
+<div class="demo">Preview · bookings made on the preview website show up here. Payments are simulated.</div>
 
 <div class="top">
   <div class="wrap">
@@ -112,11 +118,22 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="login" style="display:none">
+  <form class="card" id="lf" style="margin-top:24px">
+    <h2 style="margin:0 0 6px">Sign in</h2>
+    <p style="margin:0 0 16px;color:var(--ink2)">Enter the password we gave you.</p>
+    <input id="pw" type="password" autocomplete="current-password" style="width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none">
+    <p id="lerr" style="color:var(--coral);margin:10px 0 0;display:none"></p>
+    <button class="big go" style="width:100%;margin-top:14px" type="submit">Sign in</button>
+  </form>
+</div>
+
+<div class="wrap" id="app" style="display:none">
   <div class="sumrow" id="sumrow"></div>
 
-  <h2>Who's coming</h2>
+  <h2>Here now &amp; this week</h2>
   <div id="coming"></div>
+  <div id="laterBox"></div>
 
   <h2 id="cal">Room calendar</h2>
   <div class="how" id="how">Someone booked with you on Messenger? Choose the room, then tap their first night and their last night.</div>
@@ -128,6 +145,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 
   <h2>Your records</h2>
   <button class="dl" id="dl">Download all bookings<span>Opens in Excel or Google Sheets</span></button>
+  <p style="text-align:center;margin:26px 0 0"><button id="out" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Sign out</button></p>
 </div>
 
 <div class="veil" id="veil"></div>
@@ -140,7 +158,8 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     {id:'g1',name:'Garden Room 1',rate:2800},{id:'g2',name:'Garden Room 2',rate:2800},
     {id:'h1',name:'Hillview Room 1',rate:3200},{id:'h2',name:'Hillview Room 2',rate:3200},
     {id:'b',name:'Beachfront Balcony',rate:3800}];
-  var DEP=1000, EXTRA=400; /* 他们资料页：订金每间每晚 1,000 比索、取消不退；超过 2 人每人 400 比索 */
+  /* 数据来自订房后台 cc.veracod.com（和网站同一个日历）。口令登录后拿 30 天的令牌，存在这台手机上。 */
+  var API='https://cc.veracod.com/api',TK='cc-owner-token';
   var today=new Date();today.setHours(0,0,0,0);
   function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
   function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -148,39 +167,57 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   function nice(d,o){return d.toLocaleDateString('en-US',o||{weekday:'short',month:'short',day:'numeric'})}
   function peso(n){return '\u20B1'+Math.round(n).toLocaleString('en-US')}
   function nights(b){return Math.round((parse(b.out)-parse(b.in))/864e5)}
-
-  var seed=[
-    {id:2,room:'g1',in:key(add(today,1)),out:key(add(today,4)),g:2,name:'Tom & Kate Walker',contact:'tom.walker@example.com',status:'paid',via:'Card'},
-    {id:3,room:'b',in:key(add(today,5)),out:key(add(today,8)),g:2,name:'Mr & Mrs Dela Cruz',contact:'Messenger',status:'you'},
-    {id:1,room:'h1',in:key(add(today,9)),out:key(add(today,11)),g:4,name:'Maria Santos',contact:'maria.santos@example.com',status:'paid',via:'GCash'},
-    {id:4,room:'g2',in:key(add(today,14)),out:key(add(today,16)),g:3,name:'Jun Reyes',contact:'jun.reyes@example.com',status:'paid',via:'Maya'}
-  ];
-  var S;try{S=JSON.parse(localStorage.getItem('cc2-bookings'))}catch(e){}
-  if(!S||!S.length)S=seed;
-  function save(){try{localStorage.setItem('cc2-bookings',JSON.stringify(S))}catch(e){}}
+  function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  var S=[];
   function roomOf(id){return ROOMS.find(function(r){return r.id===id})}
-  function total(b){return nights(b)*(roomOf(b.room).rate+Math.max(0,(b.g||2)-2)*EXTRA)}
-  function deposit(b){return nights(b)*DEP}
+  function total(b){return b.total}
+  function deposit(b){return b.status==='paid'?b.deposit:0}
+  function tok(){try{return localStorage.getItem(TK)||''}catch(e){return ''}}
+  function api(path,body){return fetch(API+path,{method:body?'POST':'GET',headers:Object.assign({'Authorization':'Bearer '+tok()},body?{'Content-Type':'application/json'}:{}),body:body?JSON.stringify(body):undefined})
+    .then(function(r){return r.json().then(function(j){if(r.status===401){showLogin();throw new Error('auth')}if(!r.ok)throw new Error(j.error||'Something went wrong');return j})})}
+  function load(){return api('/owner/bookings').then(function(j){
+    today=parse(j.today); /* 用度假村那边（菲律宾）的今天，他人在加州也不会错一天 */
+    S=j.bookings.map(function(b){return {id:b.id,room:b.room,'in':b.ci,out:b.co,g:b.guests,name:b.name||'Guest',contact:b.email||b.contact,status:b.status,via:b.via,total:b.total,deposit:b.deposit}});
+    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';lists();cal()})
+    .catch(function(e){if(e.message!=='auth')toast(e.message)})}
+  function showLogin(){document.getElementById('app').style.display='none';document.getElementById('login').style.display='';setTimeout(function(){document.getElementById('pw').focus()},50)}
+  document.getElementById('lf').addEventListener('submit',function(e){e.preventDefault();var le=document.getElementById('lerr');le.style.display='none';
+    fetch(API+'/owner/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:document.getElementById('pw').value})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
+      .then(function(x){if(!x[0]){le.textContent=x[1].error||'That password isn\u2019t right.';le.style.display='block';return}try{localStorage.setItem(TK,x[1].token)}catch(e){}document.getElementById('pw').value='';load()})
+      .catch(function(){le.textContent='Can\u2019t connect right now. Please try again.';le.style.display='block'})});
+  document.getElementById('out').onclick=function(){try{localStorage.removeItem(TK)}catch(e){}S=[];showLogin()};
 
   var h=new Date().getHours();document.getElementById('hello').textContent=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+'.';
 
   function stay(b){return nice(parse(b.in))+' → '+nice(parse(b.out))}
+  /* 列表只放近期：在住的 + 7 天内到的，全显示；更远的收起来，点一下多看 10 张。
+     卡片只写日期、房间、名字、入住时收多少；点开再看邮箱、人数等。 */
   function card(b){
-    var n=nights(b),t=total(b),dep=deposit(b);
-    var tag=b.status==='paid'?'<span class="tag t-paid">Deposit paid \u00b7 '+b.via+'</span>':'<span class="tag t-you">Booked by you</span>';
-    var money=b.status==='you'?'<div class="money"><span>No deposit online</span><span>At check-in <b>'+peso(t)+'</b></span></div>':'<div class="money"><span>Deposit paid <b>'+peso(dep)+'</b></span><span>At check-in <b>'+peso(t-dep)+'</b></span></div>';
-    return '<div class="card" data-id="'+b.id+'">'+tag+
-      '<div class="when">'+stay(b)+'</div><div class="room">'+roomOf(b.room).name+' \u00b7 '+n+' night'+(n>1?'s':'')+(b.g?' \u00b7 '+b.g+' guest'+(b.g>1?'s':''):'')+'</div>'+
-      '<div class="who">'+b.name+' \u00b7 '+b.contact+'</div>'+money+'</div>';
+    var n=nights(b),t=total(b),due=b.status==='paid'?t-deposit(b):t;
+    var t0=key(today),here=b.in<=t0&&t0<b.out;
+    var tag=b.in===t0?'<span class="tag t-paid">Arriving today</span> ':here?'<span class="tag t-paid">Here now</span> ':(b.status==='you'?'<span class="tag t-you">Booked by you</span> ':'');
+    return '<div class="card slim" data-id="'+b.id+'">'+(tag?'<div style="margin-bottom:8px">'+tag+'</div>':'')+
+      '<div class="when">'+stay(b)+'</div>'+
+      '<div class="line"><span>'+roomOf(b.room).name+' \u00b7 '+n+' night'+(n>1?'s':'')+'</span></div>'+
+      '<div class="line"><span>'+esc(b.name)+'</span><span>At check-in <b>'+peso(due)+'</b></span></div></div>';
   }
+  var laterShown=0;
   function lists(){
-    var up=S.filter(function(b){return parse(b.out)>=today}).sort(function(a,b){return a.in<b.in?-1:1});
+    var up=S.filter(function(b){return parse(b.out)>today}).sort(function(a,b){return a.in<b.in?-1:1});
     var t0=key(today),wk=key(add(today,7));
-    var arriving=up.filter(function(b){return b.in>=t0&&b.in<=wk}).length;
+    var soon=up.filter(function(b){return b.in<=wk});
+    var later=up.filter(function(b){return b.in>wk});
+    var arriving=up.filter(function(b){return b.in>=t0&&b.in<key(add(today,7))}).length;
     var inHouse=up.filter(function(b){return b.in<=t0&&t0<b.out}).length;
     var deps=up.filter(function(b){return b.status==='paid'}).reduce(function(a,b){return a+deposit(b)},0);
     document.getElementById('sumrow').innerHTML='<div><b>'+inHouse+'</b><span>Rooms in use tonight</span></div><div><b>'+arriving+'</b><span>Arriving in the next 7 days</span></div><div><b>'+peso(deps)+'</b><span>Deposits already paid</span></div>';
-    document.getElementById('coming').innerHTML=up.length?up.map(card).join(''):'<p class="empty">No one booked yet.</p>';
+    document.getElementById('coming').innerHTML=soon.length?soon.map(card).join(''):'<p class="empty">No one here or arriving this week.</p>';
+    var box=document.getElementById('laterBox');
+    if(!later.length){box.innerHTML='';return}
+    var shown=later.slice(0,laterShown),left=later.length-shown.length;
+    box.innerHTML='<p class="later-h">Later</p>'+shown.map(card).join('')+
+      (left?'<button class="more" id="moreBtn">'+(laterShown?'Show '+Math.min(10,left)+' more':'Show later bookings ('+later.length+')')+'</button>':'');
+    var mb=document.getElementById('moreBtn');if(mb)mb.onclick=function(){laterShown+=10;lists()};
   }
 
   /* calendar */
@@ -195,7 +232,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     for(var i=0;i<first;i++)html+='<span></span>';
     for(var d=1;d<=days;d++){var dt=new Date(view.getFullYear(),view.getMonth(),d),b=bookingOn(dt),cls='day';
       if(dt<today)cls+=' past';if(+dt===+today)cls+=' today';if(b)cls+=' '+b.status;if(pickA&&+dt===+pickA)cls+=' pick';
-      html+='<button class="'+cls+'" data-d="'+key(dt)+'"'+(dt<today?' disabled':'')+'>'+d+(b?'<small>'+b.name.split(' ')[0]+'</small>':'')+'</button>'}
+      html+='<button class="'+cls+'" data-d="'+key(dt)+'"'+(dt<today?' disabled':'')+'>'+d+(b?'<small>'+esc(b.name.split(' ')[0])+'</small>':'')+'</button>'}
     g.innerHTML=html;
     document.getElementById('how').textContent=pickA?'Now tap their last night.':'Someone booked with you on Messenger? Choose the room, then tap their first night and their last night.';
   }
@@ -219,36 +256,37 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     var n=Math.round((out-a)/864e5);
     open('<h3>'+roomOf(cur).name+'</h3><p class="sub">'+n+' night'+(n>1?'s':'')+': '+nice(a)+(n>1?' – '+nice(add(out,-1)):'')+' · leaves '+nice(out)+'</p>'+
       '<label for="gname">Guest name (if you like)</label><input id="gname" placeholder="e.g. Dela Cruz family" autocomplete="off">'+
-      '<label style="margin-top:14px">How many guests</label><div style="display:flex;align-items:center;gap:16px"><button type="button" class="big soft" id="gm" style="width:56px;padding:12px 0">\u2212</button><b id="gc" style="font-size:22px;min-width:2ch;text-align:center">2</b><button type="button" class="big soft" id="gp" style="width:56px;padding:12px 0">+</button></div>'+
+      '<label style="margin-top:14px">How many guests</label><div style="display:flex;align-items:center;justify-content:center;gap:16px"><button type="button" class="big soft" id="gm" style="width:56px;padding:12px 0">\u2212</button><b id="gc" style="font-size:22px;min-width:2ch;text-align:center">2</b><button type="button" class="big soft" id="gp" style="width:56px;padding:12px 0">+</button></div>'+
       '<div class="stack"><button class="big go" id="doBlock">Mark as booked</button><button class="big soft" id="cancel">Not now</button></div>');
     document.getElementById('cancel').onclick=close;
     var gmax=cur==='b'?2:5,gc=2;function gset(v){gc=Math.max(1,Math.min(gmax,v));document.getElementById('gc').textContent=gc}
     document.getElementById('gm').onclick=function(){gset(gc-1)};document.getElementById('gp').onclick=function(){gset(gc+1)};
     document.getElementById('doBlock').onclick=function(){
-      S.push({id:Date.now(),room:cur,in:key(a),out:key(out),g:gc,name:document.getElementById('gname').value.trim()||'Guest',contact:'Messenger',status:'you'});
-      save();close();cal();lists();toast('Done. On your real site, these nights would show as taken.');
+      var btn=this;btn.disabled=true;
+      api('/owner/block',{room:cur,'in':key(a),out:key(out),guests:gc,name:document.getElementById('gname').value.trim()}).then(function(){close();return load()}).then(function(){toast('Done. The website now shows these nights as taken.')})
+        .catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)});
     };
   }
   function showBooking(b){
     var n=nights(b),paidB=b.status==='paid';
-    open('<h3>'+b.name+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
+    open('<h3>'+esc(b.name)+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
       '<p style="margin:0 0 6px">'+(paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
-      '<p style="margin:0;color:var(--ink2)">Contact: '+b.contact+'</p>'+
+      '<p style="margin:0;color:var(--ink2)">'+(b.g?b.g+' guest'+(b.g>1?'s':'')+' \u00b7 ':'')+'Contact: '+esc(b.contact)+'</p>'+
       '<div class="stack"><button class="big danger" id="del">'+(paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
     document.getElementById('cl').onclick=close;
     document.getElementById('del').onclick=function(){confirmCancel(b)};
   }
   function confirmCancel(b){
     var paidB=b.status==='paid';
-    open('<h3>'+(b.name==='Guest'?'Cancel this booking?':'Cancel '+b.name+'\u2019s booking?')+'</h3>'+
+    open('<h3>'+(b.name==='Guest'?'Cancel this booking?':'Cancel '+esc(b.name)+'\u2019s booking?')+'</h3>'+
       '<p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+'</p>'+
       '<p style="margin:0">'+(paidB?'The nights become free on the website. As your house rules say, the '+peso(deposit(b))+' deposit isn\u2019t refunded if the guest cancels. If you\u2019re the one cancelling, you can refund it from your PayMongo account.':'The nights become free on the website again.')+'</p>'+
       '<div class="stack"><button class="big danger" id="yes">Yes, cancel it</button><button class="big soft" id="keep">Keep booking</button></div>');
     document.getElementById('keep').onclick=close;
-    document.getElementById('yes').onclick=function(){S=S.filter(function(x){return x.id!==b.id});save();close();cal();lists();toast('Those nights are free again.')};
+    document.getElementById('yes').onclick=function(){var btn=this;btn.disabled=true;api('/owner/cancel',{id:b.id}).then(function(){close();return load()}).then(function(){toast('Those nights are free again.')}).catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)})};
   }
   document.addEventListener('click',function(e){
-    var c=e.target.closest('.card');if(c&&!e.target.closest('button')){var bb=S.find(function(y){return y.id==c.dataset.id});if(bb)showBooking(bb)}
+    var c=e.target.closest('.card');if(c&&!e.target.closest('button')){var bb=S.find(function(y){return String(y.id)===c.dataset.id});if(bb)showBooking(bb)}
   });
 
   /* records */
@@ -260,7 +298,8 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   };
 
   var tt;function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2600)}
-  lists();cal();
+  if(tok())load();else showLogin();
+  setInterval(function(){if(tok()&&document.visibilityState==='visible'&&!document.body.classList.contains('open'))load()},60000);
 })();
 </script>
 </body>

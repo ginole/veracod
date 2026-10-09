@@ -193,6 +193,64 @@ form.req .pays{display:flex;justify-content:center;gap:14px;margin-top:12px;font
 .find a.ln{display:inline-block;margin-top:12px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
 @media(max-width:900px){.find .cols{grid-template-columns:1fr}}
 
+.avcal{margin:2px 0 20px;border:1px solid var(--rule);padding:14px 12px 12px;user-select:none}
+.avcal .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.avcal .mh b{font:400 22px/1 var(--display);font-variant-numeric:lining-nums}
+.avcal .mh button{width:40px;height:40px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
+.avcal .mh button:disabled{opacity:.3;cursor:default}
+.avcal .dw,.avcal .dg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.avcal .dw span{text-align:center;font:500 10px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding:4px 0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.avcal .dg button{aspect-ratio:1;min-width:0;border:0;background:var(--sand);font:400 15px/1 var(--body);color:var(--ink);cursor:pointer;position:relative}
+.avcal .dg button:disabled{background:none;color:#B9C6C7;cursor:default}
+.avcal .dg button.full{background:none;color:#B9C6C7;text-decoration:line-through}
+.avcal .dg button.full.out-ok{cursor:pointer}
+.avcal .dg button.in,.avcal .dg button.out{background:var(--lagoon);color:#fff;text-decoration:none}
+.avcal .dg button.mid{background:#CFE6E7}
+.avcal .key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--dim)}
+.avcal .key i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px}
+.avmsg{font-size:14.5px;line-height:1.5;margin:-6px 0 18px;color:var(--ink2);min-height:1.5em}
+.avmsg.ok{color:var(--lagoon)}.avmsg.bad{color:var(--clay)}
+.avmsg button{border:0;background:none;padding:0;font:inherit;color:var(--lagoon);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+form.req .err{display:none;margin-top:12px;color:var(--clay);font-size:14.5px}
+form.req button[type=submit]:disabled{opacity:.6;cursor:default}
+/* ---------- checkout / confirmation dialog ---------- */
+.ov{position:fixed;inset:0;z-index:90;background:rgba(14,42,48,.55);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.dlg{background:#fff;width:min(560px,100%);max-height:92vh;overflow:auto;padding:clamp(24px,5vw,40px);border-top:4px solid var(--lagoon)}
+@media(min-width:700px){.ov{align-items:center}}
+.dlg h3{font-size:clamp(32px,5vw,44px);margin-bottom:6px;font-variant-numeric:lining-nums}
+.dlg .tagp{font:500 10px/1.4 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin-bottom:14px}
+.dlg dl{margin:18px 0;border-top:1px solid var(--rule)}
+.dlg dl div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.dlg dt{color:var(--dim)}.dlg dd{margin:0;text-align:right;color:var(--ink)}
+.dlg .amt{font:400 40px/1 var(--display);color:var(--lagoon);margin:6px 0 18px;font-variant-numeric:lining-nums}
+.dlg .methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:6px 0 18px}
+.dlg .methods label{border:1px solid var(--rule);padding:14px 6px;text-align:center;font-size:14px;cursor:pointer}
+.dlg .methods input{position:absolute;opacity:0;pointer-events:none}
+.dlg .methods input:checked+span{color:var(--lagoon);font-weight:500}
+.dlg .methods label:has(input:checked){border-color:var(--lagoon);background:#EEF6F6}
+.dlg .go{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;padding:20px;cursor:pointer}
+.dlg .go:disabled{opacity:.6}
+.dlg .lnk{display:block;margin:14px auto 0;border:0;background:none;font:400 14px/1 var(--body);color:var(--dim);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.dlg p{color:var(--ink2);font-size:15px}
+.dlg .small{font-size:12.5px;color:var(--dim);margin-top:12px}
+/* ---------- Messenger button ---------- */
+.msgr{transition:opacity .35s,transform .35s;opacity:0;transform:translateY(16px);pointer-events:none}
+.msgr.show{opacity:1;transform:none;pointer-events:auto}
+.msgr{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:10px;background:var(--lagoon);color:#fff;padding:12px 18px 12px 14px;border-radius:99px;box-shadow:0 10px 30px rgba(14,42,48,.28);font:500 13px/1 var(--body);letter-spacing:.06em}
+.msgr svg{width:24px;height:24px;flex:none}
+@media(max-width:600px){.msgr span{display:none}.msgr{padding:14px}}
+/* ---------- FAQ ---------- */
+.faq{padding:clamp(90px,11vw,150px) 0}
+.faq h2{font-size:clamp(40px,5vw,72px);margin-bottom:clamp(30px,4vw,50px)}
+.faq .qs{border-top:1px solid var(--rule);max-width:860px}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:400 clamp(21px,2.4vw,26px)/1.25 var(--display);color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 26px/1 var(--body);color:var(--lagoon);flex:none;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--ink2);max-width:62ch}
+
 footer{background:var(--ink);color:rgba(246,242,234,.72);padding:70px 0 40px;font-size:13.5px}
 footer .big{font:300 clamp(48px,11vw,180px)/.85 var(--display);letter-spacing:.04em;color:rgba(246,242,234,.08);text-transform:uppercase;white-space:nowrap;overflow:hidden;margin-bottom:40px}
 footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
@@ -205,7 +263,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 </head>
 <body>
 
-<div class="ribbon">Preview for California Coral Beach Resort &mdash; not live yet. Booking and payments are switched off on this preview.</div>
+<div class="ribbon">Preview for California Coral Beach Resort &mdash; not live yet. The calendar and booking work; payment is simulated and no money is charged.</div>
 
 <div class="loader" aria-hidden="true">
   <div class="word"><span>C</span><span>a</span><span>l</span><span>i</span><span>f</span><span>o</span><span>r</span><span>n</span><span>i</span><span>a</span></div>
@@ -216,7 +274,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <header id="hdr">
   <nav>
     <a class="logo" href="#top">California<i>Coral Beach Resort</i></a>
-    <div class="links"><a href="#bay">The bay</a><a href="#rooms">Rooms</a><a href="#day">A day here</a><a href="#find">Find us</a></div>
+    <div class="links"><a href="#bay">The bay</a><a href="#rooms">Rooms</a><a href="#day">A day here</a><a href="#faq">Questions</a><a href="#find">Find us</a></div>
     <a class="navbook" href="#book">Book direct</a>
   </nav>
 </header>
@@ -317,10 +375,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       </div>
       <form class="req" id="req">
         <div class="row">
-          <label class="f">Arrive<input type="date" name="in" required></label>
-          <label class="f">Leave<input type="date" name="out" required></label>
-        </div>
-        <div class="row">
           <label class="f">Room<select name="room">
             <option value="beachfront" data-r="3800" data-max="2">Beachfront Balcony</option>
             <option value="garden" data-r="2800" data-max="5" selected>Garden Room</option>
@@ -328,6 +382,17 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           </select></label>
           <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div><span id="gnote" style="display:none;margin-top:8px;letter-spacing:.04em;text-transform:none;font:400 12px/1.4 var(--body);color:var(--clay)">Beachfront Balcony: 1&ndash;2 adults only</span></div>
         </div>
+        <div class="avcal" id="avcal" aria-label="Availability calendar">
+          <div class="mh"><button type="button" id="cprev" aria-label="Previous month">&lsaquo;</button><b id="cmon">&nbsp;</b><button type="button" id="cnext" aria-label="Next month">&rsaquo;</button></div>
+          <div class="dw"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <div class="dg" id="cgrid"></div>
+          <div class="key"><span><i style="background:var(--sand)"></i>Free</span><span><i style="background:none;border:1px solid #B9C6C7"></i>Booked</span><span><i style="background:var(--lagoon)"></i>Your dates</span></div>
+        </div>
+        <div class="row">
+          <label class="f">Arrive<input type="date" name="in" required></label>
+          <label class="f">Leave<input type="date" name="out" required></label>
+        </div>
+        <p class="avmsg" id="avmsg">Tap your arrival day on the calendar, then the day you leave.</p>
         <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
         <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
         <div class="sum">
@@ -337,8 +402,27 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         </div>
         <button type="submit" id="pay">Pay deposit &amp; book</button>
         <p class="pays">Card &middot; GCash &middot; Maya</p>
-        <p class="done" id="done">This is a preview, so payments are switched off and nothing was booked. On the live site, this button opens a secure PayMongo checkout and the booking confirms itself once the deposit is paid.</p>
+        <p class="err" id="err" role="alert"></p>
       </form>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <p class="kick rv">Good to know</p>
+      <h2 class="rv">Questions guests ask.</h2>
+      <div class="qs">
+        <details><summary>How do I pay, and how much now?</summary><p>You pay a deposit of &#8369;1,000 per room per night when you book, by card, GCash or Maya. It counts toward your stay. The rest is paid at check-in, in cash or by bank transfer.</p></details>
+        <details><summary>What if I need to cancel?</summary><p>The deposit isn't refunded if you cancel.</p></details>
+        <details><summary>What time is check-in and check-out?</summary><p>Check-in is after 2 PM. Check-out is before 12 noon.</p></details>
+        <details><summary>How many people can stay in a room?</summary><p>Garden and Hillview rooms take up to five people; the rate is for two, and each extra person is &#8369;400. An extra single mattress with bedding is &#8369;300. The Beachfront Balcony Room is for one or two adults only. Children who can walk on their own count as guests; infants who must be carried stay free.</p></details>
+        <details><summary>Is there a restaurant?</summary><p>Not yet, and we can't provide prepared food. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner. Our sari-sari store is open daily with the usual food and drinks. Food is allowed in the rooms, but no cooking in the rooms. You can cook in the BBQ area for free (charcoal is sold at the store); there's a small electricity charge if you use your own electric cooker, outside only.</p></details>
+        <details><summary>Can we go island hopping?</summary><p>Yes, on our 40-foot boat, the Seahorse: &#8369;1,000 for the first hour and &#8369;800 for each extra hour, for up to ten people. Snorkel gear can be rented when available - ask before boarding. Sign up at the lifeguard station on the beach.</p></details>
+        <details><summary>Do you have discounts?</summary><p>Seniors and PWDs who show ID and their Senior or PWD card get 20% off their share of the room rate. Only one discount per stay.</p></details>
+        <details><summary>Can we bring pets?</summary><p>Sorry, no pets.</p></details>
+        <details><summary>We're only coming for the day. Can we use the hut?</summary><p>The bamboo hut is free for room guests. When it isn't in use, day visitors can rent it - it isn't booked in advance, so ask Toy, the manager, when you arrive. It's usually &#8369;700&ndash;1,000, depending on how many people and for how long. There's a &#8369;50 entrance fee for people passing through to the beach.</p></details>
+        <details><summary>Can we just walk in?</summary><p>Yes - walk-ins are always welcome when we have a room free, at the same rates.</p></details>
+      </div>
     </div>
   </section>
 
@@ -353,6 +437,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     </div>
   </section>
 </main>
+
+<a class="msgr" href="https://m.me/CaliforniaResort" target="_blank" rel="noreferrer" aria-label="Message us on Facebook Messenger"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.54-.04.91.25 1.87.38 2.9.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg><span>Message us</span></a>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true"><div class="dlg" id="dlg"></div></div>
 
 <footer>
   <div class="wrap">
@@ -387,11 +475,98 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—';document.getElementById('deposit').textContent='—';document.getElementById('bal').textContent='The rest is paid at check-in.';document.getElementById('pay').textContent='Pay deposit & book'}}
   ['in','out','room'].forEach(function(k){req.elements[k].addEventListener('change',function(){clampG();est()})});
   req.elements['in'].addEventListener('change',function(){req.elements.out.min=req.elements['in'].value||td});
-  req.addEventListener('submit',function(e){e.preventDefault();document.getElementById('done').style.display='block'});
+  /* ================= live booking: calendar + API (cc.veracod.com) =================
+     付款：后台配了 PayMongo 就跳到 PayMongo 的安全页；没配（现在）就弹「模拟付款」，流程完全一样、不收钱。 */
+  var API='https://cc.veracod.com/api',AV=null,TAKEN={},TYPES={garden:['g1','g2'],hillview:['h1','h2'],beachfront:['b']};
+  var TNAME={garden:'Garden Room',hillview:'Hillview Room',beachfront:'Beachfront Balcony Room'};
+  function addD(s,n){var d=new Date(s+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
+  function nice(s,o){return new Date(s+'T00:00:00Z').toLocaleDateString('en-US',Object.assign({timeZone:'UTC',month:'short',day:'numeric'},o||{}))}
+  function type(){return req.elements.room.value}
+  function roomFree(r,a,b){for(var d=a;d<b;d=addD(d,1))if(TAKEN[r][d])return false;return true}
+  function freeRoom(t,a,b){var rs=TYPES[t];for(var i=0;i<rs.length;i++)if(roomFree(rs[i],a,b))return rs[i];return null}
+  function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
+  var msg=document.getElementById('avmsg'),errEl=document.getElementById('err'),payBtn=document.getElementById('pay');
+  function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
+  function loadAv(cb){fetch(API+'/availability?from='+td+'&to='+addD(td,400)).then(function(r){return r.json()}).then(function(j){AV=j;TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});cal();check();if(cb)cb()})
+    .catch(function(){setMsg('We couldn\u2019t load the calendar just now. Please message us on Facebook and we\u2019ll check your dates.','bad')})}
+  /* availability calendar */
+  var cm=td.slice(0,7)+'-01',cgrid=document.getElementById('cgrid');
+  function cal(){
+    var y=+cm.slice(0,4),m=+cm.slice(5,7)-1,first=new Date(Date.UTC(y,m,1)).getUTCDay(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate();
+    document.getElementById('cmon').textContent=new Date(Date.UTC(y,m,1)).toLocaleDateString('en-US',{timeZone:'UTC',month:'long',year:'numeric'});
+    document.getElementById('cprev').disabled=cm<=td.slice(0,7)+'-01';
+    var a=req.elements['in'].value,b=req.elements.out.value,t=type(),h='';
+    for(var i=0;i<first;i++)h+='<span></span>';
+    for(var d=1;d<=days;d++){var k=cm.slice(0,8)+String(d).padStart(2,'0'),cls='',dis=k<td;
+      if(!dis&&AV&&fullOn(t,k))cls+=' full'+(a&&!b&&k>a?' out-ok':'');
+      if(a&&k===a)cls+=' in';else if(b&&k===b)cls+=' out';else if(a&&b&&k>a&&k<b)cls+=' mid';
+      h+='<button type="button" data-k="'+k+'"'+(dis?' disabled':'')+' class="'+cls.trim()+'" aria-label="'+nice(k,{weekday:'long',month:'long'})+(cls.indexOf('full')>=0?', booked':'')+'">'+d+'</button>'}
+    cgrid.innerHTML=h}
+  document.getElementById('cprev').onclick=function(){cm=addD(cm,-1).slice(0,8)+'01';cal()};
+  document.getElementById('cnext').onclick=function(){cm=addD(addD(cm,31).slice(0,8)+'01',0);cal()};
+  cgrid.addEventListener('click',function(e){var bt=e.target.closest('button');if(!bt||bt.disabled)return;var k=bt.dataset.k,I=req.elements['in'],O=req.elements.out;
+    if(!I.value||O.value||k<=I.value){ if(AV&&fullOn(type(),k)){setMsg('That night is already booked for the '+TNAME[type()]+'. Pick another arrival day, or try another room.','bad');return}
+      I.value=k;O.value='';O.min=addD(k,1);setMsg('Now tap the day you leave.')}
+    else O.value=k;
+    est();cal();check()});
+  /* say whether the dates work, and offer another room if not */
+  function check(){errEl.style.display='none';var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    if(!AV)return;if(!a||!b){if(!a)setMsg('Tap your arrival day on the calendar, then the day you leave.');return}
+    if(b<=a){setMsg('Your leaving day needs to be after your arrival day.','bad');return}
+    if(freeRoom(t,a,b)){setMsg('\u2713 The '+TNAME[t]+' is free from '+nice(a)+' to '+nice(b)+'.','ok');return}
+    var other=Object.keys(TYPES).filter(function(x){return x!==t&&freeRoom(x,a,b)&&(x!=='beachfront'||g<=2)});
+    setMsg('Sorry, the '+TNAME[t]+' is booked on some of those nights.'+(other.length?' '+other.map(function(x){return 'The <button type="button" data-sw="'+x+'">'+TNAME[x]+'</button> is free.'}).join(' '):' Try other dates, or message us on Facebook.'),'bad')}
+  msg.addEventListener('click',function(e){var b=e.target.closest('[data-sw]');if(!b)return;req.elements.room.value=b.dataset.sw;clampG();est();cal();check()});
+  ['in','out','room'].forEach(function(k){req.elements[k].addEventListener('change',function(){if(k==='in'&&req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check()})});
+  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',check)});
+  /* dialog */
+  var ov=document.getElementById('ov'),dlg=document.getElementById('dlg');
+  function openD(h){dlg.innerHTML=h;ov.classList.add('on');document.body.style.overflow='hidden'}
+  function closeD(){ov.classList.remove('on');document.body.style.overflow=''}
+  function row(k,v){return '<div><dt>'+k+'</dt><dd>'+v+'</dd></div>'}
+  function confirmed(o){var e=AV&&AV.email==='on';
+    openD('<p class="tagp">Booking confirmed &middot; '+o.id+'</p><h3>You\u2019re booked.</h3><p>See you at Alubihod Beach, '+(o.name||'').split(' ')[0]+'.</p>'+
+      '<dl>'+row('Room',o.room)+row('Arrive',nice(o['in'],{weekday:'short'})+', after 2 PM')+row('Leave',nice(o.out,{weekday:'short'})+', before 12 noon')+row('Guests',o.guests)+row('Deposit paid',peso(o.deposit))+row('Due at check-in',peso(o.due)+' &middot; cash or bank transfer')+'</dl>'+
+      '<p class="small">'+(e?'A confirmation email is on its way to you.':'On the live site, a confirmation email goes to you and to the resort at this point.')+' The deposit isn\u2019t refunded if you cancel. Questions? Message us on Facebook.</p>'+
+      '<button class="go" id="dOk" type="button">Done</button>');
+    document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
+  function previewPay(o){
+    openD('<p class="tagp">Preview checkout &middot; no money is charged</p><h3>Pay your deposit</h3><p>On the live site, this step is PayMongo\u2019s secure payment page.</p>'+
+      '<dl>'+row('Room',o.room)+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Total stay',peso(o.total))+'</dl>'+
+      '<p style="margin-bottom:4px">Deposit to pay now</p><div class="amt">'+peso(o.deposit)+'</div>'+
+      '<div class="methods"><label><input type="radio" name="pm" value="Card" checked><span>Card</span></label><label><input type="radio" name="pm" value="GCash"><span>GCash</span></label><label><input type="radio" name="pm" value="Maya"><span>Maya</span></label></div>'+
+      '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel - don\u2019t book</button>'+
+      '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay.</p>');
+    document.getElementById('dCancel').onclick=function(){closeD();loadAv()};
+    document.getElementById('dPay').onclick=function(){var b=this;b.disabled=true;b.textContent='Paying\u2026';
+      fetch(API+'/preview-pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:o.id,t:o.t})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
+      .then(function(x){if(!x[0]){b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+        return fetch(API+'/booking?id='+o.id+'&t='+o.t).then(function(r){return r.json()}).then(confirmed)})
+      .catch(function(){b.disabled=false;b.textContent='Try again'})}}
+  req.addEventListener('submit',function(e){e.preventDefault();errEl.style.display='none';
+    var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    function bad(m){errEl.textContent=m;errEl.style.display='block'}
+    if(!a||!b||b<=a)return bad('Please pick your arrival and leaving days.');
+    if(AV&&!freeRoom(t,a,b))return bad('Sorry, the '+TNAME[t]+' is booked on some of those nights.');
+    payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent='Holding your room\u2026';
+    fetch(API+'/book',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({'in':a,out:b,type:t,guests:g,name:req.elements.name.value,email:req.elements.email.value,returnUrl:location.href.split('?')[0].split('#')[0]})})
+      .then(function(r){return r.json().then(function(j){return[r.status,j]})})
+      .then(function(x){payBtn.disabled=false;payBtn.textContent=lbl;var j=x[1];
+        if(x[0]!==200){bad(j.error||'Something went wrong. Please try again.');if(j.full)loadAv();return}
+        if(j.checkoutUrl){location.href=j.checkoutUrl;return}
+        j['in']=a;j.out=b;previewPay(j)})
+      .catch(function(){payBtn.disabled=false;payBtn.textContent=lbl;bad('We couldn\u2019t reach the booking system. Please try again, or message us on Facebook.')})});
+  /* back from PayMongo */
+  (function(){var u=new URLSearchParams(location.search),id=u.get('booking'),t=u.get('t');if(!id||!t)return;
+    if(u.get('cancelled')){openD('<h3>No payment was made.</h3><p>Nothing was booked. You can pick your dates again whenever you like.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD;return}
+    var tries=0;(function poll(){fetch(API+'/booking?id='+encodeURIComponent(id)+'&t='+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(o){
+      if(o.status==='paid')return confirmed(o);if(++tries<8)return setTimeout(poll,1500);
+      openD('<h3>Almost there.</h3><p>We\u2019re waiting for the payment to come through. You\u2019ll get an email as soon as it does - or message us on Facebook with reference '+id+'.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD})})()})();
+  loadAv();
   var q=document.getElementById('qbar');
-  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;clampG();est();
+  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;clampG();est();if(req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check();
     document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
-  document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est()})});
+  document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est();cal();check()})});
 
   /* ---------- 手机上首屏先放帆船（度假村那张源图 2000×915，竖裁会糊） ---------- */
   if(innerWidth<720){var sl=document.querySelector('.slides'),a0=sl.children[0],a1=sl.children[1];a0.classList.remove('on');a1.classList.add('on');sl.insertBefore(a1,a0)}
@@ -399,7 +574,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
   function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);if(window.ResizeObserver)new ResizeObserver(rbh).observe(rb);
-  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72)}
+  var msgr=document.querySelector('.msgr'),bookIn=false;
+  if(window.IntersectionObserver)new IntersectionObserver(function(es){bookIn=es[0].isIntersecting;sc()},{threshold:0.05}).observe(document.getElementById('req'));
+  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72);msgr.classList.toggle('show',scrollY>window.innerHeight*0.6&&!bookIn)}
   sc();addEventListener('scroll',sc,{passive:true});
 
   /* ---------- intro: split into words ---------- */
