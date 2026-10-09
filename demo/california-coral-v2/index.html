@@ -27,7 +27,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentEle
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
-body{margin:0;background:var(--sand);color:var(--ink);font:300 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--sand);color:var(--ink);font:300 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:var(--display);font-weight:300;margin:0;letter-spacing:-.01em;line-height:1.02}
@@ -62,11 +62,11 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 @media(max-width:420px){.logo{font-size:19px;letter-spacing:.08em}.navbook{padding:12px 14px;font-size:11px;letter-spacing:.14em}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
+.hero{position:relative;height:calc(100vh - var(--rb,34px));height:calc(100svh - var(--rb,34px));min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
 .slides{position:absolute;inset:0}
 .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
 .slides img.on{opacity:1}
-.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.05) 30%,rgba(0,0,0,.05) 50%,rgba(0,0,0,.6))}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.22) 30%,rgba(0,0,0,.22) 55%,rgba(0,0,0,.6))}
 .hcenter{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;padding:0 20px}
 .hcenter .kick{color:#fff;opacity:.92}
 .hero h1{font-size:clamp(48px,8.4vw,128px);margin-top:26px;text-shadow:0 2px 40px rgba(0,0,0,.3)}
@@ -83,7 +83,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .dots{position:absolute;right:clamp(20px,3vw,44px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
 .dots i{width:1px;height:26px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
 .dots i b{position:absolute;inset:0;background:#fff;transform:scaleY(0);transform-origin:top}
-@media(max-width:720px){.bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
+@media(max-width:720px){.slides img:first-child{object-position:22% 50%}.bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
 
 /* ---------- intro (words light up as you scroll) ---------- */
 .intro{padding:clamp(110px,15vw,210px) 0}
@@ -94,26 +94,24 @@ html:not(.js) .intro p .w{opacity:1}
 
 /* ---------- the bay: pinned horizontal ---------- */
 .island{position:relative;background:var(--ink);color:var(--sand);overflow:hidden}
-.island-head{position:absolute;top:clamp(34px,6vh,70px);left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);display:flex;justify-content:space-between;align-items:flex-end;z-index:2;pointer-events:none}
+.island-head{position:absolute;top:calc(77px + clamp(16px,3vh,32px));left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);display:flex;justify-content:space-between;align-items:flex-end;z-index:2;pointer-events:none}
 .island-head h2{font-size:clamp(36px,4.6vw,68px)}
 .island-head .kick{color:#8FD3D8}
 .count{font:300 18px/1 var(--display);letter-spacing:.1em}
-.track{display:flex;gap:clamp(18px,2.4vw,36px);padding:clamp(150px,22vh,220px) clamp(20px,4vw,48px) clamp(50px,9vh,90px);width:max-content;height:100vh;height:100svh;min-height:600px;align-items:stretch}
+.track{display:flex;gap:clamp(18px,2.4vw,36px);padding:clamp(190px,27vh,260px) clamp(20px,4vw,48px) clamp(50px,9vh,90px);width:max-content;height:100vh;height:100svh;min-height:600px;align-items:stretch}
 .panel{position:relative;width:min(62vw,880px);flex:none;overflow:hidden;margin:0}
 .panel img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
 .panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;background:linear-gradient(0deg,rgba(0,0,0,.6),rgba(0,0,0,0));font:300 22px/1.3 var(--display)}
 .panel figcaption b{display:block;font:500 10px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;opacity:.85;margin-bottom:8px}
-@media(max-width:900px){.island-head{position:static;padding:80px 20px 26px}.track{height:auto;min-height:0;padding:0 20px 80px;width:auto;overflow-x:auto;scroll-snap-type:x mandatory}.panel{width:84vw;height:62vh;scroll-snap-align:center}.panel img{transform:none}}
+@media(max-width:900px){.count{display:none}.island-head{position:static;padding:80px 20px 26px}.track{height:auto;min-height:0;padding:0 20px 80px;width:auto;overflow-x:auto;scroll-snap-type:x mandatory}.panel{width:84vw;height:62vh;scroll-snap-align:center}.panel img{transform:none}}
 
 /* ---------- rooms ---------- */
 .villas{padding:clamp(110px,14vw,190px) 0}
 .villas .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:clamp(50px,6vw,80px)}
 .villas h2{font-size:clamp(40px,5.4vw,80px);max-width:12ch}
 .villas .head p{max-width:42ch;color:var(--ink2)}
-.vgrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(18px,2.2vw,32px);align-items:start}
-.vgrid .v:nth-child(2){margin-top:90px}.vgrid .v:nth-child(3){margin-top:180px}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.2vw,32px);align-items:start}
 .v .ph{overflow:hidden;aspect-ratio:4/5;clip-path:inset(0 0 0 0)}
-.js .v .ph{clip-path:inset(100% 0 0 0)}
 .v .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 78%;transition:transform 1.4s var(--ease)}
 .v:hover .ph img{transform:scale(1.06)}
 .v h3{font-size:34px;margin-top:22px}
@@ -124,7 +122,7 @@ html:not(.js) .intro p .w{opacity:1}
 .v .pick{display:inline-block;margin-top:16px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
 .amen{margin-top:clamp(60px,7vw,90px);border-top:1px solid var(--rule);padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--ink2)}
 .amen b{font-weight:500;color:var(--ink);margin-right:6px}
-@media(max-width:900px){.vgrid{grid-template-columns:1fr}.vgrid .v:nth-child(n){margin-top:0}.vgrid{gap:60px}}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr;gap:60px}}
 
 /* ---------- a day: sticky photo + sun arc ---------- */
 .day{background:var(--sand2);padding:clamp(110px,14vw,180px) 0}
@@ -161,7 +159,7 @@ html:not(.js) .intro p .w{opacity:1}
 .book .lead{color:var(--ink2);margin-top:26px;max-width:40ch}
 .book ul{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--rule)}
 .book li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
-.book li span:first-child{color:var(--dim)}
+.book li span:first-child{color:var(--dim);flex:none;white-space:nowrap}
 .book li span:last-child{text-align:right}
 form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--rule);min-width:0}
 .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
@@ -244,7 +242,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
   <section class="intro">
     <div class="wrap">
-      <p id="words">A small, family-run resort with only five rooms, right on the coral sand of Alubihod Beach, and our own boat waiting out front.</p>
+      <p id="words">A small, family-run resort with only five rooms, right on Alubihod Beach, and our own boat, the Seahorse, for island hopping.</p>
       <span class="kick sig rv">Lourdes &amp; Michael Rainey &middot; Nueva Valencia, Guimaras</span>
     </div>
   </section>
@@ -253,7 +251,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="island-head"><div><p class="kick">The bay</p><h2>Everything starts<br>at the water.</h2></div><span class="count"><b id="cnum">01</b> / 04</span></div>
     <div class="track" id="track">
       <figure class="panel"><img src="img/seahorse.webp" alt="The Seahorse, the resort's own outrigger boat, on clear water by the beach" loading="lazy"><figcaption><b>The Seahorse</b>Our own 40-foot boat, for up to ten people. You decide where to go and how long to stay.</figcaption></figure>
-      <figure class="panel"><img src="img/painted-sails.webp" alt="Boats with painted sails pulled up on the beach" loading="lazy"><figcaption><b>The beach</b>Painted sails and outriggers pulled up on the white sand of Alubihod.</figcaption></figure>
+      <figure class="panel"><img src="img/tour-boats.webp" alt="A small tour boat pulled up on the beach in front of the resort" loading="lazy"><figcaption><b>Tour boats</b>A small tour boat for rent, right in front of the resort.</figcaption></figure>
       <figure class="panel"><img src="img/boats.webp" alt="Boats of every kind stopping in front of the resort" loading="lazy"><figcaption><b>Out front</b>Boats of every size stop right in front of the resort.</figcaption></figure>
       <figure class="panel"><img src="img/from-the-sand.webp" alt="The resort seen from the sand, between two coconut palms" loading="lazy"><figcaption><b>Home</b>Three floors of blue arches, and the beach right below the balcony.</figcaption></figure>
     </div>
@@ -261,7 +259,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
   <section class="villas" id="rooms">
     <div class="wrap">
-      <div class="head"><h2 class="rv">Five rooms. Pick your view.</h2><p class="rv">Two garden rooms on the ground floor, two hillview rooms upstairs, and one beachfront balcony room right over the sand. Rates are for two people.</p></div>
+      <div class="head"><h2 class="rv">Five rooms. Pick your view.</h2><p class="rv">One beachfront balcony room right over the sand, two garden rooms on the ground floor and two hillview rooms upstairs. Rates are for two people.</p></div>
       <div class="vgrid">
         <article class="v"><div class="ph"><img src="img/room-beachfront.webp" alt="The Beachfront Balcony Room: a king-size bed and arched windows onto the sea" loading="lazy"></div><h3>Beachfront Balcony Room</h3><div class="meta"><span>King bed &middot; 1&ndash;2 adults &middot; only one</span><b>&#8369;3,800 <small>/ night</small></b></div><p class="d">Third floor, right over the beach, with two large windows and a private balcony onto the boats and the islands across the bay. His-and-hers sinks and a walk-in shower.</p><a class="pick" href="#book" data-room="beachfront">Check dates &rarr;</a></article>
         <article class="v"><div class="ph"><img src="img/room-garden.webp" alt="A Garden Room with a queen bed and a single bed" loading="lazy"></div><h3>Garden Room</h3><div class="meta"><span>Queen + single &middot; up to 5 &middot; two rooms</span><b>&#8369;2,800 <small>/ night</small></b></div><p class="d">On the ground floor facing the gardens, just steps from the beach. The two rooms sit side by side with adjoining, lockable double doors.</p><a class="pick" href="#book" data-room="garden">Check dates &rarr;</a></article>
@@ -275,7 +273,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="wrap grid">
       <div class="stick">
         <div class="frame">
-          <img class="on" data-k="0" src="img/day-balcony.webp" alt="" loading="lazy">
+          <img class="on" data-k="0" src="img/hero-arches.webp" alt="" loading="lazy">
           <img data-k="1" src="img/day-islands.webp" alt="" loading="lazy">
           <img data-k="2" src="img/day-garden.webp" alt="" loading="lazy">
           <img data-k="3" src="img/day-fire.webp" alt="" loading="lazy">
@@ -285,17 +283,17 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <div>
         <p class="kick">A day at Alubihod</p>
         <h2 class="rv">No schedule. Just the beach.</h2>
-        <div class="moment" data-k="0"><time>Morning</time><h3>Coffee on the balcony</h3><p>Coffee and bottled water for two are waiting in your room. The beach is right there when you open the door.</p><img class="m" src="img/day-balcony.webp" alt="" loading="lazy"></div>
-        <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,000 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkels for rent.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
-        <div class="moment" data-k="2"><time>Afternoon</time><h3>The gardens and the bamboo hut</h3><p>Shade, a table and the sea breeze, free for room guests. Three restaurants on the beach serve lunch and dinner, one of them next door.</p><img class="m" src="img/day-garden.webp" alt="" loading="lazy"></div>
-        <div class="moment" data-k="3"><time>Evening</time><h3>Evening on the beach</h3><p>The BBQ area is free to use, and charcoal and cold drinks are at our sari-sari store, open every day.</p><img class="m" src="img/day-fire.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="0"><time>Morning</time><h3>Coffee in your room</h3><p>Complimentary coffee and bottled water for two are waiting in your room, and the resort is right on the beach.</p><img class="m" src="img/hero-arches.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,000 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkel gear for rent when available.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="2"><time>Afternoon</time><h3>The gardens and the bamboo hut</h3><p>The gardens and the bamboo hut, with a table in the shade, are free for room guests. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner.</p><img class="m" src="img/day-garden.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="3"><time>Evening</time><h3>Evening on the beach</h3><p>The BBQ area is free to use. Charcoal is sold at our sari-sari store, open every day, along with the usual food and drinks.</p><img class="m" src="img/day-fire.webp" alt="" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <section class="quote">
     <img id="qimg" src="img/quote-palm.webp" alt="The tallest coconut palm on Alubihod Beach against the sky" loading="lazy">
-    <blockquote class="rv">&ldquo;The nicest rooms on Alubihod Beach, in a relaxed atmosphere.&rdquo;<cite>From the resort</cite></blockquote>
+    <blockquote class="rv">&ldquo;We offer the nicest rooms available on Alubihod Beach in a relaxed atmosphere.&rdquo;<cite>Lourdes &amp; Michael Rainey</cite></blockquote>
   </section>
 
   <section class="book" id="book">
@@ -309,8 +307,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           <li><span>To hold your room</span><span>&#8369;1,000 per room per night, counted toward your stay</span></li>
           <li><span>The balance</span><span>Cash or bank transfer at check-in</span></li>
           <li><span>If you cancel</span><span>The deposit isn't refunded</span></li>
-          <li><span>Seniors &amp; PWD</span><span>20% off their share of the rate, with ID</span></li>
-          <li><span>Children &amp; pets</span><span>Infants who are carried stay free &middot; sorry, no pets</span></li>
+          <li><span>Seniors &amp; PWD</span><span>20% off their share of the rate, with ID &middot; one discount per stay</span></li>
+          <li><span>Children &amp; pets</span><span>Children who can walk count as guests &middot; infants who are carried stay free &middot; sorry, no pets</span></li>
         </ul>
       </div>
       <form class="req" id="req">
@@ -324,7 +322,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
             <option value="garden" data-r="2800" data-max="5" selected>Garden Room</option>
             <option value="hillview" data-r="3200" data-max="5">Hillview Room</option>
           </select></label>
-          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div></div>
+          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div><span id="gnote" style="display:none;margin-top:8px;letter-spacing:.04em;text-transform:none;font:400 12px/1.4 var(--body);color:var(--clay)">Beachfront Balcony: 1&ndash;2 adults only</span></div>
         </div>
         <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
         <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
@@ -373,7 +371,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
   var peso=function(n){return '₱'+n.toLocaleString('en-PH')};
   function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
-  function clampG(){var mx=+room().dataset.max;if(g>mx)g=mx;if(g<1)g=1;gv.textContent=g}
+  function clampG(){var mx=+room().dataset.max;document.getElementById('gnote').style.display=mx<3?'block':'none';if(g>mx)g=mx;if(g<1)g=1;gv.textContent=g}
   req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g+=(+b.dataset.d);clampG();est()})});
   function est(){var a=req.elements['in'].value,b=req.elements.out.value,o=room();var r=+o.dataset.r;
     var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
@@ -390,6 +388,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;clampG();est();
     document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
   document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est()})});
+
+  /* ---------- 手机上首屏先放帆船（度假村那张源图 2000×915，竖裁会糊） ---------- */
+  if(innerWidth<720){var sl=document.querySelector('.slides'),a0=sl.children[0],a1=sl.children[1];a0.classList.remove('on');a1.classList.add('on');sl.insertBefore(a1,a0)}
 
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
@@ -448,8 +449,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   });
 
   /* ---------- rooms: photo wipes up ---------- */
-  gsap.utils.toArray('.v .ph').forEach(function(ph){gsap.to(ph,{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}});
-    gsap.fromTo(ph.querySelector('img'),{scale:1.25},{scale:1,duration:1.8,ease:'expo.out',scrollTrigger:{trigger:ph,start:'top 85%',once:true}})});
+  /* 照片永远可见，只做轻微缩放；不再用 clip-path 把照片藏起来（他 10-09 在宽屏上看到照片没出来） */
+  gsap.utils.toArray('.v .ph img').forEach(function(im){gsap.fromTo(im,{scale:1.12},{scale:1,duration:1.8,ease:'expo.out',immediateRender:false,scrollTrigger:{trigger:im,start:'top 90%',once:true}})});
+  addEventListener('load',function(){ScrollTrigger.refresh()});
 
   /* ---------- line parallax ---------- */
   gsap.fromTo('#qimg',{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:'.quote',start:'top bottom',end:'bottom top',scrub:true}});
