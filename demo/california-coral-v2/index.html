@@ -239,7 +239,7 @@ form.req button[type=submit]:disabled{opacity:.6;cursor:default}
 .msgr.show{opacity:1;transform:none;pointer-events:auto}
 .msgr{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:10px;background:var(--lagoon);color:#fff;padding:12px 18px 12px 14px;border-radius:99px;box-shadow:0 10px 30px rgba(14,42,48,.28);font:500 13px/1 var(--body);letter-spacing:.06em}
 .msgr svg{width:24px;height:24px;flex:none}
-@media(max-width:600px){.msgr span{display:none}.msgr{padding:14px}}
+@media(max-width:600px){.msgr span{display:none}.msgr{padding:14px}.faq summary{padding-right:64px}}
 /* ---------- FAQ ---------- */
 .faq{padding:clamp(90px,11vw,150px) 0}
 .faq h2{font-size:clamp(40px,5vw,72px);margin-bottom:clamp(30px,4vw,50px)}
@@ -376,7 +376,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <form class="req" id="req">
         <div class="row">
           <label class="f">Room<select name="room">
-            <option value="beachfront" data-r="3800" data-max="2">Beachfront Balcony</option>
+            <option value="beachfront" data-r="3800" data-max="2">Beachfront</option>
             <option value="garden" data-r="2800" data-max="5" selected>Garden Room</option>
             <option value="hillview" data-r="3200" data-max="5">Hillview Room</option>
           </select></label>
@@ -487,7 +487,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
   var msg=document.getElementById('avmsg'),errEl=document.getElementById('err'),payBtn=document.getElementById('pay');
   function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
-  function loadAv(cb){fetch(API+'/availability?from='+td+'&to='+addD(td,400)).then(function(r){return r.json()}).then(function(j){AV=j;TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});cal();check();if(cb)cb()})
+  function loadAv(cb){fetch(API+'/availability?from='+addD(td,-1)+'&to='+addD(td,400)).then(function(r){return r.json()}).then(function(j){AV=j;if(j.today&&j.today!==td){td=j.today;document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});if(cm<td.slice(0,8)+'01')cm=td.slice(0,8)+'01'}TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});cal();check();if(cb)cb()})
     .catch(function(){setMsg('We couldn\u2019t load the calendar just now. Please message us on Facebook and we\u2019ll check your dates.','bad')})}
   /* availability calendar */
   var cm=td.slice(0,7)+'-01',cgrid=document.getElementById('cgrid');
@@ -530,14 +530,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       '<p class="small">'+(e?'A confirmation email is on its way to you.':'On the live site, a confirmation email goes to you and to the resort at this point.')+' The deposit isn\u2019t refunded if you cancel. Questions? Message us on Facebook.</p>'+
       '<button class="go" id="dOk" type="button">Done</button>');
     document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
+  function release(id,t){fetch(API+'/release',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,t:t})}).catch(function(){}).then(function(){loadAv()})}
   function previewPay(o){
     openD('<p class="tagp">Preview checkout &middot; no money is charged</p><h3>Pay your deposit</h3><p>On the live site, this step is PayMongo\u2019s secure payment page.</p>'+
-      '<dl>'+row('Room',o.room)+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Total stay',peso(o.total))+'</dl>'+
+      '<dl>'+row('Room',TNAME[type()])+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Guests',g)+row('Total stay',peso(o.total))+'</dl>'+
       '<p style="margin-bottom:4px">Deposit to pay now</p><div class="amt">'+peso(o.deposit)+'</div>'+
       '<div class="methods"><label><input type="radio" name="pm" value="Card" checked><span>Card</span></label><label><input type="radio" name="pm" value="GCash"><span>GCash</span></label><label><input type="radio" name="pm" value="Maya"><span>Maya</span></label></div>'+
       '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel - don\u2019t book</button>'+
       '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay.</p>');
-    document.getElementById('dCancel').onclick=function(){closeD();loadAv()};
+    document.getElementById('dCancel').onclick=function(){closeD();release(o.id,o.t)};
     document.getElementById('dPay').onclick=function(){var b=this;b.disabled=true;b.textContent='Paying\u2026';
       fetch(API+'/preview-pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:o.id,t:o.t})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
       .then(function(x){if(!x[0]){b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
@@ -558,7 +559,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       .catch(function(){payBtn.disabled=false;payBtn.textContent=lbl;bad('We couldn\u2019t reach the booking system. Please try again, or message us on Facebook.')})});
   /* back from PayMongo */
   (function(){var u=new URLSearchParams(location.search),id=u.get('booking'),t=u.get('t');if(!id||!t)return;
-    if(u.get('cancelled')){openD('<h3>No payment was made.</h3><p>Nothing was booked. You can pick your dates again whenever you like.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD;return}
+    if(u.get('cancelled')){release(id,t);openD('<h3>No payment was made.</h3><p>Nothing was booked. You can pick your dates again whenever you like.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD;return}
     var tries=0;(function poll(){fetch(API+'/booking?id='+encodeURIComponent(id)+'&t='+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(o){
       if(o.status==='paid')return confirmed(o);if(++tries<8)return setTimeout(poll,1500);
       openD('<h3>Almost there.</h3><p>We\u2019re waiting for the payment to come through. You\u2019ll get an email as soon as it does - or message us on Facebook with reference '+id+'.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD})})()})();
@@ -575,8 +576,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
   function rbh(){document.documentElement.style.setProperty('--rb',rb.offsetHeight+'px')}rbh();addEventListener('resize',rbh);if(window.ResizeObserver)new ResizeObserver(rbh).observe(rb);
   var msgr=document.querySelector('.msgr'),bookIn=false;
-  if(window.IntersectionObserver)new IntersectionObserver(function(es){bookIn=es[0].isIntersecting;sc()},{threshold:0.05}).observe(document.getElementById('req'));
-  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72);msgr.classList.toggle('show',scrollY>window.innerHeight*0.6&&!bookIn)}
+  var footIn=false;if(window.IntersectionObserver){new IntersectionObserver(function(es){bookIn=es[0].isIntersecting;sc()},{threshold:0.05}).observe(document.getElementById('req'));new IntersectionObserver(function(es){footIn=es[0].isIntersecting;sc()}).observe(document.querySelector('footer'))}
+  function sc(){hdr.classList.toggle('solid',scrollY>window.innerHeight*0.72);msgr.classList.toggle('show',scrollY>window.innerHeight*0.6&&!bookIn&&!footIn)}
   sc();addEventListener('scroll',sc,{passive:true});
 
   /* ---------- intro: split into words ---------- */
