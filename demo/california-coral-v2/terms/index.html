@@ -38,10 +38,10 @@ footer{border-top:1px solid var(--rule);padding:30px clamp(20px,4vw,48px);font-s
 
   <h2>Rooms and rates</h2>
   <ul>
-    <li>Garden Room: &#8369;2,800 per night for two people. Up to five people.</li>
-    <li>Hillview Room: &#8369;3,200 per night for two people. Up to five people.</li>
-    <li>Beachfront Balcony Room: &#8369;3,800 per night, for one or two adults only.</li>
-    <li>Each additional person is &#8369;400. An extra single mattress with bedding is &#8369;300.</li>
+    <li>Garden Room: &#8369;<span data-rate="garden">2,800</span> per night for two people. Up to five people.</li>
+    <li>Hillview Room: &#8369;<span data-rate="hillview">3,200</span> per night for two people. Up to five people.</li>
+    <li>Beachfront Balcony Room: &#8369;<span data-rate="beachfront">3,800</span> per night, for one or two adults only.</li>
+    <li>Each additional person is &#8369;<span data-rate="extra">400</span> per night. An extra single mattress with bedding is &#8369;300 per night.</li>
     <li>Children who can walk on their own count as guests. Infants who must be carried stay free.</li>
     <li>Rates are in Philippine pesos and are the same for walk-ins.</li>
   </ul>
@@ -66,6 +66,7 @@ footer{border-top:1px solid var(--rule);padding:30px clamp(20px,4vw,48px);font-s
 
   <h2>Discounts</h2>
   <p>Seniors and PWDs who show identification and their Senior or PWD card receive a 20% discount on their portion of the room rate. Only one discount may be used per stay.</p>
+  <p>From time to time we may run a special offer. It applies only on the terms shown on this website when you book, and only to the room rate. The deposit stays the same.</p>
 
   <h2>House rules</h2>
   <ul>
@@ -78,5 +79,10 @@ footer{border-top:1px solid var(--rule);padding:30px clamp(20px,4vw,48px);font-s
   <p>Message us on <a href="https://m.me/CaliforniaResort" target="_blank" rel="noreferrer">Facebook Messenger</a> or email californiacoralbeachresort@gmail.com. See also our <a href="../privacy/">privacy notice</a>.</p>
 </main>
 <footer>California Coral Beach Resort &middot; Alubihod Beach, Guimaras &middot; <a href="../">Back to the website</a></footer>
+<script>
+/* 房价跟订房系统走（店主在管理页能改）；拿不到就保持上面写的默认值 */
+fetch('https://cc.veracod.com/api/availability').then(function(r){return r.json()}).then(function(j){if(!j.rates)return;
+  document.querySelectorAll('[data-rate]').forEach(function(el){var v=j.rates[el.dataset.rate];if(v!=null)el.textContent=v.toLocaleString('en-US')})}).catch(function(){});
+</script>
 </body>
 </html>

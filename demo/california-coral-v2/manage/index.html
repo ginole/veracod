@@ -113,6 +113,33 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .sheet input{width:100%;border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:17px;outline:none}
 .sheet input:focus{border-color:var(--teal)}
 .sheet .stack{display:grid;gap:10px;margin-top:18px}
+/* special offer */
+.promo .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.promo .seg button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:14px;font-size:17px;font-weight:700;color:var(--ink2)}
+.promo .seg button[aria-pressed=true]{border-color:var(--teal);background:var(--teal);color:#fff}
+.promo .seg button.offp[aria-pressed=true]{border-color:#5B6B8C;background:#5B6B8C}
+.promo label.l{display:block;font-size:15px;font-weight:700;color:var(--ink2);margin:16px 0 6px}
+.promo input[type=number],.promo input[type=date],.promo input[type=text]{width:100%;min-width:0;border:2px solid var(--line);border-radius:12px;padding:13px 14px;font:inherit;font-size:17px;outline:none;background:#fff;color:var(--ink)}
+.promo input:focus{border-color:var(--teal)}
+.promo .pct{display:flex;align-items:center;gap:10px}.promo .pct input{width:110px;flex:none}.promo .pct span{color:var(--ink2);font-size:16px}
+.promo .stp{display:flex;align-items:center;gap:16px}.promo .stp b{font-size:22px;min-width:2ch;text-align:center}
+.promo .dates{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.promo .chk{display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:16px;font-weight:600;color:var(--ink2);cursor:pointer}
+.promo .chk input{width:24px;height:24px;flex:none;accent-color:var(--teal)}
+.promo .state{font-size:15px;font-weight:600;margin:0 0 12px}
+@media(max-width:420px){.promo .dates{grid-template-columns:minmax(0,1fr);gap:0}}
+.promo .preview{margin:16px 0 0;padding:12px 14px;background:var(--teal-soft);border-radius:12px;font-size:15px;color:var(--ink)}
+.promo .preview small{display:block;font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px}
+.promo .rate{display:flex;align-items:center;gap:10px}.promo .rate span{font-size:20px;font-weight:600;color:var(--ink2)}.promo .rate input{flex:1}
+/* discount choice when he marks a Messenger booking */
+.disc{display:grid;gap:8px;margin-top:6px}
+.disc label{display:flex;align-items:center;gap:12px;margin:0;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:16px;font-weight:600;color:var(--ink2);cursor:pointer}
+.disc label:has(input:checked){border-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+.disc label.off{opacity:.5;cursor:default}
+.disc input{width:22px;height:22px;flex:none;accent-color:var(--teal);margin:0}
+.disc em{display:block;font-style:normal;font-size:14px;font-weight:500;color:var(--dim);margin-top:2px}
+.disc .sen{display:none;align-items:center;justify-content:space-between;gap:12px;padding:6px 4px 2px;font-size:15px;font-weight:600;color:var(--ink2)}
+.duebox{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:16px;color:var(--ink2)}.duebox b{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:18px;font-weight:600;font-size:16px;opacity:0;transition:all .25s;z-index:70;white-space:normal;max-width:calc(100% - 32px);width:max-content;text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 </style>
@@ -154,6 +181,35 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   <div class="grid" id="grid"></div>
   <div class="legend"><span><i style="background:var(--card);border:1px solid var(--line)"></i>Free</span><span><i style="background:var(--teal)"></i>Booked online &middot; deposit paid</span><span><i style="background:#5B6B8C"></i>Booked by you</span><span><i style="background:#C9B79C"></i>Booked on Booking.com / Agoda</span></div>
 
+  <h2>Room rates</h2>
+  <div class="card promo" id="ratesCard">
+    <p class="state">Per night, for two people. New prices show on the website right away. Bookings already made keep their price.</p>
+    <label class="l" for="rGarden">Garden Room</label><div class="rate"><span>₱</span><input id="rGarden" type="number" inputmode="numeric" min="500" max="50000" step="1"></div>
+    <label class="l" for="rHill">Hillview Room</label><div class="rate"><span>₱</span><input id="rHill" type="number" inputmode="numeric" min="500" max="50000" step="1"></div>
+    <label class="l" for="rBeach">Beachfront Balcony Room</label><div class="rate"><span>₱</span><input id="rBeach" type="number" inputmode="numeric" min="500" max="50000" step="1"></div>
+    <label class="l" for="rExtra">Extra person per night</label><div class="rate"><span>₱</span><input id="rExtra" type="number" inputmode="numeric" min="0" max="10000" step="1"></div>
+    <p class="note">The extra person rate is for each guest after the first two.</p>
+    <button class="big go" id="rSave" style="width:100%;margin-top:14px">Save rates</button>
+  </div>
+
+  <h2>Special offer</h2>
+  <div class="card promo" id="promo">
+    <p class="state" id="pState">The website shows no offer right now.</p>
+    <div class="seg"><button type="button" id="pOn" aria-pressed="false">On</button><button type="button" class="offp" id="pOff" aria-pressed="true">Off</button></div>
+    <label class="l" for="pPct">Discount</label>
+    <div class="pct"><input id="pPct" type="number" inputmode="numeric" min="1" max="90" value="15"><span>% off the room rate</span></div>
+    <label class="l">Fewest nights</label>
+    <div class="stp"><button type="button" class="big soft" id="pMinus" style="width:56px;padding:12px 0">−</button><b id="pMin">2</b><button type="button" class="big soft" id="pPlus" style="width:56px;padding:12px 0">+</button></div>
+    <label class="chk"><input type="checkbox" id="pSat" checked>Saturday nights don’t count</label>
+    <div class="dates">
+      <div><label class="l" for="pFrom">First night</label><input id="pFrom" type="date"></div>
+      <div><label class="l" for="pTo">Last night</label><input id="pTo" type="date"></div>
+    </div>
+    <p class="preview" id="pPreview"><small>What guests see on the website</small><span id="pPrevText"></span></p>
+    <p class="note">Only the room rate gets the discount. Extra guests and the deposit stay the same. Nights that don’t count are charged the normal rate.</p>
+    <button class="big go" id="pSave" style="width:100%;margin-top:14px">Save offer</button>
+  </div>
+
   <h2>Other booking sites</h2>
   <div class="how">Also on Booking.com or Agoda? Connect each room once, and the calendars keep each other up to date. Booking.com and Agoda check our calendar every few hours, so a night booked very recently can take a little while to show there.</div>
   <div class="sites" id="sites"></div>
@@ -171,9 +227,11 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 <script>
 (function(){
   var ROOMS=[
-    {id:'g1',name:'Garden Room 1',rate:2800},{id:'g2',name:'Garden Room 2',rate:2800},
-    {id:'h1',name:'Hillview Room 1',rate:3200},{id:'h2',name:'Hillview Room 2',rate:3200},
-    {id:'b',name:'Beachfront Balcony',rate:3800}];
+    {id:'g1',name:'Garden Room 1',type:'garden'},{id:'g2',name:'Garden Room 2',type:'garden'},
+    {id:'h1',name:'Hillview Room 1',type:'hillview'},{id:'h2',name:'Hillview Room 2',type:'hillview'},
+    {id:'b',name:'Beachfront Balcony',type:'beachfront'}];
+  /* 房价、正在显示的优惠都从后台来（load() 里填）；下面这组只是还没加载时的默认值 */
+  var RATES={garden:2800,hillview:3200,beachfront:3800,extra:400},ACTIVE=null,SENIOR=20;
   /* 数据来自订房后台 cc.veracod.com（和网站同一个日历）。口令登录后拿 30 天的令牌，存在这台手机上。 */
   var API='https://cc.veracod.com/api',TK='cc-owner-token';
   var today=new Date();today.setHours(0,0,0,0);
@@ -193,8 +251,8 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     .then(function(r){return r.json().then(function(j){if(r.status===401){showLogin();throw new Error('auth')}if(!r.ok)throw new Error(j.error||'Something went wrong');return j})})}
   function load(){return api('/owner/bookings').then(function(j){
     today=parse(j.today); /* 用度假村那边（菲律宾）的今天，他人在加州也不会错一天 */
-    S=j.bookings.map(function(b){return {id:b.id,room:b.room,'in':b.ci,out:b.co,g:b.guests,name:b.name||'Guest',contact:b.email||b.contact,status:b.status,via:b.via,total:b.total,deposit:b.deposit,created:b.created}});
-    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';lists();cal();sites(j.ical||{});if(j.mustChange&&!mustCh){mustCh=true;changePw(true)}})
+    S=j.bookings.map(function(b){return {id:b.id,room:b.room,'in':b.ci,out:b.co,g:b.guests,name:b.name||'Guest',contact:b.email||b.contact,status:b.status,via:b.via,total:b.total,discount:b.discount||0,dtype:b.discount_type||'',deposit:b.deposit,created:b.created}});
+    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';RATES=j.rates||RATES;ACTIVE=j.activePromo||null;SENIOR=j.seniorPct||20;lists();cal();sites(j.ical||{});promoFill(j.promo);ratesFill();if(j.mustChange&&!mustCh){mustCh=true;changePw(true)}})
     .catch(function(e){if(e.message!=='auth')toast(e.message)})}
   function ago(t){if(!t)return 'not checked yet';var m=Math.round((Date.now()-t)/60000);return m<1?'checked just now':m<60?'checked '+m+' min ago':'checked '+Math.round(m/60)+' h ago'}
   function sites(IC){
@@ -305,20 +363,48 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     open('<h3>'+roomOf(cur).name+'</h3><p class="sub">'+n+' night'+(n>1?'s':'')+': '+nice(a)+(n>1?' – '+nice(add(out,-1)):'')+' · leaves '+nice(out)+'</p>'+
       '<label for="gname">Guest name (if you like)</label><input id="gname" placeholder="e.g. Dela Cruz family" autocomplete="off">'+
       '<label style="margin-top:14px">How many guests</label><div style="display:flex;align-items:center;justify-content:center;gap:16px"><button type="button" class="big soft" id="gm" style="width:56px;padding:12px 0">\u2212</button><b id="gc" style="font-size:22px;min-width:2ch;text-align:center">2</b><button type="button" class="big soft" id="gp" style="width:56px;padding:12px 0">+</button></div>'+
+      '<label style="margin-top:16px">Discount (only one per stay)</label><div class="disc" id="disc">'+
+        '<label><input type="radio" name="dk" value="none" checked><span>No discount</span></label>'+
+        '<label id="dPromo"><input type="radio" name="dk" value="promo"><span>Special offer<em id="dPromoT"></em></span></label>'+
+        '<label><input type="radio" name="dk" value="senior"><span>Senior or PWD 20%<em id="dSenT">With their ID and Senior or PWD card</em></span></label>'+
+        '<div class="sen" id="sen"><span>How many seniors or PWD</span><span style="display:flex;align-items:center;gap:12px"><button type="button" class="big soft" id="sm" style="width:48px;padding:10px 0">\u2212</button><b id="sc" style="font-size:20px;min-width:2ch;text-align:center">1</b><button type="button" class="big soft" id="sp" style="width:48px;padding:10px 0">+</button></span></div>'+
+      '</div>'+
+      '<div class="duebox"><span id="dueL">Due at check-in</span><b id="dueV"></b></div>'+
       '<div class="stack"><button class="big go" id="doBlock">Mark as booked</button><button class="big soft" id="cancel">Not now</button></div>');
     document.getElementById('cancel').onclick=close;
-    var gmax=cur==='b'?2:5,gc=2;function gset(v){gc=Math.max(1,Math.min(gmax,v));document.getElementById('gc').textContent=gc}
+    var gmax=cur==='b'?2:5,gc=2,sc=1,ain=key(a),aout=key(out);
+    function dk(){return (document.querySelector('input[name=dk]:checked')||{}).value||'none'}
+    function upd(){sc=Math.max(1,Math.min(gc,sc));document.getElementById('sc').textContent=sc;
+      var po=priceManual(cur,ain,aout,gc,'promo'),pi=document.querySelector('input[name=dk][value=promo]'),pl=document.getElementById('dPromo');
+      var can=!!ACTIVE&&po.discount>0;pi.disabled=!can;pl.classList.toggle('off',!can);if(!can&&pi.checked)document.querySelector('input[name=dk][value=none]').checked=true;
+      document.getElementById('dPromoT').textContent=!ACTIVE?'The offer is off right now':can?peso(po.discount)+' off ('+ACTIVE.pct+'% off '+po.q+' night'+(po.q>1?'s':'')+')':'Doesn\u2019t apply to these nights';
+      var k=dk(),pr=priceManual(cur,ain,aout,gc,k,sc);
+      document.getElementById('sen').style.display=k==='senior'?'flex':'none';
+      document.getElementById('dSenT').textContent=k==='senior'?peso(pr.discount)+' off ('+SENIOR+'% off the share of '+sc+' of '+gc+' guests)':'With their ID and Senior or PWD card';
+      document.getElementById('dueV').textContent=peso(pr.total)+(pr.discount?' (\u2212'+peso(pr.discount)+')':'')}
+    function gset(v){gc=Math.max(1,Math.min(gmax,v));document.getElementById('gc').textContent=gc;upd()}
     document.getElementById('gm').onclick=function(){gset(gc-1)};document.getElementById('gp').onclick=function(){gset(gc+1)};
+    document.getElementById('sm').onclick=function(){sc--;upd()};document.getElementById('sp').onclick=function(){sc++;upd()};
+    document.getElementById('disc').addEventListener('change',upd);upd();
     document.getElementById('doBlock').onclick=function(){
       var btn=this;btn.disabled=true;
-      api('/owner/block',{room:cur,'in':key(a),out:key(out),guests:gc,name:document.getElementById('gname').value.trim()}).then(function(){close();return load()}).then(function(){toast('Done. The website now shows these nights as taken.')})
+      api('/owner/block',{room:cur,'in':ain,out:aout,guests:gc,name:document.getElementById('gname').value.trim(),discount:dk(),seniors:dk()==='senior'?sc:0}).then(function(){close();return load()}).then(function(){toast('Done. The website now shows these nights as taken.')})
         .catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)});
     };
   }
+  /* 和后台 worker.js 的 priceOf / promoDiscount 同一算法（后台算的为准，这里只是让他先看到数） */
+  var DNAME={promo:'Special offer',senior:'Senior or PWD 20%'};
+  function addK(k,n){return key(add(parse(k),n))}
+  function promoQ(p,a,b){var q=0;for(var d=a;d<b;d=addK(d,1)){if(d<p.from||d>p.to)continue;if(p.skipSat&&parse(d).getDay()===6)continue;q++}return q}
+  function priceManual(room,a,b,g,kind,seniors){var t=roomOf(room).type,rate=RATES[t],n=Math.round((parse(b)-parse(a))/864e5),full=n*(rate+Math.max(0,g-2)*RATES.extra),off=0,q=0;
+    if(kind==='promo'&&ACTIVE){q=promoQ(ACTIVE,a,b);if(q>=ACTIVE.minNights)off=Math.round(ACTIVE.pct/100*rate*q)}
+    else if(kind==='senior')off=Math.round(SENIOR/100*(full/g)*Math.min(seniors||1,g));
+    return {full:full,discount:off,total:full-off,q:q}}
   function showBooking(b){
     var n=nights(b),paidB=b.status==='paid';
     open('<h3>'+esc(b.name)+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
       '<p style="margin:0 0 6px">'+(b.status==='conflict'?'This guest paid a '+peso(b.deposit)+' deposit by '+esc(b.via)+', but by the time the payment came in, those nights had been taken. Please refund the deposit from your PayMongo account and let them know. ':'')+(b.status==='conflict'?'':paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
+      (b.discount?'<p style="margin:0 0 6px;color:var(--ink2)">'+(DNAME[b.dtype]||'Discount')+': '+peso(b.discount)+' off (already taken off the total).</p>':'')+
       '<p style="margin:0;color:var(--ink2)">'+(b.g?b.g+' guest'+(b.g>1?'s':'')+' \u00b7 ':'')+'Contact: '+esc(b.contact)+'</p>'+
       '<div class="stack"><button class="big danger" id="del">'+(b.status==='conflict'?'I’ve refunded it – remove':paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
     document.getElementById('cl').onclick=close;
@@ -337,9 +423,44 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
     var c=e.target.closest('.card');if(c&&!e.target.closest('button')){var bb=S.find(function(y){return String(y.id)===c.dataset.id});if(bb)showBooking(bb)}
   });
 
+  /* special offer：开着时网站显示那句话、订房自动按条件折房费（后台算）。他正在改的时候，每分钟的自动刷新不覆盖他填的 */
+  var P={on:false,min:2},pDirty=false;
+  function pPress(){document.getElementById('pOn').setAttribute('aria-pressed',P.on);document.getElementById('pOff').setAttribute('aria-pressed',!P.on)}
+  function pState(saved){var el=document.getElementById('pState');
+    if(saved&&saved.on&&saved.to<key(today))el.textContent='The offer ended on '+nice(parse(saved.to))+', so the website no longer shows it.';
+    else el.textContent=saved&&saved.on?'The website shows this offer now.':'The website shows no offer right now.'}
+  function promoFill(p){if(pDirty)return;pState(p);if(!p)return;P.on=!!p.on;P.min=p.minNights||2;pPress();
+    document.getElementById('pPct').value=p.pct||'';document.getElementById('pMin').textContent=P.min;document.getElementById('pSat').checked=!!p.skipSat;
+    document.getElementById('pFrom').value=p.from||'';document.getElementById('pTo').value=p.to||'';pPrev()}
+  /* 说明文字按数字自动拼，和后台 worker.js 的 promoText 一样 */
+  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function niceDay(d,t){return MON[+d.slice(5,7)-1]+' '+(+d.slice(8,10))+(d.slice(0,4)!==t.slice(0,4)?', '+d.slice(0,4):'')}
+  function promoText(p,t){return p.pct+'% off the room rate'+(p.minNights>1?' for stays of '+p.minNights+' or more nights':'')+(p.skipSat?' (Saturday nights not included)':'')+(p.from>t?', from '+niceDay(p.from,t)+' until '+niceDay(p.to,t):', until '+niceDay(p.to,t))}
+  function pPrev(){var f=document.getElementById('pFrom').value,t=document.getElementById('pTo').value,pc=Math.round(+document.getElementById('pPct').value||0),el=document.getElementById('pPrevText');
+    el.textContent=f&&t&&pc>0?promoText({pct:pc,minNights:P.min,skipSat:document.getElementById('pSat').checked,from:f,to:t},key(today)):'Fill in the discount and the dates to see it here.'}
+  document.getElementById('promo').addEventListener('input',pPrev);document.getElementById('promo').addEventListener('change',pPrev);
+  /* room rates */
+  var rDirty=false,RF={garden:'rGarden',hillview:'rHill',beachfront:'rBeach',extra:'rExtra'};
+  function ratesFill(){if(rDirty)return;Object.keys(RF).forEach(function(k){document.getElementById(RF[k]).value=RATES[k]})}
+  document.getElementById('ratesCard').addEventListener('input',function(){rDirty=true});
+  document.getElementById('rSave').onclick=function(){var btn=this,body={};Object.keys(RF).forEach(function(k){body[k]=Number(document.getElementById(RF[k]).value)});
+    btn.disabled=true;api('/owner/rates',body).then(function(j){rDirty=false;RATES=j.rates;ratesFill();toast('Saved. The website shows the new rates now.')})
+      .catch(function(e){if(e.message!=='auth')toast(e.message)}).then(function(){btn.disabled=false})};
+  document.getElementById('promo').addEventListener('input',function(){pDirty=true});
+  document.getElementById('pOn').onclick=function(){P.on=true;pDirty=true;pPress()};
+  document.getElementById('pOff').onclick=function(){P.on=false;pDirty=true;pPress()};
+  function pMin(v){P.min=Math.max(1,Math.min(30,v));pDirty=true;document.getElementById('pMin').textContent=P.min;pPrev()}
+  document.getElementById('pMinus').onclick=function(){pMin(P.min-1)};document.getElementById('pPlus').onclick=function(){pMin(P.min+1)};
+  document.getElementById('pSave').onclick=function(){var btn=this,f=document.getElementById('pFrom').value,t=document.getElementById('pTo').value;
+    if(!f||!t)return toast('Please pick the first and last night.');
+    btn.disabled=true;
+    api('/owner/promo',{on:P.on,pct:+document.getElementById('pPct').value,minNights:P.min,skipSat:document.getElementById('pSat').checked,from:f,to:t})
+      .then(function(j){pDirty=false;promoFill(j.promo);toast(j.promo.on?'Saved. The website shows the offer now.':'Saved. The offer is off.')})
+      .catch(function(e){if(e.message!=='auth')toast(e.message)}).then(function(){btn.disabled=false})};
+
   /* records */
   document.getElementById('dl').onclick=function(){
-    var rows=[['Reference','Booked on','Guest','Contact','Room','Arrive','Leave','Nights','Guests','Total','Deposit paid','Due at check-in','How booked']].concat(S.filter(function(b){return b.status!=='ext'}).map(function(b){var p=b.status==='paid';return[b.id,b.created?key(new Date(b.created)):'',b.name,b.contact,roomOf(b.room).name,b.in,b.out,nights(b),b.g||'',total(b),b.status==='conflict'?b.deposit:p?deposit(b):0,b.status==='conflict'?'REFUND '+b.deposit:p?total(b)-deposit(b):total(b),b.status==='conflict'?'PAID - NO ROOM, REFUND':p?'Online \u00b7 '+b.via:'Messenger']}));
+    var rows=[['Reference','Booked on','Guest','Contact','Room','Arrive','Leave','Nights','Guests','Discount type','Discount','Total','Deposit paid','Due at check-in','How booked']].concat(S.filter(function(b){return b.status!=='ext'}).map(function(b){var p=b.status==='paid';return[b.id,b.created?key(new Date(b.created)):'',b.name,b.contact,roomOf(b.room).name,b.in,b.out,nights(b),b.g||'',b.discount?(DNAME[b.dtype]||'Discount'):'',b.discount||'',total(b),b.status==='conflict'?b.deposit:p?deposit(b):0,b.status==='conflict'?'REFUND '+b.deposit:p?total(b)-deposit(b):total(b),b.status==='conflict'?'PAID - NO ROOM, REFUND':p?'Online \u00b7 '+b.via:'Messenger']}));
     var csv=rows.map(function(r){return r.map(function(v){var x=String(v);if(/^[=+\-@\t\r]/.test(x))x="'"+x;return '"'+x.replace(/"/g,'""')+'"'}).join(',')}).join(String.fromCharCode(10));
     var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv'}));a.download='california-coral-bookings.csv';a.click();
     toast('Saved to your phone.');

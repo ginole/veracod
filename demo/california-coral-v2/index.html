@@ -67,6 +67,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .slides{position:absolute;inset:0}
 .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
 .slides img.on{opacity:1}
+.slides img:first-child{object-position:42% 30%}
 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.22) 30%,rgba(0,0,0,.22) 55%,rgba(0,0,0,.6))}
 .hcenter{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;padding:0 20px}
 .hcenter .kick{color:#fff;opacity:.92}
@@ -84,7 +85,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .dots{position:absolute;right:clamp(20px,3vw,44px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
 .dots i{width:1px;height:26px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
 .dots i b{position:absolute;inset:0;background:#fff;transform:scaleY(0);transform-origin:top}
-@media(max-width:720px){.slides img:first-child{object-position:22% 50%}.bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
+@media(max-width:720px){.slides img:first-child{object-position:50% 62%}.bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bar label:nth-child(2){border-right:0}.bar label:nth-child(3){grid-column:1/2;border-top:1px solid rgba(255,255,255,.26)}.bar button{padding:16px;border-top:1px solid rgba(255,255,255,.26)}.dots{display:none}.hcenter{top:40%}}
 
 /* ---------- intro (words light up as you scroll) ---------- */
 .intro{padding:clamp(110px,15vw,210px) 0}
@@ -178,6 +179,10 @@ form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--r
 .sum div b{font:400 22px/1 var(--display);color:var(--ink);white-space:nowrap}
 .sum div.dep b{font-size:34px;color:var(--lagoon)}
 .sum .note{font-size:12.5px;color:var(--dim);padding-top:10px;line-height:1.55}
+.sum div.off b{color:var(--clay)}
+/* 限时优惠：店主在管理页开关；关着时整块不显示 */
+.offer{display:none;margin:0 0 22px;padding:12px 16px;background:#EEF6F6;border-left:3px solid var(--lagoon);font-size:15px;line-height:1.5;color:var(--ink)}
+.offer b{font-weight:500;color:var(--lagoon);margin-right:6px}
 form.req button[type=submit]{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
 form.req button[type=submit]:hover{background:var(--ink)}
 form.req .pays{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--dim);letter-spacing:.06em}
@@ -284,12 +289,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="slides">
       <img class="on" src="img/hero-resort.webp" alt="California Coral Beach Resort, blue arches and a red roof, on the white sand of Alubihod Beach under the palms" fetchpriority="high">
       <img src="img/hero-sail.webp" alt="A paraw with white sails pulled up on the beach at Alubihod">
-      <img src="img/hero-arches.webp" alt="The view to the sea through the resort's arches">
+      <img src="img/facade.webp" alt="The resort's three floors of blue arches between the coconut palms">
     </div>
+    <script>if(innerWidth<720){(function(){var sl=document.querySelector('.slides'),a0=sl.children[0],f=sl.children[2];f.src='img/facade-m.webp';a0.classList.remove('on');f.classList.add('on');sl.insertBefore(f,a0)})()}</script>
     <div class="shade"></div>
     <div class="hcenter">
-      <p class="kick hin">Five rooms &middot; Alubihod Beach &middot; Guimaras</p>
-      <h1><span class="line-mask"><span>Five rooms,</span></span><span class="line-mask"><span><em>right on</em> the sand.</span></span></h1>
+      <p class="kick hin">California Coral Beach Resort &middot; Guimaras</p>
+      <h1><span class="line-mask"><span>Five Rooms on</span></span><span class="line-mask"><span>Alubihod Beach</span></span></h1>
     </div>
     <div class="dots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
     <div class="dock hin">
@@ -323,11 +329,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="wrap">
       <div class="head"><h2 class="rv">Five rooms. Pick your view.</h2><p class="rv">One beachfront balcony room right over the sand, two garden rooms on the ground floor and two hillview rooms upstairs. Rates are for two people.</p></div>
       <div class="vgrid">
-        <article class="v"><div class="ph"><img src="img/room-beachfront.webp" alt="The Beachfront Balcony Room: a king-size bed and arched windows onto the sea" loading="lazy"></div><h3>Beachfront Balcony Room</h3><div class="meta"><span>King bed &middot; 1&ndash;2 adults &middot; only one</span><b>&#8369;3,800 <small>/ night</small></b></div><p class="d">Third floor, right over the beach, with two large windows and a private balcony onto the boats and the islands across the bay. His-and-hers sinks and a walk-in shower.</p><a class="pick" href="#book" data-room="beachfront">Check dates &rarr;</a></article>
-        <article class="v"><div class="ph"><img src="img/room-garden.webp" alt="A Garden Room with a queen bed and a single bed" loading="lazy"></div><h3>Garden Room</h3><div class="meta"><span>Queen + single &middot; up to 5 &middot; two rooms</span><b>&#8369;2,800 <small>/ night</small></b></div><p class="d">On the ground floor facing the gardens, just steps from the beach. The two rooms sit side by side with adjoining, lockable double doors.</p><a class="pick" href="#book" data-room="garden">Check dates &rarr;</a></article>
-        <article class="v"><div class="ph"><img src="img/room-hillview.webp" alt="A Hillview Room with two queen beds" loading="lazy"></div><h3>Hillview Room</h3><div class="meta"><span>Two queens &middot; up to 5 &middot; two rooms</span><b>&#8369;3,200 <small>/ night</small></b></div><p class="d">Upstairs on the third floor facing the hillside, with high ceilings and a narrow view of the sea. Adjoining, lockable doors between the two.</p><a class="pick" href="#book" data-room="hillview">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/room-beachfront.webp" alt="The Beachfront Balcony Room: a king-size bed and arched windows onto the sea" loading="lazy"></div><h3>Beachfront Balcony Room</h3><div class="meta"><span>King bed &middot; 1&ndash;2 adults &middot; only one</span><b>&#8369;<span data-rate="beachfront">3,800</span> <small>/ night</small></b></div><p class="d">Third floor, right over the beach, with two large windows and a private balcony onto the boats and the islands across the bay. His-and-hers sinks and a walk-in shower.</p><a class="pick" href="#book" data-room="beachfront">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/room-garden.webp" alt="A Garden Room with a queen bed and a single bed" loading="lazy"></div><h3>Garden Room</h3><div class="meta"><span>Queen + single &middot; up to 5 &middot; two rooms</span><b>&#8369;<span data-rate="garden">2,800</span> <small>/ night</small></b></div><p class="d">On the ground floor facing the gardens, just steps from the beach. The two rooms sit side by side with adjoining, lockable double doors.</p><a class="pick" href="#book" data-room="garden">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/room-hillview.webp" alt="A Hillview Room with two queen beds" loading="lazy"></div><h3>Hillview Room</h3><div class="meta"><span>Two queens &middot; up to 5 &middot; two rooms</span><b>&#8369;<span data-rate="hillview">3,200</span> <small>/ night</small></b></div><p class="d">Upstairs on the third floor facing the hillside, with high ceilings and a narrow view of the sea. Adjoining, lockable doors between the two.</p><a class="pick" href="#book" data-room="hillview">Check dates &rarr;</a></article>
       </div>
-      <p class="amen rv"><span><b>In every room</b>warm shower &middot; air-con &middot; ceiling fan &middot; fridge &middot; 55&quot; smart TV &middot; Starlink WiFi &middot; kettle &middot; coffee and bottled water for two</span><span><b>Extra guests</b>&#8369;400 each &middot; extra mattress &#8369;300</span></p>
+      <p class="amen rv"><span><b>In every room</b>warm shower &middot; air-con &middot; ceiling fan &middot; fridge &middot; 55&quot; smart TV &middot; Starlink WiFi &middot; kettle &middot; coffee and bottled water for two</span><span><b>Extra guests</b>&#8369;<span data-rate="extra">400</span> each per night &middot; extra mattress &#8369;300 per night</span></p>
     </div>
   </section>
 
@@ -335,7 +341,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="wrap grid">
       <div class="stick">
         <div class="frame">
-          <img class="on" data-k="0" src="img/hero-arches.webp" alt="" loading="lazy">
+          <img class="on" data-k="0" src="img/day-balcony.webp" alt="" loading="lazy">
           <img data-k="1" src="img/day-islands.webp" alt="" loading="lazy">
           <img data-k="2" src="img/day-garden.webp" alt="" loading="lazy">
           <img data-k="3" src="img/day-fire.webp" alt="" loading="lazy">
@@ -345,7 +351,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <div>
         <p class="kick">A day at Alubihod</p>
         <h2 class="rv">No schedule. Just the beach.</h2>
-        <div class="moment" data-k="0"><time>Morning</time><h3>Coffee in your room</h3><p>Complimentary coffee and bottled water for two are waiting in your room, and the resort is right on the beach.</p><img class="m" src="img/hero-arches.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="0"><time>Morning</time><h3>Coffee in your room</h3><p>Complimentary coffee and bottled water for two are waiting in your room, and the resort is right on the beach.</p><img class="m" src="img/day-balcony.webp" alt="" loading="lazy"></div>
         <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,000 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkel gear for rent when available.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
         <div class="moment" data-k="2"><time>Afternoon</time><h3>The gardens and the bamboo hut</h3><p>The gardens and the bamboo hut, with a table in the shade, are free for room guests. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner.</p><img class="m" src="img/day-garden.webp" alt="" loading="lazy"></div>
         <div class="moment" data-k="3"><time>Evening</time><h3>Evening on the beach</h3><p>The BBQ area is free to use. Charcoal is sold at our sari-sari store, open every day, along with the usual food and drinks.</p><img class="m" src="img/day-fire.webp" alt="" loading="lazy"></div>
@@ -374,6 +380,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         </ul>
       </div>
       <form class="req" id="req">
+        <p class="offer" id="offer"></p>
         <div class="row">
           <label class="f">Room<select name="room">
             <option value="beachfront" data-r="3800" data-max="2">Beachfront</option>
@@ -397,6 +404,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
         <div class="sum">
           <div><span id="nights">Pick your dates</span><b id="total">&mdash;</b></div>
+          <div class="off" id="offRow" style="display:none"><span id="offLbl">Special offer</span><b id="offAmt"></b></div>
+          <div id="totRow" style="display:none"><span>Total</span><b id="grand"></b></div>
           <div class="dep"><span>Deposit to pay now</span><b id="deposit">&mdash;</b></div>
           <p class="note" id="bal">The rest is paid at check-in.</p>
         </div>
@@ -416,7 +425,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <details><summary>How do I pay, and how much now?</summary><p>You pay a deposit of &#8369;1,000 per room per night when you book, by card, GCash, Maya, or online banking (Land Bank, BDO, BPI, UnionBank, Metrobank). It counts toward your stay. The rest is paid at check-in, in cash or by bank transfer.</p></details>
         <details><summary>What if I need to cancel?</summary><p>The deposit isn't refunded if you cancel. If the government stops the boats between Iloilo and Guimaras (for example, in bad weather), we refund your deposit or move your booking to another available date.</p></details>
         <details><summary>What time is check-in and check-out?</summary><p>Check-in is after 2 PM. Check-out is before 12 noon.</p></details>
-        <details><summary>How many people can stay in a room?</summary><p>Garden and Hillview rooms take up to five people; the rate is for two, and each extra person is &#8369;400. An extra single mattress with bedding is &#8369;300. The Beachfront Balcony Room is for one or two adults only. Children who can walk on their own count as guests; infants who must be carried stay free.</p></details>
+        <details><summary>How many people can stay in a room?</summary><p>Garden and Hillview rooms take up to five people; the rate is for two, and each extra person is &#8369;<span data-rate="extra">400</span> per night. An extra single mattress with bedding is &#8369;300 per night. The Beachfront Balcony Room is for one or two adults only. Children who can walk on their own count as guests; infants who must be carried stay free.</p></details>
         <details><summary>Is there a restaurant?</summary><p>Not yet, and we can't provide prepared food. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner. Our sari-sari store is open daily with the usual food and drinks. Food is allowed in the rooms, but no cooking in the rooms. You can cook in the BBQ area for free (charcoal is sold at the store); there's a small electricity charge if you use your own electric cooker, outside only.</p></details>
         <details><summary>Can we go island hopping?</summary><p>Yes, on our 40-foot boat, the Seahorse: &#8369;1,000 for the first hour and &#8369;800 for each extra hour, for up to ten people. Snorkel gear can be rented when available - ask before boarding. Sign up at the lifeguard station on the beach.</p></details>
         <details><summary>Do you have discounts?</summary><p>Seniors and PWDs who show ID and their Senior or PWD card get 20% off their share of the room rate. Only one discount per stay.</p></details>
@@ -463,14 +472,21 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});
   var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
   var peso=function(n){return '₱'+n.toLocaleString('en-PH')};
+  /* 限时优惠：和后台 worker.js 的 promoDiscount 同一规则（后台算的为准）。只折房费；符合的夜 = 在 from~to 里的夜，勾了就不算周六晚；够最少晚数才折 */
+  function promoOff(rate,a,b){var p=AV&&AV.promo;if(!p)return{d:0,q:0};var q=0;
+    for(var d=a;d<b;d=addD(d,1)){if(d<p.from||d>p.to)continue;if(p.skipSat&&new Date(d+'T00:00:00Z').getUTCDay()===6)continue;q++}
+    return q<p.minNights?{d:0,q:q}:{d:Math.round(p.pct/100*rate*q),q:q}}
   function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
   function clampG(){var mx=+room().dataset.max;document.getElementById('gnote').style.display=mx<3?'block':'none';if(g>mx)g=mx;if(g<1)g=1;gv.textContent=g}
   req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g+=(+b.dataset.d);clampG();est()})});
   function est(){var a=req.elements['in'].value,b=req.elements.out.value,o=room();var r=+o.dataset.r;
     var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
-    if(n>0){var extra=Math.max(0,g-2)*EXTRA,tot=n*(r+extra),dep=n*DEP;
+    var off=n>0?promoOff(r,a,b):{d:0,q:0};
+    document.getElementById('offRow').style.display=off.d?'':'none';document.getElementById('totRow').style.display=off.d?'':'none';
+    if(n>0){var extra=Math.max(0,g-2)*EXTRA,full=n*(r+extra),tot=full-off.d,dep=n*DEP;
       document.getElementById('nights').textContent=n+' night'+(n>1?'s':'')+' · '+o.textContent+' · '+g+' guest'+(g>1?'s':'');
-      document.getElementById('total').textContent=peso(tot);document.getElementById('deposit').textContent=peso(dep);
+      document.getElementById('total').textContent=peso(full);document.getElementById('deposit').textContent=peso(dep);
+      if(off.d){document.getElementById('offLbl').textContent='Special offer · '+AV.promo.pct+'% off '+off.q+' night'+(off.q>1?'s':'');document.getElementById('offAmt').textContent='−'+peso(off.d);document.getElementById('grand').textContent=peso(tot)}
       document.getElementById('bal').textContent=peso(tot-dep)+' is paid at check-in, in cash or by bank transfer.';
       document.getElementById('pay').textContent='Pay '+peso(dep)+' deposit & book'}
     else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—';document.getElementById('deposit').textContent='—';document.getElementById('bal').textContent='The rest is paid at check-in.';document.getElementById('pay').textContent='Pay deposit & book'}}
@@ -488,7 +504,12 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
   var msg=document.getElementById('avmsg'),errEl=document.getElementById('err'),payBtn=document.getElementById('pay');
   function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
-  function loadAv(cb){fetch(API+'/availability?from='+addD(td,-1)+'&to='+addD(td,399)).then(function(r){return r.json().then(function(j){if(!r.ok||!j.taken)throw new Error('bad');return j})}).then(function(j){AV=j;if(j.today&&j.today!==td){td=j.today;document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});if(cm<td.slice(0,8)+'01')cm=td.slice(0,8)+'01'}TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});cal();check();if(cb)cb()})
+  /* 房价以后台为准（店主在管理页能改）：房卡、FAQ 里的数字、表单计价都跟着接口走；接口没回来就保持页面上写的默认值 */
+  function applyRates(rt){if(!rt)return;EXTRA=rt.extra;[].forEach.call(req.elements.room.options,function(o){if(rt[o.value])o.dataset.r=rt[o.value]});
+    document.querySelectorAll('[data-rate]').forEach(function(el){var v=rt[el.dataset.rate];if(v!=null)el.textContent=v.toLocaleString('en-US')})}
+  function showOffer(){var el=document.getElementById('offer'),p=AV&&AV.promo;if(!p||!p.text){el.style.display='none';el.textContent='';return}
+    el.innerHTML='<b>Special offer</b>';el.appendChild(document.createTextNode(p.text));el.style.display='block'}
+  function loadAv(cb){fetch(API+'/availability?from='+addD(td,-1)+'&to='+addD(td,399)).then(function(r){return r.json().then(function(j){if(!r.ok||!j.taken)throw new Error('bad');return j})}).then(function(j){AV=j;if(j.today&&j.today!==td){td=j.today;document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});if(cm<td.slice(0,8)+'01')cm=td.slice(0,8)+'01'}TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});applyRates(j.rates);showOffer();est();cal();check();if(cb)cb()})
     .catch(function(){setMsg('We couldn\u2019t load the calendar just now. Please message us on Facebook and we\u2019ll check your dates.','bad')})}
   /* availability calendar */
   var cm=td.slice(0,7)+'-01',cgrid=document.getElementById('cgrid');
@@ -528,14 +549,14 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   function row(k,v){return '<div><dt>'+k+'</dt><dd>'+v+'</dd></div>'}
   function confirmed(o){var e=AV&&AV.email==='on';
     openD('<p class="tagp">Booking confirmed &middot; '+o.id+'</p><h3>You\u2019re booked.</h3><p>See you at Alubihod Beach, '+(o.name||'').split(' ')[0]+'.</p>'+
-      '<dl>'+row('Room',o.room)+row('Arrive',nice(o['in'],{weekday:'short'})+', after 2 PM')+row('Leave',nice(o.out,{weekday:'short'})+', before 12 noon')+row('Guests',o.guests)+row('Deposit paid',peso(o.deposit))+row('Due at check-in',peso(o.due)+' &middot; cash or bank transfer')+'</dl>'+
+      '<dl>'+row('Room',o.room)+row('Arrive',nice(o['in'],{weekday:'short'})+', after 2 PM')+row('Leave',nice(o.out,{weekday:'short'})+', before 12 noon')+row('Guests',o.guests)+(o.discount?row('Special offer','−'+peso(o.discount))+row('Total stay',peso(o.total)):'')+row('Deposit paid',peso(o.deposit))+row('Due at check-in',peso(o.due)+' &middot; cash or bank transfer')+'</dl>'+
       '<p class="small">'+(e?'A confirmation email is on its way to you.':'On the live site, a confirmation email goes to you and to the resort at this point.')+' The deposit isn\u2019t refunded if you cancel. Questions? Message us on Facebook.</p>'+
       '<button class="go" id="dOk" type="button">Done</button>');
     document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
   function release(id,t){fetch(API+'/release',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,t:t})}).catch(function(){}).then(function(){loadAv()})}
   function previewPay(o){
     openD('<p class="tagp">Preview checkout &middot; no money is charged</p><h3>Pay your deposit</h3><p>On the live site, this step is PayMongo\u2019s secure payment page.</p>'+
-      '<dl>'+row('Room',TNAME[type()])+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Guests',g)+row('Total stay',peso(o.total))+'</dl>'+
+      '<dl>'+row('Room',TNAME[type()])+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Guests',g)+(o.discount?row('Special offer','−'+peso(o.discount)):'')+row('Total stay',peso(o.total))+'</dl>'+
       '<p style="margin-bottom:4px">Deposit to pay now</p><div class="amt">'+peso(o.deposit)+'</div>'+
       '<div class="methods"><label><input type="radio" name="pm" value="Card" checked><span>Card</span></label><label><input type="radio" name="pm" value="GCash"><span>GCash</span></label><label><input type="radio" name="pm" value="Maya"><span>Maya</span></label></div>'+
       '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel - don\u2019t book</button>'+
@@ -572,7 +593,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est();cal();check()})});
 
   /* ---------- 手机上首屏先放帆船（度假村那张源图 2000×915，竖裁会糊） ---------- */
-  if(innerWidth<720){var sl=document.querySelector('.slides'),a0=sl.children[0],a1=sl.children[1];a0.classList.remove('on');a1.classList.add('on');sl.insertBefore(a1,a0)}
+  
 
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
@@ -623,6 +644,12 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     var dist=function(){return track.scrollWidth-window.innerWidth};
     gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'.island',pin:true,scrub:.6,start:'top top',end:function(){return '+='+dist()},invalidateOnRefresh:true,
       onUpdate:function(s){document.getElementById('cnum').textContent='0'+Math.min(4,1+Math.floor(s.progress*4*0.999))}}});
+    /* drag the photos sideways with the mouse: the strip follows page scroll 1:1, so a drag scrolls the page */
+    var dragX=null;track.style.cursor='grab';
+    track.addEventListener('dragstart',function(e){e.preventDefault()});
+    track.addEventListener('mousedown',function(e){if(e.button===0){dragX=e.clientX;track.style.cursor='grabbing';e.preventDefault()}});
+    window.addEventListener('mousemove',function(e){if(dragX===null)return;window.scrollTo({top:scrollY+(dragX-e.clientX)*1.4,behavior:'instant'});dragX=e.clientX});
+    window.addEventListener('mouseup',function(){if(dragX!==null){dragX=null;track.style.cursor='grab'}});
     panels.forEach(function(p){gsap.to(p.querySelector('img'),{scale:1,ease:'none',scrollTrigger:{trigger:'.island',start:'top top',end:function(){return '+='+dist()},scrub:true}})});
 
     /* ---------- a day: swap photo + move the sun ---------- */
