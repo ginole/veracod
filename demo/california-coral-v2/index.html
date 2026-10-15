@@ -158,36 +158,7 @@ h1,h2,h3,.v .meta span,.panel figcaption{overflow-wrap:anywhere}
 
 /* ---------- booking ---------- */
 .book{padding:clamp(110px,14vw,180px) 0}
-.bgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:start}
-.bgrid>*{min-width:0}
 .book h2{font-size:clamp(44px,5.6vw,84px)}
-.book .lead{color:var(--ink2);margin-top:26px;max-width:40ch}
-.book ul{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--rule)}
-.book li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
-.book li span:first-child{color:var(--dim);flex:none;white-space:nowrap}
-.book li span:last-child{text-align:right}
-form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--rule);min-width:0}
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
-.f{display:block;font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:18px;min-width:0}
-.f input,.f select{display:block;width:100%;min-width:0;margin-top:9px;border:0;border-bottom:1px solid var(--rule);padding:10px 0;font:400 17px/1.2 var(--body);color:var(--ink);background:transparent;outline:none;transition:border-color .3s;border-radius:0}
-.f input:focus,.f select:focus{border-bottom-color:var(--lagoon)}
-.step{display:flex;align-items:center;gap:18px;margin-top:9px;border-bottom:1px solid var(--rule);padding:6px 0}
-.step button{width:34px;height:34px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
-.step output{font:400 18px/1 var(--body);min-width:2ch;text-align:center}
-.sum{margin:10px 0 24px;border-top:1px solid var(--ink)}
-.sum div{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14.5px;color:var(--ink2)}
-.sum div b{font:400 22px/1 var(--display);color:var(--ink);white-space:nowrap}
-.sum div.dep b{font-size:34px;color:var(--lagoon)}
-.sum .note{font-size:12.5px;color:var(--dim);padding-top:10px;line-height:1.55}
-.sum div.off b{color:var(--clay)}
-/* 限时优惠：店主在管理页开关；关着时整块不显示 */
-.offer{display:none;margin:0 0 22px;padding:12px 16px;background:#EEF6F6;border-left:3px solid var(--lagoon);font-size:15px;line-height:1.5;color:var(--ink)}
-.offer b{font-weight:500;color:var(--lagoon);margin-right:6px}
-form.req button[type=submit]{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
-form.req button[type=submit]:hover{background:var(--ink)}
-form.req .pays{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--dim);letter-spacing:.06em}
-.done{display:none;padding:18px 0 0;color:var(--lagoon);font-size:15px}
-@media(max-width:900px){.bgrid{grid-template-columns:1fr}}
 @media(max-width:600px){.hcenter .kick{letter-spacing:.2em;line-height:1.8;font-size:10px}.ribbon{font-size:11px}.book li{flex-direction:column;gap:2px}.book li span:last-child{text-align:left}}
 
 /* ---------- find us ---------- */
@@ -198,26 +169,154 @@ form.req .pays{display:flex;justify-content:center;gap:14px;margin-top:12px;font
 .find a.ln{display:inline-block;margin-top:12px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
 @media(max-width:900px){.find .cols{grid-template-columns:1fr}}
 
-.avcal{margin:2px 0 20px;border:1px solid var(--rule);padding:14px 12px 12px;user-select:none}
-.avcal .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.avcal .mh b{font:400 22px/1 var(--display);font-variant-numeric:lining-nums}
-.avcal .mh button{width:40px;height:40px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
-.avcal .mh button:disabled{opacity:.3;cursor:default}
-.avcal .dw,.avcal .dg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
-.avcal .dw span{text-align:center;font:500 10px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding:4px 0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.avcal .dg button{aspect-ratio:1;min-width:0;border:0;background:var(--sand);font:400 15px/1 var(--body);color:var(--ink);cursor:pointer;position:relative}
-.avcal .dg button:disabled{background:none;color:#B9C6C7;cursor:default}
-.avcal .dg button.full{background:none;color:#B9C6C7;text-decoration:line-through}
-.avcal .dg button.full.out-ok{cursor:pointer}
-.avcal .dg button.in,.avcal .dg button.out{background:var(--lagoon);color:#fff;text-decoration:none}
-.avcal .dg button.mid{background:#CFE6E7}
-.avcal .key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--dim)}
-.avcal .key i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px}
 .avmsg{font-size:14.5px;line-height:1.5;margin:-6px 0 18px;color:var(--ink2);min-height:1.5em}
 .avmsg.ok{color:var(--lagoon)}.avmsg.bad{color:var(--clay)}
 .avmsg button{border:0;background:none;padding:0;font:inherit;color:var(--lagoon);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-form.req .err{display:none;margin-top:12px;color:var(--clay);font-size:14.5px}
-form.req button[type=submit]:disabled{opacity:.6;cursor:default}
+/* ===== 订房面板 A · 浅色层叠卡片（.bk 作用域；间距统一 --gap，卡片内边距统一 --pad） ===== */
+.bk{--gap:20px;--pad:24px;--r:26px;--num:'Jost',system-ui,sans-serif;--spring:cubic-bezier(.34,1.3,.5,1);position:relative}
+@supports (transition-timing-function:linear(0,1)){.bk{--spring:linear(0,.06 2.5%,.22 6%,.5 11.5%,.76 17.5%,.93 24%,1.025 31%,1.05 37%,1.04 45%,1.015 56%,1 68%,.998 80%,1)}}
+.bk .a-intro,.bk .a-grid{position:relative}
+.bk .a-intro{text-align:center;max-width:680px;margin:0 auto clamp(32px,4vw,52px)}
+.bk .a-intro .kick{display:block;margin:0 0 18px}
+.bk .a-intro h2,.bk .a-intro h3{text-wrap:balance}
+.bk .a-lead{margin:20px auto 0;color:var(--ink2);max-width:52ch}
+.bk .a-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.92fr) minmax(0,1fr);gap:var(--gap);max-width:1160px;margin:0 auto;align-items:stretch}
+.bk .a-grid>*{min-width:0}
+.bk .card{background:#fff;border-radius:var(--r);padding:var(--pad);min-width:0;box-shadow:0 1px 0 rgba(14,42,48,.03),0 10px 24px -14px rgba(14,42,48,.14),0 34px 70px -34px rgba(14,42,48,.24)}
+.bk .ch{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 18px;font:500 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.bk .a-rooms,.bk .offer,.bk .rules{grid-column:1/-1}
+/* 房型：三张等高，照片和文字垂直居中 */
+.bk .rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.bk .room{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;align-items:center;text-align:left;padding:12px;border-radius:18px;border:1.5px solid transparent;background:var(--sand);cursor:pointer;font:inherit;color:inherit;transition:transform .55s var(--spring),box-shadow .45s cubic-bezier(.22,1,.36,1),background .35s,border-color .35s}
+.bk .room img{width:88px;height:88px;object-fit:cover;border-radius:14px;display:block}
+.bk .room .rt{display:flex;flex-direction:column;gap:6px;min-width:0;padding-right:22px}
+.bk .room .rn{font:400 22px/1.1 var(--display);color:var(--ink)}
+.bk .room .rb{font-size:13px;line-height:1.3;color:var(--dim)}
+.bk .room .rr{font:500 15px/1 var(--body);color:var(--ink)}
+.bk .room .rr small{font-weight:300;color:var(--dim);font-size:12px}
+.bk .room .ok{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--lagoon);color:#fff;display:grid;place-items:center;transform:scale(0);transition:transform .5s var(--spring)}
+.bk .room .ok svg{width:12px;height:12px}
+.bk .room:hover{transform:translateY(-2px)}
+.bk .room.on{background:#fff;border-color:var(--lagoon);box-shadow:0 16px 32px -18px rgba(14,135,145,.55)}
+.bk .room.on .ok{transform:scale(1)}
+/* 日历 */
+.bk .a-cal{display:flex;flex-direction:column}
+.bk .cal-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.bk .cal-m{font:400 26px/1 var(--display);letter-spacing:.01em}
+.bk .cal-nav{width:38px;height:38px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:var(--sand);color:var(--ink);padding:0;transition:background .25s,opacity .25s}
+.bk .cal-nav:hover:not([disabled]){background:var(--sand2)}
+.bk .cal-nav svg{width:16px;height:16px}
+.bk .cal-nav[disabled]{opacity:.3;cursor:default}
+.bk .cal-w,.bk .cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.bk .cal-w span{text-align:center;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:6px 0 10px;color:var(--dim)}
+.bk .cal-g{row-gap:4px;transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
+.bk .cal-g{flex:1;align-content:space-evenly}.bk .pays a{white-space:nowrap}.bk .cal-g.swap{opacity:0;transform:translateX(10px)}
+.bk .d{position:relative;aspect-ratio:1/1;min-width:0;border:0;background:none;padding:0;cursor:pointer;font:400 15px/1 var(--body);color:var(--ink);display:grid;place-items:center;isolation:isolate}
+.bk .d span{position:relative;z-index:2;transition:color .3s}
+.bk .d::before{content:"";position:absolute;inset:3px 0;z-index:0;opacity:0;background:var(--sand2);transition:opacity .35s cubic-bezier(.22,1,.36,1) var(--dl,0ms)}
+.bk .d::after{content:"";position:absolute;inset:3px;z-index:1;border-radius:50%;background:var(--lagoon);box-shadow:0 8px 16px -6px rgba(14,135,145,.6);transform:scale(.4);opacity:0;transition:transform .5s var(--spring) var(--dl,0ms),opacity .25s var(--dl,0ms)}
+.bk .d.mid::before{opacity:1}
+.bk .d.in::before{opacity:1;left:50%}
+.bk .d.out::before{opacity:1;right:50%}
+.bk .d.in::after,.bk .d.out::after,.bk .d.solo::after{transform:scale(1);opacity:1}
+.bk .d.in span,.bk .d.out span,.bk .d.solo span{color:#fff;font-weight:500}
+.bk .d[disabled]{cursor:default}
+.bk .d.past span{opacity:.28}
+.bk .d.booked span{text-decoration:line-through;opacity:.38}
+.bk .d.booked.out-ok{cursor:pointer}
+/* 有人正在付款（占房 10 分钟）：浅色斜纹，和「已订」区分 */
+.bk .d.held span{opacity:.55}
+.bk .d.held{background:repeating-linear-gradient(135deg,rgba(224,97,46,.13) 0 3px,transparent 3px 7px);border-radius:10px}
+.bk .d.held.out-ok{cursor:pointer}
+.bk .key i.kh{background:repeating-linear-gradient(135deg,rgba(224,97,46,.45) 0 2px,transparent 2px 4px);border:1px solid rgba(224,97,46,.35)}
+.bk .d.today span::after{content:"";position:absolute;left:50%;bottom:-7px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--clay)}
+.bk .d:not([disabled]):not(.in):not(.out):not(.solo):hover span{color:var(--lagoon)}
+.bk .d:focus-visible{outline:2px solid var(--lagoon);outline-offset:-2px;border-radius:10px}
+.bk .blank{aspect-ratio:1/1}
+.bk .key{display:flex;gap:16px;flex-wrap:wrap;margin-top:auto;padding-top:16px;font-size:12px;color:var(--dim)}
+.bk .key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.bk .msg,.bk .avmsg{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--lagoon);min-height:1.5em}
+.bk .avmsg{color:var(--ink2)}.bk .avmsg.ok{color:var(--lagoon)}.bk .avmsg.bad{color:var(--clay)}
+/* 中间列：三张卡均分撑满，小标题在顶、内容在剩余空间里居中 */
+.bk .a-mid{display:grid;grid-template-rows:repeat(3,1fr);gap:var(--gap)}
+.bk .a-mid>.card{display:flex;flex-direction:column}
+.bk .a-mid .body{flex:1;display:flex;align-items:center}
+.bk .a-guests .body{justify-content:space-between;gap:12px}
+.bk .gx{display:flex;flex-direction:column;gap:6px;min-width:0}
+.bk .gx small{font-size:12px;line-height:1.4;color:var(--dim)}
+.bk .note{font-size:12px;line-height:1.4;color:var(--clay);margin:0}
+.bk .step{display:flex;align-items:center;gap:10px;margin:0;padding:0;border:0;flex:none}
+.bk .step button{width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;font:inherit;transition:background .25s,border-color .25s,transform .4s var(--spring)}
+.bk .step button:hover{border-color:var(--lagoon);background:var(--sand2)}
+.bk .step button:active{transform:scale(.9)}
+.bk .step button svg{width:14px;height:14px}
+.bk .step b{font:300 44px/1 var(--num);min-width:1.1ch;justify-content:center}
+.bk .a-dates .body{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
+.bk .dt{display:flex;flex-direction:column;gap:8px;min-width:0}
+.bk .dt.r{text-align:right;align-items:flex-end}
+.bk .dv{display:flex;align-items:baseline;gap:8px}
+.bk .dv b{font:300 48px/1 var(--num)}
+.bk .dv>span{font-size:13px;color:var(--ink2);line-height:1.2}
+.bk .dt small{font-size:12px;color:var(--dim)}
+.bk .nn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 12px;border-radius:16px;background:var(--sand2);color:var(--lagoon)}
+.bk .nn b{font:300 26px/1 var(--num)}
+.bk .nn>span{font:500 10px/1 var(--body);letter-spacing:.18em;text-transform:uppercase}
+.bk .a-you .body{flex-direction:column;align-items:stretch;justify-content:center;gap:10px}
+.bk .a-you input{display:block;width:100%;min-width:0;margin:0;border:0;border-radius:12px;background:var(--sand);padding:12px 14px;font:400 16px/1.2 var(--body);color:var(--ink);outline:none;transition:box-shadow .25s,background .25s}
+.bk .a-you input::placeholder{color:var(--dim);opacity:1}
+.bk .a-you input:focus{background:#fff;box-shadow:0 0 0 1.5px var(--lagoon)}
+/* 订金卡 */
+.bk .a-total{position:relative;isolation:isolate;display:flex;flex-direction:column;color:#fff;background:linear-gradient(165deg,#13A0AA 0%,#0E8791 42%,#0A6670 100%);box-shadow:0 10px 24px -14px rgba(10,102,112,.35),0 34px 70px -34px rgba(10,102,112,.55)}
+.bk .a-total::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;background:radial-gradient(120% 70% at 100% 0%,rgba(255,255,255,.22),transparent 55%)}
+.bk .a-total .ch{color:rgba(255,255,255,.75)}
+.bk .big{display:block;font:200 clamp(60px,6.4vw,88px)/1 var(--num);margin:0 0 8px;letter-spacing:-.02em}
+.bk .a-total .sub{margin:0 0 18px;font-size:13px;line-height:1.45;color:rgba(255,255,255,.78)}
+.bk .a-total dl{margin:0 0 20px;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.bk .a-total dl div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;font-size:14px;color:rgba(255,255,255,.84)}
+.bk .a-total dd{margin:0;color:#fff;font-weight:400;white-space:nowrap}
+.bk .a-total .tot{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.25);color:#fff}
+.bk .a-total .tot dd{font:300 22px/1 var(--num)}
+.bk .a-total .offrow dd{color:#FFE2D3}
+.bk .pay{display:block;width:100%;height:56px;margin-top:auto;border:0;border-radius:999px;background:#fff;color:var(--ink);font:500 13px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 14px 28px -14px rgba(0,0,0,.45);transition:transform .45s var(--spring),box-shadow .3s}
+.bk .pay:hover{transform:translateY(-2px);box-shadow:0 20px 34px -16px rgba(0,0,0,.5)}
+.bk .pay:disabled{opacity:.7;cursor:default;transform:none}
+.bk .pays{margin:12px 0 0;text-align:center;font-size:12px;line-height:1.5;color:rgba(255,255,255,.75)}
+.bk .pays a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.bk .err{display:none;margin:12px 0 0;padding:10px 14px;border-radius:12px;background:#fff;color:var(--clay);font-size:14px;line-height:1.45}
+/* 限时优惠（关着时整条不出现） */
+.bk .offer{display:none;margin:0;padding:16px var(--pad);border-radius:var(--r);background:#fff;border:1.5px solid var(--lagoon);font-size:15px;line-height:1.5;color:var(--ink);text-align:center}
+.bk .offer b{font-weight:500;color:var(--lagoon);margin-right:8px}
+/* 规则胶囊：四等分，和上面卡片总宽对齐 */
+.bk .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin:0;padding:0;list-style:none}
+.bk .rules li{display:grid;place-items:center;min-height:52px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.7);font-size:13px;line-height:1.4;color:var(--ink2);text-align:center}
+.bk .rules li span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--lagoon);margin-right:8px;vertical-align:2px}
+/* 滚动数字 */
+.bk .roll{display:inline-flex;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.bk .roll i{font-style:normal}
+.bk .roll .rc,.bk .roll .rx{vertical-align:top}
+.bk .roll .rc{display:inline-block;height:1.08em;overflow:hidden;line-height:1.08em;transition:width .5s cubic-bezier(.22,1,.36,1);-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.bk .roll .rs{display:block;transition:transform .9s var(--spring);will-change:transform}
+.bk .roll .rs i{display:block;height:1.08em;text-align:center}
+.bk .roll .rx{display:inline-block;line-height:1.08em}
+@media (max-width:1080px){
+  .bk .a-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .bk .a-total{grid-column:1/-1}
+  .bk .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .bk{--gap:16px;--pad:18px;--r:22px}
+  .bk .a-grid{grid-template-columns:minmax(0,1fr)}
+  .bk .a-mid{grid-template-rows:none}
+  .bk .rooms{grid-template-columns:minmax(0,1fr)}
+  .bk .room{grid-template-columns:72px minmax(0,1fr);gap:14px;padding:10px}
+  .bk .room img{width:72px;height:72px}
+  .bk .room .rn{font-size:20px}
+  .bk .room .rt{gap:4px}
+  .bk .dv b{font-size:42px}
+  .bk .rules{grid-template-columns:minmax(0,1fr)}
+  .bk .rules li{min-height:44px}
+}
+@media (prefers-reduced-motion:reduce){.bk *,.bk *::before,.bk *::after{transition-duration:.01ms!important}}
 /* ---------- checkout / confirmation dialog ---------- */
 .ov{position:fixed;inset:0;z-index:90;background:rgba(14,42,48,.55);display:none;align-items:flex-end;justify-content:center}
 .ov.on{display:flex}
@@ -229,13 +328,14 @@ form.req button[type=submit]:disabled{opacity:.6;cursor:default}
 .dlg dl div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
 .dlg dt{color:var(--dim)}.dlg dd{margin:0;text-align:right;color:var(--ink)}
 .dlg .amt{font:400 40px/1 var(--display);color:var(--lagoon);margin:6px 0 18px;font-variant-numeric:lining-nums}
-.dlg .methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:6px 0 18px}
+.dlg .mlead{margin:4px 0 8px;font-size:14px;color:var(--dim)}.dlg .methods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 18px}.dlg .methods span{border:1px solid var(--rule);padding:12px 6px;text-align:center;font-size:14px;display:flex;flex-direction:column;justify-content:center;gap:3px}.dlg .methods small{font-size:11px;color:var(--dim)}@media(max-width:520px){.dlg .methods{grid-template-columns:repeat(2,minmax(0,1fr))}.dlg dl{margin:12px 0}.dlg dl div{padding:8px 0}.dlg .amt{margin:4px 0 12px}.dlg .methods{margin-bottom:14px}.dlg .methods span{padding:9px 6px}.dlg .small{margin-top:10px}}
 .dlg .methods label{border:1px solid var(--rule);padding:14px 6px;text-align:center;font-size:14px;cursor:pointer}
 .dlg .methods input{position:absolute;opacity:0;pointer-events:none}
 .dlg .methods input:checked+span{color:var(--lagoon);font-weight:500}
 .dlg .methods label:has(input:checked){border-color:var(--lagoon);background:#EEF6F6}
 .dlg .go{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;padding:20px;cursor:pointer}
 .dlg .go:disabled{opacity:.6}
+.dlg p+.go{margin-top:18px}
 .dlg .lnk{display:block;margin:14px auto 0;border:0;background:none;font:400 14px/1 var(--body);color:var(--dim);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .dlg p{color:var(--ink2);font-size:15px}
 .dlg .small{font-size:12.5px;color:var(--dim);margin-top:12px}
@@ -365,54 +465,76 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </section>
 
   <section class="book" id="book">
-    <div class="wrap bgrid">
-      <div>
+    <div class="wrap bk">
+      <div class="a-intro">
         <p class="kick">Book direct</p>
         <h2 class="rv">Book straight with us.</h2>
-        <p class="lead rv">No booking site in the middle. Pick your dates, pay the deposit by card, GCash, Maya or straight from your bank account, and your room is yours - the booking confirms itself. You get an email with everything you need, and so do we.</p>
-        <ul class="rv">
-          <li><span>Check-in &middot; check-out</span><span>After 2 PM &middot; before 12 noon</span></li>
-          <li><span>To hold your room</span><span>&#8369;1,000 per room per night, counted toward your stay</span></li>
-          <li><span>The balance</span><span>Cash or bank transfer at check-in</span></li>
-          <li><span>If you cancel</span><span>The deposit isn't refunded</span></li>
-          <li><span>Seniors &amp; PWD</span><span>20% off their share of the rate, with ID &middot; one discount per stay</span></li>
-          <li><span>Children &amp; pets</span><span>Children who can walk count as guests &middot; infants who are carried stay free &middot; sorry, no pets</span></li>
-        </ul>
+        <p class="lead a-lead rv">No booking site in the middle. Pick your dates, pay the deposit by card, GCash, Maya or straight from your bank account, and your room is yours — the booking confirms itself. You get an email with everything you need, and so do we.</p>
       </div>
-      <form class="req" id="req">
+      <form class="a-grid" id="req">
         <p class="offer" id="offer"></p>
-        <div class="row">
-          <label class="f">Room<select name="room">
+        <div class="card a-rooms">
+          <div class="ch"><span>Choose your room</span><span>Rates are for two</span></div>
+          <select name="room" hidden aria-hidden="true" tabindex="-1">
             <option value="beachfront" data-r="3800" data-max="2">Beachfront</option>
             <option value="garden" data-r="2800" data-max="5" selected>Garden Room</option>
             <option value="hillview" data-r="3200" data-max="5">Hillview Room</option>
-          </select></label>
-          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div><span id="gnote" style="display:none;margin-top:8px;letter-spacing:.04em;text-transform:none;font:400 12px/1.4 var(--body);color:var(--clay)">Beachfront Balcony: 1&ndash;2 adults only</span></div>
+          </select>
+          <div class="rooms">
+            <button type="button" class="room" data-room="beachfront" aria-pressed="false"><img src="img/room-beachfront.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Beachfront Balcony</span><span class="rb">King bed &middot; 1&ndash;2 adults</span><span class="rr">&#8369;<span data-rate="beachfront">3,800</span> <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+            <button type="button" class="room" data-room="garden" aria-pressed="true"><img src="img/room-garden.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Garden Room</span><span class="rb">Queen + single &middot; up to 5</span><span class="rr">&#8369;<span data-rate="garden">2,800</span> <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+            <button type="button" class="room" data-room="hillview" aria-pressed="false"><img src="img/room-hillview.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Hillview Room</span><span class="rb">Two queens &middot; up to 5</span><span class="rr">&#8369;<span data-rate="hillview">3,200</span> <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+          </div>
         </div>
-        <div class="avcal" id="avcal" aria-label="Availability calendar">
-          <div class="mh"><button type="button" id="cprev" aria-label="Previous month">&lsaquo;</button><b id="cmon">&nbsp;</b><button type="button" id="cnext" aria-label="Next month">&rsaquo;</button></div>
-          <div class="dw"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-          <div class="dg" id="cgrid"></div>
-          <div class="key"><span><i style="background:var(--sand)"></i>Free</span><span><i style="background:none;border:1px solid #B9C6C7"></i>Booked</span><span><i style="background:var(--lagoon)"></i>Your dates</span></div>
+        <div class="card a-cal" id="avcal" aria-label="Availability calendar">
+          <div class="ch"><span>Your dates</span><span>Tap arrive, then leave</span></div>
+          <div class="cal-h"><button type="button" class="cal-nav" id="cprev" aria-label="Previous month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3L5 8l5 5"/></svg></button><b class="cal-m" id="cmon">&nbsp;</b><button type="button" class="cal-nav" id="cnext" aria-label="Next month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3l5 5-5 5"/></svg></button></div>
+          <div class="cal-w"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-g" id="cgrid"></div>
+          <div class="key"><span><i style="background:var(--sand2)"></i>Your stay</span><span><i style="background:var(--lagoon)"></i>Arrive &middot; leave</span><span><i style="background:none;border:1px solid #B9C6C7"></i>Booked</span><span><i class="kh"></i>Being booked</span></div>
+          <p class="avmsg" id="avmsg" aria-live="polite">Tap your arrival day on the calendar, then the day you leave.</p>
         </div>
-        <div class="row">
-          <label class="f">Arrive<input type="date" name="in" required></label>
-          <label class="f">Leave<input type="date" name="out" required></label>
+        <div class="a-mid">
+          <div class="card a-guests">
+            <div class="ch"><span>Guests</span></div>
+            <div class="body">
+              <div class="gx"><small>Children who walk count as guests &middot; infants who are carried stay free</small><p class="note" id="gnote" style="display:none">Beachfront Balcony: 1&ndash;2 adults only</p></div>
+              <div class="step"><button type="button" data-d="-1" aria-label="Fewer guests"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10"/></svg></button><b class="roll" id="gv" aria-live="polite"></b><button type="button" data-d="1" aria-label="More guests"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M7 2v10"/></svg></button></div>
+            </div>
+          </div>
+          <div class="card a-dates">
+            <div class="ch"><span>Arrive</span><span>Leave</span></div>
+            <input type="hidden" name="in"><input type="hidden" name="out">
+            <div class="body">
+              <div class="dt"><div class="dv" id="inShow"></div><small>After 2 PM</small></div>
+              <div class="nn"><b class="roll" id="nN"></b><span id="nL">nights</span></div>
+              <div class="dt r"><div class="dv" id="outShow"></div><small>Before 12 noon</small></div>
+            </div>
+          </div>
+          <div class="card a-you">
+            <div class="ch"><span>Your details</span></div>
+            <div class="body">
+              <input type="text" name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name">
+              <input type="email" name="email" required autocomplete="email" placeholder="Email" aria-label="Email">
+            </div>
+          </div>
         </div>
-        <p class="avmsg" id="avmsg">Tap your arrival day on the calendar, then the day you leave.</p>
-        <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
-        <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
-        <div class="sum">
-          <div><span id="nights">Pick your dates</span><b id="total">&mdash;</b></div>
-          <div class="off" id="offRow" style="display:none"><span id="offLbl">Special offer</span><b id="offAmt"></b></div>
-          <div id="totRow" style="display:none"><span>Total</span><b id="grand"></b></div>
-          <div class="dep"><span>Deposit to pay now</span><b id="deposit">&mdash;</b></div>
-          <p class="note" id="bal">The rest is paid at check-in.</p>
+        <div class="card a-total">
+          <div class="ch"><span>Deposit to pay now</span></div>
+          <b class="big roll" id="deposit"></b>
+          <p class="sub">&#8369;1,000 per room per night &middot; counted toward your stay</p>
+          <dl>
+            <div><dt id="rline">Pick your dates</dt><dd class="roll" id="rtot"></dd></div>
+            <div id="xrow" style="display:none"><dt id="xline"></dt><dd class="roll" id="xtot"></dd></div>
+            <div class="offrow" id="offRow" style="display:none"><dt id="offLbl">Special offer</dt><dd id="offAmt"></dd></div>
+            <div class="tot"><dt>Total stay</dt><dd class="roll" id="grand"></dd></div>
+            <div><dt>Due at check-in</dt><dd class="roll" id="bal"></dd></div>
+          </dl>
+          <button type="submit" class="pay" id="pay">Pay deposit &amp; book</button>
+          <p class="pays">Card &middot; GCash &middot; Maya &middot; online banking<br>By booking, you agree to our <a href="terms/">terms</a> and <a href="privacy/">privacy notice</a>.</p>
+          <p class="err" id="err" role="alert"></p>
         </div>
-        <button type="submit" id="pay">Pay deposit &amp; book</button>
-        <p class="pays">Card &middot; GCash &middot; Maya</p>
-        <p class="pays" style="margin-top:6px">By booking, you agree to our <a href="terms/" style="color:var(--lagoon)">booking terms</a> and <a href="privacy/" style="color:var(--lagoon)">privacy notice</a>.</p>
-        <p class="err" id="err" role="alert"></p>
+        <ul class="rules"><li><span>Balance paid at check-in</span></li><li><span>The deposit isn't refunded if you cancel</span></li><li><span>Seniors &amp; PWD: 20% off their share</span></li><li><span>Sorry, no pets</span></li></ul>
       </form>
     </div>
   </section>
@@ -472,29 +594,54 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});
   var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
   var peso=function(n){return '₱'+n.toLocaleString('en-PH')};
+  /* 滚动数字：每位一条 0-9 竖条，只动 transform；每位宽度跟真实数字走 */
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,ROLLS=[];
+  function setRoll(el,str){if(!el||el._s===str)return;var old=el._s;el._s=str;el.setAttribute('aria-label',str);
+    var same=old&&old.length===str.length&&old.replace(/\d/g,'0')===str.replace(/\d/g,'0');
+    if(!same){var h='';for(var i=0;i<str.length;i++){var c=str[i];
+        if(/\d/.test(c)){h+='<i class="rc" aria-hidden="true"><i class="rs">';for(var n=0;n<10;n++)h+='<i>'+n+'</i>';h+='</i></i>'}else h+='<i class="rx" aria-hidden="true">'+c+'</i>'}
+      el.innerHTML=h;var sts=el.querySelectorAll('.rs');
+      if(!old||reduce){var j=0;for(var k=0;k<str.length;k++)if(/\d/.test(str[k])){sts[j].style.transition='none';sts[j].style.transform='translateY('+(-1.08*str[k])+'em)';j++}
+        el.offsetHeight;sts.forEach(function(x){x.style.transition=''});rollW(el);return}
+      el.offsetHeight}
+    var st=el.querySelectorAll('.rs'),q=0;
+    for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){st[q].style.transitionDelay=(q*35)+'ms';st[q].style.transform='translateY('+(-1.08*str[x])+'em)';q++}
+    rollW(el)}
+  function rollW(el){if(ROLLS.indexOf(el)<0)ROLLS.push(el);
+    if(!el._w){var m=document.createElement('i');m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap';el.appendChild(m);el._w=[];for(var n=0;n<10;n++){m.textContent=String(n);el._w.push(m.getBoundingClientRect().width)}el.removeChild(m)}
+    var cols=el.querySelectorAll('.rc'),q=0,str=el._s;for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){cols[q].style.width=el._w[+str[x]]+'px';q++}}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ROLLS.forEach(function(el){el._w=null;var cs=el.querySelectorAll('.rc');cs.forEach(function(c){c.style.transition='none'});rollW(el);el.offsetHeight;cs.forEach(function(c){c.style.transition=''})})});
   /* 限时优惠：和后台 worker.js 的 promoDiscount 同一规则（后台算的为准）。只折房费；符合的夜 = 在 from~to 里的夜，勾了就不算周六晚；够最少晚数才折 */
   function promoOff(rate,a,b){var p=AV&&AV.promo;if(!p)return{d:0,q:0};var q=0;
     for(var d=a;d<b;d=addD(d,1)){if(d<p.from||d>p.to)continue;if(p.skipSat&&new Date(d+'T00:00:00Z').getUTCDay()===6)continue;q++}
     return q<p.minNights?{d:0,q:q}:{d:Math.round(p.pct/100*rate*q),q:q}}
   function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
-  function clampG(){var mx=+room().dataset.max;document.getElementById('gnote').style.display=mx<3?'block':'none';if(g>mx)g=mx;if(g<1)g=1;gv.textContent=g}
+  function clampG(){var mx=+room().dataset.max;document.getElementById('gnote').style.display=mx<3?'block':'none';if(g>mx)g=mx;if(g<1)g=1;setRoll(gv,String(g))}
   req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g+=(+b.dataset.d);clampG();est()})});
+  var $i=function(id){return document.getElementById(id)};
+  function dayShow(el,iso){var r=el.querySelector('b.roll');
+    if(!iso){el.innerHTML='<b>&ndash;</b><span>Pick a<br>day</span>';return}
+    if(!r){el.innerHTML='<b class="roll"></b><span></span>';r=el.querySelector('b')}
+    var d=new Date(iso+'T00:00:00Z');setRoll(r,String(d.getUTCDate()));el.querySelector('span').innerHTML=d.toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short'})+',<br>'+d.toLocaleDateString('en-US',{timeZone:'UTC',month:'short'})}
   function est(){var a=req.elements['in'].value,b=req.elements.out.value,o=room();var r=+o.dataset.r;
-    var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
+    req.querySelectorAll('.room[data-room]').forEach(function(t){var on=t.dataset.room===o.value;t.classList.toggle('on',on);t.setAttribute('aria-pressed',on?'true':'false')});
+    dayShow($i('inShow'),a);dayShow($i('outShow'),b);
+    var n=a&&b&&b>a?Math.round((new Date(b)-new Date(a))/864e5):0;
+    setRoll($i('nN'),String(n));$i('nL').textContent=n===1?'night':'nights';
     var off=n>0?promoOff(r,a,b):{d:0,q:0};
-    document.getElementById('offRow').style.display=off.d?'':'none';document.getElementById('totRow').style.display=off.d?'':'none';
-    if(n>0){var extra=Math.max(0,g-2)*EXTRA,full=n*(r+extra),tot=full-off.d,dep=n*DEP;
-      document.getElementById('nights').textContent=n+' night'+(n>1?'s':'')+' · '+o.textContent+' · '+g+' guest'+(g>1?'s':'');
-      document.getElementById('total').textContent=peso(full);document.getElementById('deposit').textContent=peso(dep);
-      if(off.d){document.getElementById('offLbl').textContent='Special offer · '+AV.promo.pct+'% off '+off.q+' night'+(off.q>1?'s':'');document.getElementById('offAmt').textContent='−'+peso(off.d);document.getElementById('grand').textContent=peso(tot)}
-      document.getElementById('bal').textContent=peso(tot-dep)+' is paid at check-in, in cash or by bank transfer.';
-      document.getElementById('pay').textContent='Pay '+peso(dep)+' deposit & book'}
-    else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—';document.getElementById('deposit').textContent='—';document.getElementById('bal').textContent='The rest is paid at check-in.';document.getElementById('pay').textContent='Pay deposit & book'}}
+    $i('offRow').style.display=off.d?'':'none';
+    if(n>0){var ex=Math.max(0,g-2),rt=n*r,xt=n*ex*EXTRA,full=rt+xt,tot=full-off.d,dep=n*DEP;
+      $i('rline').textContent=peso(r)+' × '+n+' night'+(n>1?'s':'');setRoll($i('rtot'),peso(rt));
+      $i('xrow').style.display=ex?'':'none';$i('xline').textContent=ex+' extra guest'+(ex>1?'s':'')+' × '+peso(EXTRA)+' × '+n;setRoll($i('xtot'),peso(xt));
+      if(off.d){$i('offLbl').textContent='Special offer · '+AV.promo.pct+'% off '+off.q+' night'+(off.q>1?'s':'');$i('offAmt').textContent='−'+peso(off.d)}
+      setRoll($i('grand'),peso(tot));setRoll($i('bal'),peso(tot-dep));setRoll($i('deposit'),peso(dep));
+      $i('pay').textContent=MODE==='request'?'Request to book':'Pay '+peso(dep)+' deposit & book'}
+    else{$i('rline').textContent=o.textContent+' · pick your dates';$i('xrow').style.display='none';setRoll($i('rtot'),'–');setRoll($i('grand'),'–');setRoll($i('bal'),'–');setRoll($i('deposit'),'₱0');$i('pay').textContent=MODE==='request'?'Request to book':'Pay deposit & book'}}
   ['in','out','room'].forEach(function(k){req.elements[k].addEventListener('change',function(){clampG();est()})});
   req.elements['in'].addEventListener('change',function(){req.elements.out.min=req.elements['in'].value||td});
   /* ================= live booking: calendar + API (cc.veracod.com) =================
      付款：后台配了 PayMongo 就跳到 PayMongo 的安全页；没配（现在）就弹「模拟付款」，流程完全一样、不收钱。 */
-  var API='https://cc.veracod.com/api',AV=null,TAKEN={},TYPES={garden:['g1','g2'],hillview:['h1','h2'],beachfront:['b']};
+  var API='https://cc.veracod.com/api',AV=null,TAKEN={},HELD={},TYPES={garden:['g1','g2'],hillview:['h1','h2'],beachfront:['b']};
   var TNAME={garden:'Garden Room',hillview:'Hillview Room',beachfront:'Beachfront Balcony Room'};
   function addD(s,n){var d=new Date(s+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
   function nice(s,o){return new Date(s+'T00:00:00Z').toLocaleDateString('en-US',Object.assign({timeZone:'UTC',month:'short',day:'numeric'},o||{}))}
@@ -502,33 +649,48 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   function roomFree(r,a,b){for(var d=a;d<b;d=addD(d,1))if(TAKEN[r][d])return false;return true}
   function freeRoom(t,a,b){var rs=TYPES[t];for(var i=0;i<rs.length;i++)if(roomFree(rs[i],a,b))return rs[i];return null}
   function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
+  /* 订不了、但只是因为有人正在付款（不是真订走了）：这一晚这类房没有一间是确认订走的空着、至少一间是 held */
+  function heldOn(t,d){return fullOn(t,d)&&TYPES[t].some(function(r){return HELD[r][d]})}
+  function heldIn(t,a,b){for(var d=a;d<b;d=addD(d,1))if(heldOn(t,d))return true;return false}
+  var HELD_MSG='Someone is booking these dates right now \u2014 check again in a few minutes.';
   var msg=document.getElementById('avmsg'),errEl=document.getElementById('err'),payBtn=document.getElementById('pay');
   function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
   /* 房价以后台为准（店主在管理页能改）：房卡、FAQ 里的数字、表单计价都跟着接口走；接口没回来就保持页面上写的默认值 */
   function applyRates(rt){if(!rt)return;EXTRA=rt.extra;[].forEach.call(req.elements.room.options,function(o){if(rt[o.value])o.dataset.r=rt[o.value]});
     document.querySelectorAll('[data-rate]').forEach(function(el){var v=rt[el.dataset.rate];if(v!=null)el.textContent=v.toLocaleString('en-US')})}
+  /* 网站模式（后台 settings 里由我们切）：preview 模拟付款 / request 先申请、店主确认后再付订金 / pay 真付款。
+     request 模式下把订金卡、按钮、说明里「现在付钱」的说法换掉；切回来时还原页面原文。 */
+  var MODE='preview';
+  function swapText(el,html){if(!el)return;if(el.dataset.orig==null)el.dataset.orig=el.innerHTML;el.innerHTML=html==null?el.dataset.orig:html}
+  function applyMode(m){MODE=m||'preview';var rq=MODE==='request';
+    swapText(document.querySelector('.a-total .ch span'),rq?'Deposit due after we confirm':null);
+    swapText(document.querySelector('.a-total .pays'),rq?'No charge now &middot; we reply within 24 hours<br>By sending a request, you agree to our <a href="terms/">terms</a> and <a href="privacy/">privacy notice</a>.':null);
+    swapText(document.querySelector('.a-lead'),rq?'No booking site in the middle. Pick your dates and send us a request. We reply within 24 hours with how to pay the deposit, and your dates are confirmed once it\u2019s received.':null)}
   function showOffer(){var el=document.getElementById('offer'),p=AV&&AV.promo;if(!p||!p.text){el.style.display='none';el.textContent='';return}
     el.innerHTML='<b>Special offer</b>';el.appendChild(document.createTextNode(p.text));el.style.display='block'}
-  function loadAv(cb){fetch(API+'/availability?from='+addD(td,-1)+'&to='+addD(td,399)).then(function(r){return r.json().then(function(j){if(!r.ok||!j.taken)throw new Error('bad');return j})}).then(function(j){AV=j;if(j.today&&j.today!==td){td=j.today;document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});if(cm<td.slice(0,8)+'01')cm=td.slice(0,8)+'01'}TAKEN={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1})});applyRates(j.rates);showOffer();est();cal();check();if(cb)cb()})
+  function loadAv(cb){fetch(API+'/availability?from='+addD(td,-1)+'&to='+addD(td,399)).then(function(r){return r.json().then(function(j){if(!r.ok||!j.taken)throw new Error('bad');return j})}).then(function(j){AV=j;if(j.today&&j.today!==td){td=j.today;document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});if(cm<td.slice(0,8)+'01')cm=td.slice(0,8)+'01'}TAKEN={};HELD={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};HELD[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1});((j.held||{})[r]||[]).forEach(function(d){HELD[r][d]=1})});applyRates(j.rates);applyMode(j.mode);showOffer();est();cal();check();if(cb)cb()})
     .catch(function(){setMsg('We couldn\u2019t load the calendar just now. Please message us on Facebook and we\u2019ll check your dates.','bad')})}
   /* availability calendar */
   var cm=td.slice(0,7)+'-01',cgrid=document.getElementById('cgrid');
   function cal(){
-    if(!AV){cgrid.innerHTML='';document.getElementById('cmon').innerHTML='&nbsp;';return} /* 没拿到空房数据就不画格子，免得看着全都有空 */
-    var y=+cm.slice(0,4),m=+cm.slice(5,7)-1,first=new Date(Date.UTC(y,m,1)).getUTCDay(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate();
+    if(!AV){cgrid.innerHTML='';cgrid.dataset.m='';document.getElementById('cmon').innerHTML='&nbsp;';return} /* 没拿到空房数据就不画格子，免得看着全都有空 */
+    var y=+cm.slice(0,4),m=+cm.slice(5,7)-1,first=new Date(Date.UTC(y,m,1)).getUTCDay(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate(),fresh=false;
     document.getElementById('cmon').textContent=new Date(Date.UTC(y,m,1)).toLocaleDateString('en-US',{timeZone:'UTC',month:'long',year:'numeric'});
     document.getElementById('cprev').disabled=cm<=td.slice(0,7)+'-01';
-    var a=req.elements['in'].value,b=req.elements.out.value,t=type(),h='';
-    for(var i=0;i<first;i++)h+='<span></span>';
-    for(var d=1;d<=days;d++){var k=cm.slice(0,8)+String(d).padStart(2,'0'),cls='',dis=k<td;
-      if(!dis&&AV&&fullOn(t,k))cls+=' full'+(a&&!b&&k>a?' out-ok':'');
-      if(a&&k===a)cls+=' in';else if(b&&k===b)cls+=' out';else if(a&&b&&k>a&&k<b)cls+=' mid';
-      h+='<button type="button" data-k="'+k+'"'+(dis?' disabled':'')+' class="'+cls.trim()+'" aria-label="'+nice(k,{weekday:'long',month:'long'})+(cls.indexOf('full')>=0?', booked':'')+'">'+d+'</button>'}
-    cgrid.innerHTML=h}
+    var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    if(cgrid.dataset.m!==cm){var h='';for(var i=0;i<first;i++)h+='<span class="blank"></span>';
+      for(var d=1;d<=days;d++)h+='<button type="button" class="d" data-k="'+cm.slice(0,8)+String(d).padStart(2,'0')+'"><span>'+d+'</span></button>';
+      cgrid.innerHTML=h;cgrid.dataset.m=cm;fresh=true}
+    var s=0;cgrid.querySelectorAll('button').forEach(function(bt){var k=bt.dataset.k,dis=k<td,full=!dis&&fullOn(t,k),hd=full&&heldOn(t,k),c='d',mid=a&&b&&k>a&&k<b;
+      if(dis)c+=' past';if(k===td)c+=' today';
+      if(full)c+=(hd?' held':' booked')+(a&&!b&&k>a?' out-ok':'');
+      if(a&&k===a)c+=b?' in':' solo';else if(b&&k===b)c+=' out';else if(mid)c+=' mid';
+      bt.disabled=dis;bt.className=c;bt.style.setProperty('--dl',(!fresh&&(mid||(b&&k===b)))?(s++*16)+'ms':'0ms');
+      bt.setAttribute('aria-label',nice(k,{weekday:'long',month:'long'})+(hd?', being booked right now':full?', booked':''));bt.setAttribute('aria-pressed',(k===a||k===b)?'true':'false')})}
   document.getElementById('cprev').onclick=function(){cm=addD(cm,-1).slice(0,8)+'01';cal()};
   document.getElementById('cnext').onclick=function(){cm=addD(addD(cm,31).slice(0,8)+'01',0);cal()};
   cgrid.addEventListener('click',function(e){var bt=e.target.closest('button');if(!AV||!bt||bt.disabled)return;var k=bt.dataset.k,I=req.elements['in'],O=req.elements.out;
-    if(!I.value||O.value||k<=I.value){ if(AV&&fullOn(type(),k)){setMsg('That night is already booked for the '+TNAME[type()]+'. Pick another arrival day, or try another room.','bad');return}
+    if(!I.value||O.value||k<=I.value){ if(AV&&fullOn(type(),k)){setMsg(heldOn(type(),k)?HELD_MSG:'That night is already booked for the '+TNAME[type()]+'. Pick another arrival day, or try another room.','bad');return}
       I.value=k;O.value='';O.min=addD(k,1);setMsg('Now tap the day you leave.')}
     else O.value=k;
     est();cal();check()});
@@ -538,7 +700,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     if(b<=a){setMsg('Your leaving day needs to be after your arrival day.','bad');return}
     if(freeRoom(t,a,b)){setMsg('\u2713 The '+TNAME[t]+' is free from '+nice(a)+' to '+nice(b)+'.','ok');return}
     var other=Object.keys(TYPES).filter(function(x){return x!==t&&freeRoom(x,a,b)&&(x!=='beachfront'||g<=2)});
-    setMsg('Sorry, the '+TNAME[t]+' is booked on some of those nights.'+(other.length?' '+other.map(function(x){return 'The <button type="button" data-sw="'+x+'">'+TNAME[x]+'</button> is free.'}).join(' '):' Try other dates, or message us on Facebook.'),'bad')}
+    setMsg((heldIn(t,a,b)?HELD_MSG:'Sorry, the '+TNAME[t]+' is booked on some of those nights.')+(other.length?' '+other.map(function(x){return 'The <button type="button" data-sw="'+x+'">'+TNAME[x]+'</button> is free.'}).join(' '):' Try other dates, or message us on Facebook.'),'bad')}
   msg.addEventListener('click',function(e){var b=e.target.closest('[data-sw]');if(!b)return;req.elements.room.value=b.dataset.sw;clampG();est();cal();check()});
   ['in','out','room'].forEach(function(k){req.elements[k].addEventListener('change',function(){if(k==='in'&&req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check()})});
   req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',check)});
@@ -553,30 +715,55 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       '<p class="small">'+(e?'A confirmation email is on its way to you.':'On the live site, a confirmation email goes to you and to the resort at this point.')+' The deposit isn\u2019t refunded if you cancel. Questions? Message us on Facebook.</p>'+
       '<button class="go" id="dOk" type="button">Done</button>');
     document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
+  /* 付了款但那几晚已被别人确认订走（占房过期后才付）：店主会收到提示、退订金 */
+  function taken(o){openD('<h3>Those nights were just taken.</h3><p>Someone else confirmed '+nice(o['in'])+' \u2013 '+nice(o.out)+' before your payment came through. We\u2019ll refund your '+peso(o.deposit)+' deposit - reference '+o.id+'. Please pick other dates, or message us on Facebook.</p><button class="go" id="dOk" type="button">OK</button>');
+    document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
+  /* 占房时间到了还没付：付款作废，请客人重新下单（同样的日期一键再订） */
+  function ranOut(m){openD('<h3>Your hold ran out.</h3><p>Nothing was charged. You can book the same dates again, or pick other ones.</p><button class="go" id="dAgain" type="button">Book these dates again</button><button class="lnk" id="dOther" type="button">Pick other dates</button>');
+    document.getElementById('dAgain').onclick=function(){closeD();loadAv(function(){req.requestSubmit()})};
+    document.getElementById('dOther').onclick=function(){closeD();loadAv();document.getElementById('book').scrollIntoView({behavior:'smooth'})}}
+  /* 先申请模式：提交成功 */
+  function requestSent(o){
+    openD('<p class="tagp">Request &middot; '+o.id+'</p><h3>Request sent.</h3><p>This is a request, not yet a booking. We\u2019ll reply within 24 hours with how to pay the deposit. Your dates are confirmed once the deposit is received.</p>'+
+      '<dl>'+row('Room',o.room)+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Guests',o.guests)+(o.discount?row('Special offer','\u2212'+peso(o.discount)):'')+row('Total stay',peso(o.total))+row('Deposit, after we confirm',peso(o.deposit))+'</dl>'+
+      (o.warn?'<p class="small" style="color:var(--clay)">'+o.warn+'</p>':'')+'<button class="go" id="dOk" type="button">Done</button>');
+    document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()}}
   function release(id,t){fetch(API+'/release',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,t:t})}).catch(function(){}).then(function(){loadAv()})}
   function previewPay(o){
     openD('<p class="tagp">Preview checkout &middot; no money is charged</p><h3>Pay your deposit</h3><p>On the live site, this step is PayMongo\u2019s secure payment page.</p>'+
       '<dl>'+row('Room',TNAME[type()])+row('Dates',nice(o['in'])+' \u2013 '+nice(o.out)+' &middot; '+o.nights+' night'+(o.nights>1?'s':''))+row('Guests',g)+(o.discount?row('Special offer','−'+peso(o.discount)):'')+row('Total stay',peso(o.total))+'</dl>'+
       '<p style="margin-bottom:4px">Deposit to pay now</p><div class="amt">'+peso(o.deposit)+'</div>'+
-      '<div class="methods"><label><input type="radio" name="pm" value="Card" checked><span>Card</span></label><label><input type="radio" name="pm" value="GCash"><span>GCash</span></label><label><input type="radio" name="pm" value="Maya"><span>Maya</span></label></div>'+
-      '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel - don\u2019t book</button>'+
-      '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay.</p>');
+      '<p class="mlead">You’ll choose how to pay on the next page. All of these work:</p><div class="methods"><span>Card</span><span>GCash</span><span>Maya</span><span>Online banking<small>Land Bank · BDO · BPI</small></span></div>'+
+      '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel — don\u2019t book</button>'+
+      '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay. After that, this payment closes and you’ll need to book again.</p>'+
+      (o.warn?'<p class="small" style="color:var(--clay)">'+o.warn+'</p>':''));
     document.getElementById('dCancel').onclick=function(){closeD();release(o.id,o.t)};
     document.getElementById('dPay').onclick=function(){var b=this;b.disabled=true;b.textContent='Paying\u2026';
       fetch(API+'/preview-pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:o.id,t:o.t})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
-      .then(function(x){if(!x[0]){b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
-        return fetch(API+'/booking?id='+o.id+'&t='+o.t).then(function(r){return r.json()}).then(confirmed)})
+      .then(function(x){if(!x[0]){if(x[1].expired)return ranOut(x[1].error);b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+        return fetch(API+'/booking?id='+o.id+'&t='+o.t).then(function(r){return r.json()}).then(function(bk){bk.status==='conflict'?taken(bk):confirmed(bk)})})
       .catch(function(){b.disabled=false;b.textContent='Try again'})}}
   req.addEventListener('submit',function(e){e.preventDefault();errEl.style.display='none';
     var a=req.elements['in'].value,b=req.elements.out.value,t=type();
     function bad(m){errEl.textContent=m;errEl.style.display='block'}
+    /* 网上付款临时出故障：没扣钱、没占房，给 Messenger 按钮（用页面右下角那个 Messenger 链接） */
+    function payDown(m){var fb=(document.querySelector('.msgr')||{}).href||'https://m.me/CaliforniaResort';
+      errEl.innerHTML='';errEl.appendChild(document.createTextNode(m));var a=document.createElement('a');a.href=fb;a.target='_blank';a.rel='noreferrer';a.textContent='Message us on Facebook';
+      a.style.cssText='display:inline-block;margin-top:10px;padding:10px 16px;border-radius:99px;background:var(--lagoon);color:#fff;text-decoration:none;font-weight:500';
+      errEl.appendChild(document.createElement('br'));errEl.appendChild(a);errEl.style.display='block'}
+    /* 下单太多次：红字倒数分钟，到时间自动消失（后台那边到点也自动放行） */
+    function tooMany(n){clearInterval(window.__ccTry);var end=Date.now()+n*60e3;
+      function tick(){var m=Math.ceil((end-Date.now())/60e3);if(m<=0){clearInterval(window.__ccTry);errEl.style.display='none';return}
+        bad('Too many booking attempts from this device. Please try again in '+m+' minute'+(m>1?'s':'')+'.')}
+      tick();window.__ccTry=setInterval(tick,15e3)}
     if(!a||!b||b<=a)return bad('Please pick your arrival and leaving days.');
-    if(AV&&!freeRoom(t,a,b))return bad('Sorry, the '+TNAME[t]+' is booked on some of those nights.');
-    payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent='Holding your room\u2026';
+    if(AV&&!freeRoom(t,a,b))return bad(heldIn(t,a,b)?HELD_MSG:'Sorry, the '+TNAME[t]+' is booked on some of those nights.');
+    payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent=MODE==='request'?'Sending your request\u2026':'Holding your room\u2026';
     fetch(API+'/book',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({'in':a,out:b,type:t,guests:g,name:req.elements.name.value,email:req.elements.email.value,returnUrl:location.href.split('?')[0].split('#')[0]})})
       .then(function(r){return r.json().then(function(j){return[r.status,j]})})
       .then(function(x){payBtn.disabled=false;payBtn.textContent=lbl;var j=x[1];
-        if(x[0]!==200){bad(j.error||'Something went wrong. Please try again.');if(j.full)loadAv();return}
+        if(x[0]!==200){if(j.retryMinutes)return tooMany(j.retryMinutes);if(j.payDown)return payDown(j.error);bad(j.error||'Something went wrong. Please try again.');if(j.full)loadAv();return}
+        if(j.request){j['in']=a;j.out=b;j.guests=g;return requestSent(j)}
         if(j.checkoutUrl){location.href=j.checkoutUrl;return}
         j['in']=a;j.out=b;previewPay(j)})
       .catch(function(){payBtn.disabled=false;payBtn.textContent=lbl;bad('We couldn\u2019t reach the booking system. Please try again, or message us on Facebook.')})});
@@ -584,9 +771,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   (function(){var u=new URLSearchParams(location.search),id=u.get('booking'),t=u.get('t');if(!id||!t)return;
     if(u.get('cancelled')){release(id,t);openD('<h3>No payment was made.</h3><p>Nothing was booked. You can pick your dates again whenever you like.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD;return}
     var tries=0;(function poll(){fetch(API+'/booking?id='+encodeURIComponent(id)+'&t='+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(o){
-      if(o.status==='paid')return confirmed(o);if(++tries<8)return setTimeout(poll,1500);
+      if(o.status==='paid')return confirmed(o);if(o.status==='conflict')return taken(o);if(o.status==='cancelled')return ranOut();if(++tries<8)return setTimeout(poll,1500);
       openD('<h3>Almost there.</h3><p>We\u2019re waiting for the payment to come through. You\u2019ll get an email as soon as it does - or message us on Facebook with reference '+id+'.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=closeD})})()})();
-  loadAv();
+  loadAv();clampG();est();
   var q=document.getElementById('qbar');
   q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;clampG();est();if(req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check();
     document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
