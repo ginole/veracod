@@ -737,12 +737,19 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel — don\u2019t book</button>'+
       '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay. After that, this payment closes and you’ll need to book again.</p>'+
       (o.warn?'<p class="small" style="color:var(--clay)">'+o.warn+'</p>':''));
-    document.getElementById('dCancel').onclick=function(){closeD();release(o.id,o.t)};
-    document.getElementById('dPay').onclick=function(){var b=this;b.disabled=true;b.textContent='Paying\u2026';
+    /* 10-16\uff1a\u4ed8\u6b3e\u8bf7\u6c42\u53d1\u51fa\u540e\u300cCancel\u300d\u5fc5\u987b\u9501\u4f4f\u2014\u2014\u5426\u5219\u4ed8\u6b3e\u5148\u5230\u540e\u53f0\u3001\u653e\u623f\u53c8\u653e\u4e0d\u6389\uff0c\u5f39\u7a97\u5173\u4e86\u8fc7\u4e00\u4f1a\u513f\u5374\u5f39\u300cYou're booked\u300d\uff08Gino\uff1a\u8fd9\u79cd bug \u4e00\u5b9a\u4e0d\u80fd\u6709\uff09 */
+    var paying=false,paidOk=false,cx=document.getElementById('dCancel');
+    cx.onclick=function(){if(paying)return;closeD();release(o.id,o.t)};
+    function lockCancel(on){paying=on;cx.disabled=on;cx.style.opacity=on?'.4':'';cx.style.cursor=on?'default':''}
+    document.getElementById('dPay').onclick=function(){var b=this;b.disabled=true;b.textContent='Paying\u2026';lockCancel(true);
       fetch(API+'/preview-pay',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:o.id,t:o.t})}).then(function(r){return r.json().then(function(j){return[r.ok,j]})})
-      .then(function(x){if(!x[0]){if(x[1].expired)return ranOut(x[1].error);b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+      .then(function(x){if(!x[0]){if(x[1].expired)return ranOut(x[1].error);b.disabled=false;b.textContent='Try again';lockCancel(false);dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+        paidOk=x[1].status||'paid';
         return fetch(API+'/booking?id='+o.id+'&t='+o.t).then(function(r){return r.json()}).then(function(bk){bk.status==='conflict'?taken(bk):confirmed(bk)})})
-      .catch(function(){b.disabled=false;b.textContent='Try again'})}}
+      .catch(function(){
+        /* 付款已经成功、只是读订单详情时断网：绝不能再放开 Cancel（客人会以为取消了），直接告诉他已付、给参考号 */
+        if(paidOk){openD(paidOk==='conflict'?'<h3>Those nights were just taken.</h3><p>Your payment came through after someone else confirmed these dates. We’ll refund your deposit - reference '+o.id+'. Please message us on Facebook.</p>':'<h3>Payment received.</h3><p>Your booking is confirmed - reference '+o.id+'. We couldn’t load the details just now; you’ll get them by email, or message us on Facebook.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()};return}
+        b.disabled=false;b.textContent='Try again';lockCancel(false)})}}
   req.addEventListener('submit',function(e){e.preventDefault();errEl.style.display='none';
     var a=req.elements['in'].value,b=req.elements.out.value,t=type();
     function bad(m){errEl.textContent=m;errEl.style.display='block'}
