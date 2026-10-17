@@ -752,7 +752,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       .catch(function(){
         /* 付款已经成功、只是读订单详情时断网：绝不能再放开 Cancel（客人会以为取消了），直接告诉他已付、给参考号 */
         if(paidOk){openD(paidOk==='conflict'?'<h3>Those nights were just taken.</h3><p>Your payment came through after someone else confirmed these dates. We’ll refund your deposit - reference '+o.id+'. Please message us on Facebook.</p>':'<h3>Payment received.</h3><p>Your booking is confirmed - reference '+o.id+'. We couldn’t load the details just now; you’ll get them by email, or message us on Facebook.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()};return}
-        b.disabled=false;b.textContent='Try again';lockCancel(false)})}}
+        /* 10-17：付款请求没收到回复（断网/超时）≠ 没扣款——后台可能已经记成已付。先查这一单的真实状态：
+           已付 → 直接显示确认；冲突 → 显示要退款；还在等付款 → 才放开 Try again / Cancel；连状态都查不到 → 给订单号，Cancel 继续锁住，只留 Try again（后台对已付的单重复付款会回「已付」，不会重复扣） */
+        var sm=dlg.querySelector('.small');if(sm)sm.textContent='Checking whether your payment went through…';
+        fetch(API+'/booking?id='+o.id+'&t='+o.t).then(function(r){return r.json()}).then(function(bk){
+          if(bk.status==='paid')return confirmed(bk);
+          if(bk.status==='conflict')return taken(bk);
+          if(bk.status==='expired'||bk.status==='cancelled')return ranOut();
+          b.disabled=false;b.textContent='Try again';lockCancel(false);if(sm)sm.textContent='The payment didn’t go through. Nothing was charged - please try again.'})
+        .catch(function(){b.disabled=false;b.textContent='Try again';if(sm)sm.textContent='We couldn’t confirm whether your payment went through. Please try again, or message us on Facebook with reference '+o.id+' - you won’t be charged twice.'})})}}
   req.addEventListener('submit',function(e){e.preventDefault();if(ov.classList.contains('on')||payBtn.disabled)return; /* 弹窗开着/正在占房时不许再下单 */
     errEl.style.display='none';
     var a=req.elements['in'].value,b=req.elements.out.value,t=type();
