@@ -706,8 +706,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',check)});
   /* dialog */
   var ov=document.getElementById('ov'),dlg=document.getElementById('dlg');
-  function openD(h){dlg.innerHTML=h;ov.classList.add('on');document.body.style.overflow='hidden'}
-  function closeD(){ov.classList.remove('on');document.body.style.overflow=''}
+  /* 10-17：弹窗打开时，页面其余部分全部 inert（键盘 Tab 也进不去）——否则付款中还能按到页面上的「Pay & book」，
+     新弹窗盖掉正在付款的那个，客人点 Cancel 以为没订、其实已付（审核在 Maraya 抓到，同一套代码） */
+  function bg(on){[].forEach.call(document.body.children,function(el){if(el!==ov&&el.tagName!=='SCRIPT'){if(on)el.setAttribute('inert','');else el.removeAttribute('inert')}})}
+  function openD(h){dlg.innerHTML=h;ov.classList.add('on');document.body.style.overflow='hidden';bg(true);var f=dlg.querySelector('button,a,input');if(f)f.focus({preventScroll:true})}
+  function closeD(){ov.classList.remove('on');document.body.style.overflow='';bg(false)}
   function row(k,v){return '<div><dt>'+k+'</dt><dd>'+v+'</dd></div>'}
   function confirmed(o){var e=AV&&AV.email==='on';
     openD('<p class="tagp">Booking confirmed &middot; '+o.id+'</p><h3>You\u2019re booked.</h3><p>See you at Alubihod Beach, '+(o.name||'').split(' ')[0]+'.</p>'+
@@ -750,7 +753,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         /* 付款已经成功、只是读订单详情时断网：绝不能再放开 Cancel（客人会以为取消了），直接告诉他已付、给参考号 */
         if(paidOk){openD(paidOk==='conflict'?'<h3>Those nights were just taken.</h3><p>Your payment came through after someone else confirmed these dates. We’ll refund your deposit - reference '+o.id+'. Please message us on Facebook.</p>':'<h3>Payment received.</h3><p>Your booking is confirmed - reference '+o.id+'. We couldn’t load the details just now; you’ll get them by email, or message us on Facebook.</p><button class="go" id="dOk" type="button">OK</button>');document.getElementById('dOk').onclick=function(){closeD();req.elements['in'].value='';req.elements.out.value='';est();loadAv()};return}
         b.disabled=false;b.textContent='Try again';lockCancel(false)})}}
-  req.addEventListener('submit',function(e){e.preventDefault();errEl.style.display='none';
+  req.addEventListener('submit',function(e){e.preventDefault();if(ov.classList.contains('on')||payBtn.disabled)return; /* 弹窗开着/正在占房时不许再下单 */
+    errEl.style.display='none';
     var a=req.elements['in'].value,b=req.elements.out.value,t=type();
     function bad(m){errEl.textContent=m;errEl.style.display='block'}
     /* 网上付款临时出故障：没扣钱、没占房，给 Messenger 按钮（用页面右下角那个 Messenger 链接） */
