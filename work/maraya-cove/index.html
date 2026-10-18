@@ -61,7 +61,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 @media(max-width:900px){.links{display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
+.hero{position:relative;height:calc(100vh - var(--rb,34px));height:calc(100svh - var(--rb,34px));min-height:620px;max-height:1100px;overflow:hidden;color:#fff}
 .slides{position:absolute;inset:0}
 .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
 .slides img.on{opacity:1}
@@ -74,7 +74,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .hero .line-mask{overflow:hidden;display:block;padding-bottom:.08em}
 .hero .line-mask>span{display:block}
 .dock{position:absolute;left:0;right:0;bottom:clamp(26px,6vh,58px);padding:0 20px}
-.bar{display:grid;grid-template-columns:1fr 1fr 130px auto;max-width:820px;margin:0 auto;background:rgba(255,255,255,.14);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.36)}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 130px auto;max-width:820px;margin:0 auto;background:rgba(255,255,255,.14);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.36)}
 .bar label{padding:13px 18px 11px;border-right:1px solid rgba(255,255,255,.26);font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82)}
 .bar input,.bar select{display:block;width:100%;min-width:0;box-sizing:border-box;background:transparent;border:0;color:#fff;font:400 16px/1.2 var(--body);padding:7px 0 0;color-scheme:dark;outline:none}
 .bar select option{color:var(--ink)}
@@ -134,7 +134,7 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .sun svg{width:100%;height:100%;overflow:visible}
 .sun .arc{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1;stroke-dasharray:3 5}
 .sun .disc{fill:#FFD9A8;filter:drop-shadow(0 0 10px rgba(255,200,140,.9))}
-.sun .t{position:absolute;right:0;top:calc(100% - 8px);font:500 11px/1 var(--body);letter-spacing:.2em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.sun .t{position:absolute;right:0;top:calc(100% + 8px);font:500 11px/1 var(--body);letter-spacing:.2em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 .day h2{font-size:clamp(40px,5vw,74px);margin-bottom:40px}
 .moment{padding:clamp(60px,12vh,120px) 0;border-top:1px solid var(--rule)}
 .moment:first-of-type{border-top:0;padding-top:0}
@@ -155,27 +155,187 @@ header.solid .navbook{background:var(--lagoon);color:#fff}
 .book{padding:clamp(110px,14vw,180px) 0}
 .bgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start}
 .book h2{font-size:clamp(44px,5.6vw,84px)}
-.book .lead{color:var(--ink2);margin-top:26px;max-width:38ch}
-.book ul{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--rule)}
-.book li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
-.book li span:first-child{color:var(--dim)}
-form.req{background:#fff;padding:clamp(24px,3.4vw,44px);border:1px solid var(--rule)}
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
-.f{display:block;font:500 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
-.f input,.f select{display:block;width:100%;min-width:0;box-sizing:border-box;margin-top:9px;border:0;border-bottom:1px solid var(--rule);padding:10px 0;font:400 17px/1.2 var(--body);color:var(--ink);background:transparent;outline:none;transition:border-color .3s}
-.f input:focus,.f select:focus{border-bottom-color:var(--lagoon)}
-.step{display:flex;align-items:center;gap:18px;margin-top:9px;border-bottom:1px solid var(--rule);padding:6px 0}
-.step button{width:34px;height:34px;border:1px solid var(--rule);background:none;font:300 20px/1 var(--body);cursor:pointer;color:var(--ink)}
-.step output{font:400 18px/1 var(--body);min-width:2ch;text-align:center}
-.est{margin:10px 0 24px;padding:20px 0;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
-.est span{font-size:14px;color:var(--ink2)}
-.est b{font:400 36px/1 var(--display)}
-form.req button[type=submit]{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
-form.req button[type=submit]:hover{background:var(--ink)}
-.done{display:none;padding:18px 0 0;color:var(--lagoon);font-size:15px}
-.bgrid>*{min-width:0}
-@media(max-width:900px){.bgrid{grid-template-columns:1fr}}
-@media(max-width:600px){.hcenter .kick{letter-spacing:.2em;line-height:1.8;font-size:10px}.ribbon{font-size:11px}.book li{flex-direction:column;gap:2px}}
+@media(max-width:600px){.hcenter .kick{letter-spacing:.2em;line-height:1.8;font-size:10px}.ribbon{font-size:11px}}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+
+/* hero dock: English "Add date" over the native date input */
+.bar>*{min-width:0}
+.bar .dl{position:relative}
+.bar .dl input{color:transparent}
+.bar .dl input::-webkit-datetime-edit{color:transparent}
+.bar .df{position:absolute;left:18px;right:40px;bottom:12px;font:400 16px/1.2 var(--body);letter-spacing:0;text-transform:none;color:rgba(255,255,255,.72);pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .dl.has .df{color:#fff}
+
+/* ===== booking panel (.bk scope) — live calendar + in-page mock ===== */
+.bk{--gap:20px;--pad:26px;--r:3px;--num:'Jost',system-ui,sans-serif;--spring:cubic-bezier(.34,1.3,.5,1);position:relative}
+@supports (transition-timing-function:linear(0,1)){.bk{--spring:linear(0,.06 2.5%,.22 6%,.5 11.5%,.76 17.5%,.93 24%,1.025 31%,1.05 37%,1.04 45%,1.015 56%,1 68%,.998 80%,1)}}
+.bk .a-intro{text-align:center;max-width:700px;margin:0 auto clamp(36px,4.4vw,60px)}
+.bk .a-intro .kick{display:block;margin:0 0 18px}
+.bk .a-lead{margin:24px auto 0;color:var(--ink2);max-width:54ch}
+.bk .a-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.92fr) minmax(0,1fr);gap:var(--gap);max-width:1160px;margin:0 auto;align-items:stretch}
+.bk .a-grid>*{min-width:0}
+.bk .card{background:#fff;border-radius:var(--r);padding:var(--pad);min-width:0;border:1px solid var(--rule);box-shadow:0 18px 40px -30px rgba(18,33,30,.35)}
+.bk .ch{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 18px;font:500 10px/1.3 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+.bk .a-rooms,.bk .rules{grid-column:1/-1}
+.bk .rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.bk .room{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;align-items:center;text-align:left;padding:12px;border-radius:var(--r);border:1px solid var(--rule);background:var(--sand);cursor:pointer;font:inherit;color:inherit;min-width:0;transition:transform .55s var(--spring),box-shadow .45s var(--ease),background .35s,border-color .35s}
+.bk .room img{width:88px;height:88px;object-fit:cover;display:block}
+.bk .room .rt{display:flex;flex-direction:column;gap:6px;min-width:0;padding-right:24px}
+.bk .room .rn{font:400 24px/1.05 var(--display);color:var(--ink)}
+.bk .room .rb{font-size:13px;line-height:1.3;color:var(--dim)}
+.bk .room .rr{font:400 15px/1 var(--body);color:var(--ink);white-space:nowrap}
+.bk .room .rr small{font-weight:300;color:var(--dim);font-size:12px}
+.bk .room .ok{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--lagoon);color:#fff;display:grid;place-items:center;transform:scale(0);transition:transform .5s var(--spring)}
+.bk .room .ok svg{width:11px;height:11px}
+.bk .room:hover{transform:translateY(-2px)}
+.bk .room.on{background:#fff;border-color:var(--lagoon);box-shadow:0 16px 32px -20px rgba(15,107,102,.6)}
+.bk .room.on .ok{transform:scale(1)}
+.bk .room:focus-visible{outline:2px solid var(--lagoon);outline-offset:2px}
+/* calendar */
+.bk .a-cal{display:flex;flex-direction:column}
+.bk .cal-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.bk .cal-m{font:400 27px/1 var(--display);letter-spacing:.01em}
+.bk .cal-nav{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;cursor:pointer;background:#fff;color:var(--ink);padding:0;transition:background .25s,opacity .25s}
+.bk .cal-nav:hover:not([disabled]){background:var(--sand)}
+.bk .cal-nav svg{width:16px;height:16px}
+.bk .cal-nav[disabled]{opacity:.3;cursor:default}
+.bk .cal-w,.bk .cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.bk .cal-w span{text-align:center;font:500 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:6px 0 10px;color:var(--dim)}
+.bk .cal-g{row-gap:4px;flex:1;align-content:space-evenly}
+.bk .d{position:relative;aspect-ratio:1/1;min-width:0;border:0;background:none;padding:0;cursor:pointer;font:400 15px/1 var(--body);color:var(--ink);display:grid;place-items:center;isolation:isolate}
+.bk .d span{position:relative;z-index:2;transition:color .3s}
+.bk .d::before{content:"";position:absolute;inset:3px 0;z-index:0;opacity:0;background:var(--sand2);transition:opacity .35s var(--ease) var(--dl,0ms)}
+.bk .d::after{content:"";position:absolute;inset:3px;z-index:1;border-radius:50%;background:var(--lagoon);box-shadow:0 8px 16px -6px rgba(15,107,102,.6);transform:scale(.4);opacity:0;transition:transform .5s var(--spring) var(--dl,0ms),opacity .25s var(--dl,0ms)}
+.bk .d.mid::before{opacity:1}
+.bk .d.in::before{opacity:1;left:50%}
+.bk .d.out::before{opacity:1;right:50%}
+.bk .d.in::after,.bk .d.out::after,.bk .d.solo::after{transform:scale(1);opacity:1}
+.bk .d.in span,.bk .d.out span,.bk .d.solo span{color:#fff;font-weight:500}
+.bk .d[disabled]{cursor:default}
+.bk .d.past span{opacity:.28}
+.bk .d.booked span{text-decoration:line-through;opacity:.38}
+.bk .d.booked.out-ok,.bk .d.held.out-ok{cursor:pointer}
+.bk .d.held span{opacity:.55}
+.bk .d.held{background:repeating-linear-gradient(135deg,rgba(192,122,72,.16) 0 3px,transparent 3px 7px);border-radius:8px}
+.bk .key i.kh{background:repeating-linear-gradient(135deg,rgba(192,122,72,.55) 0 2px,transparent 2px 4px);border:1px solid rgba(192,122,72,.4)}
+.bk .d.today span::after{content:"";position:absolute;left:50%;bottom:-7px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--clay)}
+.bk .d:not([disabled]):not(.in):not(.out):not(.solo):hover span{color:var(--lagoon)}
+.bk .d:focus-visible{outline:2px solid var(--lagoon);outline-offset:-2px;border-radius:8px}
+.bk .blank{aspect-ratio:1/1}
+.bk .key{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:auto;padding-top:16px;font-size:12px;color:var(--dim)}
+.bk .key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.bk .avmsg{margin:12px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink2);min-height:1.5em}
+.bk .avmsg.ok{color:var(--lagoon)}.bk .avmsg.bad{color:#A45A2A}
+.bk .avmsg button{border:0;background:none;padding:0;font:inherit;color:var(--lagoon);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+/* middle column */
+.bk .a-mid{display:grid;grid-template-rows:repeat(3,1fr);gap:var(--gap)}
+.bk .a-mid>.card{display:flex;flex-direction:column}
+.bk .a-mid .body{flex:1;display:flex;align-items:center}
+.bk .a-guests .body{justify-content:space-between;gap:12px}
+.bk .gx{display:flex;flex-direction:column;gap:6px;min-width:0}
+.bk .gx small{font-size:13px;line-height:1.4;color:var(--ink2)}
+.bk .step{display:flex;align-items:center;gap:10px;margin:0;padding:0;border:0;flex:none}
+.bk .step button{width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;font:inherit;transition:background .25s,border-color .25s,transform .4s var(--spring)}
+.bk .step button:hover{border-color:var(--lagoon);background:var(--sand)}
+.bk .step button:active{transform:scale(.9)}
+.bk .step button svg{width:14px;height:14px}
+.bk .step b{font:300 44px/1 var(--num);min-width:1.1ch;justify-content:center}
+.bk .a-dates .body{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
+.bk .dt{display:flex;flex-direction:column;gap:8px;min-width:0}
+.bk .dt.r{text-align:right;align-items:flex-end}
+.bk .dv{display:flex;align-items:baseline;gap:8px}
+.bk .dv b{font:300 46px/1 var(--num)}
+.bk .dv>span{font-size:13px;color:var(--ink2);line-height:1.2}
+.bk .dt small{font-size:12px;color:var(--dim)}
+.bk .nn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 12px;border-radius:var(--r);background:var(--sand2);color:var(--lagoon)}
+.bk .nn b{font:300 26px/1 var(--num)}
+.bk .nn>span{font:500 10px/1 var(--body);letter-spacing:.18em;text-transform:uppercase}
+.bk .a-you .body{flex-direction:column;align-items:stretch;justify-content:center;gap:10px}
+.bk .a-you input{display:block;width:100%;min-width:0;margin:0;border:0;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;padding:11px 2px;font:400 16px/1.2 var(--body);color:var(--ink);outline:none;transition:border-color .25s}
+.bk .a-you input::placeholder{color:var(--dim);opacity:1}
+.bk .a-you input:focus{border-bottom-color:var(--lagoon)}
+/* deposit card */
+.bk .a-total{position:relative;isolation:isolate;display:flex;flex-direction:column;color:#fff;border:0;background:linear-gradient(165deg,#17827B 0%,#0F6B66 45%,#0A4C48 100%);box-shadow:0 34px 70px -34px rgba(10,76,72,.6)}
+.bk .a-total::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;background:radial-gradient(120% 70% at 100% 0%,rgba(255,255,255,.18),transparent 55%)}
+.bk .a-total .ch{color:rgba(255,255,255,.75)}
+.bk .big{display:block;font:300 clamp(56px,6vw,84px)/1 var(--num);margin:0 0 10px;letter-spacing:-.02em}
+.bk .big.long{font-size:clamp(46px,4.8vw,66px)}
+.bk .card,.bk .rules,#book{scroll-margin-top:96px}
+.bk .a-total .sub{margin:0 0 18px;font-size:13px;line-height:1.45;color:rgba(255,255,255,.8)}
+.bk .a-total dl{margin:0 0 20px;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.bk .a-total dl div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;font-size:14px;color:rgba(255,255,255,.84)}
+.bk .a-total dt{min-width:0}
+.bk .a-total dd{margin:0;color:#fff;font-weight:400;white-space:nowrap}
+.bk .a-total .tot{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.25);color:#fff}
+.bk .a-total .tot dd{font:300 22px/1 var(--num)}
+.bk .pay{display:block;width:100%;min-height:56px;margin-top:auto;padding:14px 16px;border:0;border-radius:var(--r);background:var(--sand);color:var(--ink);font:500 12px/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .45s var(--spring)}
+.bk .pay:hover{background:#fff;transform:translateY(-2px)}
+.bk .pay:disabled{opacity:.7;cursor:default;transform:none}
+.bk .pays{margin:12px 0 0;text-align:center;font-size:12px;line-height:1.5;color:rgba(255,255,255,.78)}
+.bk .err{display:none;margin:12px 0 0;padding:10px 14px;border-radius:var(--r);background:#fff;color:#A45A2A;font-size:14px;line-height:1.45}
+/* the rules, in one line under the cards */
+.bk .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin:0;padding:0;list-style:none}
+.bk .rules li{display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:64px;padding:12px 4px;border-top:1px solid var(--ink);font-size:14px;line-height:1.4;color:var(--ink)}
+.bk .rules li small{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+/* rolling numbers */
+.bk .roll{display:inline-flex;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.bk .roll i{font-style:normal}
+.bk .roll .rc,.bk .roll .rx{vertical-align:top}
+.bk .roll .rc{display:inline-block;height:1.08em;overflow:hidden;line-height:1.08em;transition:width .5s var(--ease);-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.bk .roll .rc{margin:0 -1px}
+.dlg:focus{outline:none}
+.bk .a-total.off{filter:saturate(0);opacity:.6}
+.bk .a-total.off .pay:disabled{cursor:not-allowed}
+.bk .roll .rs{display:block;transition:transform .9s var(--spring);will-change:transform}
+.bk .roll .rs i{display:block;height:1.08em;text-align:center}
+.bk .roll .rx{display:inline-block;line-height:1.08em}
+@media (max-width:1080px){
+  .bk .a-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .bk .a-total{grid-column:1/-1}
+  .bk .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bk .room{grid-template-columns:minmax(0,1fr);align-items:start;padding:10px}
+  .bk .room img{width:100%;height:auto;aspect-ratio:4/3}
+  .bk .room .rt{padding:2px 4px 6px}
+}
+@media (max-width:760px){
+  .bk{--gap:16px;--pad:20px}
+  .bk .a-grid{grid-template-columns:minmax(0,1fr)}
+  .bk .a-mid{grid-template-rows:none}
+  .bk .rooms{grid-template-columns:minmax(0,1fr)}
+  .bk .room{grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:center}
+  .bk .room img{width:76px;height:76px;aspect-ratio:auto}
+  .bk .room .rt{gap:4px;padding:0 24px 0 0}
+  .bk .room .rn{font-size:22px}
+  .bk .dv b{font-size:42px}
+  .bk .rules{grid-template-columns:minmax(0,1fr)}
+  .bk .rules li{min-height:0}
+}
+@media (max-width:380px){.bk .ch{letter-spacing:.14em}.bk .dv b{font-size:38px}.bk .step button{width:38px;height:38px}}
+@media (prefers-reduced-motion:reduce){.bk *,.bk *::before,.bk *::after{transition-duration:.01ms!important}}
+/* checkout / confirmation dialog */
+.ov{position:fixed;inset:0;z-index:90;background:rgba(18,33,30,.6);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.dlg{position:relative;background:var(--sand);width:min(560px,100%);max-height:92vh;overflow:auto;padding:clamp(24px,5vw,40px);border-top:3px solid var(--lagoon)}
+@media(min-width:700px){.ov{align-items:center}}
+.dlg h3{font-size:clamp(34px,5vw,46px);margin-bottom:8px;font-variant-numeric:lining-nums}
+.dlg .tagp{font:500 10px/1.5 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin-bottom:14px;padding-right:46px}
+.dlg dl{margin:18px 0;border-top:1px solid var(--rule)}
+.dlg dl div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.dlg dt{color:var(--dim)}.dlg dd{margin:0;text-align:right;color:var(--ink)}
+.dlg .amt{font:400 44px/1 var(--display);color:var(--lagoon);margin:6px 0 18px;font-variant-numeric:lining-nums}
+.dlg .go{width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1.3 var(--body);letter-spacing:.22em;text-transform:uppercase;padding:20px;cursor:pointer;transition:background .3s}
+.dlg .go:hover:not(:disabled){background:var(--ink)}
+.dlg .go:disabled{opacity:.6;cursor:default}
+.dlg p+.go{margin-top:18px}
+.dlg .lnk{display:block;margin:14px auto 0;border:0;background:none;font:400 14px/1.3 var(--body);color:var(--dim);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.dlg p{color:var(--ink2);font-size:15px}
+.dlg .small{font-size:12.5px;color:var(--dim);margin-top:12px}
+.dlg .dx{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.dlg .dx:hover{background:var(--sand2)}
+.dlg .dx svg{width:13px;height:13px}
+.dlg .dx:disabled,.dlg .lnk:disabled{opacity:.35;cursor:default}
+@media(max-width:520px){.dlg dl{margin:12px 0}.dlg dl div{padding:8px 0}.dlg .amt{margin:4px 0 12px}}
 
 footer{background:var(--ink);color:rgba(245,240,231,.7);padding:70px 0 40px;font-size:13.5px}
 footer .big{font:300 clamp(60px,15vw,220px)/.8 var(--display);letter-spacing:.04em;color:rgba(245,240,231,.08);text-transform:uppercase;white-space:nowrap;overflow:hidden;margin-bottom:40px}
@@ -185,6 +345,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 /* hidden states only under .js — GSAP reveals */
 .js .rv{opacity:0;transform:translateY(34px)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:480px){.hcenter .kpl{display:none}.bk .a-rooms .ch span+span{display:none}}
+@media(max-width:900px){.moment{padding:40px 0}.moment:first-of-type{padding-top:0}}
+.dlg .tagp{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
@@ -214,15 +377,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     </div>
     <div class="shade"></div>
     <div class="hcenter">
-      <p class="kick hin">Eleven villas &middot; one cove &middot; northern Palawan</p>
+      <p class="kick hin">Eleven villas &middot; one&nbsp;cove<span class="kpl"> &middot; northern&nbsp;Palawan</span></p>
       <h1><span class="line-mask"><span>An island that keeps</span></span><span class="line-mask"><span><em>its own</em> time.</span></span></h1>
     </div>
     <div class="dots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
     <div class="dock hin">
       <form class="bar" id="qbar">
-        <label>Arrive<input type="date" name="in"></label>
-        <label>Leave<input type="date" name="out"></label>
-        <label>Guests<select name="g"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+        <label class="dl">Arrive<input type="date" name="in" aria-label="Arrive"><span class="df" aria-hidden="true">Add date</span></label>
+        <label class="dl">Leave<input type="date" name="out" aria-label="Leave"><span class="df" aria-hidden="true">Add date</span></label>
+        <label>Guests<select name="g"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
         <button type="submit">Check dates</button>
       </form>
     </div>
@@ -249,9 +412,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="wrap">
       <div class="head"><h2 class="rv">Three ways to wake up here.</h2><p class="rv">Every villa faces the water or the forest, never another villa. Breakfast, boat transfers and the lagoon trip are always included.</p></div>
       <div class="vgrid">
-        <article class="v"><div class="ph"><img src="img/beach-villa.webp" alt="A thatched villa beside a pool over the beach" loading="lazy"></div><h3>Beach Villa</h3><div class="meta"><span>60 m&sup2; &middot; 2 guests &middot; 6 villas</span><b>&#8369;18,500</b></div><p class="d">Sand to the step, a daybed on the deck and the sea eight metres away.</p><a class="pick" href="#book" data-villa="Beach Villa">Check dates &rarr;</a></article>
-        <article class="v"><div class="ph"><img src="img/pool-villa.webp" alt="A villa with its own pool among palms" loading="lazy"></div><h3>Pool Villa</h3><div class="meta"><span>95 m&sup2; &middot; 4 guests &middot; 3 villas</span><b>&#8369;29,000</b></div><p class="d">Your own twelve-metre pool, an outdoor shower, and the garden to yourselves.</p><a class="pick" href="#book" data-villa="Pool Villa">Check dates &rarr;</a></article>
-        <article class="v"><div class="ph"><img src="img/jungle-loft.webp" alt="A bedroom with a wide window onto green forest" loading="lazy"></div><h3>Forest Loft</h3><div class="meta"><span>70 m&sup2; &middot; 3 guests &middot; 2 lofts</span><b>&#8369;21,000</b></div><p class="d">Up in the canopy, a wall of glass, and hornbills at breakfast.</p><a class="pick" href="#book" data-villa="Forest Loft">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/beach-villa.webp" alt="A thatched villa beside a pool over the beach" loading="lazy"></div><h3>Beach Villa</h3><div class="meta"><span>60 m&sup2; &middot; 2 guests &middot; 6 villas</span><b>&#8369;18,500</b></div><p class="d">Sand to the step, a daybed on the deck and the sea eight metres away.</p><a class="pick" href="#book" data-room="beach">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/pool-villa.webp" alt="A villa with its own pool among palms" loading="lazy"></div><h3>Pool Villa</h3><div class="meta"><span>95 m&sup2; &middot; 4 guests &middot; 3 villas</span><b>&#8369;29,000</b></div><p class="d">Your own twelve-metre pool, an outdoor shower, and the garden to yourselves.</p><a class="pick" href="#book" data-room="pool">Check dates &rarr;</a></article>
+        <article class="v"><div class="ph"><img src="img/jungle-loft.webp" alt="A bedroom with a wide window onto green forest" loading="lazy"></div><h3>Forest Loft</h3><div class="meta"><span>70 m&sup2; &middot; 3 guests &middot; 2 lofts</span><b>&#8369;21,000</b></div><p class="d">Up in the canopy, a wall of glass, and hornbills at breakfast.</p><a class="pick" href="#book" data-room="loft">Check dates &rarr;</a></article>
       </div>
     </div>
   </section>
@@ -264,7 +427,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           <img data-k="1" src="img/floating-breakfast.webp" alt="" loading="lazy">
           <img data-k="2" src="img/lagoon-aerial.webp" alt="" loading="lazy">
           <img data-k="3" src="img/sunset.webp" alt="" loading="lazy">
-          <div class="sun"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="arc" id="arc" d="M0 88 Q200 -60 400 88"/><circle class="disc" id="disc" r="7" cx="0" cy="88"/></svg><span class="t" id="clock">05:48</span></div>
+          <div class="sun"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="arc" id="arc" d="M10 82 Q200 -60 390 82"/><circle class="disc" id="disc" r="7" cx="10" cy="82"/></svg><span class="t" id="clock">05:48</span></div>
         </div>
       </div>
       <div>
@@ -284,36 +447,79 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </section>
 
   <section class="book" id="book">
-    <div class="wrap bgrid">
-      <div>
+    <div class="wrap bk">
+      <div class="a-intro">
         <p class="kick">Stay with us</p>
         <h2 class="rv">Book straight with the family.</h2>
-        <p class="lead rv">No booking site in the middle and nothing added at checkout. You hear back from Ana or Rico the same day, with the boat time and what to pack.</p>
-        <ul class="rv">
-          <li><span>Boat from El Nido</span><span>Included, 40 minutes</span></li>
-          <li><span>Breakfast &amp; lagoon trip</span><span>Included</span></li>
-          <li><span>To hold your dates</span><span>30% by bank or GCash</span></li>
-          <li><span>Change of plans</span><span>Free up to 14 days before</span></li>
-        </ul>
+        <p class="a-lead rv">No booking site in the middle and nothing added at checkout. Pick your villa and your dates, pay the 30% deposit, and the villa is yours &mdash; the booking confirms itself. Ana or Rico write the same day with the boat time and what to&nbsp;pack.</p>
       </div>
-      <form class="req" id="req">
-        <div class="row">
-          <label class="f">Arrive<input type="date" name="in" required></label>
-          <label class="f">Leave<input type="date" name="out" required></label>
+      <form class="a-grid" id="req">
+        <div class="card a-rooms">
+          <div class="ch"><span>Choose your villa</span><span>Per night &middot; breakfast included</span></div>
+          <select name="room" hidden aria-hidden="true" tabindex="-1">
+            <option value="beach" data-r="18500" data-max="2" selected>Beach Villa</option>
+            <option value="pool" data-r="29000" data-max="4">Pool Villa</option>
+            <option value="loft" data-r="21000" data-max="3">Forest Loft</option>
+          </select>
+          <div class="rooms">
+            <button type="button" class="room" data-room="beach" aria-pressed="true"><img src="img/beach-villa.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Beach Villa</span><span class="rb">Up to 2 guests &middot; 6 villas</span><span class="rr">&#8369;18,500 <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+            <button type="button" class="room" data-room="pool" aria-pressed="false"><img src="img/pool-villa.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Pool Villa</span><span class="rb">Up to 4 guests &middot; 3 villas</span><span class="rr">&#8369;29,000 <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+            <button type="button" class="room" data-room="loft" aria-pressed="false"><img src="img/jungle-loft.webp" alt="" loading="lazy"><span class="rt"><span class="rn">Forest Loft</span><span class="rb">Up to 3 guests &middot; 2 lofts</span><span class="rr">&#8369;21,000 <small>/ night</small></span></span><i class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></i></button>
+          </div>
         </div>
-        <div class="row">
-          <label class="f">Villa<select name="villa"><option data-r="18500">Beach Villa</option><option data-r="29000">Pool Villa</option><option data-r="21000">Forest Loft</option></select></label>
-          <div class="f">Guests<div class="step"><button type="button" data-d="-1" aria-label="Fewer guests">&minus;</button><output id="gv">2</output><button type="button" data-d="1" aria-label="More guests">+</button></div></div>
+        <div class="card a-cal" id="avcal" aria-label="Availability calendar">
+          <div class="ch"><span>Your dates</span><span>Tap arrive, then leave</span></div>
+          <div class="cal-h"><button type="button" class="cal-nav" id="cprev" aria-label="Previous month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3L5 8l5 5"/></svg></button><b class="cal-m" id="cmon">&nbsp;</b><button type="button" class="cal-nav" id="cnext" aria-label="Next month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3l5 5-5 5"/></svg></button></div>
+          <div class="cal-w"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-g" id="cgrid"></div>
+          <div class="key"><span><i style="background:var(--sand2)"></i>Your stay</span><span><i style="background:var(--lagoon)"></i>Arrive &middot; leave</span><span><i style="background:none;border:1px solid #C9BFAE"></i>Fully booked</span><span><i class="kh"></i>Being booked</span></div>
+          <p class="avmsg" id="avmsg" aria-live="polite">Tap your arrival day on the calendar, then the day you leave.</p>
         </div>
-        <label class="f">Your name<input type="text" name="name" required autocomplete="name"></label>
-        <label class="f">Email or mobile<input type="text" name="contact" required></label>
-        <div class="est"><span id="nights">Pick your dates</span><b id="total">&mdash;</b></div>
-        <button type="submit">Request these dates</button>
-        <p class="done" id="done">This is a concept site, so nothing was sent. On a real one, the family would have your request now.</p>
+        <div class="a-mid">
+          <div class="card a-guests">
+            <div class="ch"><span>Guests</span></div>
+            <div class="body">
+              <div class="gx"><small id="gnote">Beach Villa: up to 2 guests</small></div>
+              <div class="step"><button type="button" data-d="-1" aria-label="Fewer guests"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10"/></svg></button><b class="roll" id="gv" aria-live="polite"></b><button type="button" data-d="1" aria-label="More guests"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M7 2v10"/></svg></button></div>
+            </div>
+          </div>
+          <div class="card a-dates">
+            <div class="ch"><span>Arrive</span><span>Leave</span></div>
+            <input type="hidden" name="in"><input type="hidden" name="out">
+            <div class="body">
+              <div class="dt"><div class="dv" id="inShow"></div><small>Check-in</small></div>
+              <div class="nn"><b class="roll" id="nN"></b><span id="nL">nights</span></div>
+              <div class="dt r"><div class="dv" id="outShow"></div><small>Check-out</small></div>
+            </div>
+          </div>
+          <div class="card a-you">
+            <div class="ch"><span>Your details</span></div>
+            <div class="body">
+              <input type="text" name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name">
+              <input type="email" name="email" required autocomplete="email" placeholder="Email" aria-label="Email">
+            </div>
+          </div>
+        </div>
+        <div class="card a-total">
+          <div class="ch"><span>Deposit to pay now</span></div>
+          <b class="big roll" id="deposit"></b>
+          <p class="sub">30% of your stay, by bank or GCash &middot; the rest when you arrive</p>
+          <dl>
+            <div><dt id="rline">Pick your dates</dt><dd class="roll" id="rtot"></dd></div>
+            <div class="tot"><dt>Total stay</dt><dd class="roll" id="grand"></dd></div>
+            <div><dt>Due on arrival</dt><dd class="roll" id="bal"></dd></div>
+          </dl>
+          <button type="submit" class="pay" id="pay">Pay deposit &amp; book</button>
+          <p class="pays">This is a concept site &mdash; payment is simulated.<br>No money is charged.</p>
+          <p class="err" id="err" role="alert"></p>
+        </div>
+        <ul class="rules"><li><small>Boat from El Nido</small><span>Included, 40 minutes</span></li><li><small>Breakfast &amp; lagoon trip</small><span>Included</span></li><li><small>To hold your dates</small><span>30% by bank or GCash</span></li><li><small>Change of plans</small><span>Free up to 14 days before</span></li></ul>
       </form>
     </div>
   </section>
 </main>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Booking"><div class="dlg" id="dlg"></div></div>
 
 <footer>
   <div class="wrap">
@@ -328,23 +534,237 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
+/* ================= In-page MOCK booking backend (concept site: no server) =================
+   Same shape as our real booking backend (availability / book / pay / booking / release).
+   Sample booked nights are computed from the date (no randomness), so a reload looks the same.
+   Each villa type has its real number of units; a type is "full" on a night only when every unit is taken. */
+var MOCK=(function(){
+  var TYPES={beach:['b1','b2','b3','b4','b5','b6'],pool:['p1','p2','p3'],loft:['l1','l2']},RATE={beach:18500,pool:29000,loft:21000},MAXG={beach:2,pool:4,loft:3},DEPOSIT_PCT=0.3,HOLD_MIN=10;
+  var TN={beach:'Beach Villa',pool:'Pool Villa',loft:'Forest Loft'},UT={};
+  Object.keys(TYPES).forEach(function(t){TYPES[t].forEach(function(r,i){UT[r]=[t,i]})});
+  var paid={},holds={},orders={},seq=0;
+  function addD(s,n){var d=new Date(s+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
+  function hash(s){var x=2166136261;for(var i=0;i<s.length;i++){x^=s.charCodeAt(i);x=Math.imul(x,16777619)}return x>>>0}
+  function today(){var t=new Date();t.setMinutes(t.getMinutes()-t.getTimezoneOffset());return t.toISOString().slice(0,10)}
+  function deposit(total){return Math.round(total*DEPOSIT_PCT)}
+  /* sample sold-out runs: start on a night when hash%100<7, last 1-3 nights (every unit of that type) */
+  function soldOut(t,d){for(var k=0;k<3;k++){var v=hash(t+'|'+addD(d,-k));if(v%100<7&&k<=(v>>>8)%3)return true}return false}
+  /* sample "someone is paying right now": Pool Villa, nights 12 and 13 from today - two villas booked, the last one held */
+  function heldNight(d){var t=today();return d===addD(t,12)||d===addD(t,13)}
+  /* how many units of a type are booked that night (units fill from the first one, so it is never full by accident) */
+  function bookedCount(t,d){var N=TYPES[t].length;if(t==='pool'&&heldNight(d))return N-1;if(soldOut(t,d))return N;return hash(t+'#'+d)%N}
+  function sampleBooked(r,d){var u=UT[r];return u[1]<bookedCount(u[0],d)}
+  function sampleHeld(r,d){return r==='p3'&&heldNight(d)}
+  function liveHold(r,d){var now=Date.now();for(var id in holds){var h=holds[id];if(h.exp>now&&h.r===r&&d>=h['in']&&d<h.out)return true}return false}
+  function isPaid(r,d){return !!(paid[r]&&paid[r][d])}
+  function heldOn(r,d){return sampleHeld(r,d)||liveHold(r,d)}
+  function takenOn(r,d){return sampleBooked(r,d)||isPaid(r,d)||heldOn(r,d)}
+  function later(v,ms){return new Promise(function(res){setTimeout(function(){res(v)},ms||450)})}
+  function availability(from,to){var taken={},held={};
+    Object.keys(TYPES).forEach(function(t){TYPES[t].forEach(function(r){taken[r]=[];held[r]=[];
+      for(var d=from;d<=to;d=addD(d,1)){if(takenOn(r,d))taken[r].push(d);if(!sampleBooked(r,d)&&!isPaid(r,d)&&heldOn(r,d))held[r].push(d)}})});
+    return later({today:today(),taken:taken,held:held,rates:{beach:RATE.beach,pool:RATE.pool,loft:RATE.loft},mode:'concept'},350)}
+  function book(b){var t=b.type,a=b['in'],o=b.out;
+    if(!TYPES[t]||!a||!o||o<=a)return later([400,{error:'Please pick your arrival and leaving days.'}]);
+    if(!(b.guests>=1)||b.guests>MAXG[t])return later([400,{error:'The '+TN[t]+' is for up to '+MAXG[t]+' guests.'}]);
+    var r=null;TYPES[t].some(function(x){for(var d=a;d<o;d=addD(d,1))if(takenOn(x,d))return false;r=x;return true});
+    if(!r)return later([409,{error:'Sorry, the '+TN[t]+' was just booked on some of those nights.',full:true}]);
+    var n=Math.round((new Date(o)-new Date(a))/864e5),id='MC-'+String(1000+(hash(a+o+t+(++seq))%9000)),tk=String(hash(id+'t'));
+    holds[id]={r:r,'in':a,out:o,exp:Date.now()+HOLD_MIN*60e3};
+    var tot=n*RATE[t];
+    orders[id]={id:id,t:tk,type:t,room:TN[t],'in':a,out:o,nights:n,guests:b.guests,name:b.name,rate:RATE[t],total:tot,deposit:deposit(tot),status:'held'};
+    var od=orders[id];return later([200,{id:id,t:tk,nights:n,rate:od.rate,total:od.total,deposit:od.deposit,holdMinutes:HOLD_MIN}],600)}
+  function pay(id,tk){var o=orders[id],h=holds[id];
+    if(o&&o.t===tk&&o.status==='paid')return later([200,{ok:true,already:true}],300);
+    if(!o||o.t!==tk)return later([400,{error:'We couldn’t find that booking.'}]);
+    if(o.status!=='held'||!h||h.exp<Date.now()){delete holds[id];if(o.status==='held')o.status='cancelled';return later([410,{error:'Your hold ran out.',expired:true}])}
+    delete holds[id];paid[h.r]=paid[h.r]||{};for(var d=o['in'];d<o.out;d=addD(d,1))paid[h.r][d]=1;o.status='paid';return later([200,{ok:true}],900)}
+  function booking(id){var o=orders[id];if(!o)return later({status:'missing'});var c=Object.assign({},o);c.due=o.total-o.deposit;
+    if(o.status==='held'&&(!holds[id]||holds[id].exp<Date.now()))c.status='expired';return later(c,250)}
+  function release(id){if(orders[id]&&orders[id].status==='held'){delete holds[id];orders[id].status='cancelled'}return later({ok:true},150)}
+  return {availability:availability,book:book,pay:pay,booking:booking,release:release,_orders:orders};
+})();
+
 (function(){
-  /* ---------- forms work with or without animation ---------- */
+  /* ---------- booking panel ---------- */
+  var DEPOSIT_PCT=0.3;
+  var TYPES={beach:['b1','b2','b3','b4','b5','b6'],pool:['p1','p2','p3'],loft:['l1','l2']},TNAME={beach:'Beach Villa',pool:'Pool Villa',loft:'Forest Loft'};
+  function depOf(total){return Math.round(total*DEPOSIT_PCT)}
   var today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());var td=today.toISOString().slice(0,10);
   document.querySelectorAll('input[type=date]').forEach(function(i){i.min=td});
   var req=document.getElementById('req'),gv=document.getElementById('gv'),g=2;
-  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g=Math.max(1,Math.min(6,g+(+b.dataset.d)));gv.textContent=g})});
-  function est(){var a=req.elements['in'].value,b=req.elements.out.value,s=req.elements.villa;var r=+s.options[s.selectedIndex].dataset.r;
-    var n=a&&b?Math.round((new Date(b)-new Date(a))/864e5):0;
-    if(n>0){document.getElementById('nights').textContent=n+' night'+(n>1?'s':'')+' · '+s.value+' · breakfast & boat included';document.getElementById('total').textContent='₱'+(n*r).toLocaleString('en-PH')}
-    else{document.getElementById('nights').textContent='Pick your dates';document.getElementById('total').textContent='—'}}
-  ['in','out','villa'].forEach(function(k){req.elements[k].addEventListener('change',est)});
-  req.elements['in'].addEventListener('change',function(){req.elements.out.min=req.elements['in'].value||td});
-  req.addEventListener('submit',function(e){e.preventDefault();document.getElementById('done').style.display='block'});
-  var q=document.getElementById('qbar');
-  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;gv.textContent=g;est();
-    document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
-  document.querySelectorAll('[data-villa]').forEach(function(a){a.addEventListener('click',function(){req.elements.villa.value=a.dataset.villa;est()})});
+  var peso=function(n){return '₱'+n.toLocaleString('en-PH')};
+  /* rolling numbers: one 0-9 strip per digit, transform only; each column takes the real digit's width */
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,ROLLS=[];
+  function setRoll(el,str){if(!el||el._s===str)return;var old=el._s;el._s=str;el.setAttribute('aria-label',str);
+    var same=old&&old.length===str.length&&old.replace(/\d/g,'0')===str.replace(/\d/g,'0');
+    if(!same){var h='';for(var i=0;i<str.length;i++){var c=str[i];
+        if(/\d/.test(c)){h+='<i class="rc" aria-hidden="true"><i class="rs">';for(var n=0;n<10;n++)h+='<i>'+n+'</i>';h+='</i></i>'}else h+='<i class="rx" aria-hidden="true">'+c+'</i>'}
+      el.innerHTML=h;var sts=el.querySelectorAll('.rs');
+      if(!old||reduce){var j=0;for(var k=0;k<str.length;k++)if(/\d/.test(str[k])){sts[j].style.transition='none';sts[j].style.transform='translateY('+(-1.08*str[k])+'em)';j++}
+        el.offsetHeight;sts.forEach(function(x){x.style.transition=''});rollW(el);return}
+      el.offsetHeight}
+    var st=el.querySelectorAll('.rs'),q=0;
+    for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){st[q].style.transitionDelay=(q*35)+'ms';st[q].style.transform='translateY('+(-1.08*str[x])+'em)';q++}
+    rollW(el)}
+  function rollW(el){if(ROLLS.indexOf(el)<0)ROLLS.push(el);
+    if(!el._w){var m=document.createElement('i');m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap';el.appendChild(m);el._w=[];for(var n=0;n<10;n++){m.textContent=String(n);el._w.push(m.getBoundingClientRect().width)}el.removeChild(m)}
+    var cols=el.querySelectorAll('.rc'),q=0,str=el._s;for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){cols[q].style.width=(el._w[+str[x]]+2)+'px';q++}}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ROLLS.forEach(function(el){el._w=null;var cs=el.querySelectorAll('.rc');cs.forEach(function(c){c.style.transition='none'});rollW(el);el.offsetHeight;cs.forEach(function(c){c.style.transition=''})})});
+  function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
+  function maxOf(t){return +req.elements.room.querySelector('[value='+t+']').dataset.max}
+  function clampG(){var o=room(),mx=+o.dataset.max;document.getElementById('gnote').textContent=TNAME[o.value]+': up to '+mx+' guests';if(g>mx)g=mx;if(g<1)g=1;setRoll(gv,String(g))}
+  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',function(){g+=(+b.dataset.d);clampG();est()})});
+  var $i=function(id){return document.getElementById(id)};
+  function dayShow(el,iso){var r=el.querySelector('b.roll');
+    if(!iso){el.innerHTML='<b>&ndash;</b><span>Pick a<br>day</span>';return}
+    if(!r){el.innerHTML='<b class="roll"></b><span></span>';r=el.querySelector('b')}
+    var d=new Date(iso+'T00:00:00Z');setRoll(r,String(d.getUTCDate()));el.querySelector('span').innerHTML=d.toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short'})+',<br>'+d.toLocaleDateString('en-US',{timeZone:'UTC',month:'short'})}
+  function est(){var a=req.elements['in'].value,b=req.elements.out.value,o=room();var r=+o.dataset.r;
+    req.querySelectorAll('.room[data-room]').forEach(function(t){var on=t.dataset.room===o.value;t.classList.toggle('on',on);t.setAttribute('aria-pressed',on?'true':'false')});
+    dayShow($i('inShow'),a);dayShow($i('outShow'),b);
+    var n=a&&b&&b>a?Math.round((new Date(b)-new Date(a))/864e5):0;
+    setRoll($i('nN'),String(n));$i('nL').textContent=n===1?'night':'nights';
+    if(n>0){var tot=n*r,dep=depOf(tot);
+      $i('rline').textContent=peso(r)+' × '+n+' night'+(n>1?'s':'');setRoll($i('rtot'),peso(tot));
+      setRoll($i('grand'),peso(tot));setRoll($i('bal'),peso(tot-dep));setRoll($i('deposit'),peso(dep));$i('deposit').classList.toggle('long',dep>=100000);
+      $i('pay').textContent='Pay '+peso(dep)+' deposit & book'}
+    else{$i('rline').textContent=o.textContent+' · pick your dates';setRoll($i('rtot'),'–');setRoll($i('grand'),'–');setRoll($i('bal'),'–');setRoll($i('deposit'),'₱0');$i('pay').textContent='Pay deposit & book'}}
+  /* ================= live booking: calendar + the in-page MOCK above ================= */
+  var AV=null,TAKEN={},HELD={};
+  function addD(s,n){var d=new Date(s+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
+  function nice(s,o){return new Date(s+'T00:00:00Z').toLocaleDateString('en-US',Object.assign({timeZone:'UTC',month:'short',day:'numeric'},o||{})).replace(/ /g,' ')}
+  function type(){return req.elements.room.value}
+  function roomFree(r,a,b){for(var d=a;d<b;d=addD(d,1))if(TAKEN[r][d])return false;return true}
+  function freeRoom(t,a,b){var rs=TYPES[t];for(var i=0;i<rs.length;i++)if(roomFree(rs[i],a,b))return rs[i];return null}
+  function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
+  /* can't be booked, but only because someone is paying right now */
+  function heldOn(t,d){return fullOn(t,d)&&TYPES[t].some(function(r){return HELD[r][d]})}
+  function heldIn(t,a,b){var n=0;for(var d=a;d<b;d=addD(d,1))if(fullOn(t,d)){if(!heldOn(t,d))return false;n++}return n>0}
+  var HELD_MSG='Someone is booking these dates right now — check again in a few minutes.';
+  var msg=$i('avmsg'),errEl=$i('err'),payBtn=$i('pay');
+  function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
+  function loadAv(cb){MOCK.availability(addD(td,-1),addD(td,399)).then(function(j){AV=j;
+      TAKEN={};HELD={};Object.keys(j.taken).forEach(function(r){TAKEN[r]={};HELD[r]={};j.taken[r].forEach(function(d){TAKEN[r][d]=1});((j.held||{})[r]||[]).forEach(function(d){HELD[r][d]=1})});
+      est();cal();check();if(cb)cb()})
+    .catch(function(){setMsg('We couldn’t load the calendar just now. Please try again in a moment.','bad')})}
+  var cm=td.slice(0,7)+'-01',cgrid=$i('cgrid');
+  function cal(){
+    if(!AV){cgrid.innerHTML='';cgrid.dataset.m='';$i('cmon').innerHTML='&nbsp;';return}
+    var y=+cm.slice(0,4),m=+cm.slice(5,7)-1,first=new Date(Date.UTC(y,m,1)).getUTCDay(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate(),fresh=false;
+    $i('cmon').textContent=new Date(Date.UTC(y,m,1)).toLocaleDateString('en-US',{timeZone:'UTC',month:'long',year:'numeric'});
+    $i('cprev').disabled=cm<=td.slice(0,7)+'-01';
+    var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    if(cgrid.dataset.m!==cm){var h='';for(var i=0;i<first;i++)h+='<span class="blank"></span>';
+      for(var d=1;d<=days;d++)h+='<button type="button" class="d" data-k="'+cm.slice(0,8)+String(d).padStart(2,'0')+'"><span>'+d+'</span></button>';
+      cgrid.innerHTML=h;cgrid.dataset.m=cm;fresh=true}
+    var s=0;cgrid.querySelectorAll('button').forEach(function(bt){var k=bt.dataset.k,dis=k<td,full=!dis&&fullOn(t,k),hd=full&&heldOn(t,k),c='d',mid=a&&b&&k>a&&k<b;
+      if(dis)c+=' past';if(k===td)c+=' today';
+      if(full)c+=(hd?' held':' booked')+(a&&!b&&k>a?' out-ok':'');
+      if(a&&k===a)c+=b?' in':' solo';else if(b&&k===b)c+=' out';else if(mid)c+=' mid';
+      bt.disabled=dis;bt.className=c;bt.style.setProperty('--dl',(!fresh&&(mid||(b&&k===b)))?(s++*16)+'ms':'0ms');
+      bt.setAttribute('aria-label',nice(k,{weekday:'long',month:'long'})+(hd?', being booked right now':full?', fully booked':''));bt.setAttribute('aria-pressed',(k===a||k===b)?'true':'false')})}
+  $i('cprev').onclick=function(){cm=addD(cm,-1).slice(0,8)+'01';cal()};
+  $i('cnext').onclick=function(){cm=addD(addD(cm,31).slice(0,8)+'01',0);cal()};
+  cgrid.addEventListener('click',function(e){var bt=e.target.closest('button');if(!AV||!bt||bt.disabled)return;var k=bt.dataset.k,I=req.elements['in'],O=req.elements.out;
+    if(!I.value||O.value||k<=I.value){ if(fullOn(type(),k)){setMsg(heldOn(type(),k)?HELD_MSG:'Every '+TNAME[type()]+' is booked that night. Pick another arrival day, or try another villa.','bad');return}
+      I.value=k;O.value='';setMsg('Now tap the day you leave.')}
+    else O.value=k;
+    est();cal();check()});
+  /* say whether the dates work, and offer another villa type if not */
+  function check(){check0();avState()}
+  function avState(){var a=req.elements['in'].value,b=req.elements.out.value,no=!!(AV&&a&&b&&b>a&&!freeRoom(type(),a,b));
+    document.querySelector('.bk .a-total').classList.toggle('off',no);
+    if(no){payBtn.disabled=true;payBtn.textContent='These dates aren\u2019t available';['deposit','rtot','grand','bal'].forEach(function(k){setRoll($i(k),'\u2013')})}
+    else if(!holding)payBtn.disabled=false}
+  function check0(){errEl.style.display='none';var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    if(!AV)return;if(!a||!b){setMsg(a?'Now tap the day you leave.':'Tap your arrival day on the calendar, then the day you leave.');return}
+    if(b<=a){setMsg('Your leaving day needs to be after your arrival day.','bad');return}
+    if(freeRoom(t,a,b)){setMsg('✓ A '+TNAME[t]+' is free from '+nice(a)+' to '+nice(b)+'.','ok');return}
+    var other=Object.keys(TYPES).filter(function(x){return x!==t&&freeRoom(x,a,b)&&g<=maxOf(x)});
+    setMsg((heldIn(t,a,b)?HELD_MSG:'Sorry, every '+TNAME[t]+' is booked on some of those nights.')+(other.length?' '+other.map(function(x){return 'The <button type="button" data-sw="'+x+'">'+TNAME[x]+'</button> is free.'}).join(' '):' Try other dates.'),'bad')}
+  msg.addEventListener('click',function(e){var b=e.target.closest('[data-sw]');if(!b)return;req.elements.room.value=b.dataset.sw;clampG();est();cal();check()});
+  req.querySelectorAll('.step button').forEach(function(b){b.addEventListener('click',check)});
+  /* dialog */
+  var ov=$i('ov'),dlg=$i('dlg'),onX=null,busy=false,dlgSeq=0;
+  function openD(h,x){busy=false;dlgSeq++;dlg.innerHTML='<button type="button" class="dx" aria-label="Close"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 2l10 10M12 2L2 12"/></svg></button>'+h;onX=x||null;ov.classList.add('on');document.body.style.overflow='hidden';dlg.scrollTop=0;dlg.querySelector('.dx').onclick=dismiss;bg(true);dlg.setAttribute('tabindex','-1');dlg.focus({preventScroll:true})}
+  function closeD(){ov.classList.remove('on');document.body.style.overflow='';onX=null;bg(false)}
+  /* dialog open: everything else on the page is inert (Tab can't reach the page's Pay button) */
+  function bg(on){[].forEach.call(document.body.children,function(el){if(el!==ov&&el.tagName!=='SCRIPT'){if(on)el.setAttribute('inert','');else el.removeAttribute('inert')}})}
+  function dismiss(){if(busy)return;var f=onX;closeD();if(f)f()}
+  ov.addEventListener('click',function(e){if(e.target===ov)dismiss()});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('on'))dismiss()});
+  function row(k,v){return '<div><dt>'+k+'</dt><dd>'+v+'</dd></div>'}
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function reset(){closeD();req.elements['in'].value='';req.elements.out.value='';req.elements.name.value='';req.elements.email.value='';est();loadAv()}
+  function nightsLine(o){return peso(o.rate)+' × '+o.nights+' night'+(o.nights>1?'s':'')}
+  function confirmed(o){var fn=esc((o.name||'').trim().split(' ')[0]);
+    openD('<p class="tagp">Confirmed &middot; '+o.id+'</p><h3>You’re booked.</h3><p>See you at Maraya'+(fn?', '+fn:'')+'. Ana sends the boat time from El Nido the same day.</p>'+
+      '<dl>'+row('Villa',o.room)+row('Arrive',nice(o['in'],{weekday:'short'}))+row('Leave',nice(o.out,{weekday:'short'}))+row('Guests',o.guests)+row(nightsLine(o),peso(o.total))+row('Deposit paid (30%)',peso(o.deposit))+row('Due on arrival',peso(o.due))+'</dl>'+
+      '<p class="small">This is a concept site &mdash; no money was charged and no email was sent. On a real site, a confirmation email goes to you and to the family at this point.</p>'+
+      '<button class="go" id="dOk" type="button">Done</button>',reset);
+    $i('dOk').onclick=reset}
+  /* hold ran out before paying: cancelled, offer the same dates again */
+  function ranOut(){openD('<h3>Your hold ran out.</h3><p>Nothing was charged. You can book the same dates again, or pick other ones.</p><button class="go" id="dAgain" type="button">Book these dates again</button><button class="lnk" id="dOther" type="button">Pick other dates</button>',function(){loadAv()});
+    $i('dAgain').onclick=function(){closeD();loadAv(function(){req.requestSubmit()})};
+    $i('dOther').onclick=function(){closeD();loadAv();$i('book').scrollIntoView({behavior:'smooth'})}}
+  function release(id,t){MOCK.release(id,t).then(function(){loadAv()})}
+  function checkout(o){
+    openD('<p class="tagp">Concept site &middot; no&nbsp;charge</p><h3>Pay your deposit</h3><p>On a real site, this step is a secure payment page &mdash; bank transfer or GCash. Here it’s simulated.</p>'+
+      '<dl>'+row('Villa',TNAME[o.type])+row('Dates',nice(o['in'])+' – '+nice(o.out))+row('Guests',o.guests)+row(nightsLine(o),peso(o.total))+row('Due on arrival',peso(o.total-o.deposit))+'</dl>'+
+      '<p style="margin-bottom:4px">Deposit to pay now (30%)</p><div class="amt">'+peso(o.deposit)+'</div>'+
+      '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (simulated)</button><button class="lnk" id="dCancel" type="button">Cancel — don’t book</button>'+
+      '<p class="small">Your villa is held for '+o.holdMinutes+' minutes while you pay. After that, the hold ends and you’ll need to book again.</p>',function(){release(o.id,o.t)});
+    $i('dCancel').onclick=function(){if(busy)return;closeD();release(o.id,o.t)};
+    $i('dPay').onclick=function(){var b=this,my=dlgSeq,paidOk=false;b.disabled=true;b.textContent='Paying…';
+      /* payment in progress: close, Esc, backdrop and Cancel all do nothing until there's a result */
+      busy=true;dlg.querySelector('.dx').disabled=true;$i('dCancel').disabled=true;
+      Promise.resolve().then(function(){return MOCK.pay(o.id,o.t)}).then(function(x){if(my!==dlgSeq||!ov.classList.contains('on'))return;
+        if(x[0]!==200){busy=false;dlg.querySelector('.dx').disabled=false;$i('dCancel').disabled=false;if(x[1].expired)return ranOut();b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+        /* paid: stay locked until the confirmation replaces this screen */
+        paidOk=true;return MOCK.booking(o.id).then(function(bk){if(my===dlgSeq)confirmed(bk)})})
+      .catch(function(){if(my!==dlgSeq)return;
+        /* the payment already went through and only reading the booking failed: never unlock Cancel, show it as paid */
+        if(paidOk)return paidNoDetails(o);
+        var sm=dlg.querySelector('.small');sm.textContent='Checking whether your payment went through\u2026';
+        Promise.resolve().then(function(){return MOCK.booking(o.id,o.t)}).then(function(bk){if(my!==dlgSeq)return;
+          if(bk.status==='paid')return confirmed(bk);
+          if(bk.status==='conflict')return taken(o);
+          if(bk.status==='expired'||bk.status==='cancelled')return ranOut();
+          if(bk.status!=='held')throw new Error('unknown');
+          busy=false;dlg.querySelector('.dx').disabled=false;$i('dCancel').disabled=false;b.disabled=false;b.textContent='Try again';sm.textContent='The payment didn\u2019t go through. Nothing was charged \u2014 please try again.'})
+        .catch(function(){if(my!==dlgSeq)return;
+          /* can't tell whether it was paid: only Try again (a repeat payment on a paid order just answers 'paid'); Cancel and close stay locked */
+          b.disabled=false;b.textContent='Try again';sm.textContent='We couldn\u2019t confirm whether your payment went through. Please try again, or message us with reference '+o.id+' \u2014 you won\u2019t be charged twice.'})})}}
+  function taken(o){openD('<h3>Those nights were just taken.</h3><p>Your payment came through after someone else confirmed these dates. We\u2019ll refund your deposit \u2014 reference '+o.id+'.</p><button class="go" id="dOk" type="button">Done</button>',reset);$i('dOk').onclick=reset}
+  function paidNoDetails(o){openD('<p class="tagp">Confirmed &middot; '+o.id+'</p><h3>Payment received.</h3><p>Your booking is confirmed &mdash; reference '+o.id+'. We couldn\u2019t load the details just now; on a real site they would arrive by email.</p><p class="small">This is a concept site &mdash; no money was charged.</p><button class="go" id="dOk" type="button">Done</button>',reset);$i('dOk').onclick=reset}
+  var holding=false;
+  req.addEventListener('submit',function(e){e.preventDefault();
+    /* never start a second booking while a dialog is open, a hold is being made, or a payment is running */
+    if(holding||busy||ov.classList.contains('on'))return;errEl.style.display='none';
+    var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    function bad(m){errEl.textContent=m;errEl.style.display='block'}
+    if(!a||!b||b<=a)return bad('Please pick your arrival and leaving days on the calendar.');
+    if(AV&&!freeRoom(t,a,b))return bad(heldIn(t,a,b)?HELD_MSG:'Sorry, every '+TNAME[t]+' is booked on some of those nights.');
+    if(!req.reportValidity())return;
+    holding=true;payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent='Holding your villa…';
+    Promise.resolve().then(function(){return MOCK.book({'in':a,out:b,type:t,guests:g,name:req.elements.name.value,email:req.elements.email.value})})
+      .then(function(x){holding=false;payBtn.disabled=false;payBtn.textContent=lbl;var j=x[1];
+        if(x[0]!==200){bad(j.error||'Something went wrong. Please try again.');if(j.full)loadAv();return}
+        j['in']=a;j.out=b;j.type=t;j.guests=g;checkout(j)})
+      .catch(function(){holding=false;payBtn.disabled=false;payBtn.textContent=lbl;bad('We couldn\u2019t hold your villa just now. Nothing was charged. Please try again.')})});
+  loadAv();clampG();est();
+  /* hero dock -> booking panel */
+  var q=$i('qbar');
+  function dfake(i){var s=i.parentNode.querySelector('.df');if(!s)return;s.textContent=i.value?new Date(i.value+'T00:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'}):'Add date';i.parentNode.classList.toggle('has',!!i.value)}
+  q.querySelectorAll('input[type=date]').forEach(function(i){['change','input'].forEach(function(ev){i.addEventListener(ev,function(){dfake(i);if(i.name==='in'&&i.value){q.elements.out.min=addD(i.value,1);if(q.elements.out.value&&q.elements.out.value<=i.value){q.elements.out.value='';dfake(q.elements.out)}}})});dfake(i)});
+  q.addEventListener('submit',function(e){e.preventDefault();var qi=q.elements['in'].value,qo=q.elements.out.value;
+    if(qi&&qi>=td){req.elements['in'].value=qi;req.elements.out.value=(qo&&qo>qi)?qo:''}
+    g=+q.elements.g.value;
+    if(g>maxOf(type())){var fit=['beach','loft','pool'].filter(function(x){return g<=maxOf(x)})[0];if(fit)req.elements.room.value=fit}
+    clampG();est();if(req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check();
+    $i('avcal').scrollIntoView({behavior:'smooth',block:'start'})});
+  document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est();cal();check()})});
 
   /* ---------- header ---------- */
   var hdr=document.getElementById('hdr'),rb=document.querySelector('.ribbon');
@@ -398,7 +818,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     /* ---------- a day: swap photo + move the sun ---------- */
     var arc=document.getElementById('arc'),disc=document.getElementById('disc'),L=arc.getTotalLength(),clock=document.getElementById('clock');
     var frames=gsap.utils.toArray('.stick img');
-    ScrollTrigger.create({trigger:'#day .grid',start:'top 20%',end:'bottom 70%',scrub:true,onUpdate:function(s){var p=arc.getPointAtLength(L*s.progress);disc.setAttribute('cx',p.x);disc.setAttribute('cy',p.y);
+    ScrollTrigger.create({trigger:'#day .grid',start:'top 20%',end:'bottom 88%',scrub:true,onUpdate:function(s){var p=arc.getPointAtLength(L*s.progress);disc.setAttribute('cx',p.x);disc.setAttribute('cy',p.y);
       var mins=348+Math.round(s.progress*(1072-348));clock.textContent=String(Math.floor(mins/60)).padStart(2,'0')+':'+String(mins%60).padStart(2,'0')}});
     gsap.utils.toArray('.moment').forEach(function(m){ScrollTrigger.create({trigger:m,start:'top 55%',end:'bottom 55%',onToggle:function(s){if(s.isActive){frames.forEach(function(f){f.classList.toggle('on',f.dataset.k===m.dataset.k)})}}})});
   });

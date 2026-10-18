@@ -297,6 +297,10 @@ h1,h2,h3,.v .meta span,.panel figcaption{overflow-wrap:anywhere}
 .bk .roll i{font-style:normal}
 .bk .roll .rc,.bk .roll .rx{vertical-align:top}
 .bk .roll .rc{display:inline-block;height:1.08em;overflow:hidden;line-height:1.08em;transition:width .5s cubic-bezier(.22,1,.36,1);-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.bk .roll .rc{margin:0 -1px}
+.dlg:focus{outline:none}
+.bk .a-total.off{filter:saturate(0);opacity:.6}
+.bk .a-total.off .pay:disabled{cursor:not-allowed}
 .bk .roll .rs{display:block;transition:transform .9s var(--spring);will-change:transform}
 .bk .roll .rs i{display:block;height:1.08em;text-align:center}
 .bk .roll .rx{display:inline-block;line-height:1.08em}
@@ -671,11 +675,13 @@ var MOCK=(function(){
     orders[id]={id:id,t:tk,type:t,room:TN[t],'in':a,out:o,nights:n,guests:b.guests,name:b.name,total:n*RATE[t],deposit:n*DEP,discount:0,status:'held'};
     var od=orders[id];return later([200,{id:id,t:tk,nights:n,total:od.total,deposit:od.deposit,discount:0,holdMinutes:HOLD_MIN}],600)}
   function pay(id,tk){var o=orders[id],h=holds[id];
+    if(o&&o.t===tk&&o.status==='paid')return later([200,{ok:true,already:true}],300);
     if(!o||o.t!==tk)return later([400,{error:'We couldn’t find that booking.'}]);
-    if(!h||h.exp<Date.now()){delete holds[id];o.status='cancelled';return later([410,{error:'Your hold ran out.',expired:true}])}
+    if(!h||h.exp<Date.now()){delete holds[id];if(o.status==='held')o.status='cancelled';return later([410,{error:'Your hold ran out.',expired:true}])}
     delete holds[id];paid[h.r]=paid[h.r]||{};for(var d=o['in'];d<o.out;d=addD(d,1))paid[h.r][d]=1;o.status='paid';return later([200,{ok:true}],900)}
-  function booking(id){var o=orders[id];if(!o)return later({status:'missing'});var c=Object.assign({},o);c.due=o.total-o.deposit;return later(c,250)}
-  function release(id){delete holds[id];if(orders[id]&&orders[id].status==='held')orders[id].status='cancelled';return later({ok:true},150)}
+  function booking(id){var o=orders[id];if(!o)return later({status:'missing'});var c=Object.assign({},o);c.due=o.total-o.deposit;
+    if(o.status==='held'&&(!holds[id]||holds[id].exp<Date.now()))c.status='expired';return later(c,250)}
+  function release(id){if(orders[id]&&orders[id].status==='held'){delete holds[id];orders[id].status='cancelled'}return later({ok:true},150)}
   return {availability:availability,book:book,pay:pay,booking:booking,release:release};
 })();
 
@@ -702,7 +708,7 @@ var MOCK=(function(){
     rollW(el)}
   function rollW(el){if(ROLLS.indexOf(el)<0)ROLLS.push(el);
     if(!el._w){var m=document.createElement('i');m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap';el.appendChild(m);el._w=[];for(var n=0;n<10;n++){m.textContent=String(n);el._w.push(m.getBoundingClientRect().width)}el.removeChild(m)}
-    var cols=el.querySelectorAll('.rc'),q=0,str=el._s;for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){cols[q].style.width=el._w[+str[x]]+'px';q++}}
+    var cols=el.querySelectorAll('.rc'),q=0,str=el._s;for(var x=0;x<str.length;x++)if(/\d/.test(str[x])){cols[q].style.width=(el._w[+str[x]]+2)+'px';q++}}
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ROLLS.forEach(function(el){el._w=null;var cs=el.querySelectorAll('.rc');cs.forEach(function(c){c.style.transition='none'});rollW(el);el.offsetHeight;cs.forEach(function(c){c.style.transition=''})})});
   function room(){var s=req.elements.room;return s.options[s.selectedIndex]}
   function clampG(){var o=room(),mx=+o.dataset.max;document.getElementById('gnote').textContent=TNAME[o.value]+': up\u00a0to\u00a0'+mx+'\u00a0guest'+(mx>1?'s':'');if(g>mx)g=mx;if(g<1)g=1;setRoll(gv,String(g))}
@@ -734,7 +740,7 @@ var MOCK=(function(){
   function fullOn(t,d){return TYPES[t].every(function(r){return TAKEN[r][d]})}
   /* 订不了、但只是因为有人正在付款（不是真订走了） */
   function heldOn(t,d){return fullOn(t,d)&&TYPES[t].some(function(r){return HELD[r][d]})}
-  function heldIn(t,a,b){for(var d=a;d<b;d=addD(d,1))if(heldOn(t,d))return true;return false}
+  function heldIn(t,a,b){var n=0;for(var d=a;d<b;d=addD(d,1))if(fullOn(t,d)){if(!heldOn(t,d))return false;n++}return n>0}
   var HELD_MSG='Someone is booking these dates right now — check again in a few minutes.';
   var msg=document.getElementById('avmsg'),errEl=document.getElementById('err'),payBtn=document.getElementById('pay');
   function setMsg(h,c){msg.innerHTML=h;msg.className='avmsg'+(c?' '+c:'')}
@@ -769,8 +775,13 @@ var MOCK=(function(){
     else O.value=k;
     est();cal();check()});
   /* say whether the dates work, and offer the other room if not */
-  function check(){errEl.style.display='none';var a=req.elements['in'].value,b=req.elements.out.value,t=type();
-    if(!AV)return;if(!a||!b){if(!a)setMsg('Tap your arrival day on the calendar, then the day you leave.');return}
+  function check(){check0();avState()}
+  function avState(){var a=req.elements['in'].value,b=req.elements.out.value,no=!!(AV&&a&&b&&b>a&&!freeRoom(type(),a,b));
+    document.querySelector('.bk .a-total').classList.toggle('off',no);
+    if(no){payBtn.disabled=true;payBtn.textContent='These dates aren\u2019t available';['deposit','rtot','grand','bal'].forEach(function(k){setRoll($i(k),'\u2013')})}
+    else if(!holding)payBtn.disabled=false}
+  function check0(){errEl.style.display='none';var a=req.elements['in'].value,b=req.elements.out.value,t=type();
+    if(!AV)return;if(!a||!b){setMsg(a?'Now tap the day you leave.':'Tap your arrival day on the calendar, then the day you leave.');return}
     if(b<=a){setMsg('Your leaving day needs to be after your arrival day.','bad');return}
     if(freeRoom(t,a,b)){setMsg('✓ The '+TNAME[t]+' is free from '+nice(a)+' to '+nice(b)+'.','ok');return}
     var other=Object.keys(TYPES).filter(function(x){return x!==t&&freeRoom(x,a,b)&&g<=+req.elements.room.querySelector('[value='+x+']').dataset.max});
@@ -781,8 +792,10 @@ var MOCK=(function(){
   /* dialog */
   var ov=document.getElementById('ov'),dlg=document.getElementById('dlg');
   var onX=null;
-  function openD(h,x){busy=false;dlgSeq++;dlg.innerHTML='<button type="button" class="dx" aria-label="Close"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 2l10 10M12 2L2 12"/></svg></button>'+h;onX=x||null;ov.classList.add('on');document.body.style.overflow='hidden';dlg.querySelector('.dx').onclick=dismiss}
-  function closeD(){ov.classList.remove('on');document.body.style.overflow='';onX=null}
+  function openD(h,x){busy=false;dlgSeq++;dlg.innerHTML='<button type="button" class="dx" aria-label="Close"><svg viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M2 2l10 10M12 2L2 12"/></svg></button>'+h;onX=x||null;ov.classList.add('on');document.body.style.overflow='hidden';dlg.querySelector('.dx').onclick=dismiss;bg(true);dlg.setAttribute('tabindex','-1');dlg.focus({preventScroll:true})}
+  function closeD(){ov.classList.remove('on');document.body.style.overflow='';onX=null;bg(false)}
+  /* dialog open: everything else on the page is inert (Tab can't reach the page's Pay button) */
+  function bg(on){[].forEach.call(document.body.children,function(el){if(el!==ov&&el.tagName!=='SCRIPT'){if(on)el.setAttribute('inert','');else el.removeAttribute('inert')}})}
   var busy=false,dlgSeq=0;
   function dismiss(){if(busy)return;var f=onX;closeD();if(f)f()}
   ov.addEventListener('click',function(e){if(e.target===ov)dismiss()});
@@ -808,27 +821,46 @@ var MOCK=(function(){
       '<button class="go" id="dPay" type="button">Pay '+peso(o.deposit)+' (preview)</button><button class="lnk" id="dCancel" type="button">Cancel — don’t book</button>'+
       '<p class="small">Your room is held for '+o.holdMinutes+' minutes while you pay. After that, the hold ends and you’ll need to book again.</p>',function(){release(o.id,o.t)});
     document.getElementById('dCancel').onclick=function(){closeD();release(o.id,o.t)};
-    document.getElementById('dPay').onclick=function(){var b=this,my=dlgSeq;b.disabled=true;b.textContent='Paying…';
+    document.getElementById('dPay').onclick=function(){var b=this,my=dlgSeq,paidOk=false;b.disabled=true;b.textContent='Paying…';
       /* 付款进行中：✕ / Esc / 点外面 / Cancel 全部不可用，直到有结果 */
       busy=true;dlg.querySelector('.dx').disabled=true;document.getElementById('dCancel').disabled=true;
-      MOCK.pay(o.id,o.t).then(function(x){if(my!==dlgSeq||!ov.classList.contains('on'))return;busy=false;dlg.querySelector('.dx').disabled=false;document.getElementById('dCancel').disabled=false;
-        if(x[0]!==200){if(x[1].expired)return ranOut();b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
-        return MOCK.booking(o.id).then(function(bk){if(my===dlgSeq)confirmed(bk)})})}}
-  req.addEventListener('submit',function(e){e.preventDefault();errEl.style.display='none';
+      Promise.resolve().then(function(){return MOCK.pay(o.id,o.t)}).then(function(x){if(my!==dlgSeq||!ov.classList.contains('on'))return;
+        if(x[0]!==200){busy=false;dlg.querySelector('.dx').disabled=false;document.getElementById('dCancel').disabled=false;if(x[1].expired)return ranOut();b.disabled=false;b.textContent='Try again';dlg.querySelector('.small').textContent=x[1].error||'Something went wrong.';return}
+        paidOk=true;return MOCK.booking(o.id).then(function(bk){if(my===dlgSeq)confirmed(bk)})})
+      .catch(function(){if(my!==dlgSeq)return;
+        /* the payment already went through and only reading the booking failed: never unlock Cancel, show it as paid */
+        if(paidOk)return paidNoDetails(o);
+        var sm=dlg.querySelector('.small');sm.textContent='Checking whether your payment went through\u2026';
+        Promise.resolve().then(function(){return MOCK.booking(o.id,o.t)}).then(function(bk){if(my!==dlgSeq)return;
+          if(bk.status==='paid')return confirmed(bk);
+          if(bk.status==='conflict')return taken(o);
+          if(bk.status==='expired'||bk.status==='cancelled')return ranOut();
+          if(bk.status!=='held')throw new Error('unknown');
+          busy=false;dlg.querySelector('.dx').disabled=false;document.getElementById('dCancel').disabled=false;b.disabled=false;b.textContent='Try again';sm.textContent='The payment didn\u2019t go through. Nothing was charged \u2014 please try again.'})
+        .catch(function(){if(my!==dlgSeq)return;
+          /* can't tell whether it was paid: only Try again (a repeat payment on a paid order just answers 'paid'); Cancel and close stay locked */
+          b.disabled=false;b.textContent='Try again';sm.textContent='We couldn\u2019t confirm whether your payment went through. Please try again, or message us with reference '+o.id+' \u2014 you won\u2019t be charged twice.'})})}}
+  function taken(o){openD('<h3>Those nights were just taken.</h3><p>Your payment came through after someone else confirmed these dates. We\u2019ll refund your deposit \u2014 reference '+o.id+'.</p><button class="go" id="dOk" type="button">Done</button>',reset);document.getElementById('dOk').onclick=reset}
+  function paidNoDetails(o){openD('<p class="tagp">Confirmed &middot; '+o.id+' &middot; preview</p><h3>Payment received.</h3><p>Your booking is confirmed &mdash; reference '+o.id+'. We couldn\u2019t load the details just now; you\u2019ll get them by email, or message us on Facebook.</p><p class="small">No money was charged &mdash; this is a preview.</p><button class="go" id="dOk" type="button">Done</button>',reset);document.getElementById('dOk').onclick=reset}
+  var holding=false;
+  req.addEventListener('submit',function(e){e.preventDefault();
+    /* never start a second booking while a dialog is open, a hold is being made, or a payment is running */
+    if(holding||busy||ov.classList.contains('on'))return;errEl.style.display='none';
     var a=req.elements['in'].value,b=req.elements.out.value,t=type();
     function bad(m){errEl.textContent=m;errEl.style.display='block'}
     if(!a||!b||b<=a)return bad('Please pick your arrival and leaving days.');
     if(AV&&!freeRoom(t,a,b))return bad(heldIn(t,a,b)?HELD_MSG:'Sorry, the '+TNAME[t]+' is booked on some of those nights.');
-    payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent='Holding your room…';
-    MOCK.book({'in':a,out:b,type:t,guests:g,name:req.elements.name.value,email:req.elements.email.value})
-      .then(function(x){payBtn.disabled=false;payBtn.textContent=lbl;var j=x[1];
+    holding=true;payBtn.disabled=true;var lbl=payBtn.textContent;payBtn.textContent='Holding your room…';
+    Promise.resolve().then(function(){return MOCK.book({'in':a,out:b,type:t,guests:g,name:req.elements.name.value,email:req.elements.email.value})})
+      .then(function(x){holding=false;payBtn.disabled=false;payBtn.textContent=lbl;var j=x[1];
         if(x[0]!==200){bad(j.error||'Something went wrong. Please try again.');if(j.full)loadAv();return}
-        j['in']=a;j.out=b;previewPay(j)})});
+        j['in']=a;j.out=b;previewPay(j)})
+      .catch(function(){holding=false;payBtn.disabled=false;payBtn.textContent=lbl;bad('We couldn\u2019t hold your room just now. Nothing was charged. Please try again.')})});
   loadAv();clampG();est();
   var q=document.getElementById('qbar');
   function dfake(i){var s=i.parentNode.querySelector('.df');if(!s)return;s.textContent=i.value?new Date(i.value+'T00:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'}):'Add date';i.parentNode.classList.toggle('has',!!i.value)}
   q.querySelectorAll('input[type=date]').forEach(function(i){['change','input'].forEach(function(ev){i.addEventListener(ev,function(){dfake(i);if(i.name==='in'&&i.value){q.elements.out.min=addD(i.value,1);if(q.elements.out.value&&q.elements.out.value<=i.value){q.elements.out.value='';dfake(q.elements.out)}}})});dfake(i)});
-  q.addEventListener('submit',function(e){e.preventDefault();if(q.elements['in'].value)req.elements['in'].value=q.elements['in'].value;if(q.elements.out.value)req.elements.out.value=q.elements.out.value;g=+q.elements.g.value;
+  q.addEventListener('submit',function(e){e.preventDefault();var qi=q.elements['in'].value,qo=q.elements.out.value;if(qi){req.elements['in'].value=qi;req.elements.out.value=(qo&&qo>qi)?qo:''}g=+q.elements.g.value;
     if(g>2&&type()==='premiere')req.elements.room.value='penthouse';clampG();est();if(req.elements['in'].value)cm=req.elements['in'].value.slice(0,8)+'01';cal();check();
     document.getElementById('book').scrollIntoView({behavior:'smooth'});setTimeout(function(){req.elements.name.focus({preventScroll:true})},900)});
   document.querySelectorAll('[data-room]').forEach(function(a){a.addEventListener('click',function(){req.elements.room.value=a.dataset.room;clampG();est();cal();check()})});
