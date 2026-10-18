@@ -80,6 +80,8 @@ header.deep{color:var(--foam)}
   .gauge .read .temp{display:none}
 }
 .gauge.surface{opacity:0}
+/* 10-18：手机上深度表在左下角，滚到预约表时会盖住「Send」按钮 → 看到表单就淡出 */
+@media(max-width:900px){.gauge.atbook{opacity:0}}
 
 /* hero: above the water */
 .hero{background:var(--sand);position:relative;padding:150px 0 0}
@@ -221,7 +223,7 @@ header.deep{color:var(--foam)}
 .lf input,.lf select{width:100%;border:0;background:transparent;font:500 17px/1.3 var(--sans);color:var(--ink);outline:none;padding:0;border-radius:0}
 .lf input:focus,.lf select:focus{color:var(--coral2)}
 .total{display:flex;justify-content:space-between;align-items:flex-end;margin-top:24px;gap:16px;flex-wrap:wrap}
-.total b{font:400 46px/1 var(--serif)}
+.total b{display:block;margin-top:8px;font:400 46px/1 var(--serif)}
 .total small{display:block;color:var(--ink2);font-size:13px;margin-top:4px;max-width:300px}
 .logbook .btn{border:0;cursor:pointer}
 .sent{display:none;margin-top:14px;font-size:14px;color:var(--ink2)}
@@ -479,6 +481,7 @@ footer .big{font:italic 400 24vw/.8 var(--serif);opacity:.1;margin-top:40px;whit
   function measure(){anchors=[].map.call(document.querySelectorAll('[data-depth]'),function(s){return [s.getBoundingClientRect().top+scrollY,+s.dataset.depth]});
     var hero=document.querySelector('.hero');anchors[0]=[hero.offsetTop+hero.offsetHeight-80,0];
     var last=document.querySelector('footer');anchors.push([last.getBoundingClientRect().top+scrollY,40])}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){$('gauge').classList.toggle('atbook',e.isIntersecting)})}).observe($('log'))}
   var curD=-1,hdr=$('hdr'),gauge=$('gauge'),rays=$('rays'),rb=document.querySelector('.ribbon');
   function onScroll(){
     var y=scrollY+innerHeight*.5,d=0;
