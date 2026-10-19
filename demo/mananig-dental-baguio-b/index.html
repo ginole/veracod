@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mananig Dental Clinic · Baguio City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+/* 方向 B「安静精品」：参考 Atelier Dental（澳洲）/ Zen Dental Studio —— 鼠尾草雾绿底 + 深松绿字，细衬线大标题，照片拼贴，像一家用心经营的私人诊所 */
+:root{--bg:#eef2ed;--bg2:#e1e8df;--ink:#1f3329;--dim:#5b6d62;--acc:#2f5a46;--line:#cbd6ca}
+*{box-sizing:border-box;margin:0}
+body{font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.01em}
+nav a{font-size:14px;color:var(--dim);margin-left:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font-weight:600;font-size:15px;transition:transform .15s,background .2s}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--ink);color:#f4f7f3}
+.btn.p:hover{background:var(--acc)}
+.btn.s{border:1px solid var(--ink)}
+header .btn{padding:10px 18px;font-size:14px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-top:40px;padding-bottom:90px}
+.hero h1{font-size:clamp(44px,6.4vw,84px);line-height:1.02;letter-spacing:-.01em}
+.hero h1 i{color:var(--acc)}
+.hero p{margin-top:22px;font-size:18px;line-height:1.6;color:var(--dim);max-width:40ch}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.ctas a.l{font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:2px}
+.collage{position:relative;height:540px}
+.collage img{position:absolute;object-fit:cover;border-radius:4px;box-shadow:0 30px 60px rgba(31,51,41,.18)}
+.c1{right:0;top:0;width:66%;height:82%}
+.c2{left:0;bottom:0;width:52%;height:46%;object-position:0% 50%}
+.since{position:absolute;left:8%;top:10%;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);writing-mode:horizontal-tb}
+.since b{display:block;font-size:64px;letter-spacing:0;color:var(--ink);font-weight:500;line-height:1}
+.quote{background:var(--ink);color:#eaf0e8;padding:96px 0}
+.quote p{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:24ch}
+.quote p i{color:#a9c8b4}
+.quote span{display:block;margin-top:26px;font-size:14px;letter-spacing:.06em;opacity:.7}
+section{padding:96px 0}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,4.6vw,58px);line-height:1.05}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border-top:1px solid var(--line)}
+.svc article{padding:30px 26px 34px 0;border-bottom:1px solid var(--line)}
+.svc article:nth-child(3n+2),.svc article:nth-child(3n+3){padding-left:26px;border-left:1px solid var(--line)}
+.svc i{font-size:26px;color:var(--acc)}
+.svc h3{margin-top:14px;font-size:19px;font-weight:600}
+.svc p{margin-top:8px;color:var(--dim);line-height:1.55;font-size:15px}
+.room{background:var(--bg2)}
+.room .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.room img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
+.room p{margin-top:18px;color:var(--dim);line-height:1.65;font-size:17px;max-width:46ch}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.visit dl{display:grid;gap:22px;margin-top:30px}
+.visit dt{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.visit dd{margin:6px 0 0;font-size:19px;line-height:1.5}
+.visit .box{background:var(--ink);color:#f0f4ef;padding:40px;border-radius:4px}
+.visit .box h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;line-height:1.1}
+.visit .box p{margin-top:12px;opacity:.8;line-height:1.55}
+.visit .box .btn.p{background:#f0f4ef;color:var(--ink);margin-top:26px}
+footer{padding:30px 0 100px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+.dock{display:none}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media(max-width:820px){
+  nav,header .btn{display:none}
+  header .wrap{height:62px;justify-content:center}
+  .hero{grid-template-columns:1fr;padding-top:18px;padding-bottom:56px;gap:30px}
+  .hero h1{font-size:46px}
+  .hero p{font-size:16.5px}
+  .collage{height:360px}
+  .since b{font-size:46px}
+  .quote{padding:64px 0}
+  section{padding:64px 0}
+  .svc{grid-template-columns:1fr}
+  .svc article,.svc article:nth-child(3n+2),.svc article:nth-child(3n+3){padding:24px 0;border-left:0}
+  .room .wrap,.visit{grid-template-columns:1fr;gap:28px}
+  .visit .box{padding:30px}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink)}
+  .dock a{display:flex;justify-content:center;align-items:center;gap:8px;padding:17px 0;color:#f0f4ef;font-weight:600;font-size:15px}
+  .dock a+a{border-left:1px solid rgba(255,255,255,.15)}
+}
+</style></head><body>
+<header><div class="wrap">
+  <a class="logo" href="#">Mananig Dental</a>
+  <nav><a href="#services">Services</a><a href="#clinic">The clinic</a><a href="#visit">Visit</a></nav>
+  <a class="btn p" href="https://www.facebook.com/mananig.dentalclinic">Book a visit</a>
+</div></header>
+<main>
+<div class="wrap hero">
+  <div class="rv">
+    <h1 class="serif">That perfect smile, <i>in the heart of Baguio.</i></h1>
+    <p>Orthodontics, cosmetic and general dentistry under one roof on Upper Mabini St.</p>
+    <div class="ctas"><a class="btn p" href="https://www.facebook.com/mananig.dentalclinic">Book a visit</a><a class="l" href="#services">See our services</a></div>
+  </div>
+  <div class="collage rv">
+    <img class="c1" src="the-chair.webp" alt="The treatment chair">
+    <img class="c2" src="the-operatory.webp" alt="The treatment room">
+    <div class="since">Since<b>1990</b></div>
+  </div>
+</div>
+
+<div class="quote"><div class="wrap rv">
+  <p>A priority on <i>health and safety</i>, high quality products that are safe for our patients, and quality dental care at a fair price.</p>
+  <span>Mananig Dental Clinic, over 20 years of dental practice</span>
+</div></div>
+
+<section id="services"><div class="wrap">
+  <h2 class="rv">Everything your smile needs, under one roof.</h2>
+  <div class="svc">
+    <article class="rv"><i class="ph-light ph-sparkle"></i><h3>Check-ups and cleaning</h3><p>Routine check-up, cleaning, tooth-coloured fillings, and fluoride and sealant for kids.</p></article>
+    <article class="rv"><i class="ph-light ph-smiley"></i><h3>Orthodontics</h3><p>Traditional metal braces, ceramic or invisible braces and self-adjusting braces.</p></article>
+    <article class="rv"><i class="ph-light ph-star-four"></i><h3>Cosmetic dentistry</h3><p>Gap closure, 30-minute whitening, porcelain and composite veneers.</p></article>
+    <article class="rv"><i class="ph-light ph-crown-simple"></i><h3>Crowns and bridges</h3><p>Zirconia and EMAX all-porcelain crowns, bridges and dentures.</p></article>
+    <article class="rv"><i class="ph-light ph-tooth"></i><h3>Implants</h3><p>Dental implants to replace missing teeth.</p></article>
+    <article class="rv"><i class="ph-light ph-first-aid-kit"></i><h3>Extraction and surgery</h3><p>Extraction, wisdom tooth surgery and root canal treatment.</p></article>
+  </div>
+</div></section>
+
+<section class="room" id="clinic"><div class="wrap">
+  <div class="rv"><h2>Getting Baguio closer to that perfect smile.</h2><p>Mananig Dental Clinic has looked after Baguio since 1990, centrally located right at the heart of the city.</p></div>
+  <img class="rv" src="the-operatory.webp" alt="The treatment room" style="object-position:0% 50%">
+</div></section>
+
+<section id="visit"><div class="wrap visit">
+  <div class="rv"><h2>Visit us</h2>
+    <dl><div><dt>Address</dt><dd>Rm. 4 Mabini Shopping Center,<br>Upper Mabini St., Baguio City 2600</dd></div>
+    <div><dt>Phone</dt><dd><a href="tel:09082354514">0908 235 4514</a></dd></div>
+    <div><dt>Email</dt><dd><a href="mailto:info.mananigdentalclinic@gmail.com">info.mananigdentalclinic@gmail.com</a></dd></div></dl></div>
+  <div class="box rv"><h3>Book your visit</h3><p>Send us a message on Facebook or a text, and we'll find a time that suits you.</p><a class="btn p" href="https://www.facebook.com/mananig.dentalclinic">Book a visit</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">Mananig Dental Clinic, Baguio City. Concept page by Veracod, not affiliated with the clinic.</div></footer>
+<nav class="dock"><a href="tel:09082354514"><i class="ph ph-phone"></i>Call</a><a href="https://www.facebook.com/mananig.dentalclinic"><i class="ph ph-calendar-check"></i>Book a visit</a></nav>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.rv').forEach(el=>io.observe(el));</script>
+</body></html>
