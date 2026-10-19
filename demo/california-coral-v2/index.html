@@ -364,15 +364,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 /* hidden states only under .js — GSAP reveals */
 .js .rv{opacity:0;transform:translateY(34px)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* 10-20 Michael：Find us 加「Get directions」—— 点开整段路线（坐船 / 自驾），文字照他原话 */
-.dirs{margin-top:44px;border-top:1px solid var(--rule);padding-top:8px;scroll-margin-top:96px}
-.dirs summary{list-style:none;cursor:pointer;display:inline-block;margin-top:14px;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px}
-.dirs summary::-webkit-details-marker{display:none}
-.dirs .dcols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,60px);margin-top:26px}
-.dirs h4{font-family:var(--display);font-weight:300;letter-spacing:-.01em;line-height:1.1;font-size:28px;margin:0 0 12px}
-.dirs p{margin:0 0 12px}
-@media(max-width:820px){.dirs .dcols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -425,12 +416,12 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </section>
 
   <section class="island" id="bay">
-    <div class="island-head"><div><p class="kick">Santa Anna Bay</p><h2>Everything starts<br>at the water.</h2></div><span class="count"><b id="cnum">01</b> / 04</span></div>
+    <div class="island-head"><div><p class="kick">The bay</p><h2>Everything starts<br>at the water.</h2></div><span class="count"><b id="cnum">01</b> / 04</span></div>
     <div class="track" id="track">
       <figure class="panel"><img src="img/seahorse.webp" alt="The Seahorse, the resort's own outrigger boat, on clear water by the beach" loading="lazy"><figcaption><b>The Seahorse</b>Our own 40-foot boat, for up to ten people. You decide where to go and how long to stay.</figcaption></figure>
-      <figure class="panel"><img src="img/tour-boats.webp" alt="A guest getting ready to go fishing in a small outrigger boat in front of the resort" loading="lazy"><figcaption><b>Other boats</b>A guest goes fishing from right in front of the resort.</figcaption></figure>
+      <figure class="panel"><img src="img/tour-boats.webp" alt="A small tour boat pulled up on the beach in front of the resort" loading="lazy"><figcaption><b>Tour boats</b>A small tour boat for rent, right in front of the resort.</figcaption></figure>
       <figure class="panel"><img src="img/boats.webp" alt="Boats of every kind stopping in front of the resort" loading="lazy"><figcaption><b>Out front</b>Boats of every size stop right in front of the resort.</figcaption></figure>
-      <figure class="panel"><img src="img/from-the-sand.webp" alt="The resort at dusk, seen from the sand" loading="lazy"><figcaption><b>Home</b>Three floors of arches and a terrace right on the beach.</figcaption></figure>
+      <figure class="panel"><img src="img/from-the-sand.webp" alt="The resort at dusk, seen from the sand" loading="lazy"><figcaption><b>Home</b>Three floors of blue arches, and the beach right below the balcony.</figcaption></figure>
     </div>
   </section>
 
@@ -461,7 +452,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <p class="kick">A day at Alubihod</p>
         <h2 class="rv">No schedule. Just the beach.</h2>
         <div class="moment" data-k="0"><time>Morning</time><h3>Coffee in your room</h3><p>Complimentary coffee and bottled water for two are waiting in your room, and the resort is right on the beach.</p><img class="m" src="img/day-balcony.webp" alt="" loading="lazy"></div>
-        <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,200 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkel gear for rent when available.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
+        <div class="moment" data-k="1"><time>Midday</time><h3>Island hopping on the Seahorse</h3><p>&#8369;1,000 for the first hour and &#8369;800 for each hour after, for up to ten people. The captain knows the best places for the tide, but you decide where to go. Snorkel gear for rent when available.</p><img class="m" src="img/day-islands.webp" alt="" loading="lazy"></div>
         <div class="moment" data-k="2"><time>Afternoon</time><h3>The gardens and the bamboo hut</h3><p>The gardens and the bamboo hut, with a table in the shade, are free for room guests. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner.</p><img class="m" src="img/day-garden.webp" alt="" loading="lazy"></div>
         <div class="moment" data-k="3"><time>Evening</time><h3>Evening on the beach</h3><p>The BBQ area is free to use. Charcoal is sold at our sari-sari store, open every day, along with the usual food and drinks.</p><img class="m" src="img/day-fire.webp" alt="" loading="lazy"></div>
       </div>
@@ -558,11 +549,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <details><summary>What time is check-in and check-out?</summary><p>Check-in is after 2 PM. Check-out is before 12 noon.</p></details>
         <details><summary>How many people can stay in a room?</summary><p>Garden and Hillview rooms take up to five people; the rate is for two, and each extra person is &#8369;<span data-rate="extra">400</span> per night. An extra single mattress with bedding is &#8369;300 per night. The Beachfront Balcony Room is for one or two adults only. Children who can walk on their own count as guests; infants who must be carried stay free.</p></details>
         <details><summary>Is there a restaurant?</summary><p>Not yet, and we can't provide prepared food. Three public restaurants on the beach, one of them next door, serve breakfast, lunch and dinner. Our sari-sari store is open daily with the usual food and drinks. Food is allowed in the rooms, but no cooking in the rooms. You can cook in the BBQ area for free (charcoal is sold at the store); there's a small electricity charge if you use your own electric cooker, outside only.</p></details>
-        <details><summary>Can we go island hopping?</summary><p>Yes, on our 40-foot boat, the Seahorse: &#8369;1,200 for the first hour and &#8369;800 for each extra hour, for up to ten people. Snorkel gear can be rented when available - ask before boarding. Sign up at the lifeguard station on the beach.</p></details>
+        <details><summary>Can we go island hopping?</summary><p>Yes, on our 40-foot boat, the Seahorse: &#8369;1,000 for the first hour and &#8369;800 for each extra hour, for up to ten people. Snorkel gear can be rented when available - ask before boarding. Sign up at the lifeguard station on the beach.</p></details>
         <details><summary>Do you have discounts?</summary><p>Seniors and PWDs who show ID and their Senior or PWD card get 20% off their share of the room rate. Only one discount per stay.</p></details>
         <details><summary>Can we bring pets?</summary><p>Sorry, no pets.</p></details>
         <details><summary>We're only coming for the day. Can we use the hut?</summary><p>The bamboo hut is free for room guests. When it isn't in use, day visitors can rent it - it isn't booked in advance, so ask Toy, the manager, when you arrive. It's usually &#8369;700&ndash;1,000, depending on how many people and for how long. There's a &#8369;50 entrance fee for people passing through to the beach.</p></details>
-        <details><summary>Can we just walk in?</summary><p>Yes - walk-ins are always welcome when we have a room available, at the same rates.</p></details>
+        <details><summary>Can we just walk in?</summary><p>Yes - walk-ins are always welcome when we have a room free, at the same rates.</p></details>
       </div>
     </div>
   </section>
@@ -571,22 +562,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="wrap">
       <p class="kick rv">Find us</p>
       <div class="cols" style="margin-top:10px">
-        <div class="rv"><h3>Where</h3><p>Sitio Alubihod, Brgy. Poblacion, Nueva Valencia, Guimaras, Philippines</p><a class="ln" href="https://www.google.com/maps/search/?api=1&query=California+Coral+Beach+Resort+Alubihod+Guimaras" target="_blank" rel="noreferrer">Open the map &rarr;</a><a class="ln" href="#directions" id="dirLink" style="margin-left:18px">Get directions &rarr;</a></div>
+        <div class="rv"><h3>Where</h3><p>Sitio Alubihod, Brgy. Poblacion, Nueva Valencia, Guimaras, Philippines</p><a class="ln" href="https://www.google.com/maps/search/?api=1&query=California+Coral+Beach+Resort+Alubihod+Guimaras" target="_blank" rel="noreferrer">Open the map &rarr;</a></div>
         <div class="rv"><h3>Message us</h3><p>On Facebook, by text at 0927 727 0145, or by email at californiacoralbeachresort@gmail.com.</p><a class="ln" href="https://www.facebook.com/CaliforniaResort" target="_blank" rel="noreferrer">Facebook page &rarr;</a></div>
         <div class="rv"><h3>Day visitors</h3><p>Room guests pay no entrance fee. If you're only passing through to the beach, it's &#8369;50.</p></div>
       </div>
-      <details class="dirs" id="directions">
-        <summary>Get directions</summary>
-        <div class="dcols">
-          <div><h4>Travel directions</h4>
-            <p>In Iloilo, take a taxi to the Parola Wharf, buy a ticket to the Jordan Wharf in Guimaras for each person and sign the register.</p>
-            <p>After you get off the boat at the Jordan Wharf, go to the Tourism Table or Counter and ask about options for rides to the California Resort on Alubihod Beach. They will offer advice and help you.</p>
-            <p>Tricycles are the cheapest (about &#8369;400+) but not very comfortable for the 35-minute+ ride. The multi-cab is more comfortable than tricycles (about &#8369;800+), and you get the whole multi-cab, so you can stretch out. Multi-cabs might not always be available. The air-conditioned van is fast and comfortable (about &#8369;1,500+), and about a 25-minute ride. These rates are subject to change and may have increased.</p>
-            <p>When you arrive at the California Resort, go into the California Store to register, and they will take care of you.</p></div>
-          <div><h4>Driving directions</h4>
-            <p>Take the RORO from Iloilo to Guimaras. Turn left at the RORO gate. Drive about one kilometer and turn right onto the National Highway. Follow the highway (about 25 minutes) up to the top of the island, through the capitol (San Miguel), and on to the &ldquo;Alubihod Beach Area&rdquo; sign and turn right. Drive about 2 kilometers down to the beach area and turn right onto the dirt road. The Resort parking is about 200 meters on the left at the California Store.</p></div>
-        </div>
-      </details>
     </div>
   </section>
 </main>
@@ -919,6 +898,5 @@ setTimeout(send,3000);setTimeout(send,20000);setTimeout(send,75000);
 addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});addEventListener("pagehide",send);
 }catch(e){}})();
 </script>
-<script>(function(){var d=document.getElementById('directions'),l=document.getElementById('dirLink');if(d&&l)l.addEventListener('click',function(){d.open=true})})();</script>
 </body>
 </html>
