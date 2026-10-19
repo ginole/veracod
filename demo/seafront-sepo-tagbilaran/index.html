@@ -477,6 +477,8 @@ h2.sp,.lead,.pnote{text-align:center;margin-left:auto;margin-right:auto}
   body:has(.callbar) .hq-dock{bottom:76px}
   body:has(.callbar) .hq-center{top:36%}
   .bleed img{height:62svh}
+  /* 10-19：餐厅首屏没有订房条，内容整体下移一点；否则点导航跳回顶部时城市小标压进导航 2px（fitcheck） */
+  .hero-quiet:not(:has(.hq-dock)) .hq-center{top:46%}
 }
 @media(max-width:719px) and (max-height:700px){.hq-center .kick{display:none}}
 
