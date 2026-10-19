@@ -805,7 +805,7 @@ window.addEventListener('load',function(){
   /* Caption bars are cheap (one transform, fires once) so they run everywhere. */
   gsap.utils.toArray('.fig').forEach(function(f){
     var cap=f.querySelector('figcaption');
-    if(cap)gsap.fromTo(cap,{yPercent:110},{yPercent:0,duration:.7,ease:'power3.out',onStart:alive,
+    if(cap)gsap.fromTo(cap,{y:0,yPercent:110},{y:0,yPercent:0,duration:.7,ease:'power3.out',onStart:alive,
       scrollTrigger:{trigger:f,start:'top 78%'}});});
 
   /* Everything scrub-driven is desktop-only. Measured across 23 award-winning restaurant
