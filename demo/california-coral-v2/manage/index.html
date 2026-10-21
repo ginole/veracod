@@ -138,6 +138,8 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .disc label.off{opacity:.5;cursor:default}
 .disc input{width:22px;height:22px;flex:none;accent-color:var(--teal);margin:0}
 .disc em{display:block;font-style:normal;font-size:14px;font-weight:500;color:var(--dim);margin-top:2px}
+.snr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;padding:10px 14px;border:2px dashed var(--line);border-radius:12px;font-size:15px;font-weight:600;color:var(--ink2);transition:opacity .2s}.snr.off{opacity:.4}.snr .stp2{display:flex;align-items:center;gap:12px;flex:none}.snr .stp2 b{font-size:20px;min-width:2ch;text-align:center;color:var(--ink)}.snr .stp2 button{width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--card);font-size:20px;font-weight:700;color:var(--ink)}.snr .stp2 button:disabled{opacity:.35}
+.ck{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}.ck .lab{font-size:15px;font-weight:700;color:var(--ink2);margin:0}.ck .snr{margin-top:8px}.ck .go:disabled{opacity:.35;cursor:default}
 .duebox{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:16px;color:var(--ink2)}.duebox b{color:var(--ink);white-space:nowrap}
 /* requests (先申请模式) */
 .reqc .when{margin-top:0}
@@ -395,27 +397,30 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
       '<label style="margin-top:16px">Discount (only one per stay)</label><div class="disc" id="disc">'+
         '<label><input type="radio" name="dk" value="none" checked><span>No discount</span></label>'+
         '<label id="dPromo"><input type="radio" name="dk" value="promo"><span>Special offer<em id="dPromoT"></em></span></label>'+
-        '<label><input type="radio" name="dk" value="senior"><span>Senior or PWD 20%<em id="dSenT">With their ID and Senior or PWD card</em></span></label>'+
+        '<label><input type="radio" name="dk" value="senior"><span>Senior or PWD 20%<em id="dSenT">20% off each card holder\u2019s share</em></span></label>'+
       '</div>'+
+      '<div class="snr off" id="snr"><span>How many have a Senior or PWD card</span><div class="stp2"><button type="button" id="sm">\u2212</button><b id="sc">1</b><button type="button" id="sp">+</button></div></div>'+
       '<div class="duebox"><span id="dueL">Due at check-in</span><b id="dueV"></b></div>'+
       '<div class="stack"><button class="big go" id="doBlock">Mark as booked</button><button class="big soft" id="cancel">Not now</button></div>');
     document.getElementById('cancel').onclick=close;
-    var gmax=cur==='b'?2:5,gc=2,ain=key(a),aout=key(out);
+    var gmax=cur==='b'?2:5,gc=2,sc=1,ain=key(a),aout=key(out);
     function dk(){return (document.querySelector('input[name=dk]:checked')||{}).value||'none'}
     function upd(){
       var po=priceManual(cur,ain,aout,gc,'promo'),pi=document.querySelector('input[name=dk][value=promo]'),pl=document.getElementById('dPromo');
       var can=!!ACTIVE&&po.discount>0;pi.disabled=!can;pl.classList.toggle('off',!can);if(!can&&pi.checked)document.querySelector('input[name=dk][value=none]').checked=true;
       document.getElementById('dPromoT').textContent=!ACTIVE?'The offer is off right now':can?peso(po.discount)+' off ('+ACTIVE.pct+'% off '+po.q+' night'+(po.q>1?'s':'')+')':'Doesn\u2019t apply to these nights';
-      var k=dk(),pr=priceManual(cur,ain,aout,gc,k),ps=priceManual(cur,ain,aout,gc,'senior');
+      var k=dk(),pr=priceManual(cur,ain,aout,gc,k,sc);
       /* 说明文字不随选中变化，弹层高度不变（Gino 10-15：切换时跳动） */
-      document.getElementById('dSenT').textContent=peso(ps.discount)+' off (one guest’s share) · with their card';
+      document.getElementById('snr').classList.toggle('off',k!=='senior');document.getElementById('sc').textContent=sc;document.getElementById('sm').disabled=sc<=1;document.getElementById('sp').disabled=sc>=gc;
       document.getElementById('dueV').textContent=peso(pr.total)+(pr.discount?' (\u2212'+peso(pr.discount)+')':'')}
-    function gset(v){gc=Math.max(1,Math.min(gmax,v));document.getElementById('gc').textContent=gc;upd()}
+    function gset(v){gc=Math.max(1,Math.min(gmax,v));sc=Math.min(sc,gc);document.getElementById('gc').textContent=gc;upd()}
+    function sset(v){sc=Math.max(1,Math.min(gc,v));document.querySelector('input[name=dk][value=senior]').checked=true;upd()}
+    document.getElementById('sm').onclick=function(){sset(sc-1)};document.getElementById('sp').onclick=function(){sset(sc+1)};
     document.getElementById('gm').onclick=function(){gset(gc-1)};document.getElementById('gp').onclick=function(){gset(gc+1)};
         document.getElementById('disc').addEventListener('change',upd);upd();
     document.getElementById('doBlock').onclick=function(){
       var btn=this;btn.disabled=true;
-      api('/owner/block',{room:cur,'in':ain,out:aout,guests:gc,name:document.getElementById('gname').value.trim(),discount:dk(),seniors:dk()==='senior'?1:0}).then(function(){close();return load()}).then(function(){toast('Done. The website now shows these nights as taken.')})
+      api('/owner/block',{room:cur,'in':ain,out:aout,guests:gc,name:document.getElementById('gname').value.trim(),discount:dk(),seniors:dk()==='senior'?sc:0}).then(function(){close();return load()}).then(function(){toast('Done. The website now shows these nights as taken.')})
         .catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)});
     };
   }
@@ -423,19 +428,32 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   var DNAME={promo:'Special offer',senior:'Senior or PWD 20%'};
   function addK(k,n){return key(add(parse(k),n))}
   function promoQ(p,a,b){var q=0;for(var d=a;d<b;d=addK(d,1)){if(d<p.from||d>p.to)continue;if(p.skipSat&&parse(d).getDay()===6)continue;q++}return q}
-  function priceManual(room,a,b,g,kind){var t=roomOf(room).type,rate=RATES[t],n=Math.round((parse(b)-parse(a))/864e5),full=n*(rate+Math.max(0,g-2)*RATES.extra),off=0,q=0;
+  function priceManual(room,a,b,g,kind,sn){var t=roomOf(room).type,rate=RATES[t],n=Math.round((parse(b)-parse(a))/864e5),full=n*(rate+Math.max(0,g-2)*RATES.extra),off=0,q=0;
     if(kind==='promo'&&ACTIVE){q=promoQ(ACTIVE,a,b);if(q>=ACTIVE.minNights)off=Math.round(ACTIVE.pct/100*rate*q)}
-    else if(kind==='senior')off=Math.round(SENIOR/100*(full/g)*1);
+    else if(kind==='senior')off=Math.round(SENIOR/100*(full/g)*Math.min(sn||1,g));
     return {full:full,discount:off,total:full-off,q:q}}
   function showBooking(b){
-    var n=nights(b),paidB=b.status==='paid';
+    var n=nights(b),paidB=b.status==='paid',ckOk=(paidB||b.status==='you')&&b.g>0;
     open('<h3>'+esc(b.name)+'</h3><p class="sub">'+roomOf(b.room).name+' \u00b7 '+stay(b)+' \u00b7 '+n+' night'+(n>1?'s':'')+'</p>'+
       '<p style="margin:0 0 6px">'+(b.status==='conflict'?'This guest paid a '+peso(b.deposit)+' deposit by '+esc(b.via)+', but by the time the payment came in, those nights had been taken. Please refund the deposit from your PayMongo account and let them know. ':'')+(b.status==='conflict'?'':paidB?'Paid a '+peso(deposit(b))+' deposit online by '+b.via+'. '+peso(total(b)-deposit(b))+' is due at check-in.':'You added this booking. '+peso(total(b))+' is due at check-in.')+'</p>'+
       (b.discount?'<p style="margin:0 0 6px;color:var(--ink2)">'+(DNAME[b.dtype]||'Discount')+': '+peso(b.discount)+' off (already taken off the total).</p>':'')+
       '<p style="margin:0;color:var(--ink2)">'+(b.g?b.g+' guest'+(b.g>1?'s':'')+' \u00b7 ':'')+'Contact: '+esc(b.contact)+'</p>'+
+      (ckOk?'<div class="ck"><p class="lab">At check-in: Senior or PWD 20%</p>'+(b.dtype==='promo'?'<p style="margin:6px 0 0;color:var(--ink2)">This stay already has the special offer, so it can\u2019t also get the Senior or PWD discount (one discount per stay).</p>':
+        '<div class="snr"><span>How many have a Senior or PWD card</span><div class="stp2"><button type="button" id="km">\u2212</button><b id="kc"></b><button type="button" id="kp">+</button></div></div>'+
+        '<div class="duebox"><span>Due at check-in</span><b id="kDue"></b></div><div class="stack" style="margin-top:12px"><button class="big go" id="kSave">Save</button></div>')+'</div>':'')+
       '<div class="stack"><button class="big danger" id="del">'+(b.status==='conflict'?'I’ve refunded it – remove':paidB?'Cancel this booking':'Remove this booking')+'</button><button class="big soft" id="cl">Close</button></div>');
     document.getElementById('cl').onclick=close;
     document.getElementById('del').onclick=function(){confirmCancel(b)};
+    if(ckOk&&b.dtype!=='promo'){
+      /* 入住时登记几位老人/残障：原价 = 现总价 + 现折扣（不受之后改房价影响）；和 worker.js /api/owner/checkin 同一算法 */
+      var full=b.total+(b.discount||0),per=SENIOR/100*full/b.g,k0=b.dtype==='senior'&&per>0?Math.round(b.discount/per):0,kc=k0;
+      var kupd=function(){var off=Math.round(per*kc);document.getElementById('kc').textContent=kc;document.getElementById('km').disabled=kc<=0;document.getElementById('kp').disabled=kc>=b.g;
+        document.getElementById('kDue').textContent=peso(full-off-deposit(b))+(off?' (\u2212'+peso(off)+')':'');document.getElementById('kSave').disabled=kc===k0};
+      document.getElementById('km').onclick=function(){kc=Math.max(0,kc-1);kupd()};document.getElementById('kp').onclick=function(){kc=Math.min(b.g,kc+1);kupd()};kupd();
+      document.getElementById('kSave').onclick=function(){var btn=this;btn.disabled=true;
+        api('/owner/checkin',{id:b.id,seniors:kc}).then(function(j){close();return load().then(function(){toast('Saved. Due at check-in: '+peso(j.total-deposit(b))+'.')})})
+          .catch(function(e){btn.disabled=false;if(e.message!=='auth')toast(e.message)})};
+    }
   }
   function confirmCancel(b){
     var paidB=b.status==='paid';
