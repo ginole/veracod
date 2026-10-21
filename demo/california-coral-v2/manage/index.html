@@ -141,6 +141,24 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
 .snr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;padding:10px 14px;border:2px dashed var(--line);border-radius:12px;font-size:15px;font-weight:600;color:var(--ink2);transition:opacity .2s}.snr.off{opacity:.4}.snr .stp2{display:flex;align-items:center;gap:12px;flex:none}.snr .stp2 b{font-size:20px;min-width:2ch;text-align:center;color:var(--ink)}.snr .stp2 button{width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--card);font-size:20px;font-weight:700;color:var(--ink)}.snr .stp2 button:disabled{opacity:.35}
 .ck{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}.ck .lab{font-size:15px;font-weight:700;color:var(--ink2);margin:0}.ck .snr{margin-top:8px}.ck .go:disabled{opacity:.35;cursor:default}
 .duebox{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:16px;color:var(--ink2)}.duebox b{color:var(--ink);white-space:nowrap}
+/* gallery（10-21）：店主加图/视频、排序、撤下；客人投稿先在这里过一遍 */
+.gbtns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.gbtns label,.gbtns button{display:flex;align-items:center;justify-content:center;text-align:center;border-radius:12px;padding:16px 10px;font-size:16px;font-weight:600;cursor:pointer;margin:0;position:relative}
+.gbtns input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.ggrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:4px}
+.ggrid button{position:relative;aspect-ratio:1;border:0;padding:0;border-radius:10px;overflow:hidden;background:#E7E2D6 center/cover no-repeat}
+.ggrid button i{position:absolute;right:6px;bottom:6px;width:30px;height:30px;border-radius:50%;background:rgba(14,42,48,.75);display:grid;place-items:center}
+.ggrid button i::after{content:"";margin-left:3px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ggrid button b{position:absolute;left:6px;top:6px;background:rgba(14,42,48,.75);color:#fff;font-size:11px;font-weight:600;padding:3px 7px;border-radius:99px}
+.gwait{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:start}
+.gwait .ph{aspect-ratio:1;border-radius:10px;background:#E7E2D6 center/cover no-repeat}
+.gwait .who{margin:0;font-weight:600}
+.gwait .row2{grid-column:1/-1;margin-top:4px}
+.gprev{width:100%;max-height:42vh;object-fit:contain;border-radius:12px;background:#F1EDE4;display:block;margin-bottom:14px}
+.gmove{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gmove button{padding:13px 6px;font-size:15px}
+.gmove button:disabled{opacity:.35;cursor:default}
+.gprog{font-size:15px;font-weight:600;color:var(--teal);margin:10px 4px 6px;min-height:1.4em}
 /* requests (先申请模式) */
 .reqc .when{margin-top:0}
 .reqc .line{display:flex;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin-top:4px;font-size:15px;color:var(--ink2)}
@@ -228,6 +246,18 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   <div class="sites" id="sites"></div>
   <button class="more" id="syncNow" style="margin-bottom:6px">Check the other sites now</button>
 
+  <h2>Gallery</h2>
+  <div class="how">These show on the Gallery page of your website. New photos go to the front. Tap a photo to change its caption, move it, or take it off.</div>
+  <div id="gWait"></div>
+  <div class="gbtns">
+    <label class="big go" for="gFile">Add photos<input type="file" id="gFile" accept="image/*" multiple></label>
+    <button class="big soft" id="gVid" type="button">Add a video</button>
+  </div>
+  <p class="gprog" id="gProg"></p>
+  <div class="ggrid" id="gGrid"></div>
+  <p class="note" id="gUse"></p>
+  <p style="margin:6px 4px 0"><a href="../gallery/" target="_blank" style="color:var(--teal);font-weight:600">See your Gallery page &rarr;</a></p>
+
   <h2>Your records</h2>
   <button class="dl" id="dl">Download all bookings<span>Opens in Excel or Google Sheets</span></button>
   <p style="text-align:center;margin:26px 0 0;display:flex;justify-content:center;gap:28px"><button id="chpw" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Change password</button><button id="out" style="border:0;background:none;color:var(--dim);text-decoration:underline;font-size:15px">Sign out</button></p>
@@ -255,7 +285,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   function peso(n){return '\u20B1'+Math.round(n).toLocaleString('en-US')}
   function nights(b){return Math.round((parse(b.out)-parse(b.in))/864e5)}
   function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-  var S=[];
+  var S=[],gOnce=false;
   function roomOf(id){return ROOMS.find(function(r){return r.id===id})}
   function total(b){return b.total}
   function deposit(b){return b.status==='paid'?b.deposit:0}
@@ -265,7 +295,7 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   function load(){return api('/owner/bookings').then(function(j){
     today=parse(j.today); /* 用度假村那边（菲律宾）的今天，他人在加州也不会错一天 */
     S=j.bookings.map(function(b){return {id:b.id,room:b.room,'in':b.ci,out:b.co,g:b.guests,name:b.name||'Guest',contact:b.email||b.contact,status:b.status,via:b.via,total:b.total,discount:b.discount||0,dtype:b.discount_type||'',deposit:b.deposit,created:b.created}});
-    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';RATES=j.rates||RATES;ACTIVE=j.activePromo||null;SENIOR=j.seniorPct||20;REQ=j.requests||[];reqs(j.mode);lists();cal();sites(j.ical||{});promoFill(j.promo);ratesFill();if(j.mustChange&&!mustCh){mustCh=true;changePw(true)}})
+    document.getElementById('login').style.display='none';document.getElementById('app').style.display='';RATES=j.rates||RATES;ACTIVE=j.activePromo||null;SENIOR=j.seniorPct||20;REQ=j.requests||[];reqs(j.mode);lists();cal();sites(j.ical||{});promoFill(j.promo);ratesFill();if(!gOnce){gOnce=true;gLoad()}if(j.mustChange&&!mustCh){mustCh=true;changePw(true)}})
     .catch(function(e){if(e.message!=='auth')toast(e.message)})}
   function ago(t){if(!t)return 'not checked yet';var m=Math.round((Date.now()-t)/60000);return m<1?'checked just now':m<60?'checked '+m+' min ago':'checked '+Math.round(m/60)+' h ago'}
   function sites(IC){
@@ -514,6 +544,61 @@ h2{font:500 28px/1.1 var(--display);margin:32px 4px 12px}
   var tt;function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2600)}
   if(tok())load();else showLogin();
   setInterval(function(){if(tok()&&document.visibilityState==='visible'&&!document.body.classList.contains('open'))load()},60000);
+  /* ---------- gallery（10-21） ---------- */
+  var G=[],gBusy=false,gBlobs={};
+  function gSrc(x){return x.status==='pending'?(gBlobs[x.id]||''):x.src}
+  function mb(n){return n>=1e9?(n/1e9).toFixed(1)+' GB':Math.max(1,Math.round(n/1e6))+' MB'}
+  /* 客人的待审照片不公开：带口令取回来，在本地显示 */
+  function gFetchPending(x){if(gBlobs[x.id])return Promise.resolve();return fetch(x.src,{headers:{Authorization:'Bearer '+tok()}}).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){gBlobs[x.id]=URL.createObjectURL(b)}).catch(function(){})}
+  function gLoad(){return api('/owner/gallery').then(function(j){G=j.items||[];
+    var waits=G.filter(function(x){return x.status==='pending'});
+    return Promise.all(waits.map(gFetchPending)).then(function(){gDraw(j)})}).catch(function(e){if(e.message!=='auth')document.getElementById('gUse').textContent='The gallery couldn’t load. Please refresh the page.'})}
+  function gDraw(j){
+    var live=G.filter(function(x){return x.status==='live'}),waits=G.filter(function(x){return x.status==='pending'});
+    document.getElementById('gWait').innerHTML=waits.length?'<h3 class="later-h" style="margin-top:0">Guest photos waiting for you ('+waits.length+')</h3>'+waits.map(function(x){return '<div class="card attn"><div class="gwait"><div class="ph" style="background-image:url(\''+gSrc(x)+'\')"></div><div><p class="who">From '+esc(x.credit||'a guest')+'</p><p class="note" style="margin-top:4px">'+(x.caption?esc(x.caption):'No caption')+'</p></div>'+
+      '<div class="row2"><button class="big go" data-ok="'+x.id+'">Put on website</button><button class="big soft" data-no="'+x.id+'">Decline</button></div></div></div>'}).join(''):'';
+    document.getElementById('gGrid').innerHTML=live.map(function(x){var bg=x.src?'background-image:url(\''+esc(x.thumb||x.src)+'\')':'background:var(--ink)';
+      return '<button type="button" data-g="'+x.id+'" style="'+bg+'" aria-label="'+esc(x.caption||(x.kind==='video'?'Video':'Photo'))+'">'+(x.source==='guest'?'<b>Guest</b>':'')+(x.kind==='video'?'<i></i>':'')+'</button>'}).join('')||'<p class="empty" style="grid-column:1/-1">No photos yet.</p>';
+    var free=j.store==='r2'?'about 10 GB':'about 500 MB';
+    document.getElementById('gUse').textContent=live.length+' on your website · using '+mb(j.usedBytes||0)+' of '+free+' free storage';
+  }
+  document.getElementById('gWait').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    if(b.dataset.ok){b.disabled=true;api('/owner/gallery/edit',{id:b.dataset.ok,status:'live'}).then(gLoad).then(function(){toast('It’s on your Gallery page now.')}).catch(function(e){b.disabled=false;if(e.message!=='auth')toast(e.message)})}
+    if(b.dataset.no){var id=b.dataset.no;open('<h3>Decline this photo?</h3><p class="sub">It won’t go on your website, and it’s deleted.</p><div class="stack"><button class="big danger" id="gy">Yes, decline it</button><button class="big soft" id="gk">Keep it for now</button></div>');
+      document.getElementById('gk').onclick=close;document.getElementById('gy').onclick=function(){this.disabled=true;api('/owner/gallery/edit',{id:id,status:'declined'}).then(function(){close();return gLoad()}).then(function(){toast('Declined.')}).catch(function(e){if(e.message!=='auth')toast(e.message);close()})}}
+  });
+  document.getElementById('gGrid').addEventListener('click',function(e){var b=e.target.closest('button[data-g]');if(!b)return;
+    var live=G.filter(function(x){return x.status==='live'}),i=live.findIndex(function(x){return x.id===b.dataset.g}),x=live[i];if(!x)return;
+    open((x.src?'<img class="gprev" src="'+esc(x.src)+'" alt="">':'')+(x.kind==='video'?'<h3>Video</h3>':'')+
+      (x.source==='guest'?'<p class="sub">Photo by '+esc(x.credit||'a guest')+'</p>':'')+
+      '<label for="gCap" style="margin-top:6px">Caption</label><input id="gCap" maxlength="140" value="'+esc(x.caption)+'" placeholder="e.g. Sunset from the balcony">'+
+      '<label style="margin-top:16px">Position in the gallery</label><div class="gmove"><button class="big soft" id="gF"'+(i===0?' disabled':'')+'>To front</button><button class="big soft" id="gU"'+(i===0?' disabled':'')+'>Earlier</button><button class="big soft" id="gD"'+(i===live.length-1?' disabled':'')+'>Later</button></div>'+
+      '<div class="stack"><button class="big go" id="gS">Save caption</button><button class="big danger" id="gR">Take it off the website</button><button class="big soft" id="gC">Close</button></div>');
+    document.getElementById('gC').onclick=close;
+    var mv=function(m){api('/owner/gallery/edit',{id:x.id,move:m}).then(function(){close();return gLoad()}).then(function(){toast('Moved.')}).catch(function(e){if(e.message!=='auth')toast(e.message)})};
+    document.getElementById('gF').onclick=function(){mv('first')};document.getElementById('gU').onclick=function(){mv('up')};document.getElementById('gD').onclick=function(){mv('down')};
+    document.getElementById('gS').onclick=function(){var t=this;t.disabled=true;api('/owner/gallery/edit',{id:x.id,caption:document.getElementById('gCap').value}).then(function(){close();return gLoad()}).then(function(){toast('Saved.')}).catch(function(e){t.disabled=false;if(e.message!=='auth')toast(e.message)})};
+    document.getElementById('gR').onclick=function(){open('<h3>Take this off the website?</h3><p class="sub">'+(x.kind==='video'?'The video stays on Facebook or YouTube. It just won’t show in your gallery.':'The photo is removed from your Gallery page and deleted.')+'</p><div class="stack"><button class="big danger" id="gy">Yes, take it off</button><button class="big soft" id="gk">Keep it</button></div>');
+      document.getElementById('gk').onclick=close;document.getElementById('gy').onclick=function(){this.disabled=true;api('/owner/gallery/delete',{id:x.id}).then(function(){close();return gLoad()}).then(function(){toast('Taken off the website.')}).catch(function(e){if(e.message!=='auth')toast(e.message);close()})}};
+  });
+  /* 加照片：浏览器里缩到长边 2000px 的 JPG，一张一张传 */
+  function gShrink(f){return new Promise(function(res,rej){
+    var draw=function(src,w,h){var cv=function(L){var k=Math.min(1,L/Math.max(w,h)),c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);c.getContext('2d').drawImage(src,0,0,c.width,c.height);return c},c=cv(2000),t=cv(800);c.toBlob(function(b){if(!b)return rej();t.toBlob(function(tb){res({blob:b,thumb:tb,w:c.width,h:c.height})},'image/jpeg',.8)},'image/jpeg',.86)};
+    var viaImg=function(){var u=URL.createObjectURL(f),im=new Image();im.onload=function(){draw(im,im.naturalWidth,im.naturalHeight);URL.revokeObjectURL(u)};im.onerror=function(){rej()};im.src=u};
+    if(window.createImageBitmap)createImageBitmap(f,{imageOrientation:'from-image'}).then(function(b){draw(b,b.width,b.height)}).catch(viaImg);else viaImg()})}
+  document.getElementById('gFile').addEventListener('change',function(){var files=[].slice.call(this.files),i=0,done=0,bad=0,prog=document.getElementById('gProg');this.value='';if(!files.length||gBusy)return;gBusy=true;
+    (function next(){
+      if(i>=files.length){gBusy=false;prog.textContent='';gLoad().then(function(){toast(done?(done>1?done+' photos added.':'Photo added.')+(bad?' '+bad+' couldn’t be read.':''):'That file couldn’t be read. Please choose a JPG or PNG.')});return}
+      prog.textContent='Adding '+(i+1)+' of '+files.length+'…';
+      gShrink(files[i]).then(function(s){var fd=new FormData();fd.append('photo',s.blob,'photo.jpg');if(s.thumb)fd.append('thumb',s.thumb,'thumb.jpg');fd.append('w',s.w);fd.append('h',s.h);
+        return fetch(API+'/owner/gallery/upload',{method:'POST',headers:{Authorization:'Bearer '+tok()},body:fd}).then(function(r){if(r.status===401){showLogin();throw new Error('auth')}return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'');return j})})})
+        .then(function(){done++},function(e){if(e&&e.message==='auth'){i=files.length;return}bad++}).then(function(){i++;next()})})()});
+  document.getElementById('gVid').onclick=function(){
+    open('<h3>Add a video</h3><p class="sub">Post the video on your Facebook page or YouTube first. Then copy its link and paste it here.</p><label for="vUrl">Video link</label><input id="vUrl" inputmode="url" placeholder="https://www.facebook.com/…">'+
+      '<label for="vCap" style="margin-top:14px">Caption (if you like)</label><input id="vCap" maxlength="140"><p class="note" id="vErr" style="color:var(--coral);min-height:1.4em"></p><div class="stack" style="margin-top:8px"><button class="big go" id="vAdd">Add to gallery</button><button class="big soft" id="vNo">Not now</button></div>');
+    document.getElementById('vNo').onclick=close;
+    document.getElementById('vAdd').onclick=function(){var t=this;t.disabled=true;api('/owner/gallery/video',{url:document.getElementById('vUrl').value,caption:document.getElementById('vCap').value}).then(function(){close();return gLoad()}).then(function(){toast('Video added.')}).catch(function(e){t.disabled=false;if(e.message!=='auth')document.getElementById('vErr').textContent=e.message})};
+  };
 })();
 </script>
 </body>

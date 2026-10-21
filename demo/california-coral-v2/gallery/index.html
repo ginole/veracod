@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gallery — California Coral Beach Resort</title>
+<meta name="description" content="Photos and videos of California Coral Beach Resort on Alubihod Beach, Guimaras, from the resort and from our guests.">
+<meta property="og:title" content="Gallery — California Coral Beach Resort">
+<meta property="og:image" content="https://veracod.com/demo/california-coral-v2/img/og.jpg">
+<link rel="icon" href="../img/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* 相册页（10-21）。照片从 cc.veracod.com/api/gallery 来（店主在管理页加/删/排序、审客人投稿）；接口拿不到就用下面 FALLBACK 的网站自带照片。 */
+:root{
+  --sand:#F6F2EA; --sand2:#E9F2F1; --ink:#0E2A30; --ink2:#36535A; --dim:#6F8A8F;
+  --lagoon:#0E8791; --clay:#E0612E; --rule:#D6E3E2;
+  --display:'Cormorant Garamond',Georgia,serif; --body:'Jost',system-ui,sans-serif; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}html{overflow-x:clip}
+body{margin:0;background:var(--sand);color:var(--ink);font:300 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--display);font-weight:300;margin:0;letter-spacing:-.01em;line-height:1.04}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.kick{font:500 11px/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--lagoon)}
+
+header{position:sticky;top:0;z-index:40;background:rgba(246,242,234,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+header nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,3vw,44px)}
+.logo{font:400 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.logo i{display:block;font:500 9px/1 var(--body);letter-spacing:.32em;font-style:normal;margin-top:6px;opacity:.8}
+.nr{display:flex;align-items:center;gap:clamp(14px,3vw,34px)}
+.back{font:400 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.navbook{background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;padding:13px 18px;white-space:nowrap}
+@media(max-width:620px){.back{display:none}}
+
+.head{padding:clamp(54px,9vw,110px) 0 clamp(26px,4vw,44px)}
+.head h1{font-size:clamp(46px,7vw,96px);margin:18px 0 14px}
+.head p.sub{color:var(--ink2);max-width:46ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(26px,4vw,40px)}
+.chips button{border:1px solid var(--rule);background:transparent;border-radius:99px;padding:9px 16px;font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);transition:background .25s,color .25s,border-color .25s}
+.chips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--sand)}
+.chips button span{opacity:.6;margin-left:4px}
+
+/* 瀑布流：手机 2 列，平板 3 列，宽屏 4 列。脚本按顺序把每张放进当前最矮的一列，所以店主排的先后是从左到右读的 */
+.grid{display:flex;align-items:flex-start;gap:8px;padding-bottom:clamp(60px,8vw,110px)}
+.grid .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+@media(min-width:760px){.grid,.grid .col{gap:14px}}
+.tile{position:relative;display:block;width:100%;padding:0;border:0;background:var(--sand2);overflow:hidden;text-align:left}
+.tile img{width:100%;height:auto;opacity:0;transform:scale(1.02);transition:opacity .8s var(--ease),transform 1.2s var(--ease)}
+.tile img.in{opacity:1;transform:none}
+@media(hover:hover){.tile:hover img.in{transform:scale(1.03)}}
+.tile .tag{position:absolute;left:8px;bottom:8px;background:rgba(14,42,48,.72);color:#fff;font:500 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;padding:7px 9px;border-radius:2px;max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile .play{position:absolute;inset:0;display:grid;place-items:center}
+.tile .play i{width:58px;height:58px;border-radius:50%;background:rgba(246,242,234,.92);display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.tile .play i::after{content:"";margin-left:4px;border-left:16px solid var(--ink);border-top:10px solid transparent;border-bottom:10px solid transparent}
+.tile.vid.nothumb{aspect-ratio:16/10;background:var(--ink)}
+.tile.vid.nothumb .cap{position:absolute;left:14px;right:14px;top:14px;color:var(--sand);font:400 18px/1.2 var(--display)}
+.empty{color:var(--dim);padding:20px 0 80px}
+
+/* 客人投稿 */
+.share{background:var(--sand2);padding:clamp(70px,10vw,130px) 0}
+.share .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(30px,6vw,90px);align-items:start}
+@media(max-width:860px){.share .in{grid-template-columns:minmax(0,1fr)}}
+.share h2{font-size:clamp(38px,5vw,66px);margin:16px 0 16px}
+.share .lead p{color:var(--ink2);max-width:42ch}
+.share .lead p+p{margin-top:12px}
+form.card{background:#fff;padding:clamp(20px,3vw,34px);box-shadow:0 1px 2px rgba(14,42,48,.05),0 20px 50px rgba(14,42,48,.07)}
+.drop{display:grid;place-items:center;text-align:center;gap:6px;border:1.5px dashed #B9CFCD;padding:26px 16px;cursor:pointer;transition:border-color .25s,background .25s}
+.drop:hover,.drop.over{border-color:var(--lagoon);background:#F4FAF9}
+.drop b{font:400 24px/1.1 var(--display);color:var(--ink)}
+.drop small{color:var(--dim);font-size:14px}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:10px}
+.thumbs:empty{display:none}
+.thumbs div{position:relative;aspect-ratio:1;background:var(--sand2) center/cover no-repeat}
+.thumbs button{position:absolute;top:3px;right:3px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(14,42,48,.75);color:#fff;font-size:15px;line-height:1;padding:0}
+label.l{display:block;font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--ink2);margin:22px 0 8px}
+input.t{width:100%;min-width:0;border:0;border-bottom:1.5px solid var(--rule);padding:10px 0;font:300 17px/1.4 var(--body);background:transparent;outline:none;color:var(--ink);border-radius:0}
+input.t:focus{border-bottom-color:var(--lagoon)}
+.ok{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:15px;color:var(--ink2);line-height:1.5;cursor:pointer}
+.ok input{width:20px;height:20px;flex:none;margin:2px 0 0;accent-color:var(--lagoon)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.send{margin-top:24px;width:100%;border:0;background:var(--lagoon);color:#fff;font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:18px;transition:opacity .25s}
+.send:disabled{opacity:.45;cursor:default}
+.msg{margin-top:14px;font-size:15px;min-height:1.5em;color:var(--ink2)}
+.msg.err{color:var(--clay)}
+.done{text-align:center;padding:30px 10px}
+.done h3{font-size:34px;margin-bottom:10px}
+.done p{color:var(--ink2)}
+.done button{margin-top:18px;border:0;background:none;color:var(--lagoon);font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid currentColor;padding:0 0 5px}
+
+footer{background:var(--ink);color:rgba(246,242,234,.72);padding:44px 0 40px;font-size:13.5px}
+footer .cols{display:flex;justify-content:space-between;gap:16px 30px;flex-wrap:wrap}
+footer a{text-decoration:underline;text-underline-offset:3px}
+
+/* 大图 */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(9,27,31,.985);display:none;flex-direction:column;color:var(--sand)}
+.lb.on{display:flex}
+.lb .bar{display:flex;justify-content:space-between;align-items:center;padding:14px clamp(14px,3vw,30px);font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+.lb .x{width:44px;height:44px;border:0;background:none;color:var(--sand);font-size:30px;line-height:1;padding:0}
+.lb .stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(8px,6vw,90px);position:relative;touch-action:pan-y}
+.lb .stage img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.lb .stage .fr{width:min(100%,1100px);aspect-ratio:16/9;max-height:100%;background:#000}
+.lb .stage iframe{width:100%;height:100%;border:0;display:block}
+.lb .nv{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(246,242,234,.35);background:rgba(9,27,31,.4);color:var(--sand);font-size:22px;display:grid;place-items:center;padding:0}
+.lb .pv{left:clamp(8px,2vw,24px)}.lb .nx{right:clamp(8px,2vw,24px)}
+@media(max-width:620px){.lb .nv{display:none}}
+.lb .cap{padding:16px clamp(16px,3vw,30px) calc(20px + env(safe-area-inset-bottom));text-align:center;min-height:76px}
+.lb .cap b{display:block;font:300 22px/1.3 var(--display)}
+.lb .cap span{display:block;font-size:13px;opacity:.7;margin-top:4px}
+@media(prefers-reduced-motion:reduce){.tile img{transition:none;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a class="logo" href="../">California<i>Coral Beach Resort</i></a>
+    <div class="nr"><a class="back" href="../">&larr; Back to the website</a><a class="navbook" href="../#book">Book direct</a></div>
+  </nav>
+</header>
+
+<main>
+  <section class="head">
+    <div class="wrap">
+      <p class="kick">Gallery</p>
+      <h1>Photos &amp; videos</h1>
+      <p class="sub">From the resort, and from guests who have stayed with us on Alubihod Beach.</p>
+      <div class="chips" id="chips" role="group" aria-label="Show"></div>
+    </div>
+  </section>
+  <div class="wrap"><div class="grid" id="grid" aria-live="polite"></div></div>
+
+  <section class="share" id="share">
+    <div class="wrap in">
+      <div class="lead">
+        <p class="kick">Stayed with us?</p>
+        <h2>Share your photos.</h2>
+        <p>Send us your favourite photos from your stay. We look at every one, and the ones we choose go up here with your first name.</p>
+        <p>Up to five at a time. Please only send photos you took yourself.</p>
+      </div>
+      <form class="card" id="form" novalidate>
+        <div id="fBody">
+          <label class="drop" id="drop" for="file">
+            <b>Choose photos</b>
+            <small>or drag them here &middot; JPG or PNG</small>
+            <input type="file" id="file" accept="image/*" multiple>
+          </label>
+          <div class="thumbs" id="thumbs"></div>
+          <label class="l" for="name">Your first name</label>
+          <input class="t" id="name" maxlength="40" autocomplete="given-name">
+          <label class="l" for="cap">About the photos <span style="text-transform:none;letter-spacing:0;color:var(--dim)">(optional)</span></label>
+          <input class="t" id="cap" maxlength="140" placeholder="e.g. Sunset from the balcony">
+          <div class="hp" aria-hidden="true"><input id="website" tabindex="-1" autocomplete="off"></div>
+          <label class="ok"><input type="checkbox" id="consent"><span>I took these photos, and California Coral Beach Resort may show them on this website with my first name.</span></label>
+          <button class="send" id="send" type="submit" disabled>Send photos</button>
+          <p class="msg" id="msg"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <p>California Coral Beach Resort &middot; a small, family-run, accredited resort on Alubihod Beach, Guimaras.</p>
+    <p><a href="../">Home</a> &middot; <a href="../terms/">Booking terms</a> &middot; <a href="../privacy/">Privacy</a> &middot; Website by <a href="https://veracod.com/">Veracod</a></p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo">
+  <div class="bar"><span id="lbN"></span><button class="x" id="lbX" aria-label="Close">&times;</button></div>
+  <div class="stage" id="lbS"><button class="nv pv" id="lbP" aria-label="Previous">&larr;</button><button class="nv nx" id="lbNx" aria-label="Next">&rarr;</button></div>
+  <div class="cap" id="lbC"></div>
+</div>
+
+<script>
+(function(){
+  var API='https://cc.veracod.com';
+  var BASE='https://veracod.com/demo/california-coral-v2/img/';
+  /* 接口拿不到时用这组（和后台 gallery.js 的 SEED 一样） */
+  var FALLBACK=[['facade',2000,1333,'Three floors of arches between the coconut palms'],['day-balcony',2000,1332,'The balcony over the beach'],['seahorse',1600,900,'The Seahorse, our own outrigger boat'],['from-the-sand',1816,1482,'The resort at dusk, seen from the sand'],['day-islands',1600,1200,'One of the small islands across the bay'],['hero-resort',1600,960,'Blue arches and a red roof, on the white sand of Alubihod Beach'],['room-beachfront',1400,797,'The Beachfront Balcony Room'],['room-garden',849,1061,'A Garden Room'],['room-hillview',944,1180,'A Hillview Room'],['hero-sail',2000,1500,'A paraw with white sails pulled up on the beach'],['tour-boats',1600,1200,'A guest goes fishing from right in front of the resort'],['day-garden',692,930,'The garden path beside the resort'],['hero-arches',2000,1543,'Looking out to sea through the arches'],['boats',1024,768,'Boats of every kind stop in front of the resort'],['quote-palm',2000,1500,'The tallest coconut palm on Alubihod Beach'],['day-fire',1600,1200,'Evening on the beach']]
+    .map(function(a){return {id:'s-'+a[0],kind:'photo',src:BASE+a[0]+'.webp',thumb:BASE+'g/'+a[0]+'.webp',w:a[1],h:a[2],caption:a[3],credit:'',source:'resort'}});
+  var ALL=[],VIEW=[],F='all';
+  var grid=document.getElementById('grid'),chips=document.getElementById('chips');
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=e.target;io.unobserve(i);if(i.complete)i.classList.add('in');else i.onload=function(){i.classList.add('in')}}})},{rootMargin:'200px'}):null;
+
+  function draw(){
+    VIEW=ALL.filter(function(x){return F==='all'||(F==='video'?x.kind==='video':x.kind==='photo'&&x.source===F)});
+    if(!VIEW.length){grid.innerHTML='<p class="empty">Nothing here yet.</p>';return}
+    var tiles=VIEW.map(function(x,i){
+      var tag=x.source==='guest'?'<span class="tag">Photo by '+esc(x.credit||'a guest')+'</span>':'';
+      if(x.kind==='video'){
+        if(!x.src)return '<button class="tile vid nothumb" data-i="'+i+'" aria-label="Play video'+(x.caption?': '+esc(x.caption):'')+'"><span class="cap">'+esc(x.caption||'Video')+'</span><span class="play"><i></i></span></button>';
+        return '<button class="tile vid" data-i="'+i+'" aria-label="Play video'+(x.caption?': '+esc(x.caption):'')+'"><img src="'+esc(x.src)+'" alt="" width="480" height="360" loading="lazy"><span class="play"><i></i></span></button>';
+      }
+      return '<button class="tile" data-i="'+i+'" aria-label="Open photo'+(x.caption?': '+esc(x.caption):'')+'"><img src="'+esc(x.thumb||x.src)+'" alt="'+esc(x.caption)+'"'+(x.w&&x.h?' width="'+x.w+'" height="'+x.h+'"':'')+' loading="lazy" decoding="async">'+tag+'</button>';
+    });
+    var n=innerWidth>=1180?4:innerWidth>=760?3:2,cols=[],hs=[];for(var c=0;c<n;c++){cols.push([]);hs.push(0)}
+    VIEW.forEach(function(x,i){var r=x.kind==='video'?(x.src?.75:.625):(x.w&&x.h?x.h/x.w:.75),k=hs.indexOf(Math.min.apply(null,hs));cols[k].push(tiles[i]);hs[k]+=r+.03});
+    grid.innerHTML=cols.map(function(c){return '<div class="col">'+c.join('')+'</div>'}).join('');
+    grid.querySelectorAll('img').forEach(function(im){if(io)io.observe(im);else im.classList.add('in')});
+  }
+  function chipsDraw(){
+    var n={all:ALL.length,resort:0,guest:0,video:0};
+    ALL.forEach(function(x){if(x.kind==='video')n.video++;else n[x.source==='guest'?'guest':'resort']++});
+    var opts=[['all','All'],['resort','From the resort'],['guest','From our guests'],['video','Videos']].filter(function(o){return o[0]==='all'||n[o[0]]>0});
+    if(opts.length<3){chips.innerHTML='';return}   // 只有一类就不用筛
+    chips.innerHTML=opts.map(function(o){return '<button type="button" data-f="'+o[0]+'" aria-pressed="'+(F===o[0])+'">'+o[1]+'<span>'+n[o[0]]+'</span></button>'}).join('');
+  }
+  var lastN=0;addEventListener('resize',function(){var n=innerWidth>=1180?4:innerWidth>=760?3:2;if(n!==lastN&&ALL.length){lastN=n;draw()}});
+  chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;F=b.dataset.f;chipsDraw();draw()});
+  function set(items){ALL=items;chipsDraw();draw()}
+  set(FALLBACK);
+  fetch(API+'/api/gallery').then(function(r){return r.json()}).then(function(j){if(j&&j.items&&j.items.length)set(j.items)}).catch(function(){});
+
+  /* ---------- 大图 ---------- */
+  var lb=document.getElementById('lb'),lbS=document.getElementById('lbS'),cur=0,lastFocus=null;
+  function media(){var old=lbS.querySelector('img,.fr');if(old)old.remove();var x=VIEW[cur],el;
+    if(x.kind==='video'){el=document.createElement('div');el.className='fr';el.innerHTML='<iframe src="'+esc(x.video)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="'+esc(x.caption||'Video')+'"></iframe>'}
+    else{el=document.createElement('img');el.src=x.src;el.alt=x.caption||''}
+    lbS.insertBefore(el,lbS.firstChild);
+    document.getElementById('lbN').textContent=(cur+1)+' / '+VIEW.length;
+    document.getElementById('lbC').innerHTML=(x.caption?'<b>'+esc(x.caption)+'</b>':'')+(x.source==='guest'?'<span>Photo by '+esc(x.credit||'a guest')+'</span>':'');
+    var many=VIEW.length>1;document.getElementById('lbP').style.visibility=many?'':'hidden';document.getElementById('lbNx').style.visibility=many?'':'hidden'}
+  function openLb(i){cur=i;lastFocus=document.activeElement;media();lb.classList.add('on');document.body.style.overflow='hidden';document.getElementById('lbX').focus()}
+  function closeLb(){lb.classList.remove('on');var f=lbS.querySelector('.fr');if(f)f.remove();document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
+  function go(d){if(VIEW.length<2)return;cur=(cur+d+VIEW.length)%VIEW.length;media()}
+  grid.addEventListener('click',function(e){var t=e.target.closest('.tile');if(t)openLb(+t.dataset.i)});
+  document.getElementById('lbX').onclick=closeLb;document.getElementById('lbP').onclick=function(){go(-1)};document.getElementById('lbNx').onclick=function(){go(1)};
+  lbS.addEventListener('click',function(e){if(e.target===lbS)closeLb()});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')go(-1);else if(e.key==='ArrowRight')go(1)});
+  var sx=null;lbS.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lbS.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)go(dx<0?1:-1)});
+
+  /* ---------- 客人投稿：先在浏览器里缩到长边 2000px 的 JPG 再传 ---------- */
+  var file=document.getElementById('file'),thumbs=document.getElementById('thumbs'),send=document.getElementById('send'),msg=document.getElementById('msg'),drop=document.getElementById('drop'),PICK=[];
+  function ok(){send.disabled=!(PICK.length&&document.getElementById('name').value.trim()&&document.getElementById('consent').checked)}
+  function say(t,err){msg.textContent=t;msg.classList.toggle('err',!!err)}
+  function add(files){var skipped=0;[].slice.call(files).forEach(function(f){if(!/^image\//.test(f.type)&&!/\.(jpe?g|png|webp|heic)$/i.test(f.name)){skipped++;return}if(PICK.length<5)PICK.push(f);else skipped++});
+    thumbs.innerHTML='';PICK.forEach(function(f,i){var d=document.createElement('div');try{d.style.backgroundImage='url('+URL.createObjectURL(f)+')'}catch(e){}var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Remove');b.textContent='×';b.onclick=function(){PICK.splice(i,1);add([])};d.appendChild(b);thumbs.appendChild(d)});
+    say(skipped?(PICK.length>=5?'Up to five photos at a time.':'Some files weren’t photos and were left out.'):'');ok()}
+  file.addEventListener('change',function(){add(file.files);file.value=''});
+  ['dragenter','dragover'].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.add('over')})});
+  ['dragleave','drop'].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.remove('over')})});
+  drop.addEventListener('drop',function(e){if(e.dataTransfer&&e.dataTransfer.files)add(e.dataTransfer.files)});
+  document.getElementById('name').addEventListener('input',ok);document.getElementById('consent').addEventListener('change',ok);
+
+  function shrink(f){return new Promise(function(res,rej){
+    var draw=function(src,w,h){var cv=function(L){var k=Math.min(1,L/Math.max(w,h)),c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);c.getContext('2d').drawImage(src,0,0,c.width,c.height);return c},c=cv(2000),t=cv(800);c.toBlob(function(b){if(!b)return rej();t.toBlob(function(tb){res({blob:b,thumb:tb,w:c.width,h:c.height})},'image/jpeg',.8)},'image/jpeg',.86)};
+    if(window.createImageBitmap)createImageBitmap(f,{imageOrientation:'from-image'}).then(function(b){draw(b,b.width,b.height)}).catch(viaImg);else viaImg();
+    function viaImg(){var u=URL.createObjectURL(f),im=new Image();im.onload=function(){draw(im,im.naturalWidth,im.naturalHeight);URL.revokeObjectURL(u)};im.onerror=function(){rej()};im.src=u}
+  })}
+  document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();if(send.disabled)return;
+    var name=document.getElementById('name').value.trim(),cap=document.getElementById('cap').value.trim(),hp=document.getElementById('website').value,list=PICK.slice(),i=0,sent=0;
+    send.disabled=true;
+    (function next(){
+      if(i>=list.length){
+        if(!sent){send.disabled=false;return}
+        document.getElementById('fBody').style.display='none';
+        var d=document.createElement('div');d.className='done';d.innerHTML='<h3>Thank you, '+esc(name)+'!</h3><p>We’ve got your '+(sent>1?sent+' photos':'photo')+'. We’ll take a look, and the ones we choose will show up in the gallery.</p><button type="button">Send more photos</button>';
+        d.querySelector('button').onclick=function(){d.remove();PICK=[];add([]);document.getElementById('cap').value='';document.getElementById('fBody').style.display=''};
+        document.getElementById('form').appendChild(d);return}
+      say('Sending '+(i+1)+' of '+list.length+'…');
+      shrink(list[i]).then(function(s){var fd=new FormData();fd.append('photo',s.blob,'photo.jpg');if(s.thumb)fd.append('thumb',s.thumb,'thumb.jpg');fd.append('w',s.w);fd.append('h',s.h);fd.append('name',name);fd.append('caption',cap);fd.append('consent','1');fd.append('website',hp);
+        return fetch(API+'/api/gallery/submit',{method:'POST',body:fd}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'Something went wrong. Please try again.');return j})})})
+        .then(function(){sent++;i++;next()})
+        .catch(function(err){say(err&&err.message?err.message:'This photo couldn’t be read. Please choose a JPG or PNG.',true);PICK=list.slice(i);add([]);say(err&&err.message?err.message:'This photo couldn’t be read. Please choose a JPG or PNG.',true);if(sent){say('Sent '+sent+'. '+msg.textContent,true)}send.disabled=false})
+    })();
+  });
+})();
+</script>
+</body>
+</html>
