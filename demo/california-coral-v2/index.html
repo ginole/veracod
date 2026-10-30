@@ -155,12 +155,27 @@ h1,h2,h3,.v .meta span,.panel figcaption{overflow-wrap:anywhere}
 .gal .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
 .gal h2{font-size:clamp(40px,5vw,72px);margin-top:16px;max-width:14ch}
 .gal .all{font:500 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--lagoon);border-bottom:1px solid currentColor;padding-bottom:5px;white-space:nowrap}
-.gal .mos{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,clamp(150px,19vw,280px));gap:clamp(8px,1vw,14px)}
-.gal .mos a{position:relative;overflow:hidden;background:var(--sand2)}
-.gal .mos a:first-child{grid-row:span 2}
-.gal .mos img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-@media(hover:hover){.gal .mos a:hover img{transform:scale(1.04)}}
-@media(max-width:700px){.gal .mos{grid-template-columns:1fr 1fr;grid-template-rows:56vw 34vw 34vw}.gal .mos a:first-child{grid-row:auto;grid-column:span 2}.gal .mos a:nth-child(n+6){display:none}}
+.gal .seg{display:inline-flex;border:1px solid var(--rule);background:#fff;padding:4px;border-radius:999px;margin-bottom:22px}
+.gal .seg button{border:0;background:transparent;font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border-radius:999px;color:var(--ink2);cursor:pointer;transition:background .3s,color .3s}
+.gal .seg button.on{background:var(--ink);color:#fff}
+.gal .seg em{font-style:normal;opacity:.6;margin-left:6px}
+.gal .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,14px)}
+.gal .tile{position:relative;overflow:hidden;background:var(--sand2);aspect-ratio:4/3;display:block}
+.gal .tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.gal .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;color:#fff;font:400 13px/1.35 var(--body);background:linear-gradient(transparent,rgba(8,26,30,.62));opacity:0;transition:opacity .4s}
+.gal .tag{position:absolute;left:10px;top:10px;font:500 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;background:rgba(246,242,234,.92);color:var(--ink);padding:7px 9px}
+@media(hover:hover){.gal .tile:hover img{transform:scale(1.04)}.gal .tile:hover .cap{opacity:1}}
+.gal .gg,.gal .empty{display:none}
+.gal .empty{grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,60px);align-items:center;background:#fff;padding:clamp(24px,4vw,56px);border:1px solid var(--rule)}
+.gal .empty h3{font:300 clamp(32px,3.6vw,52px)/1.02 var(--display);margin:14px 0 0}
+.gal .empty p{color:var(--ink2);margin:14px 0 22px;max-width:40ch}
+.gal .empty .go{display:inline-flex;align-items:center;gap:10px;font:500 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;padding:15px 20px;background:var(--lagoon);color:#fff;white-space:nowrap;transition:background .3s}
+@media(hover:hover){.gal .empty .go:hover{background:var(--ink)}}
+.gal .empty .ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gal .empty .ph div{aspect-ratio:1;border:1px dashed var(--lagoon);background:var(--sand2);display:grid;place-items:center;color:var(--lagoon);font:300 30px/1 var(--display)}
+.gal.guests .grid:not(.gg){display:none}.gal.guests .gg{display:grid}.gal.guests .empty{display:grid}
+.gal.guests.hasg .empty{display:none}
+@media(max-width:760px){.gal .grid{grid-template-columns:1fr 1fr}.gal .grid .tile:nth-child(n+7){display:none}.gal .empty{grid-template-columns:1fr}.gal .seg button{padding:11px 12px;letter-spacing:.08em;white-space:nowrap}.gal .seg em{margin-left:4px}}
 
 /* ---------- line over parallax ---------- */
 .quote{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
@@ -487,12 +502,27 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <div><p class="kick rv">Gallery</p><h2 class="rv">From the resort, and from our guests.</h2></div>
         <a class="all rv" href="gallery/">See all photos &rarr;</a>
       </div>
-      <div class="mos rv" id="galMos">
-        <a href="gallery/"><img src="img/facade.webp" alt="Three floors of arches between the coconut palms" loading="lazy"></a>
-        <a href="gallery/"><img src="img/day-balcony.webp" alt="The balcony over the beach" loading="lazy"></a>
-        <a href="gallery/"><img src="img/seahorse.webp" alt="The Seahorse, our own outrigger boat" loading="lazy"></a>
-        <a href="gallery/"><img src="img/from-the-sand.webp" alt="The resort at dusk, seen from the sand" loading="lazy"></a>
-        <a href="gallery/"><img src="img/day-islands.webp" alt="One of the small islands across the bay" loading="lazy"></a>
+      <div class="seg rv" role="tablist">
+        <button type="button" class="on" data-v="resort">From the resort <em id="galN1">16</em></button>
+        <button type="button" data-v="guests">From our guests <em id="galN2">0</em></button>
+      </div>
+      <div class="grid rv" id="galGrid">
+        <a class="tile" href="gallery/"><img src="img/g/facade.webp" alt="Three floors of arches between the coconut palms" loading="lazy"><span class="cap">Three floors of arches between the coconut palms</span></a>
+        <a class="tile" href="gallery/"><img src="img/g/day-balcony.webp" alt="The balcony over the beach" loading="lazy"><span class="cap">The balcony over the beach</span></a>
+        <a class="tile" href="gallery/"><img src="img/g/seahorse.webp" alt="The Seahorse, our own outrigger boat" loading="lazy"><span class="cap">The Seahorse, our own outrigger boat</span></a>
+        <a class="tile" href="gallery/"><img src="img/g/from-the-sand.webp" alt="The resort at dusk, seen from the sand" loading="lazy"><span class="cap">The resort at dusk, seen from the sand</span></a>
+        <a class="tile" href="gallery/"><img src="img/g/day-islands.webp" alt="One of the small islands across the bay" loading="lazy"><span class="cap">One of the small islands across the bay</span></a>
+        <a class="tile" href="gallery/"><img src="img/g/hero-resort.webp" alt="Blue arches and a red roof, on the white sand of Alubihod Beach" loading="lazy"><span class="cap">Blue arches and a red roof, on the white sand of Alubihod Beach</span></a>
+      </div>
+      <div class="grid gg" id="galGuests"></div>
+      <div class="empty">
+        <div>
+          <p class="kick">From our guests</p>
+          <h3>Stayed with us? Share your photos.</h3>
+          <p>Send us your favourite photos from your stay. The ones we choose go up here with your first name.</p>
+          <a class="go" href="gallery/#share">Send your photos &rarr;</a>
+        </div>
+        <div class="ph" aria-hidden="true"><div>+</div><div>+</div><div>+</div><div>+</div><div>+</div><div>+</div></div>
       </div>
     </div>
   </section>
@@ -950,10 +980,17 @@ addEventListener("visibilitychange",function(){if(document.visibilityState==="hi
 </script>
 <script>(function(){var d=document.getElementById('directions'),l=document.getElementById('dirLink');if(d&&l)l.addEventListener('click',function(){d.open=true})})();</script>
 <script>
+var sec=document.getElementById('gallery');
+function esc(t){return String(t||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function tile(p){var g=p.source==='guest';return '<a class="tile" href="gallery/"><img src="'+esc(p.thumb||p.src)+'" alt="'+esc(p.caption)+'" loading="lazy">'+(g?'<span class="tag">Guest'+(p.credit?' · '+esc(p.credit):'')+'</span>':'')+(p.caption?'<span class="cap">'+esc(p.caption)+'</span>':'')+'</a>'}
+sec.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+  sec.querySelectorAll('.seg button').forEach(function(x){x.classList.toggle('on',x===b)});sec.classList.toggle('guests',b.dataset.v==='guests')})});
 fetch('https://cc.veracod.com/api/gallery').then(function(r){return r.json()}).then(function(j){
-  var ph=(j.items||[]).filter(function(x){return x.kind==='photo'&&x.src}).slice(0,5),box=document.getElementById('galMos');
-  if(ph.length<5||!box)return;
-  box.querySelectorAll('img').forEach(function(im,i){im.src=i?(ph[i].thumb||ph[i].src):ph[i].src;im.alt=ph[i].caption||''});   // 大格用原图，小格用小图
+  var ph=(j.items||[]).filter(function(x){return x.kind==='photo'&&x.src});
+  var resort=ph.filter(function(x){return x.source!=='guest'}),guests=ph.filter(function(x){return x.source==='guest'});
+  document.getElementById('galN1').textContent=resort.length;document.getElementById('galN2').textContent=guests.length;
+  if(resort.length>=6)document.getElementById('galGrid').innerHTML=resort.slice(0,6).map(tile).join('');
+  if(guests.length){document.getElementById('galGuests').innerHTML=guests.slice(0,6).map(tile).join('');sec.classList.add('hasg')}
 }).catch(function(){});
 </script>
 </body>
