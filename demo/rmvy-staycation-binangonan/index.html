@@ -622,6 +622,33 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     </div>
   </section>
 
+  <section id="amenities" class="amen" style="--amc:4;--cw:238px">
+    <style>
+      .amen{padding:64px 0 56px}
+      .amen h2{font-family:var(--display);font-size:clamp(26px,3.4vw,36px);margin:10px 0 0;text-align:center}
+      .amen .am-rule{height:1px;background:var(--rule);margin:28px auto 0;max-width:calc(var(--amc) * var(--cw))}
+      .amen ul{list-style:none;margin:28px 0 0;padding:0;display:grid;justify-content:center;row-gap:20px;grid-template-columns:repeat(calc(var(--amc) * 2),calc(var(--cw) / 2))}
+      .amen li{grid-column:var(--ds,auto) / span 2;display:flex;align-items:center;gap:12px;font-size:15.5px;color:var(--ink);min-width:0;padding-right:12px}
+      .amen li span{overflow-wrap:anywhere}
+      .amen svg{flex:0 0 24px;width:24px;height:24px;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+      .amen .am-x{display:none}.amen.open .am-x{display:flex}
+      .amen .am-more{text-align:center}
+      .amen button{margin-top:28px;font:inherit;font-size:14.5px;font-weight:600;color:var(--ink);background:none;border:1px solid var(--ink);border-radius:999px;padding:10px 20px;cursor:pointer}
+      @media(max-width:900px){
+        .amen .am-rule{max-width:none}
+        .amen ul{grid-template-columns:repeat(4,calc(min(var(--cw), 50vw - 26px) / 2));row-gap:16px;column-gap:0}
+        .amen li{grid-column:var(--ms,auto) / span 2;font-size:14.5px;padding:0 6px}
+      }
+    </style>
+    <div class="wrap">
+      <p class="kick rv">At RMVY Staycation</p>
+      <h2 class="rv">Property amenities</h2>
+      <div class="am-rule"></div>
+      <ul><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M2 14c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M8 11V5a2 2 0 0 1 4 0M16 11V5a2 2 0 0 0-4 0"/></svg><span>Covered pool</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-8h6v8"/></svg><span>Covered party area</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.8 11.3 2 22l10.7-3.8"/><path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01M22 2l-2.2.7a2 2 0 0 0-1.3 2.3c.1.7-.4 1.3-1 1.5L16 7"/><path d="m11 13 .5-2.5L13 9"/></svg><span>Events &amp; parties</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg><span>Billiards</span></li></ul>
+      
+    </div>
+  </section>
+
 
   <section id="book" class="book">
     <div class="wrap">
