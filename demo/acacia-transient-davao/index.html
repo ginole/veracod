@@ -622,6 +622,33 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     </div>
   </section>
 
+  <section id="amenities" class="amen" style="--amc:3;--cw:265px">
+    <style>
+      .amen{padding:64px 0 56px}
+      .amen h2{font-family:var(--display);font-size:clamp(26px,3.4vw,36px);margin:10px 0 0;text-align:center}
+      .amen .am-rule{height:1px;background:var(--rule);margin:28px auto 0;max-width:calc(var(--amc) * var(--cw))}
+      .amen ul{list-style:none;margin:28px 0 0;padding:0;display:grid;justify-content:center;row-gap:20px;grid-template-columns:repeat(calc(var(--amc) * 2),calc(var(--cw) / 2))}
+      .amen li{grid-column:var(--ds,auto) / span 2;display:flex;align-items:center;gap:12px;font-size:15.5px;color:var(--ink);min-width:0;padding-right:12px}
+      .amen li span{overflow-wrap:anywhere}
+      .amen svg{flex:0 0 24px;width:24px;height:24px;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+      .amen .am-x{display:none}.amen.open .am-x{display:flex}
+      .amen .am-more{text-align:center}
+      .amen button{margin-top:28px;font:inherit;font-size:14.5px;font-weight:600;color:var(--ink);background:none;border:1px solid var(--ink);border-radius:999px;padding:10px 20px;cursor:pointer}
+      @media(max-width:900px){
+        .amen .am-rule{max-width:none}
+        .amen ul{grid-template-columns:repeat(4,calc(min(var(--cw), 50vw - 26px) / 2));row-gap:16px;column-gap:0}
+        .amen li{grid-column:var(--ms,auto) / span 2;font-size:14.5px;padding:0 6px}
+      }
+    </style>
+    <div class="wrap">
+      <p class="kick rv">At 51 Acacia St. Transient House</p>
+      <h2 class="rv">Property amenities</h2>
+      <div class="am-rule"></div>
+      <ul><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9"/></svg><span>Air-conditioned rooms</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l3 3M7 7a5 5 0 0 1 7 0L7 14a5 5 0 0 1 0-7z"/><path d="M14 15v.01M17 18v.01M18 13v.01M21 16v.01"/></svg><span>Showers &amp; restrooms</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Kitchen use</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r=".8"/></svg><span>Wi-Fi</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><span>Guest parking</span></li><li style=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>24-hour security</span></li></ul>
+      
+    </div>
+  </section>
+
 
   <section id="book" class="book">
     <div class="wrap">
