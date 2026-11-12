@@ -538,6 +538,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 .dishes.rooms{grid-template-columns:1fr;gap:56px;margin-top:56px}
 @media(min-width:720px){.dishes.rooms{grid-template-columns:repeat(2,1fr);gap:48px}}
 @media(min-width:720px){.dishes.rooms.r1{grid-template-columns:minmax(0,620px);justify-content:center}}
+.dishes.rooms.many{gap:34px}
+@media(min-width:720px){.dishes.rooms.many{gap:36px}}
+@media(min-width:960px){.dishes.rooms.many{grid-template-columns:repeat(3,1fr)}.dishes.rooms.many .room h3{font-size:22px}}
 @media(min-width:960px){.dishes.rooms.r3,.dishes.rooms.r6{grid-template-columns:repeat(3,1fr);gap:36px}.dishes.rooms.r3 .room h3,.dishes.rooms.r6 .room h3{font-size:24px}}
 .room .rimg img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .room .rtext{padding-top:22px}
@@ -636,7 +639,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick rv">Book the house</p>
       <h2 class="sp">Rooms and spaces.</h2>
       <p class="lead rv">Send your dates and how many of you there are, and we reply with the rate.</p>
-      <div class="dishes rooms r4" data-vc-list="dishes"><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The bedrooms</h3><p data-vc-f="d">Two air-conditioned bedrooms.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The bedrooms">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The open den</h3><p data-vc-f="d">Ground-floor den with a sofa bed, a day bed and a foosball table.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The open den">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The mini library</h3><p data-vc-f="d">A reading corner upstairs with a day bed.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The mini library">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The kitchen</h3><p data-vc-f="d">Basic tableware and cookware, with complimentary drinking water.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The kitchen">Ask the rate for this room &rarr;</a></div></article><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
+      <div class="dishes rooms r4" data-vc-list="dishes"><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The bedrooms</h3><p data-vc-f="d">Two air-conditioned bedrooms.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The bedrooms">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The open den</h3><p data-vc-f="d">Ground-floor den with a sofa bed, a day bed and a foosball table.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The open den">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The mini library</h3><p data-vc-f="d">A reading corner upstairs with a day bed.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The mini library">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The kitchen</h3><p data-vc-f="d">Basic tableware and cookware, with complimentary drinking water.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The kitchen">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-tpl hidden><div class="rtext"><h3 data-vc-f="n"></h3><p data-vc-f="d" hidden></p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book">Ask the rate for this room &rarr;</a></div></article></div>
       
     </div>
   </section>
@@ -1134,7 +1137,10 @@ function apply(c){
  var em=q("[data-vc='email']");if(em&&c.contact&&c.contact.email){em.textContent=c.contact.email;
   em.setAttribute("href","mailto:"+c.contact.email)}
  list(q("[data-vc-list='hours']"),c.hours||[],function(n,r){put(n,"d",r.d);put(n,"h",r.h)});
- list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d);put(n,"p",r.p)});
+ list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d);put(n,"p",/^ *[0-9][0-9,]* *$/.test(r.p||"")?"₱"+Number(String(r.p).replace(/[^0-9]/g,"")).toLocaleString("en-US"):r.p)});
+ /* 房间多了（店主后台加的）：超过 6 间变紧凑——电脑一行三张、手机间距收小（11-12 他问「加了 20 个房间排版不乱吗」） */
+ var dl=q("[data-vc-list='dishes']");if(dl&&dl.classList.contains("rooms")){var nr=(c.dishes||[]).length;
+  for(var ci=dl.classList.length-1;ci>=0;ci--){if(/^r[0-9]+$/.test(dl.classList[ci]))dl.classList.remove(dl.classList[ci])}dl.classList.add("r"+nr);dl.classList.toggle("many",nr>6)}
  var secs=(c.menu||[]).filter(function(s){return (s.items||[]).length});
  var mc=q("[data-vc-list='menu']"),total=0;
  for(var i=0;i<secs.length;i++){total+=secs[i].items.length}
