@@ -1137,7 +1137,13 @@ function apply(c){
  var em=q("[data-vc='email']");if(em&&c.contact&&c.contact.email){em.textContent=c.contact.email;
   em.setAttribute("href","mailto:"+c.contact.email)}
  list(q("[data-vc-list='hours']"),c.hours||[],function(n,r){put(n,"d",r.d);put(n,"h",r.h)});
- list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d);put(n,"p",/^ *[0-9][0-9,]* *$/.test(r.p||"")?"₱"+Number(String(r.p).replace(/[^0-9]/g,"")).toLocaleString("en-US"):r.p)});
+ list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d);put(n,"p",/^ *[0-9][0-9,]* *$/.test(r.p||"")?"₱"+Number(String(r.p).replace(/[^0-9]/g,"")).toLocaleString("en-US"):r.p);
+  /* 房间照片（只对房间卡、且后台数据里有 img 这一项时才动，老账户不受影响） */
+  if(r&&r.img!==undefined&&n.classList.contains("room")){var ri=q(".rimg",n),u=r.img||"";
+   var okU=u.indexOf("./img/")===0||u.indexOf("https://edit.veracod.com/g/")===0;
+   if(okU){if(!ri){ri=document.createElement("div");ri.className="rimg";ri.appendChild(document.createElement("img"));n.insertBefore(ri,n.firstChild)}
+    var im=q("img",ri);if(im.getAttribute("src")!==u){im.setAttribute("src",u)}im.setAttribute("alt",r.n||"");im.setAttribute("loading","lazy");show(ri,true)}
+   else if(ri){show(ri,false)}}});
  /* 房间多了（店主后台加的）：超过 6 间变紧凑——电脑一行三张、手机间距收小（11-12 他问「加了 20 个房间排版不乱吗」） */
  var dl=q("[data-vc-list='dishes']");if(dl&&dl.classList.contains("rooms")){var nr=(c.dishes||[]).length;
   for(var ci=dl.classList.length-1;ci>=0;ci--){if(/^r[0-9]+$/.test(dl.classList[ci]))dl.classList.remove(dl.classList[ci])}dl.classList.add("r"+nr);dl.classList.toggle("many",nr>6)}
