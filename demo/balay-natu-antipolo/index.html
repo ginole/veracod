@@ -696,7 +696,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
         </form>
 
         <div class="bside">
-          <div class="chans rv"><a class="chan" href="https://www.facebook.com/balaynatu" target="_blank" rel="noreferrer"><b>Message us on Facebook</b><span>Balay Natu</span></a><a class="chan" href="https://www.instagram.com/balaynatu/" target="_blank" rel="noreferrer"><b>Instagram</b><span>@balaynatu</span></a><a class="chan" href="mailto:balaynatu@gmail.com" target="_blank" rel="noreferrer"><b>balaynatu@gmail.com</b><span>Email</span></a></div>
+          <div class="chans rv" data-vc="chans"><a class="chan" href="https://www.facebook.com/balaynatu" target="_blank" rel="noreferrer"><b>Message us on Facebook</b><span>Balay Natu</span></a><a class="chan" href="https://www.instagram.com/balaynatu/" target="_blank" rel="noreferrer"><b>Instagram</b><span>@balaynatu</span></a><a class="chan" href="mailto:balaynatu@gmail.com" target="_blank" rel="noreferrer"><b>balaynatu@gmail.com</b><span>Email</span></a></div>
           <div class="steps rv"><b>How booking works</b><ol><li class="rv"><em>1</em><span>Send your dates and how many of you there are.</span></li><li class="rv"><em>2</em><span>We reply with the rate for those exact dates.</span></li><li class="rv"><em>3</em><span>We tell you how to hold the dates, and confirm your booking in writing.</span></li></ol></div>
           
         </div>
@@ -750,6 +750,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Balay%20Natu%20Pestano%20Farm%20Road%2C%20Sitio%20Panlinlingan%2C%20Brgy%20San%20Juan%2C%20Antipolo%2C%20Rizal%2C%20Philippines" target="_blank" rel="noreferrer">Pestano Farm Road, Sitio Panlinlingan, Brgy San Juan, Antipolo, Rizal, Philippines</a></div>
         
         <div class="rv"><span>Email</span><a href="mailto:balaynatu@gmail.com" data-vc="email">balaynatu@gmail.com</a></div>
+        <div data-vc="fmsg" style="display:none"><span>Message us</span><div class="plinks"></div></div>
         
         
         
@@ -1124,7 +1125,28 @@ function list(cont,rows,fill){if(!cont)return;
    cont.insertBefore(n,tpl);items.push(n)}
   fill(n,rows[i],i);show(n,true)}
  for(var k=rows.length;k<items.length;k++){show(items[k],false)}}
+/* 联系方式新格式（有 fb 字段）：订房区的联系按钮 + Find us 的电话/私信行，全按后台填的重新生成，空的不显示 */
+function ph63(v){var d=String(v||"").replace(/[^0-9]/g,"");if(d.charAt(0)==="0"&&d.length===11){d="63"+d.slice(1)}else if(d.charAt(0)==="9"&&d.length===10){d="63"+d}return d}
+function chan(label,note,href,ext){var a=document.createElement("a");a.className="chan";a.href=href;if(ext){a.target="_blank";a.rel="noreferrer"}
+ var b=document.createElement("b");b.textContent=label;var s=document.createElement("span");s.textContent=note||"";a.appendChild(b);a.appendChild(s);return a}
+function contacts(k){var L=[];
+ if(k.fb){L.push(["Message us on Facebook","Messenger",k.fb,1])}
+ if(k.viber){L.push(["Viber",k.viber,"viber://chat?number=%2B"+ph63(k.viber),0])}
+ if(k.wa){L.push(["WhatsApp",k.wa,"https://wa.me/"+ph63(k.wa),1])}
+ if(k.phone){L.push(["Call or text",k.phone,"tel:"+k.phone.replace(/[^0-9+]/g,""),0])}
+ if(k.email){L.push([k.email,"Email","mailto:"+k.email,0])}
+ if(k.ig){L.push(["Instagram","@"+k.ig,"https://www.instagram.com/"+k.ig+"/",1])}
+ var ch=q("[data-vc='chans']");if(ch){ch.textContent="";L.forEach(function(x){ch.appendChild(chan(x[0],x[1],x[2],x[3]))})}
+ var fm=q("[data-vc='fmsg']");if(fm){var pl=q(".plinks",fm),M=L.filter(function(x){return x[2].indexOf("tel:")!==0&&x[2].indexOf("mailto:")!==0});
+  pl.textContent="";M.forEach(function(x){var a=document.createElement("a");a.href=x[2];if(x[3]){a.target="_blank";a.rel="noreferrer"}a.textContent=x[0].replace("Message us on ","");var i=document.createElement("i");i.textContent=x[1];a.appendChild(i);pl.appendChild(a)});
+  fm.style.display=M.length?"":"none"}
+ var fi=q("#find .fi");if(fi){var pr=q("[data-vc='frow-phone']",fi),pa=q("[data-vc='phone']",fi);
+  if(!pa&&k.phone){pr=document.createElement("div");pr.setAttribute("data-vc","frow-phone");var sp=document.createElement("span");sp.textContent="Phone";pa=document.createElement("a");pa.setAttribute("data-vc","phone");pr.appendChild(sp);pr.appendChild(pa);
+   var ad=fi.firstElementChild;fi.insertBefore(pr,ad?ad.nextSibling:null)}
+  if(pa){var row=pa.parentNode;if(k.phone){pa.textContent=k.phone;pa.setAttribute("href","tel:"+k.phone.replace(/[^0-9+]/g,""));row.style.display=""}else{row.style.display="none"}}
+  var ea=q("[data-vc='email']",fi);if(ea){ea.parentNode.style.display=k.email?"":"none"}}}
 function apply(c){
+ if(c.contact&&c.contact.fb!==undefined){contacts(c.contact)}
  var nb=q("[data-vc='notice']");
  if(nb&&c.notice){put(nb,"text",c.notice.text);show(nb,!!(c.notice.on&&c.notice.text))}
  /* 电话在页面上有四处：首屏按钮、导航栏、Find us、手机底部拨号条。店主改一次要全改，
