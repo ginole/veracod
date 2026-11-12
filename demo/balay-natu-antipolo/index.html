@@ -543,6 +543,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 .room .rtext{padding-top:22px}
 .room h3{font-family:var(--display);font-size:28px;font-weight:400;text-transform:none}
 .room p{color:var(--ink2);margin-top:8px;font-size:15.5px}
+.room .rrate{color:var(--ink);font-weight:600;font-size:15px;margin-top:6px}
 .room .rq{display:inline-block;margin-top:16px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:4px}
 
 .q .book{background:var(--bg2)}
@@ -635,7 +636,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
       <p class="kick rv">Book the house</p>
       <h2 class="sp">Rooms and spaces.</h2>
       <p class="lead rv">Send your dates and how many of you there are, and we reply with the rate.</p>
-      <div class="dishes rooms r4" data-vc-list="dishes"><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The bedrooms</h3><p data-vc-f="d">Two air-conditioned bedrooms.</p><a class="rq" href="#book" data-room="The bedrooms">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The open den</h3><p data-vc-f="d">Ground-floor den with a sofa bed, a day bed and a foosball table.</p><a class="rq" href="#book" data-room="The open den">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The mini library</h3><p data-vc-f="d">A reading corner upstairs with a day bed.</p><a class="rq" href="#book" data-room="The mini library">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The kitchen</h3><p data-vc-f="d">Basic tableware and cookware, with complimentary drinking water.</p><a class="rq" href="#book" data-room="The kitchen">Ask the rate for this room &rarr;</a></div></article><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
+      <div class="dishes rooms r4" data-vc-list="dishes"><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The bedrooms</h3><p data-vc-f="d">Two air-conditioned bedrooms.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The bedrooms">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The open den</h3><p data-vc-f="d">Ground-floor den with a sofa bed, a day bed and a foosball table.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The open den">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The mini library</h3><p data-vc-f="d">A reading corner upstairs with a day bed.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The mini library">Ask the rate for this room &rarr;</a></div></article><article class="room rv" data-vc-item><div class="rtext"><h3 data-vc-f="n">The kitchen</h3><p data-vc-f="d">Basic tableware and cookware, with complimentary drinking water.</p><p class="rrate" data-vc-f="p" hidden></p><a class="rq" href="#book" data-room="The kitchen">Ask the rate for this room &rarr;</a></div></article><div class="dish txt rv" data-vc-tpl hidden><p class="mrow"><b data-vc-f="n"></b><i class="lead"></i></p><span data-vc-f="d"></span></div></div>
       
     </div>
   </section>
@@ -1133,7 +1134,7 @@ function apply(c){
  var em=q("[data-vc='email']");if(em&&c.contact&&c.contact.email){em.textContent=c.contact.email;
   em.setAttribute("href","mailto:"+c.contact.email)}
  list(q("[data-vc-list='hours']"),c.hours||[],function(n,r){put(n,"d",r.d);put(n,"h",r.h)});
- list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d)});
+ list(q("[data-vc-list='dishes']"),c.dishes||[],function(n,r){put(n,"n",r.n);put(n,"d",r.d);put(n,"p",r.p)});
  var secs=(c.menu||[]).filter(function(s){return (s.items||[]).length});
  var mc=q("[data-vc-list='menu']"),total=0;
  for(var i=0;i<secs.length;i++){total+=secs[i].items.length}
@@ -1150,6 +1151,53 @@ function apply(c){
 var fresh=location.search.indexOf("v=")>=0;
 fetch(EP+S+".json",fresh?{cache:"reload"}:{}).then(function(r){return r.status===200?r.json():null})
  .then(function(c){if(c){apply(c)}}).catch(function(){});
+/* 11-12 相册：店主在后台动过相册以后（接口返回 200），把页面上的静态相册换成后台的版本，并出现「客人投照片」入口。
+   没开通 / 没动过（404 / 204）→ 什么都不做，页面原样。 */
+function gal(){var sec=document.getElementById("gallery");if(!sec)return;
+ fetch(EP+S+"/gallery.json",fresh?{cache:"reload"}:{}).then(function(r){return r.status===200?r.json():null}).then(function(d){
+  if(!d||!d.items)return;var box=sec.querySelector(".gal");if(!box)return;
+  box.textContent="";
+  d.items.forEach(function(it){var f=document.createElement("figure");f.className="fig g";
+   if(it.kind==="video"){var fr=document.createElement("iframe");fr.src=it.video;fr.loading="lazy";fr.setAttribute("allowfullscreen","");fr.setAttribute("title",it.caption||"Video");
+    fr.style.cssText="width:100%;height:100%;border:0;display:block;background:#000";f.appendChild(fr)}
+   else{var im=document.createElement("img");im.src=it.thumb||it.src;im.alt=it.caption||"";im.loading="lazy";f.appendChild(im);
+    if(it.thumb){f.style.cursor="zoom-in";f.addEventListener("click",function(){window.open(it.src,"_blank","noopener")})}}
+   if(it.caption||it.credit){var fc=document.createElement("figcaption");fc.textContent=it.caption||"";
+    if(it.credit){var em=document.createElement("em");em.className="crd";em.textContent=(it.source==="guest"?"Photo: ":"")+it.credit;fc.appendChild(em)}f.appendChild(fc)}
+   box.appendChild(f)});
+  box.className="gal n"+Math.min(d.items.length,6);
+  var pn=sec.querySelector(".pnote");if(pn)pn.style.display="none";
+  share(sec)})["catch"](function(){})}
+function shrink(file,max,q){return new Promise(function(ok,bad){var u=URL.createObjectURL(file),im=new Image();
+ im.onload=function(){var k=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight)),w=Math.round(im.naturalWidth*k),h=Math.round(im.naturalHeight*k);
+  var c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h);URL.revokeObjectURL(u);
+  c.toBlob(function(b){b?ok({blob:b,w:w,h:h}):bad()},"image/jpeg",q)};
+ im.onerror=function(){URL.revokeObjectURL(u);bad()};im.src=u})}
+function share(sec){if(sec.querySelector(".vc-share"))return;
+ var wrap=sec.querySelector(".wrap")||sec,d=document.createElement("div");d.className="vc-share";
+ d.style.cssText="text-align:center;margin-top:26px";
+ d.innerHTML='<button type="button" class="vc-sb" style="font:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:none;border:1px solid currentColor;color:var(--accent);padding:12px 20px;cursor:pointer">Stayed with us? Share a photo</button>'+
+ '<form class="vc-sf" hidden style="max-width:420px;margin:18px auto 0;text-align:left;display:grid;gap:10px;font-size:15px">'+
+ '<label>Your photo<br><input type="file" name="f" accept="image/jpeg,image/png,image/webp" required></label>'+
+ '<label>Your name<br><input name="name" maxlength="40" required style="width:100%;padding:10px;font:inherit;border:1px solid var(--rule)"></label>'+
+ '<label>A few words (optional)<br><input name="caption" maxlength="140" style="width:100%;padding:10px;font:inherit;border:1px solid var(--rule)"></label>'+
+ '<input name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">'+
+ '<label style="font-size:14px"><input type="checkbox" name="consent" value="1" required> The photo is mine, and you may show it on this website with my name.</label>'+
+ '<button type="submit" style="font:inherit;font-weight:600;background:var(--accent);color:#fff;border:0;padding:12px;cursor:pointer">Send photo</button>'+
+ '<p class="vc-sm" style="font-size:14px;margin:0"></p></form>';
+ wrap.appendChild(d);
+ var fm=d.querySelector(".vc-sf"),msg=d.querySelector(".vc-sm");
+ d.querySelector(".vc-sb").addEventListener("click",function(){fm.hidden=!fm.hidden;fm.style.display=fm.hidden?"none":"grid"});
+ fm.style.display="none";
+ fm.addEventListener("submit",function(e){e.preventDefault();var file=fm.elements["f"].files[0];if(!file)return;
+  var bt=fm.querySelector("button[type=submit]");bt.disabled=true;msg.textContent="Sending\u2026";
+  Promise.all([shrink(file,2000,.85),shrink(file,800,.8)]).then(function(a){var fd=new FormData();
+   fd.append("photo",a[0].blob,"p.jpg");fd.append("thumb",a[1].blob,"t.jpg");fd.append("w",a[0].w);fd.append("h",a[0].h);
+   fd.append("name",fm.elements["name"].value);fd.append("caption",fm.elements["caption"].value);fd.append("website",fm.elements["website"].value);fd.append("consent",fm.elements["consent"].checked?"1":"");
+   return fetch(EP+S+"/gallery/submit",{method:"POST",body:fd}).then(function(r){return r.json()})})
+  .then(function(j){bt.disabled=false;if(j&&j.ok){fm.reset();msg.textContent="Thank you! We'll put it up once we've had a look."}else{msg.textContent=(j&&j.error)||"Sorry, that didn't work. Please try again."}},
+   function(){bt.disabled=false;msg.textContent="Sorry, that photo couldn't be read. Please try a JPG or PNG."})})}
+gal();
 }catch(e){}})();</script>
 <script>(function(){try{
 var EP="https://p.veracod.com/e",S="balay-natu-antipolo",K="demo";
